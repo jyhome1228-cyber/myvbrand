@@ -16,28 +16,58 @@
         <span class="brand-mark">MYV</span>
       </a>
 
-      <nav class="desktop-nav" aria-label="주요 메뉴">
-        <a href="#about">MYV</a>
-        <a href="#solution">Our Solution</a>
-        <a href="#difference">Our Differences</a>
-        <a href="#sustainability">Sustainability</a>
-        <a href="https://www.myvbrand.com/VPoint" target="_blank" rel="noreferrer">V.Point ↗</a>
-        <a href="https://www.myvbrand.com/19" target="_blank" rel="noreferrer">News ↗</a>
-      </nav>
+      <div class="header-actions">
+        <nav class="desktop-nav" aria-label="주요 메뉴">
+          <a href="#about">ABOUT</a>
+          <a href="#solution">BUSINESS</a>
 
-      <button class="menu-button" type="button" aria-label="메뉴 열기" aria-expanded="false">
-        <span></span><span></span>
-      </button>
+          <div class="nav-dropdown">
+            <button class="nav-dropdown-trigger" type="button" aria-haspopup="true">
+              함께하기 <span class="chevron">⌄</span>
+            </button>
+            <div class="nav-dropdown-menu" role="menu">
+              <a href="#prosumer" role="menuitem">프로슈머</a>
+              <a href="#partner" role="menuitem">입점제안</a>
+            </div>
+          </div>
+
+          <button class="nav-link-button is-pending" type="button" title="SHOP 오픈 후 연결 예정">SHOP</button>
+          <a href="#news">NEWS</a>
+          <a href="#contact">CONTACT US</a>
+        </nav>
+
+        <div class="language-switch" aria-label="언어 선택">
+          <button type="button" class="lang-button is-active" title="국문">KR</button>
+          <span></span>
+          <button type="button" class="lang-button" title="영문 페이지 준비중">EN</button>
+        </div>
+
+        <button class="menu-button" type="button" aria-label="메뉴 열기" aria-expanded="false">
+          <span></span><span></span>
+        </button>
+      </div>
     </div>
 
     <div class="mobile-menu" aria-hidden="true">
       <div class="container mobile-menu-inner">
-        <a href="#about">MYV</a>
-        <a href="#solution">Our Solution</a>
-        <a href="#difference">Our Differences</a>
-        <a href="#sustainability">Sustainability</a>
-        <a href="https://www.myvbrand.com/VPoint" target="_blank" rel="noreferrer">V.Point ↗</a>
-        <a href="https://www.myvbrand.com/19" target="_blank" rel="noreferrer">News ↗</a>
+        <a href="#about">ABOUT</a>
+        <a href="#solution">BUSINESS</a>
+
+        <div class="mobile-submenu">
+          <span>함께하기</span>
+          <a href="#prosumer">프로슈머</a>
+          <a href="#partner">입점제안</a>
+        </div>
+
+        <button class="mobile-nav-button is-pending" type="button" title="SHOP 오픈 후 연결 예정">SHOP</button>
+        <a href="#news">NEWS</a>
+        <a href="#contact">CONTACT US</a>
+
+        <div class="mobile-language">
+          <button type="button" class="lang-button is-active">KR</button>
+          <span></span>
+          <button type="button" class="lang-button">EN</button>
+        </div>
       </div>
     </div>
   </header>
@@ -197,7 +227,7 @@
     </section>
 
     <!-- 07. V-SUMER -->
-    <section class="section prosumer-section">
+    <section class="section prosumer-section" id="prosumer">
       <div class="container media-copy-grid">
         <div class="abstract-visual reveal" aria-hidden="true">
           <div class="orbit orbit-a"></div>
@@ -241,7 +271,7 @@
     </section>
 
     <!-- 09. CURATION -->
-    <section class="section curation-section">
+    <section class="section curation-section" id="partner">
       <div class="container curation-grid">
         <div class="curation-copy reveal">
           <p class="eyebrow">CURATION</p>
@@ -280,7 +310,7 @@
     </section>
 
     <!-- 11. NEWS -->
-    <section class="section news-section">
+    <section class="section news-section" id="news">
       <div class="container">
         <div class="section-top reveal">
           <div>
@@ -311,7 +341,7 @@
     </section>
 
     <!-- 12. FINAL CTA -->
-    <section class="final-cta">
+    <section class="final-cta" id="contact">
       <div class="container reveal">
         <p class="eyebrow light">MY VALUE · MY VICTORY</p>
         <h2>가치있는 소비의 시작,<br />마이브이와 함께하세요.</h2>
@@ -327,9 +357,12 @@
         <p>생활에 소득을 더하는 쇼핑</p>
       </div>
       <div class="footer-links">
-        <a href="#top">HOME</a>
-        <a href="https://www.myvbrand.com/VPoint" target="_blank" rel="noreferrer">V.Point</a>
-        <a href="https://www.myvbrand.com/19" target="_blank" rel="noreferrer">NEWS</a>
+        <a href="#about">ABOUT</a>
+        <a href="#solution">BUSINESS</a>
+        <a href="#prosumer">PROSUMER</a>
+        <a href="#partner">입점제안</a>
+        <a href="#news">NEWS</a>
+        <a href="#contact">CONTACT US</a>
       </div>
     </div>
 
