@@ -86,48 +86,49 @@
           <h2>V.Point (가치소득)</h2>
         </div>
 
-        <div class="vpoint-structure">
-          <div class="vpoint-structure-column vpoint-own-column">
-            <p class="vpoint-column-title">내 V.Point</p>
-            <div class="vpoint-mini-grid">
-              <article class="vpoint-rate-card">
-                <span>회원가입만해도</span>
-                <strong>7% 적립</strong>
-                <b>7%</b>
-              </article>
-              <article class="vpoint-rate-card">
-                <span>멘토 등록하면</span>
-                <strong>3% 적립</strong>
-                <b>3%</b>
-              </article>
-            </div>
+        <div class="vpoint-flow-canvas" aria-label="V.Point 적립 구조">
+          <h3 class="vp-group-title vp-own-title">내 V.Point</h3>
+          <h3 class="vp-group-title vp-follower-title">팔로워 V.Point</h3>
 
-            <div class="vpoint-connector connector-own-top"></div>
+          <article class="vp-card vp-card-7">
+            <span>회원가입만해도</span>
+            <strong>7% 적립</strong>
+            <b>7%</b>
+          </article>
 
-            <article class="vpoint-total-card">
-              <span>내 총 V.Point</span>
-              <strong>10% 적립</strong>
-              <b>10%</b>
-            </article>
-          </div>
+          <article class="vp-card vp-card-3">
+            <span>멘토 등록하면</span>
+            <strong>3% 적립</strong>
+            <b>3%</b>
+          </article>
 
-          <div class="vpoint-structure-column vpoint-follower-column">
-            <p class="vpoint-column-title">팔로워 V.Point</p>
-            <article class="vpoint-rate-card vpoint-follower-card">
-              <span>팔로워 소비 시 V.Point</span>
-              <strong>18%~28% 적립</strong>
-              <b>~28%</b>
-            </article>
-          </div>
+          <article class="vp-card vp-card-total">
+            <span>내 총 V.Point</span>
+            <strong>10% 적립</strong>
+            <b>10%</b>
+          </article>
+
+          <article class="vp-card vp-card-follower">
+            <span>팔로워 소비 시 V.Point</span>
+            <strong>18%~28% 적립</strong>
+            <b>~28%</b>
+          </article>
+
+          <svg class="vp-lines" viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M165 210 V235 H290 V250" />
+            <path d="M425 210 V235 H290" />
+            <path d="M290 390 V430 H800" />
+            <path d="M800 225 V430" />
+            <path d="M500 430 V470" />
+            <path class="vp-arrow" d="M494 462 L500 470 L506 462" />
+          </svg>
+
+          <article class="vp-result-card">
+            <span>V.Point</span>
+            <strong>최소 28% ~ 최대 38% 적립</strong>
+          </article>
         </div>
-
-        <div class="vpoint-merge-line"></div>
-
-        <div class="vpoint-result-card">
-          <span>V.Point</span>
-          <strong>최소 28% ~ 최대 38% 적립</strong>
-        </div>
-      </div>
+      </div></div>
     </div>
   </section>
 
@@ -139,29 +140,35 @@
           <h2>V.Point 적립 예시</h2>
         </div>
 
-        <div class="vpoint-example">
-          <article>
-            <span>이번달 V.Point</span>
+        <div class="vpoint-example-canvas" aria-label="V.Point 적립 예시">
+          <h3 class="vp-example-title vp-example-left-title">이번달 V.Point</h3>
+          <h3 class="vp-example-title vp-example-right-title">이번달 팔로워 V.Point</h3>
+
+          <article class="vp-example-card vp-example-left">
             <p>300,000원 소비 시</p>
             <strong><small>(10% 적립)</small> 30,000원</strong>
           </article>
 
-          <article>
-            <span>이번달 팔로워 V.Point</span>
+          <article class="vp-example-card vp-example-right">
             <p>5,000,000원 소비 시</p>
             <strong><small>(28% 적립)</small> 1,400,000원</strong>
           </article>
+
+          <svg class="vp-lines vp-example-lines" viewBox="0 0 1000 470" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M260 225 V265 H500" />
+            <path d="M740 225 V265 H500" />
+            <path d="M500 265 V305" />
+            <path class="vp-arrow" d="M494 297 L500 305 L506 297" />
+          </svg>
+
+          <article class="vp-monthly-card">
+            <span>이번달 V.Point (가치소득)</span>
+            <strong>1,430,000원</strong>
+          </article>
+
+          <p class="vp-example-note">* 지급일 or 상품 구매시 사용 가능한 금액입니다.<br />* 제품별 V.Point 적립금액은 상이할 수 있습니다.</p>
         </div>
-
-        <div class="vpoint-example-line"></div>
-
-        <div class="vpoint-monthly">
-          <span>이번달 V.Point (가치소득)</span>
-          <strong>1,430,000원</strong>
-        </div>
-
-        <p class="vpoint-note">* 지급일 or 상품 구매시 사용 가능한 금액입니다.<br />* 제품별 V.Point 적립금액은 상이할 수 있습니다.</p>
-      </div>
+      </div></div>
     </div>
   </section>
 
