@@ -33,3 +33,18 @@ const observer = new IntersectionObserver((entries) => {
 },{ threshold:0.12 });
 
 revealItems.forEach(item => observer.observe(item));
+
+
+// NEWS FILTER
+const newsFilterButtons = document.querySelectorAll(".news-filter [data-filter]");
+const newsCards = document.querySelectorAll(".news-data-card[data-category]");
+newsFilterButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const filter = button.dataset.filter;
+    newsFilterButtons.forEach((item) => item.classList.toggle("is-active", item === button));
+    newsCards.forEach((card) => {
+      const visible = filter === "ALL" || card.dataset.category === filter;
+      card.classList.toggle("is-hidden", !visible);
+    });
+  });
+});
