@@ -219,7 +219,7 @@ h3{font-size:24px;letter-spacing:-.03em}
 .cta-button{display:inline-flex;padding:17px 28px;background:#fff;color:var(--blue);border-radius:999px;font-weight:750}
 
 /* FOOTER */
-.site-footer{background:var(--blue);color:#fff;padding:78px 0 32px}
+.site-footer{background:#fff;color:var(--ink);padding:78px 0 32px}
 .footer-main{
   display:grid;
   grid-template-columns:minmax(280px,.9fr) minmax(520px,1.35fr);
@@ -2021,21 +2021,28 @@ h2{font-size:clamp(29px,2.8vw,42px)}
   .prosumer-page .onboarding-bottom{align-items:flex-start;flex-direction:column}
 }
 
-/* Shared blue footer, with a distinct light closing section on the home page. */
+/* White footer with the shared color logo and neutral text. */
 .home-final-cta{background:var(--soft);color:var(--ink)}
 .home-final-cta .eyebrow.light{color:var(--blue)}
 .home-final-cta .light-outline{border-color:var(--blue);color:var(--blue)}
 .home-final-cta .light-outline:hover{background:var(--blue);color:#fff}
+.site-footer{border-top:1px solid var(--line)}
 .site-footer .footer-caption,
 .site-footer .footer-nav-title,
 .site-footer .footer-company-info,
 .site-footer .footer-language,
 .site-footer .footer-bottom,
-.site-footer .footer-legal-links a{color:rgba(255,255,255,.8)}
+.site-footer .footer-legal-links a{color:var(--muted)}
 .site-footer .footer-slogan,
-.site-footer .footer-nav-group a{color:#fff}
-.site-footer .footer-company{border-top-color:rgba(255,255,255,.25)}
-.site-footer .footer-bottom{border-top-color:rgba(255,255,255,.25)}
+.site-footer .footer-nav-group a,
+.site-footer .footer-language .is-active{color:var(--ink)}
+.site-footer .footer-nav-group a:hover,
+.site-footer .footer-legal-links a:hover{color:var(--blue)}
+.site-footer .footer-legal-links a:first-child{color:var(--ink)}
+.site-footer .footer-company{border-color:var(--line)}
+.site-footer .footer-bottom{border-color:var(--line)}
+.site-footer .footer-company-info p:first-child span+span::before{color:#a4aab4}
+.site-footer .footer-language .divider{background:var(--line)}
 
 /* Keep V.Point labels and badges separated at narrower widths. */
 .vp-card{padding-right:88px}
