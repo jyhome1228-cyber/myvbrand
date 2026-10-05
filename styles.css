@@ -708,3 +708,83 @@ h2{font-size:clamp(32px,3.2vw,48px)}
   .home-news-list strong{font-size:18px}
   .home-final-cta{padding:82px 0}
 }
+
+
+/* FINAL SCALE / PLACEHOLDER / FOOTER POLICY */
+h1{font-size:clamp(42px,4vw,60px)}
+h2{font-size:clamp(29px,2.8vw,42px)}
+.home-hero .hero-copy h1{font-size:clamp(44px,4.2vw,60px)}
+.page-hero h1{font-size:clamp(40px,3.7vw,56px)}
+.page-hero p:last-child{font-size:16px}
+.subpage .page-section-heading h2{font-size:clamp(28px,2.65vw,40px)}
+.subpage .page-card h3{font-size:22px}
+.subpage .engine-grid h3{font-size:29px}
+.subpage .process-grid h3{font-size:24px}
+
+.page-card-grid.four{grid-template-columns:repeat(4,minmax(0,1fr))}
+.page-card,.process-grid article,.engine-grid article{min-width:0;overflow:hidden}
+.page-card p,.process-grid p,.engine-grid p{overflow-wrap:anywhere}
+
+.image-placeholder{
+  width:100%;
+  border:1px dashed rgba(34,120,249,.45);
+  background:rgba(255,255,255,.08);
+  border-radius:28px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:36px;
+}
+.image-placeholder-hero{height:100%;min-height:470px;color:#fff;border-color:rgba(255,255,255,.42)}
+.image-placeholder span{font-size:11px;font-weight:800;letter-spacing:.12em;opacity:.62;margin-bottom:10px}
+.image-placeholder strong{font-size:24px;line-height:1.35;margin-bottom:8px}
+.image-placeholder p{margin:0;font-size:13px;opacity:.58}
+.image-placeholder-hero::before{
+  content:"+";
+  width:52px;height:52px;border:1px solid currentColor;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:26px;font-weight:300;opacity:.52;margin-bottom:22px;
+}
+
+.footer-legal-links{display:flex;align-items:center;gap:22px}
+.footer-legal-links a{color:rgba(255,255,255,.42);font-size:11px}
+.footer-legal-links a:first-child{color:rgba(255,255,255,.72);font-weight:650}
+.footer-legal-links a:hover{color:#fff}
+
+.policy-main{padding-top:82px}
+.policy-hero{padding:116px 0 62px;background:#f6f8fb}
+.policy-hero h1{margin-bottom:16px}
+.policy-hero p{max-width:720px;color:var(--muted);margin-bottom:0}
+.policy-content{padding:76px 0 110px}
+.policy-body{max-width:920px}
+.policy-section{padding:30px 0;border-top:1px solid var(--line)}
+.policy-section:first-child{border-top:0;padding-top:0}
+.policy-section h2{font-size:24px;margin-bottom:12px}
+.policy-section p,.policy-section li{font-size:15px;color:var(--muted);line-height:1.8}
+.policy-section ul{padding-left:20px;margin:0}
+
+.vpoint-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:42px}
+.vpoint-card{padding:32px;border:1px solid var(--line);border-radius:22px;background:#fff;min-height:220px}
+.vpoint-card span{display:block;color:var(--blue);font-size:11px;font-weight:800;margin-bottom:48px}
+.vpoint-card h3{font-size:22px;margin-bottom:10px}
+.vpoint-card p{font-size:14px;color:var(--muted);margin-bottom:0}
+.notice-box{margin-top:28px;padding:22px 24px;border-radius:16px;background:#f6f8fb;color:var(--muted);font-size:14px}
+
+@media(max-width:1100px){
+  .page-card-grid.four{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:760px){
+  h1{font-size:38px}
+  h2{font-size:30px}
+  .home-hero .hero-copy h1{font-size:40px}
+  .page-hero h1{font-size:36px}
+  .subpage .page-section-heading h2{font-size:30px}
+  .image-placeholder-hero{min-height:310px}
+  .footer-legal-links{margin-top:8px;flex-wrap:wrap;gap:10px 18px}
+  .policy-main{padding-top:72px}
+  .policy-hero{padding:88px 0 46px}
+  .policy-content{padding:58px 0 82px}
+  .vpoint-grid{grid-template-columns:1fr}
+}
