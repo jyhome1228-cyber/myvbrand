@@ -2080,3 +2080,125 @@ h2{font-size:clamp(29px,2.8vw,42px)}
   .vpoint-diagram-panel.visible .vp-example-card,
   .vpoint-diagram-panel.visible .vp-monthly-card{animation:none}
 }
+
+/* Centered presentation shared by Home, Prosumer, and Partner. */
+.centered-page .centered-hero{
+  display:block;
+  min-height:0;
+  padding:148px 0 64px;
+}
+.centered-page .centered-hero .centered-hero-inner{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:44px;
+  min-height:0;
+  margin:0 auto;
+  padding-top:0;
+  padding-bottom:0;
+}
+.centered-page .centered-hero-copy{
+  width:100%;
+  max-width:900px;
+  margin:0 auto;
+  text-align:center;
+}
+.centered-page .centered-hero h1{
+  margin:0 0 24px;
+  font-size:clamp(40px,3.7vw,56px);
+  line-height:1.18;
+  letter-spacing:-.045em;
+}
+.centered-page .centered-hero-copy>p:not(.eyebrow){
+  max-width:740px;
+  margin:0 auto 28px;
+  font-size:16px;
+  line-height:1.75;
+  color:rgba(255,255,255,.8);
+}
+.centered-page .centered-hero .hero-actions{justify-content:center;margin-top:30px}
+.centered-page .hero-image-slot{
+  position:relative;
+  width:100%;
+  max-width:1040px;
+  aspect-ratio:16/7;
+  min-height:0;
+  padding:28px;
+  border:1px solid rgba(255,255,255,.3);
+  border-radius:24px;
+  background:rgba(255,255,255,.08);
+  color:#fff;
+}
+.centered-page .hero-image-slot strong{font-size:22px}
+.centered-page .hero-image-slot p{max-width:100%;margin:0;font-size:13px}
+.centered-page .section-image-slot{
+  aspect-ratio:16/7;
+  min-height:140px;
+  padding:24px;
+  margin:0 0 28px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:var(--soft);
+  color:var(--muted);
+}
+.centered-page .section-image-slot strong{font-size:18px}
+.centered-page .section-image-slot p{font-size:12px}
+.centered-page .navy-card .section-image-slot{
+  background:rgba(255,255,255,.06);
+  border-color:rgba(255,255,255,.18);
+  color:#fff;
+}
+.home-main.centered-page .home-split{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:0;
+  text-align:center;
+}
+.home-main.centered-page .home-section-copy{
+  max-width:900px;
+  margin:0 auto;
+}
+.home-main.centered-page .home-section-copy p{margin-left:auto;margin-right:auto}
+.centered-page .home-section-head,
+.centered-page .page-section-heading,
+.centered-page .prosumer-heading,
+.centered-page .definition-top{
+  max-width:800px;
+  margin:0 auto 42px;
+  text-align:center;
+}
+.centered-page .prosumer-heading>p:last-child,
+.centered-page .definition-top>p:last-child{margin-left:auto;margin-right:auto}
+.home-main.centered-page .home-more{text-align:center}
+.home-main.centered-page .section-top{flex-direction:column;align-items:center;gap:22px;text-align:center}
+.prosumer-page.centered-page .calc-shell{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:36px;
+}
+.prosumer-page.centered-page .calc-copy{
+  position:static;
+  width:100%;
+  max-width:760px;
+  text-align:center;
+}
+.prosumer-page.centered-page .calc-copy>p:not(.section-kicker){margin-left:auto;margin-right:auto}
+.prosumer-page.centered-page .calc-note{text-align:left}
+.prosumer-page.centered-page .income-calculator{width:100%;max-width:760px}
+.prosumer-page.centered-page .onboarding-bottom{flex-direction:column;text-align:center;align-items:center;gap:22px}
+@media(max-width:760px){
+  .centered-page .centered-hero{padding:128px 0 48px}
+  .centered-page .centered-hero .centered-hero-inner{gap:32px}
+  .centered-page .centered-hero h1{font-size:32px;line-height:1.25}
+  .centered-page .centered-hero-copy>p:not(.eyebrow){font-size:15px;margin-bottom:22px}
+  .centered-page .hero-image-slot{aspect-ratio:4/3;padding:22px;border-radius:18px}
+  .centered-page .hero-image-slot strong{font-size:20px}
+  .centered-page .hero-image-slot p{font-size:12px}
+  .centered-page .home-section-head,
+  .centered-page .page-section-heading,
+  .centered-page .prosumer-heading,
+  .centered-page .definition-top{margin-bottom:32px}
+  .prosumer-page.centered-page .onboarding-bottom strong{font-size:20px}
+}
