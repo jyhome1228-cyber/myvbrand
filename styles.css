@@ -12,9 +12,11 @@
 }
 
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;background:var(--blue);color-scheme:light}
 body{
   margin:0;
+  min-height:100vh;
+  min-height:100dvh;
   font-family:"Pretendard Variable","Pretendard",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   color:var(--ink);
   background:#fff;
@@ -1030,7 +1032,7 @@ h2{font-size:clamp(29px,2.8vw,42px)}
 .reveal{
   opacity:0;
   transform:translateY(28px) scale(.992);
-  filter:blur(5px);
+  filter:blur(1.5px);
   transition:
     opacity .8s cubic-bezier(.22,1,.36,1),
     transform .8s cubic-bezier(.22,1,.36,1),
@@ -2187,6 +2189,21 @@ h2{font-size:clamp(29px,2.8vw,42px)}
 .prosumer-page.centered-page .calc-copy>p:not(.section-kicker){margin-left:auto;margin-right:auto}
 .prosumer-page.centered-page .calc-note{text-align:left}
 .prosumer-page.centered-page .income-calculator{width:100%;max-width:760px}
+.prosumer-page .calc-input-wrap input,
+.prosumer-page .calc-result-total,
+.prosumer-page .result-breakdown strong{font-variant-numeric:tabular-nums}
+.prosumer-page .calc-result-total,
+.prosumer-page .result-breakdown strong{overflow-wrap:anywhere}
+.prosumer-page .calc-result-label{gap:12px;flex-wrap:wrap}
+.prosumer-page input[type="range"]{cursor:pointer;min-height:28px}
+.prosumer-page .ambassador-toggle{cursor:pointer}
+:where(a,button,input,select,textarea):focus-visible{outline:2px solid var(--blue);outline-offset:4px}
+.site-header:not(.scrolled) :where(a,button):focus-visible,
+.centered-hero a:focus-visible{outline-color:var(--yellow)}
+main [id]{scroll-margin-top:110px}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;filter:none}
+}
 .prosumer-page.centered-page .onboarding-bottom{flex-direction:column;text-align:center;align-items:center;gap:22px}
 @media(max-width:760px){
   .centered-page .centered-hero{padding:128px 0 48px}

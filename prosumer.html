@@ -7,7 +7,7 @@
   <title>프로슈머 | MYV</title>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css" />
-  <link rel="stylesheet" href="./styles.css?v=20261006-0010" />  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg?v=20261006-0010" />
+  <link rel="stylesheet" href="./styles.css?v=20261006-0848" />  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg?v=20261006-0010" />
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png?v=20261006-0010" />
   <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png?v=20261006-0010" />
 </head>
@@ -178,15 +178,15 @@
       <form class="income-calculator reveal" id="prosumerCalculator">
         <div class="calc-field">
           <div class="calc-label-row"><label for="monthlySales">월 직접 판매액</label></div>
-          <div class="calc-input-wrap"><input id="monthlySales" type="number" min="0" step="100000" value="10000000" inputmode="numeric" /><span>원</span></div>
+          <div class="calc-input-wrap"><input id="monthlySales" type="text" value="10,000,000" inputmode="numeric" autocomplete="off" data-max="100000000000" /><span>원</span></div>
         </div>
         <div class="calc-field">
           <div class="calc-label-row"><label for="followers">연결 팔로워 구매자 수</label></div>
-          <div class="calc-input-wrap"><input id="followers" type="number" min="0" step="1" value="100" inputmode="numeric" /><span>명</span></div>
+          <div class="calc-input-wrap"><input id="followers" type="text" value="100" inputmode="numeric" autocomplete="off" data-max="1000000" /><span>명</span></div>
         </div>
         <div class="calc-field">
           <div class="calc-label-row"><label for="avgPurchase">1인당 월 평균 구매액</label></div>
-          <div class="calc-input-wrap"><input id="avgPurchase" type="number" min="0" step="10000" value="100000" inputmode="numeric" /><span>원</span></div>
+          <div class="calc-input-wrap"><input id="avgPurchase" type="text" value="100,000" inputmode="numeric" autocomplete="off" data-max="100000000000" /><span>원</span></div>
         </div>
         <div class="calc-field">
           <div class="calc-label-row"><label for="commissionRate">예상 수수료율</label><output id="commissionOutput">20%</output></div>
@@ -355,7 +355,7 @@
     const won = new Intl.NumberFormat('ko-KR');
 
     const safeNumber = (el) => {
-      const value = Number(el.value);
+      const value = Number(el.value.replace(/,/g, ''));
       if (!Number.isFinite(value) || value < 0) return 0;
       return Math.min(value, 100000000000);
     };
@@ -377,7 +377,41 @@
       totalOut.textContent = won.format(total) + '원';
     };
 
-    root.addEventListener('input', update);
+    const numberInputs = [sales, followers, avg];
+    const formatInput = (input) => {
+      const caret = input.selectionStart ?? input.value.length;
+      const digitsBeforeCaret = input.value.slice(0, caret).normalize('NFKC').replace(/\D/g, '').length;
+      const digits = input.value.normalize('NFKC').replace(/\D/g, '');
+      const value = Math.min(Number(digits), Number(input.dataset.max));
+      const formatted = digits ? won.format(value) : '';
+      input.value = formatted;
+      if (document.activeElement === input) {
+        let position = 0;
+        let count = 0;
+        while (position < formatted.length && count < digitsBeforeCaret) {
+          if (/\d/.test(formatted[position])) count++;
+          position++;
+        }
+        input.setSelectionRange(position, position);
+      }
+    };
+    numberInputs.forEach((input) => {
+      formatInput(input);
+      input.addEventListener('blur', () => {
+        if (!input.value) input.value = '0';
+        formatInput(input);
+        update();
+      });
+    });
+    root.addEventListener('input', (event) => {
+      if (event.isComposing) return;
+      if (numberInputs.includes(event.target)) formatInput(event.target);
+      update();
+    });
+    root.addEventListener('compositionend', (event) => {
+      if (numberInputs.includes(event.target)) formatInput(event.target);
+      update();
+    });
     root.addEventListener('change', update);
     root.addEventListener('submit', (event) => event.preventDefault());
     update();
