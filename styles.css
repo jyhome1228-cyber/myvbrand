@@ -52,10 +52,38 @@ h3{font-size:24px;letter-spacing:-.03em}
 .header-inner{height:86px;display:flex;align-items:center;justify-content:space-between}
 .brand-mark{font-size:28px;font-weight:850;letter-spacing:-.08em}
 .brand-mark::after{content:"";display:inline-block;width:8px;height:8px;margin-left:5px;border-radius:50%;background:var(--yellow);vertical-align:top}
-.desktop-nav{display:flex;align-items:center;gap:32px;font-size:14px;font-weight:550}
-.desktop-nav a{opacity:.88}
-.desktop-nav a:hover{opacity:1}
-.menu-button{display:none;width:42px;height:42px;border:0;background:none;padding:9px;cursor:pointer}
+.header-actions{display:flex;align-items:center;gap:28px}
+.desktop-nav{display:flex;align-items:center;gap:30px;font-size:14px;font-weight:550}
+.desktop-nav>a,.desktop-nav>button,.nav-dropdown-trigger{opacity:.88}
+.desktop-nav>a:hover,.desktop-nav>button:hover,.nav-dropdown-trigger:hover{opacity:1}
+.nav-link-button,.nav-dropdown-trigger{
+  border:0;background:transparent;color:inherit;padding:0;font:inherit;cursor:pointer;
+}
+.nav-link-button.is-pending{cursor:default}
+.nav-dropdown{position:relative}
+.nav-dropdown-trigger{display:flex;align-items:center;gap:6px;height:86px}
+.chevron{font-size:14px;transform:translateY(-1px)}
+.nav-dropdown-menu{
+  position:absolute;left:50%;top:68px;min-width:150px;padding:10px;
+  background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:14px;
+  box-shadow:0 18px 45px rgba(16,18,22,.12);
+  opacity:0;visibility:hidden;transform:translate(-50%,8px);
+  transition:opacity .18s ease,transform .18s ease,visibility .18s;
+}
+.nav-dropdown-menu::before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px}
+.nav-dropdown-menu a{display:block;padding:10px 12px;border-radius:9px;font-size:13px;white-space:nowrap}
+.nav-dropdown-menu a:hover{background:var(--soft);color:var(--blue)}
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown:focus-within .nav-dropdown-menu{opacity:1;visibility:visible;transform:translate(-50%,0)}
+.language-switch{display:flex;align-items:center;gap:8px;padding-left:22px;border-left:1px solid rgba(255,255,255,.28)}
+.site-header.scrolled .language-switch{border-left-color:var(--line)}
+.language-switch>span,.mobile-language>span{width:1px;height:11px;background:currentColor;opacity:.22}
+.lang-button{
+  border:0;background:transparent;color:inherit;padding:2px 0;
+  font-size:12px;font-weight:650;opacity:.48;cursor:default;
+}
+.lang-button.is-active{opacity:1}
+.menu-button{display:none;width:42px;height:42px;border:0;background:none;padding:9px;cursor:pointer;color:inherit}
 .menu-button span{display:block;width:100%;height:1.5px;background:currentColor;margin:7px 0}
 .mobile-menu{display:none}
 
@@ -201,12 +229,18 @@ h3{font-size:24px;letter-spacing:-.03em}
 .reveal.visible{opacity:1;transform:none}
 
 @media(max-width:1100px){
-  .desktop-nav{display:none}
+  .desktop-nav,.language-switch{display:none}
+  .header-actions{gap:0}
   .menu-button{display:block}
   .mobile-menu{display:block;position:absolute;left:0;right:0;top:86px;background:#fff;color:var(--ink);max-height:0;overflow:hidden;transition:max-height .3s ease}
-  .mobile-menu.open{max-height:520px;border-top:1px solid var(--line);box-shadow:0 18px 35px rgba(0,0,0,.08)}
+  .mobile-menu.open{max-height:720px;border-top:1px solid var(--line);box-shadow:0 18px 35px rgba(0,0,0,.08)}
   .mobile-menu-inner{padding:22px 0 30px;display:grid}
-  .mobile-menu a{padding:13px 0;font-size:18px}
+  .mobile-menu a,.mobile-nav-button{padding:13px 0;font-size:18px;text-align:left}
+  .mobile-nav-button{border:0;background:transparent;color:inherit;font-family:inherit}
+  .mobile-submenu{display:grid;padding:10px 0 12px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:6px 0}
+  .mobile-submenu>span{font-size:18px;font-weight:650;padding:8px 0}
+  .mobile-submenu>a{font-size:15px;color:var(--muted);padding:8px 0 8px 18px}
+  .mobile-language{display:flex;align-items:center;gap:10px;padding-top:18px;margin-top:8px;border-top:1px solid var(--line)}
   .hero-inner{grid-template-columns:1fr 1fr;gap:30px}
   .device-back{width:360px;height:560px}
   .device-front{width:260px;height:540px}
