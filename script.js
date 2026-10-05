@@ -48,3 +48,14 @@ newsFilterButtons.forEach((button) => {
     });
   });
 });
+
+
+// Staggered reveal polish
+document.querySelectorAll(".reveal").forEach((group) => {
+  const children = group.querySelectorAll(
+    ".page-card, .home-business-grid article, .home-together-card, .news-data-card, .vpoint-rate-card, .vpoint-total-card, .vpoint-result-card, .vpoint-example article, .vpoint-monthly"
+  );
+  children.forEach((child, index) => {
+    child.style.setProperty("--stagger", index);
+  });
+});
