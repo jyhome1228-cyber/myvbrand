@@ -969,3 +969,58 @@ h2{font-size:clamp(29px,2.8vw,42px)}
   .contact-success{padding:110px 0}
   .contact-success h1{font-size:34px}
 }
+
+
+/* V.POINT GUIDE */
+.footer-nav-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:32px}
+.vpoint-main{background:#fff}
+.vpoint-structure{display:grid;grid-template-columns:1fr 54px 1fr;gap:24px;align-items:center}
+.vpoint-structure-column{min-width:0}
+.vpoint-column-title{text-align:center;font-size:18px;font-weight:700;color:#222631;margin-bottom:22px}
+.vpoint-mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.vpoint-rate-card,.vpoint-total-card{position:relative;min-height:150px;padding:28px;border-radius:18px;background:#f4f7fd;border:1px solid #e6ebf3}
+.vpoint-rate-card span,.vpoint-total-card span{display:block;font-size:14px;color:#434a55;margin-bottom:14px}
+.vpoint-rate-card strong,.vpoint-total-card strong{display:block;font-size:30px;line-height:1.2;color:#20242d}
+.vpoint-rate-card b,.vpoint-total-card b{position:absolute;right:24px;top:50%;transform:translateY(-50%);width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#292c34;color:#fff;font-size:21px;border:6px solid #aeb2ba}
+.vpoint-total-card{max-width:360px;margin:14px auto 0}
+.vpoint-total-card strong{color:var(--blue)}
+.vpoint-total-card b,.vpoint-follower-card b{background:var(--blue);border-color:#9fc5ff}
+.vpoint-follower-card{min-height:165px;background:#f2f6ff}
+.vpoint-follower-card strong{color:var(--blue);font-size:32px}
+.vpoint-plus{font-size:34px;font-weight:300;color:#a0a6b0;text-align:center}
+.vpoint-result-card{width:min(100%,560px);margin:38px auto 0;padding:30px 38px;border-radius:18px;background:var(--blue);color:#fff}
+.vpoint-result-card span{display:block;font-size:13px;font-weight:700;margin-bottom:10px}
+.vpoint-result-card strong{display:block;font-size:31px;line-height:1.35}
+
+.vpoint-example{display:grid;grid-template-columns:1fr 54px 1fr;gap:20px;align-items:center}
+.vpoint-example article{min-height:180px;padding:34px;border-radius:18px;background:#fff;border:1px solid #e5e9f0}
+.vpoint-example article>span{display:block;color:#20252f;font-size:17px;font-weight:700;margin-bottom:24px}
+.vpoint-example p{font-size:15px;color:#454d58;margin-bottom:10px}
+.vpoint-example strong{display:block;color:var(--blue);font-size:34px;text-align:right}
+.vpoint-example strong small{font-size:18px;font-weight:600}
+.vpoint-example-plus{font-size:32px;text-align:center;color:#a0a6b0}
+.vpoint-monthly{width:min(100%,560px);margin:28px auto 0;padding:30px 38px;border-radius:18px;background:var(--blue);color:#fff}
+.vpoint-monthly span{display:block;font-size:14px;font-weight:700;margin-bottom:8px}
+.vpoint-monthly strong{display:block;text-align:right;font-size:39px;line-height:1.25}
+.vpoint-note{margin:22px auto 0;max-width:560px;color:#7a818c;font-size:12px;line-height:1.75}
+
+.vpoint-faq-list{border-top:1px solid var(--line)}
+.vpoint-faq-list article{padding:28px 0;border-bottom:1px solid var(--line)}
+.vpoint-faq-list h3{margin-bottom:9px;color:var(--blue);font-size:18px}
+.vpoint-faq-list p{margin-bottom:10px;color:#747b85;font-size:15px}
+.vpoint-faq-list a{display:inline-flex;font-size:14px;font-weight:650;color:#1f232a}
+
+@media(max-width:1100px){
+  .footer-nav-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:760px){
+  .vpoint-structure,.vpoint-example{grid-template-columns:1fr}
+  .vpoint-plus,.vpoint-example-plus{display:none}
+  .vpoint-mini-grid{grid-template-columns:1fr}
+  .vpoint-rate-card,.vpoint-total-card,.vpoint-follower-card{min-height:140px}
+  .vpoint-total-card{max-width:none}
+  .vpoint-result-card,.vpoint-monthly{padding:26px 24px}
+  .vpoint-result-card strong{font-size:25px}
+  .vpoint-monthly strong{font-size:32px}
+  .vpoint-example strong{font-size:29px}
+}
