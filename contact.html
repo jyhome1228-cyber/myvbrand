@@ -92,9 +92,69 @@
       </div>
 
       <div class="contact-panel reveal">
-        <span>문의 유형</span>
-        <div class="contact-types"><a href="./prosumer.html">프로슈머 문의 →</a><a href="./partner.html">입점제안 →</a><a href="mailto:info@myv.co.kr">일반 문의 →</a></div>
-        <p>온라인 문의 폼은 추후 연결 예정이며, 현재는 이메일을 통해 문의하실 수 있습니다.</p>
+        <form class="contact-form" action="https://formsubmit.co/info@myv.co.kr" method="POST">
+          <input type="hidden" name="_subject" value="[MYV 홈페이지] 새로운 문의가 접수되었습니다." />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_next" value="https://jyhome1228-cyber.github.io/myvbrand/contact-thanks.html" />
+
+          <fieldset class="contact-form-type">
+            <legend>문의 유형</legend>
+            <div class="contact-type-options">
+              <label>
+                <input type="radio" name="문의유형" value="프로슈머 문의" required />
+                <span>프로슈머 문의</span>
+              </label>
+              <label>
+                <input type="radio" name="문의유형" value="입점제안" required />
+                <span>입점제안</span>
+              </label>
+              <label>
+                <input type="radio" name="문의유형" value="일반 문의" required />
+                <span>일반 문의</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="contact-form-grid">
+            <label class="form-field">
+              <span>이름 <b>*</b></span>
+              <input type="text" name="이름" placeholder="이름을 입력해주세요." required />
+            </label>
+
+            <label class="form-field">
+              <span>회사 / 브랜드명</span>
+              <input type="text" name="회사_브랜드명" placeholder="회사 또는 브랜드명을 입력해주세요." />
+            </label>
+
+            <label class="form-field">
+              <span>이메일 <b>*</b></span>
+              <input type="email" name="email" placeholder="example@email.com" required />
+            </label>
+
+            <label class="form-field">
+              <span>연락처 <b>*</b></span>
+              <input type="tel" name="연락처" placeholder="010-0000-0000" required />
+            </label>
+          </div>
+
+          <label class="form-field form-field-full">
+            <span>문의 제목 <b>*</b></span>
+            <input type="text" name="문의제목" placeholder="문의 제목을 입력해주세요." required />
+          </label>
+
+          <label class="form-field form-field-full">
+            <span>문의 내용 <b>*</b></span>
+            <textarea name="문의내용" rows="7" placeholder="문의 내용을 자세히 남겨주세요." required></textarea>
+          </label>
+
+          <label class="privacy-check">
+            <input type="checkbox" name="개인정보수집동의" value="동의" required />
+            <span>문의 처리를 위한 개인정보 수집 및 이용에 동의합니다. <a href="./privacy.html" target="_blank">개인정보처리방침 보기 ↗</a></span>
+          </label>
+
+          <button class="contact-submit" type="submit">문의 보내기 <span>→</span></button>
+        </form>
       </div>
     </div>
   </section>
