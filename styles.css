@@ -2189,6 +2189,74 @@ h2{font-size:clamp(29px,2.8vw,42px)}
 .prosumer-page.centered-page .calc-copy>p:not(.section-kicker){margin-left:auto;margin-right:auto}
 .prosumer-page.centered-page .calc-note{text-align:left}
 .prosumer-page.centered-page .income-calculator{width:100%;max-width:760px}
+/* Supplied transparent MYV illustrations. Preserve their full silhouette. */
+.centered-page .hero-image-slot.has-asset{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:clamp(300px,35vw,440px);
+  aspect-ratio:auto;
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+}
+.centered-page .hero-image-slot.has-asset img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+.centered-page .hero-image-slot.vpoint-hero-asset{height:clamp(260px,32vw,400px)}
+.centered-page .section-image-slot.has-asset,
+.centered-page .navy-card .section-image-slot.has-asset{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:280px;
+  aspect-ratio:auto;
+  padding:0;
+  border:0;
+  background:transparent;
+}
+.section-image-slot.has-asset img{display:block;width:100%;height:100%;object-fit:contain}
+.home-business-grid.has-visuals article>span{margin-bottom:16px}
+.section-asset-visual{display:flex;justify-content:center;margin:0 auto 36px;height:300px}
+.section-asset-visual img{display:block;width:100%;height:100%;object-fit:contain}
+.vpoint-faq-list .vpoint-faq-definition{position:relative;padding-right:200px}
+.faq-asset-visual{position:absolute;right:12px;top:20px;width:150px;height:150px}
+.faq-asset-visual img{display:block;width:100%;height:100%;object-fit:contain}
+.vpoint-faq-list .vpoint-faq-definition{min-height:190px}
+
+/* Keep the MYV column visually distinct from the conventional model. */
+.prosumer-page .comparison-wrap{border-color:#cdddfa;isolation:isolate}
+.prosumer-page .comparison-table th:first-child{width:22%}
+.prosumer-page .comparison-table th:nth-child(2){width:35%}
+.prosumer-page .comparison-table thead th:last-child{
+  background:var(--blue);
+  color:#fff;
+  font-size:13px;
+  font-weight:750;
+  border-color:var(--blue);
+}
+.prosumer-page .comparison-table tbody th{font-size:13px;font-weight:650;letter-spacing:0;color:var(--ink);background:#fff}
+.prosumer-page .comparison-table td:nth-child(2){color:var(--muted)}
+.prosumer-page .comparison-table td:last-child{background:#edf4ff;color:#155bb8;border-bottom-color:#d3e3fb;font-weight:700}
+.prosumer-page .comparison-table tbody tr:last-child th{border-bottom:0}
+.comparison-check{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;margin-right:9px;border-radius:50%;background:#d7e7ff;color:#155bb8;font-size:12px;font-weight:800;vertical-align:middle}
+@media(max-width:760px){
+  .centered-page .hero-image-slot.has-asset{height:300px;padding:0;aspect-ratio:auto}
+  .centered-page .hero-image-slot.vpoint-hero-asset{height:230px}
+  .centered-page .section-image-slot.has-asset{height:230px}
+  .section-asset-visual{height:250px;margin-bottom:28px}
+  .prosumer-page .comparison-table{min-width:600px}
+  .prosumer-page .comparison-table th,
+  .prosumer-page .comparison-table td{padding:18px 16px}
+  .prosumer-page .comparison-table th:first-child{position:sticky;left:0;z-index:1;background:#fff;box-shadow:1px 0 0 var(--line)}
+  .prosumer-page .comparison-table thead th:first-child{background:#f7f8fa}
+  .vpoint-faq-list .vpoint-faq-definition{padding-right:0}
+  .faq-asset-visual{position:static;width:120px;height:120px;margin-bottom:16px}
+}
 .prosumer-page .calc-input-wrap input,
 .prosumer-page .calc-result-total,
 .prosumer-page .result-breakdown strong{font-variant-numeric:tabular-nums}
