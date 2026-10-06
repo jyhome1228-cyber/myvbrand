@@ -1,0 +1,53 @@
+/* News archive and article pages. */
+.news-article-page .site-header{background:rgba(255,255,255,.96);color:var(--ink);box-shadow:0 1px 0 rgba(22,42,102,.08)}
+.news-article-page .site-header .brand-logo-white{opacity:0}
+.news-article-page .site-header .brand-logo-color{opacity:1}
+.news-article-page .site-header .language-switch{border-left-color:var(--line)}
+.news-data-card[hidden]{display:none!important}
+.news-archive-section .news-data-thumb.has-image{position:relative;padding:0;background:#f5f7fb;align-items:center;justify-content:center}
+.news-data-thumb.has-image img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain;transition:transform .25s ease}
+.news-data-card:hover .news-data-thumb.has-image img{transform:scale(1.025)}
+.news-data-thumb.news-brand-thumb{align-items:flex-start;justify-content:space-between;background:#f1f5fc;color:#162a66}
+.news-brand-thumb img{width:112px;height:auto;margin:auto}
+.news-data-excerpt{font-size:14px;line-height:1.65;color:var(--muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin:0 0 12px}
+.news-data-meta{display:flex;justify-content:space-between;gap:16px;align-items:center}
+.news-data-meta span{font-size:11px;color:var(--blue)}
+#newsResults{scroll-margin-top:120px;outline-offset:8px}
+.news-pagination{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin-top:54px}
+.news-pagination button{min-width:42px;height:42px;padding:0 14px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);cursor:pointer;font-size:14px}
+.news-pagination button[aria-current]{background:var(--blue);border-color:var(--blue);color:#fff}
+.news-pagination button:disabled{opacity:.35;cursor:default}
+.news-article-page .article-shell{width:min(calc(100% - 80px),920px);margin:0 auto;padding:145px 0 100px}
+.article-back{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font-size:14px;margin-bottom:40px}
+.article-back:hover{color:var(--blue)}
+.article-heading{border-bottom:1px solid var(--line);padding-bottom:32px;margin-bottom:40px}
+.article-heading h1{font-size:clamp(28px,3.5vw,46px);line-height:1.35;letter-spacing:-.035em;overflow-wrap:anywhere;margin:14px 0 24px}
+.article-category{font-size:12px;font-weight:750;letter-spacing:.08em;color:var(--blue)}
+.article-meta{display:flex;gap:12px 20px;flex-wrap:wrap;color:var(--muted);font-size:13px}
+.article-lead{font-size:19px;line-height:1.8;color:#35415b;margin:0 0 32px}
+.article-notice{padding:18px 22px;border-radius:12px;background:#f3f7fd;color:#52617b;font-size:13px;line-height:1.7;margin:0 0 34px}
+.article-content{font-size:17px;line-height:1.85;letter-spacing:-.022em;overflow-wrap:anywhere}
+.article-content p{margin-bottom:26px;white-space:pre-line}
+.article-content h2{font-size:26px;line-height:1.45;margin:52px 0 22px;letter-spacing:-.03em}
+.article-content blockquote{margin:30px 0;padding:8px 0 8px 24px;border-left:3px solid var(--blue);color:#34415d}
+.article-content blockquote p{margin:0}
+.article-content figure{margin:34px 0;text-align:center}
+.article-content figure img{display:block;width:auto;max-width:100%;height:auto;margin:0 auto;border-radius:10px}
+.article-content figcaption{color:var(--muted);font-size:13px;margin-top:12px}
+.article-content .article-links{padding:26px;background:var(--soft);border-radius:16px;margin:40px 0;display:grid;gap:12px}
+.article-content .article-links a{color:#155bb8;text-decoration:underline;text-underline-offset:4px;font-size:15px;overflow-wrap:anywhere}
+.article-bottom{border-top:1px solid var(--line);padding-top:30px;margin-top:56px;text-align:center}
+.article-bottom a{display:inline-flex;padding:12px 28px;background:var(--blue);color:#fff;border-radius:999px;font-size:14px;font-weight:650}
+@media(max-width:620px){
+  .news-article-page .article-shell{width:calc(100% - 40px);padding:114px 0 64px}
+  .article-back{margin-bottom:26px}
+  .article-heading{padding-bottom:24px;margin-bottom:28px}
+  .article-heading h1{font-size:29px}
+  .article-lead{font-size:17px}
+  .article-content{font-size:16px;line-height:1.85}
+  .article-content h2{font-size:23px;margin-top:38px}
+  .article-content figure{margin:26px 0}
+  .article-content .article-links{padding:20px}
+  .article-notice{padding:16px 18px}
+}
+@media(prefers-reduced-motion:reduce){.news-data-thumb.has-image img{transition:none}}

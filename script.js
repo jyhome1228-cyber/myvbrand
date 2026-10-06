@@ -38,7 +38,7 @@ revealItems.forEach(item => observer.observe(item));
 // NEWS FILTER
 const newsFilterButtons = document.querySelectorAll(".news-filter [data-filter]");
 const newsCards = document.querySelectorAll(".news-data-card[data-category]");
-newsFilterButtons.forEach((button) => {
+if (!document.querySelector('[data-news-archive]')) newsFilterButtons.forEach((button) => {
   button.addEventListener("click", () => {
     const filter = button.dataset.filter;
     newsFilterButtons.forEach((item) => item.classList.toggle("is-active", item === button));
