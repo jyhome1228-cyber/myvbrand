@@ -5,7 +5,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-VERSION = '20261006-news01'
+VERSION = '20261007-news02'
 BASE_URL = 'https://jyhome1228-cyber.github.io/myvbrand/'
 
 def esc(value):
@@ -13,7 +13,7 @@ def esc(value):
 
 def rich(text):
     text = text.replace('\\', '').replace('%5C', '')
-    pattern = r'\[([^\]]+)\]\((https?://[^\s)]+)\)|(https?://[^\s<>]+)'
+    pattern = r'\[([^\]]+)\]\((https?://[^\s)]+)\)|(https?://[^\s<>()]+)'
     out, start = [], 0
     for match in re.finditer(pattern, text):
         out.append(esc(text[start:match.start()]))
