@@ -5,7 +5,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-VERSION = '20261007-news02'
+VERSION = '20261007-news03'
 BASE_URL = 'https://jyhome1228-cyber.github.io/myvbrand/'
 
 def esc(value):
@@ -15,13 +15,15 @@ def rich(text):
     text = text.replace('\\', '').replace('%5C', '')
     pattern = r'\[([^\]]+)\]\((https?://[^\s)]+)\)|(https?://[^\s<>()]+)'
     out, start = [], 0
+    def formatted(value):
+        return re.sub(r'\*\*([^*\n]+)\*\*', r'<strong>\1</strong>', esc(value))
     for match in re.finditer(pattern, text):
-        out.append(esc(text[start:match.start()]))
+        out.append(formatted(text[start:match.start()]))
         url = (match[2] or match[3]).rstrip('.,')
         label = match[1] or url
         out.append(f'<a href="{esc(url)}" target="_blank" rel="noopener noreferrer">{esc(label)}</a>')
         start = match.end()
-    out.append(esc(text[start:]))
+    out.append(formatted(text[start:]))
     return ''.join(out)
 
 def body_html(post):
@@ -30,6 +32,8 @@ def body_html(post):
         '사칙 연산으로 소개하는 ‘마이브이(MyV)’', '소비자가 수익을 얻는 가치 소비',
         '마이브이에서만 가능한 특별한 만남', '순기능 비즈니스 모델, 상생을 추구하는 마이브이',
         '브이랩스 개요', '브이랩스 소개', '강점', 'profile', '유투브 영상',
+        '[마이브이의 지속가능한 철학]', '[함께 나누는 상생 구조]', '[친환경 브랜드와의 협업]',
+        '꼼꼼한 입점 기준', '지속가능 특허 비즈니스', '브이슈머(V‑sumer)', 'V.Point 리워드',
     }
     out, image_number = [], 0
     if post.get('intro'):
@@ -53,6 +57,8 @@ def body_html(post):
             out.append(f'<blockquote><p>{rich(paragraph)}</p></blockquote>')
         else:
             out.append(f'<p>{rich(paragraph)}</p>')
+    if post.get('originalUrl'):
+        out.append(f'<div class="article-links">기존 게시글: {rich("[원문 보기](" + post["originalUrl"] + ")")}</div>')
     return '\n'.join(out)
 
 def card_html(post):
