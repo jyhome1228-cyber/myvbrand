@@ -41,3 +41,7 @@
   .hero.myv-photo-hero::before{background-image:linear-gradient(105deg,rgba(10,35,91,.92),rgba(13,48,109,.77)),var(--myv-hero-photo);background-position:center,61% center}
   .myv-icon-wrap{width:78px;height:78px}
 }
+
+/* A small rewards visual for the V.Point explainer card. */
+.panel.myv-icon-card .myv-point-icon{width:86px;height:86px;margin:15px 0 19px}
+@media(max-width:760px){.panel.myv-icon-card .myv-point-icon{width:74px;height:74px}}
