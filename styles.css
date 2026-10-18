@@ -2647,3 +2647,133 @@ html.myv-intro-ready body {overflow:hidden}
   .home-main .home-business-grid .home-business-link-card .section-image-slot img{transition:none!important}
   .myv-intro-overlay *{animation:none!important}
 }
+
+/* 2026-10-18 — MYV home CTA, entry-card alignment and Contact hero refinement.
+   Keep all source image files unchanged and retain white bordered cards. */
+
+/* Main participation cards: align the illustration with the left edge of all copy. */
+.home-main.centered-page .home-business-grid .home-business-link-card {
+  align-items: flex-start;
+  min-height: 362px;
+  text-align: left;
+}
+.home-main.centered-page .home-business-grid .home-business-link-card .section-image-slot.has-asset {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex: 0 0 auto;
+  width: 134px;
+  height: 134px;
+  max-height: 134px;
+  margin: 0 0 22px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+.home-main.centered-page .home-business-grid .home-business-link-card .section-image-slot.has-asset img {
+  display: block;
+  width: 134px;
+  height: 134px;
+  max-width: 134px;
+  max-height: 134px;
+  object-fit: contain;
+}
+.home-main.centered-page .home-business-grid .home-business-link-card .home-business-category {
+  margin: 0 0 13px;
+}
+.home-main.centered-page .home-business-grid .home-business-link-card p {
+  max-width: 480px;
+}
+.home-main.centered-page .home-business-grid .home-business-link-card .home-business-arrow {
+  padding-top: 3px;
+}
+
+/* Main footer call-to-action: less washed-out and visually weighted to the right.
+   The middle stays light so the centered title remains readable. */
+.home-main .home-final-cta.home-story-cta {
+  background: #edf3fc;
+  border-top: 1px solid #e1e9f5;
+  border-bottom: 1px solid #e1e9f5;
+}
+.home-main .home-final-cta.home-story-cta::before {
+  background-image:
+    linear-gradient(90deg,
+      rgba(247,249,254,.97) 0%,
+      rgba(246,249,254,.95) 36%,
+      rgba(243,247,254,.86) 61%,
+      rgba(224,236,253,.58) 100%
+    ),
+    url("https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261018-031147-frame-117-3986a186.webp");
+  background-size: cover, cover;
+  background-position: center, center right;
+  background-repeat: no-repeat;
+}
+.home-main .home-final-cta.home-story-cta > .container {
+  position: relative;
+  z-index: 1;
+}
+.home-main .home-final-cta.home-story-cta h2 {
+  color: var(--ink);
+}
+.home-main .home-final-cta.home-story-cta .eyebrow {
+  color: var(--blue);
+}
+
+/* Contact hero: introduce photography without fighting the page heading. */
+.subpage .page-hero.contact-photo-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #1d69db;
+}
+.subpage .page-hero.contact-photo-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(100deg,
+      rgba(28,106,231,.97) 0%,
+      rgba(26,102,221,.93) 39%,
+      rgba(25,91,197,.76) 71%,
+      rgba(19,69,156,.56) 100%
+    ),
+    url("https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261018-031147-frame-117-3986a186.webp");
+  background-size: cover, cover;
+  background-position: center, center right;
+  background-repeat: no-repeat;
+}
+.subpage .page-hero.contact-photo-hero > .container {
+  position: relative;
+  z-index: 1;
+}
+@media (max-width: 760px) {
+  .home-main.centered-page .home-business-grid .home-business-link-card {
+    min-height: 0;
+  }
+  .home-main.centered-page .home-business-grid .home-business-link-card .section-image-slot.has-asset {
+    width: 115px;
+    height: 115px;
+    max-height: 115px;
+    margin: 0 0 16px;
+  }
+  .home-main.centered-page .home-business-grid .home-business-link-card .section-image-slot.has-asset img {
+    width: 115px;
+    height: 115px;
+    max-width: 115px;
+    max-height: 115px;
+  }
+  .home-main .home-final-cta.home-story-cta::before {
+    background-image:
+      linear-gradient(105deg, rgba(247,249,254,.95),rgba(234,242,255,.79)),
+      url("https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261018-031147-frame-117-3986a186.webp");
+    background-position: center, 63% center;
+  }
+  .subpage .page-hero.contact-photo-hero::before {
+    background-image:
+      linear-gradient(95deg,rgba(28,106,231,.96),rgba(25,90,195,.79)),
+      url("https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261018-031147-frame-117-3986a186.webp");
+    background-position: center, 67% center;
+  }
+}
