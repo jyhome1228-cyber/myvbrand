@@ -11,8 +11,25 @@
   <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg?v=20261006-0010" />
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png?v=20261006-0010" />
   <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png?v=20261006-0010" />
+<script>
+  // Only display the MYV logo intro once per browsing session.
+  try {
+    if (!sessionStorage.getItem('myv-intro-viewed-v1') &&
+        !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('myv-intro-ready');
+    }
+  } catch (_) { /* No intro if session storage is unavailable. */ }
+</script>
 </head>
 <body class="myv-homepage">
+<div id="myvIntro" class="myv-intro-overlay" aria-label="MYV brand introduction">
+  <div class="myv-intro-mark">
+    <img src="./assets/myv-logo-white.svg" alt="MYV" width="190" height="90" fetchpriority="high" decoding="async">
+    <p>MY VALUE · MY VICTORY</p>
+  </div>
+  <button class="myv-intro-skip" type="button" aria-label="건너뛰기">건너뛰기 <span aria-hidden="true">↗</span></button>
+</div>
+
   <header class="site-header" id="siteHeader">
     <div class="container header-inner">
       <a href="#top" class="brand" aria-label="마이브이 홈">
