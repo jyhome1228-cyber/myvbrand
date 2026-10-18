@@ -1,12 +1,16 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="MYV is a value-driven commerce platform connecting consumers, prosumers, and promising Korean brands.">
-<meta name="robots" content="noindex,follow">
-<title>MYV | Value Beyond Consumption</title>
-<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-<link rel="stylesheet" href="./site.css?v=20261018-visualbalance09">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="MYV connects consumers and selected Korean brands through value-driven commerce and shared growth." />
+  <title>MYV | Shopping That Creates Value</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css" />
+  <link rel="stylesheet" href="../styles.css?v=20261018-visualbalance09" />
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg?v=20261006-0010" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png?v=20261006-0010" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png?v=20261006-0010" />
 <script>
   // Only display the MYV logo intro once per browsing session.
   try {
@@ -17,61 +21,257 @@
   } catch (_) { /* No intro if session storage is unavailable. */ }
 </script>
 </head>
-<body data-page="home">
+<body class="myv-homepage">
 <div id="myvIntro" class="myv-intro-overlay" aria-label="MYV brand introduction">
   <div class="myv-intro-mark">
     <img src="../assets/myv-logo-white.svg" alt="MYV" width="190" height="90" fetchpriority="high" decoding="async">
   </div>
 </div>
 
-<a class="skip-link" href="#main">Skip to content</a>
-<header class="site-header"><div class="container header-inner">
-<a class="brand" href="./index.html" aria-label="MYV homepage"><img src="../assets/myv-logo.svg" alt="MYV"></a>
-<div class="header-right"><nav class="desktop-nav" aria-label="Main navigation">
-<a class="" href="./about.html">ABOUT</a>
-<a class="" href="./business.html">BUSINESS</a>
-<div class="nav-dropdown"><button type="button" aria-expanded="false" aria-haspopup="true">WITH US ⌄</button><div class="drop-menu"><a href="./prosumer.html">Prosumer</a><a href="./partner.html">Brand Partnerships</a></div></div>
-<a href="https://myv.co.kr/" target="_blank" rel="noopener noreferrer">SHOP ↗</a>
-<a class="" href="./news.html">NEWS</a>
-<a class="" href="./contact.html">CONTACT US</a>
-</nav><div class="language-switch" aria-label="Language"><a class="muted" href="../index.html" data-locale="ko" lang="ko">KR</a><b>|</b><a href="./index.html" aria-current="page" data-locale="en">EN</a></div>
-<button type="button" class="menu-button" aria-controls="mobileNav" aria-expanded="false" aria-label="Open navigation">☰</button>
-</div></div>
-<nav id="mobileNav" class="mobile-nav" aria-label="Mobile navigation">
-<a href="./about.html">ABOUT</a><a href="./business.html">BUSINESS</a>
-<a href="./prosumer.html">WITH US / Prosumer</a><a href="./partner.html">WITH US / Brand Partnerships</a>
-<a href="https://myv.co.kr/" target="_blank" rel="noopener noreferrer">SHOP ↗</a>
-<a href="./news.html">NEWS</a><a href="./contact.html">CONTACT US</a></nav></header>
-<main id="main"><section class="hero "><div class="container"><p class="eyebrow light">MYV · VALUE-DRIVEN COMMERCE</p><h1>Where everyday shopping<br><span class='accent'>creates lasting value.</span></h1><p>MYV connects consumers and promising brands, turning meaningful participation into opportunities for shared growth.</p><div class="actions"><a class="pill-link " href="./about.html">Discover MYV →</a><a class="pill-link secondary" href="./partner.html">Partner With Us →</a></div></div></section><section class="section"><div class="container split "><div><p class="eyebrow">ABOUT MYV</p><h2>Connecting consumption<br>and shared growth.</h2><p>We bring together consumers, prosumers and carefully selected Korean brands to build a commerce ecosystem that creates value for everyone involved.</p><div class="actions"><a class="pill-link secondary" href="./about.html">Our Story →</a></div></div><div class="visual"><img loading="lazy" src="../assets/myv-shopping.webp" alt="ABOUT MYV illustration"></div></div></section><section class="section soft en-home-business"><div class="container">
-      <div class="section-head"><p class="eyebrow">WITH MYV</p><h2>Two ways to grow together.</h2>
-      <p>Join as a prosumer or introduce your brand to the MYV ecosystem.</p></div>
-      <div class="grid cols-2 en-home-entry-grid">
-        <a href="./prosumer.html" class="panel en-home-entry-card" aria-label="Explore the MYV Prosumer Program">
-          <div class="en-home-entry-visual"><img src="../assets/prosumer-network.webp" alt="" loading="lazy" decoding="async"></div>
-          <span class="step">PROSUMER</span><h3>Become a Prosumer</h3>
-          <p>Share products you believe in and build value through authentic experiences.</p>
-          <span class="en-home-entry-arrow">Explore Prosumer <b>↗</b></span>
-        </a>
-        <a href="./partner.html" class="panel en-home-entry-card" aria-label="Explore MYV brand partnerships">
-          <div class="en-home-entry-visual"><img src="../assets/brand-commerce.webp" alt="" loading="lazy" decoding="async"></div>
-          <span class="step">BRAND PARTNERSHIP</span><h3>Partner With MYV</h3>
-          <p>Connect your products with consumers and new opportunities for growth.</p>
-          <span class="en-home-entry-arrow">Explore Partnerships <b>↗</b></span>
-        </a>
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="#top" class="brand" aria-label="MYV homepage">
+        <img class="brand-logo brand-logo-white" src="../assets/myv-logo-white.svg" alt="MYV" />
+        <img class="brand-logo brand-logo-color" src="../assets/myv-logo.svg" alt="" aria-hidden="true" />
+      </a>
+
+      <div class="header-actions">
+        <nav class="desktop-nav" aria-label="Main navigation">
+          <a href="./about.html">ABOUT</a>
+          <a href="./business.html">BUSINESS</a>
+
+          <div class="nav-dropdown">
+            <button class="nav-dropdown-trigger" type="button" aria-haspopup="true">
+              WITH US <span class="chevron">⌄</span>
+            </button>
+            <div class="nav-dropdown-menu" role="menu">
+              <a href="./prosumer.html" role="menuitem">Prosumer</a>
+              <a href="./partner.html" role="menuitem">Brand Partnership</a>
+            </div>
+          </div>
+
+          <a class="nav-link-button shop-link" href="https://myv.co.kr/" target="_blank" rel="noreferrer">SHOP ↗</a>
+          <a href="./news.html">NEWS</a>
+          <a href="./contact.html">CONTACT US</a>
+        </nav>
+
+        <div class="language-switch" aria-label="Language selection">
+          <button type="button" class="lang-button is-active" title="Korean">KR</button>
+          <span></span>
+          <button type="button" class="lang-button" title="English">EN</button>
+        </div>
+
+        <button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span>
+        </button>
       </div>
-      <div class="actions"><a class="pill-link secondary" href="./business.html">Our Business →</a></div>
-    </div></section><section class="section soft"><div class="container"><div class="section-head"><p class="eyebrow">LATEST NEWS</p><h2>Stories from the MYV ecosystem.</h2><p>Explore MYV updates, brand collaborations and international initiatives.</p></div><div class="grid cols-3"><article class="panel"><span class="step">GLOBAL · 2026-06-15</span><h3>Vietnamese KOL Xenia joins Getz-Beauty, signaling a new chapter in the Korean market</h3><p></p><div class="actions"><a class="pill-link secondary" href="./news.html?article=legacy-171831533">Read story →</a></div></article><article class="panel"><span class="step">MYV · 2026-03-18</span><h3>V Labs CEO on building an e-commerce model that helps businesses and consumers grow together</h3><p></p><div class="actions"><a class="pill-link secondary" href="./news.html?article=legacy-170448224">Read story →</a></div></article><article class="panel"><span class="step">GLOBAL · 2026-02-13</span><h3>Influencer E-commerce Association and V Labs collaborate on a global prosumer ecosystem</h3><p></p><div class="actions"><a class="pill-link secondary" href="./news.html?article=legacy-170004786">Read story →</a></div></article></div><div class="actions"><a class="pill-link secondary" href="./news.html">All News →</a></div></div></section><section class="banner-cta en-handshake-cta"><div class="container"><h2>Start a more meaningful connection.</h2><p>Discover the possibilities with MYV.</p><div class="actions"><a class="pill-link " href="./contact.html">Contact Us →</a></div></div></section></main><footer class="site-footer"><div class="container">
-<div class="footer-top"><div class="footer-intro"><a href="./index.html"><img src="../assets/myv-logo.svg" alt="MYV"></a><p>Adding value beyond consumption.<br>Global Value Chain E-commerce</p></div>
-<div class="footer-links">
-<div><strong>COMPANY</strong><a href="./about.html">About Us</a><a href="./business.html">Our Business</a><a href="./news.html">News</a></div>
-<div><strong>SERVICE</strong><a href="https://myv.co.kr/" target="_blank" rel="noopener noreferrer">Shop ↗</a><a href="./vpoint.html">V.Point</a></div>
-<div><strong>WITH US</strong><a href="./prosumer.html">Prosumer</a><a href="./partner.html">Brand Partnerships</a></div>
-<div><strong>CONTACT</strong><a href="mailto:info@myv.co.kr">info@myv.co.kr</a><a href="tel:15331880">1533-1880</a><a href="./contact.html">Contact Us</a></div>
-</div></div>
-<div class="footer-bottom"><p>V Labs Inc. | CEO: Jangwook Lee | Business Registration No. 806-88-02200</p>
-<p>19F, Suite 12, 8 Seongnam-daero 331beon-gil, Bundang-gu, Seongnam-si, Gyeonggi-do, Republic of Korea</p>
-<p>Mail-Order Business Registration: 2025-SeongnamBundangB-0167</p>
-<p>© 2026 MYV · V Labs Inc. All rights reserved. &nbsp; <a class="inline-link" href="./privacy.html">Privacy Notice</a></p>
-</div></div></footer>
-<script src="./site.js?v=20261018-home-motion08" defer></script>
-</body></html>
+    </div>
+
+    <div class="mobile-menu" aria-hidden="true">
+      <div class="container mobile-menu-inner">
+        <a href="./about.html">ABOUT</a>
+        <a href="./business.html">BUSINESS</a>
+
+        <div class="mobile-submenu">
+          <span>WITH US</span>
+          <a href="./prosumer.html">Prosumer</a>
+          <a href="./partner.html">Brand Partnership</a>
+        </div>
+
+        <a class="mobile-nav-button shop-link" href="https://myv.co.kr/" target="_blank" rel="noreferrer">SHOP ↗</a>
+        <a href="./news.html">NEWS</a>
+        <a href="./contact.html">CONTACT US</a>
+
+        <div class="mobile-language">
+          <button type="button" class="lang-button is-active">KR</button>
+          <span></span>
+          <button type="button" class="lang-button">EN</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top" class="home-main centered-page">
+    <section class="hero home-hero centered-hero">
+      <div class="hero-bg"></div>
+      <div class="container hero-inner home-hero-inner centered-hero-inner">
+        <div class="hero-copy centered-hero-copy reveal">
+          <p class="eyebrow light">MYV · VALUE CONSUMPTION PLATFORM</p>
+          <h1>Shopping that adds value<br />MYV, made for you</h1>
+          <p class="hero-desc">
+            Connecting people with great brands,<br class="desktop-only" />
+            turning everyday choices into shared growth.
+          </p>
+          <a class="text-link light-link" href="./about.html">Discover MYV <span>→</span></a>
+        </div>
+
+        <div class="hero-image-slot has-asset reveal">
+            <img src="../assets/myv-shopping.webp" width="1374" height="1145" alt="제품 구매와 V.Point 적립을 연결하는 마이브이 쇼핑" loading="eager" fetchpriority="high" decoding="async" />
+          </div>
+      </div>
+    </section>
+
+    <section class="section home-intro">
+      <div class="container home-split">
+        <div class="home-section-label reveal">
+          <p class="eyebrow">ABOUT MYV</p>
+        </div>
+        <div class="home-section-copy reveal">
+          <h2>Connecting people and brands<br />through shared value.</h2>
+          <p>
+            마이브이는 소비자의 참여와 검증된 브랜드를 연결해
+            함께 성장하는 가치소비 생태계를 만들어갑니다.
+          </p>
+          <a class="text-link" href="./about.html">ABOUT MYV <span>→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section home-business">
+      <div class="container">
+        <div class="home-section-head reveal">
+          <p class="eyebrow">BUSINESS</p>
+          <h2>Grow together<br />with MYV.</h2>
+        </div>
+
+        <div class="home-business-grid has-visuals reveal">
+          <a class="home-business-link-card" href="./prosumer.html" aria-label="프로슈머 자세히 보기">
+            <div class="section-image-slot has-asset">
+              <img src="../assets/prosumer-network.webp" width="1254" height="1254" alt="" loading="lazy" decoding="async" />
+            </div>
+            <span class="home-business-category">PROSUMER</span>
+            <h3>Prosumer</h3>
+            <p>Turn authentic product experiences and your influence into meaningful opportunities.</p>
+            <span class="home-business-arrow" aria-hidden="true">Explore <b>↗</b></span>
+          </a>
+          <a class="home-business-link-card" href="./partner.html" aria-label="입점제안 자세히 보기">
+            <div class="section-image-slot has-asset">
+              <img src="../assets/brand-commerce.webp" width="1254" height="1254" alt="" loading="lazy" decoding="async" />
+            </div>
+            <span class="home-business-category">BRAND PARTNERSHIP</span>
+            <h3>Brand Partnership</h3>
+            <p>Connect promising brands and products with more consumers and new opportunities.</p>
+            <span class="home-business-arrow" aria-hidden="true">Partner with us <b>↗</b></span>
+          </a>
+        </div>
+
+        <div class="home-more reveal">
+          <a class="text-link" href="./business.html">Explore our business <span>→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section home-news" id="news">
+      <div class="container">
+        <div class="section-top reveal">
+          <div>
+            <p class="eyebrow">NEWS</p>
+            <h2>MYV News</h2>
+          </div>
+          <a class="text-link" href="./news.html">View all <span>→</span></a>
+        </div>
+
+        <div class="home-news-list reveal">
+          <a href="./news.html?article=legacy-171831533">
+            <span>2026-06-15</span>
+            <strong>Vietnamese KOL Xenia Joins Getz-Beauty, Signaling Entry into Korea</strong>
+            <em>→</em>
+          </a>
+          <a href="./news.html?article=legacy-170448224">
+            <span>2026-03-18</span>
+            <strong>V Labs CEO on Building E-Commerce Where Businesses and Consumers Grow Together</strong>
+            <em>→</em>
+          </a>
+          <a href="./news.html?article=legacy-170004786">
+            <span>2026-02-13</span>
+            <strong>Influencer E-Commerce Association and V Labs Partner to Build a Global Prosumer Ecosystem</strong>
+            <em>→</em>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-final-cta home-story-cta" id="contact">
+      <div class="container reveal">
+        <p class="eyebrow light">MY VALUE · MY VICTORY</p>
+        <h2>Begin with meaningful shopping.<br />Grow with MYV.</h2>
+        <a class="outline-button light-outline" href="./contact.html">CONTACT US →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-main">
+      <div class="footer-brand-column">
+        <a href="#top" class="footer-brand" aria-label="Back to top">
+          <img class="footer-logo-image" src="../assets/myv-logo.svg" alt="MYV" />
+        </a>
+        <p class="footer-slogan">Shopping that creates value</p>
+        <p class="footer-caption">Global Value Chain E-commerce</p>
+      </div>
+
+      <div class="footer-nav-grid">
+        <div class="footer-nav-group">
+          <span class="footer-nav-title">COMPANY</span>
+          <a href="./about.html">ABOUT</a>
+          <a href="./business.html">BUSINESS</a>
+          <a href="./news.html">NEWS</a>
+        </div>
+
+        <div class="footer-nav-group">
+          <span class="footer-nav-title">SERVICE</span>
+          <a class="footer-shop-link" href="https://myv.co.kr/" target="_blank" rel="noreferrer">SHOP ↗</a>
+          <a href="./vpoint.html">V.Point Guide</a>
+        </div>
+
+        <div class="footer-nav-group">
+          <span class="footer-nav-title">WITH US</span>
+          <a href="./prosumer.html">Prosumer</a>
+          <a href="./partner.html">Brand Partnership</a>
+        </div>
+
+        <div class="footer-nav-group footer-contact-group">
+          <span class="footer-nav-title">CONTACT</span>
+          <a href="mailto:info@myv.co.kr">info@myv.co.kr</a>
+          <a href="tel:15331880">1533-1880</a>
+          <a href="./contact.html">CONTACT US</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-company">
+      <div class="footer-company-info">
+        <p>
+          <span>V Labs Inc.</span>
+          <span>CEO Jangwook Lee</span>
+          <span>Business Registration No. 806-88-02200</span>
+        </p>
+        <p>
+          19F, Suite 12, 8 Seongnam-daero 331beon-gil, Bundang-gu, Seongnam-si, Gyeonggi-do, South Korea
+        </p>
+        <p>
+          E-commerce Registration No. 2025-SeongnamBundangB-0167
+        </p>
+      </div>
+
+      <div class="footer-language" aria-label="언어">
+        <span class="is-active">KR</span>
+        <span class="divider"></span>
+        <span>EN</span>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>Copyright © 2026 MYV · V Labs Inc. All rights reserved.</p>
+      <div class="footer-legal-links">
+        <a href="./privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../script.js?v=20261018-home-motion08"></script>
+  <script src="./locale-switch.js?v=20261018-parity01"></script>
+</body>
+</html>
+
+
