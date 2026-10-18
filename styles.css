@@ -2441,7 +2441,7 @@ main [id]{scroll-margin-top:110px}
 .subpage .about-core-value-card > span {
   margin-bottom: 10px;
 }
-.subpage .about-core-value-card .myv-icon-wrap {
+.subpage .page-card.compact.myv-icon-card.about-core-value-card .myv-icon-wrap {
   width: 84px;
   height: 84px;
   margin: 5px 0 17px;
@@ -2450,7 +2450,7 @@ main [id]{scroll-margin-top:110px}
   background: transparent;
   box-shadow: none;
 }
-.subpage .about-core-value-card .myv-icon-wrap img {
+.subpage .page-card.compact.myv-icon-card.about-core-value-card .myv-icon-wrap img {
   display: block;
   width: 100%;
   height: 100%;
@@ -2465,7 +2465,7 @@ main [id]{scroll-margin-top:110px}
 }
 @media (max-width: 760px) {
   .subpage .about-core-value-card { min-height: 0; }
-  .subpage .about-core-value-card .myv-icon-wrap {width:72px;height:72px;margin:4px 0 14px;}
+  .subpage .page-card.compact.myv-icon-card.about-core-value-card .myv-icon-wrap {width:72px;height:72px;margin:4px 0 14px;}
   .subpage .page-hero.about-hero-banner::before { background-position:center, 60% center; }
   .home-main .home-final-cta.home-story-cta::before { background-position:center, 56% center; }
 }
