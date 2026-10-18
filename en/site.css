@@ -130,3 +130,28 @@ body[data-page="about"] .en-about-core-card .myv-icon-wrap img {
   body[data-page="about"] .hero.en-about-hero::before {background-position:center,60% center}
   .en-handshake-cta::before {background-position:center,56% center}
 }
+
+/* Business process: compact illustration without changing the English copy. */
+body[data-page="business"] .business-operations-grid > .panel {
+  position: relative;
+  min-height: 215px;
+}
+body[data-page="business"] .business-operations-grid > .panel .myv-icon-wrap {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  width: 52px;
+  height: 52px;
+  margin: 0;
+  background: transparent;
+  border: 0;
+}
+body[data-page="business"] .business-operations-grid > .panel.myv-icon-card h3 {
+  padding-right: 25px;
+}
+@media (max-width:760px) {
+  body[data-page="business"] .business-operations-grid > .panel {min-height:0}
+  body[data-page="business"] .business-operations-grid > .panel .myv-icon-wrap {
+    width:45px;height:45px;top:21px;right:21px;
+  }
+}
