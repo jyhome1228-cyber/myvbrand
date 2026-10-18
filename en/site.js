@@ -137,7 +137,6 @@
     if (!post.body) {
       body.appendChild(node("p", "", "The source article content has not yet been migrated to the MYV website. An English article draft will be added once the source material is available."));
     } else {
-      if (post.historical) body.appendChild(node("p", "draft-note", "This is a historical article. Program information or promotions may have changed since publication."));
       // Original Korean is shown transparently until an approved English translation exists.
       const paragraphs = String(post.body).split(/\n\s*\n/).filter(Boolean);
       paragraphs.forEach(text => {
