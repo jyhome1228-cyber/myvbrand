@@ -2380,3 +2380,92 @@ main [id]{scroll-margin-top:110px}
   background: transparent;
   border: 0;
 }
+
+
+/* 2026-10-18 / About story visual refresh — preserve existing page structure. */
+.subpage .page-hero.about-hero-banner {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #2477ee;
+}
+.subpage .page-hero.about-hero-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(105deg, rgba(26,94,217,.93) 0%, rgba(37,113,231,.86) 58%, rgba(31,105,227,.78) 100%),
+    url("https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261018-031146-frame-94-5dd5477d.webp");
+  background-size: cover, cover;
+  background-position: center, center;
+  background-repeat: no-repeat;
+}
+.subpage .page-hero.about-hero-banner > .container {
+  position: relative;
+  z-index: 1;
+}
+.home-main .home-final-cta.home-story-cta {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #f4f7fc;
+}
+.home-main .home-final-cta.home-story-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(110deg, rgba(247,249,253,.94) 0%, rgba(247,249,253,.91) 60%, rgba(247,249,253,.88) 100%),
+    url("https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261018-031147-frame-117-3986a186.webp");
+  background-size: cover, cover;
+  background-position: center, center;
+  background-repeat: no-repeat;
+}
+.home-main .home-final-cta.home-story-cta > .container {
+  position: relative;
+  z-index: 1;
+}
+.subpage .about-core-values-grid {
+  align-items: stretch;
+}
+.subpage .about-core-value-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 275px;
+}
+.subpage .about-core-value-card > span {
+  margin-bottom: 10px;
+}
+.subpage .about-core-value-card .myv-icon-wrap {
+  width: 84px;
+  height: 84px;
+  margin: 5px 0 17px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.subpage .about-core-value-card .myv-icon-wrap img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  mix-blend-mode: normal;
+}
+.subpage .about-core-value-card h3 {
+  margin: 0 0 11px;
+}
+.subpage .about-core-value-card p {
+  margin: 0;
+}
+@media (max-width: 760px) {
+  .subpage .about-core-value-card { min-height: 0; }
+  .subpage .about-core-value-card .myv-icon-wrap {width:72px;height:72px;margin:4px 0 14px;}
+  .subpage .page-hero.about-hero-banner::before { background-position:center, 60% center; }
+  .home-main .home-final-cta.home-story-cta::before { background-position:center, 56% center; }
+}
