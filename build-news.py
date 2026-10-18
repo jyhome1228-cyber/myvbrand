@@ -1,11 +1,11 @@
-"""Build the static MYV news archive and full article pages from news-posts.json."""
+"""Build the MYV news index. Article content is rendered inside news.html."""
 import html
 import json
 import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-VERSION = '20261007-news03'
+VERSION = '20261018-newsdetail'
 BASE_URL = 'https://jyhome1228-cyber.github.io/myvbrand/'
 
 def esc(value):
@@ -62,16 +62,14 @@ def body_html(post):
     return '\n'.join(out)
 
 def card_html(post):
-    external = post.get('type') == 'external'
-    attrs = ' target="_blank" rel="noopener noreferrer"' if external else ''
     if post.get('thumbnail'):
         thumb = f'<div class="news-data-thumb has-image"><img src="{esc(post["thumbnail"])}" alt="" loading="lazy" decoding="async" /></div>'
     else:
         thumb = f'<div class="news-data-thumb news-brand-thumb"><span>{esc(post["category"])}</span><img src="./assets/myv-logo.svg" alt="" /><strong>MYV NEWS</strong></div>'
     excerpt = f'<p class="news-data-excerpt">{esc(post["summary"])}</p>' if post.get('summary') else ''
-    return f'''<a class="news-data-card" data-post-id="{esc(post['id'])}" data-category="{esc(post['category'])}" data-date="{post['date']}" href="{esc(post['url'])}"{attrs}>
+    return f'''<a class="news-data-card" data-post-id="{esc(post['id'])}" data-category="{esc(post['category'])}" data-date="{post['date']}" href="./news.html?article={esc(post['id'])}">
 {thumb}
-<div class="news-data-body"><span class="news-data-category">{esc(post['category'])}</span><h3>{esc(post['title'])}</h3>{excerpt}<div class="news-data-meta"><time datetime="{post['date']}">{post['date']}</time><span>{'원문 보기 ↗' if external else '자세히 보기 →'}</span></div></div>
+<div class="news-data-body"><span class="news-data-category">{esc(post['category'])}</span><h3>{esc(post['title'])}</h3>{excerpt}<div class="news-data-meta"><time datetime="{post['date']}">{post['date']}</time><span>자세히 보기 →</span></div></div>
 </a>'''
 
 def main():
@@ -92,31 +90,9 @@ def main():
 <nav class="news-pagination" aria-label="뉴스 페이지"></nav>
 </div></section></main>'''
     (ROOT / 'news.html').write_text(before + archive + after.replace('</body>', f'<script src="./news-archive.js?v={VERSION}"></script>\n</body>'))
-    (ROOT / 'news').mkdir(exist_ok=True)
-    for post in posts:
-        if post.get('type') == 'external':
-            continue
-        relative_path = post['url'].removeprefix('./')
-        article_before = before.replace('./', '../').replace('class="subpage"', 'class="subpage news-article-page"')
-        article_before = article_before.replace('<title>NEWS | MYV</title>', f'<title>{esc(post["title"])} | MYV NEWS</title>')
-        article_before = re.sub(r'<meta name="description"[^>]*>', f'<meta name="description" content="{esc(post["summary"])}" />', article_before)
-        canonical = BASE_URL + relative_path
-        article_before = article_before.replace('</head>', f'''<link rel="canonical" href="{esc(canonical)}" />
-<meta property="og:type" content="article" /><meta property="og:title" content="{esc(post['title'])}" /><meta property="og:description" content="{esc(post['summary'])}" /><meta property="og:url" content="{esc(canonical)}" /><meta property="og:image" content="{esc(post['thumbnail'])}" />
-</head>''')
-        meta = f'<span>게시일 <time datetime="{post["date"]}">{post["date"]}</time></span>'
-        if post.get('reportedDate'):
-            meta += f'<span>원문 보도일 <time datetime="{post["reportedDate"]}">{post["reportedDate"]}</time></span>'
-        notice = '<aside class="article-notice">이 글은 당시 소식을 담은 기록입니다. 서비스 조건과 이벤트 내용은 게재 당시 기준이며, 현재 운영 내용과 다를 수 있습니다.</aside>' if post.get('historical') else ''
-        article = f'''<main><article class="article-shell">
-<a class="article-back" href="../news.html?category={post['category']}">← 뉴스 목록</a>
-<header class="article-heading"><span class="article-category">{post['category']}</span><h1>{esc(post['title'])}</h1><div class="article-meta">{meta}</div></header>
-<p class="article-lead">{esc(post['summary'])}</p>{notice}
-<div class="article-content">{body_html(post)}</div>
-<div class="article-bottom"><a href="../news.html?category={post['category']}">뉴스 목록으로</a></div>
-</article></main>'''
-        (ROOT / relative_path).write_text(article_before + article + after.replace('./', '../'))
-    print(f'Built {len(posts)} cards and {sum(post.get("type") != "external" for post in posts)} article pages.')
+    # Existing legacy /news/*.html URLs remain available for old bookmarks,
+    # but newly generated cards always route to news.html?article=<id>.
+    print(f'Built {len(posts)} same-page news article links.')
 
 if __name__ == '__main__':
     main()
