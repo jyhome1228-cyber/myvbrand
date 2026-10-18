@@ -99,13 +99,8 @@
   function renderBody(post) {
     content.replaceChildren();
     if (!post.body) {
-      content.appendChild(element('aside', 'article-notice',
-        '이 뉴스는 제목과 게시일만 이관된 상태입니다. 상세 본문은 원본 자료 확인 후 추가될 예정입니다.'));
+      content.appendChild(element('p', 'article-empty', '기사 본문 준비 중입니다.'));
       return;
-    }
-    if (post.historical) {
-      content.appendChild(element('aside', 'article-notice',
-        '이 글은 당시 소식을 담은 기록입니다. 서비스 조건 및 이벤트 내용은 게재 당시 기준이며 현재와 다를 수 있습니다.'));
     }
     if (post.intro) content.appendChild(element('p', '', post.intro));
     let imageNumber = 0;
