@@ -12,8 +12,8 @@
 
 /* MYV English draft visual refresh — same source artwork and visual rhythm as Korean. */
 .myv-icon-card{min-width:0}
-.myv-icon-wrap{width:94px;height:94px;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:19px;background:#f3f3f1;margin:17px 0 20px;isolation:isolate}
-.myv-icon-wrap img{display:block;width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.myv-icon-wrap{width:94px;height:94px;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:0;background:transparent;border:0;box-shadow:none;margin:17px 0 20px;isolation:auto}
+.myv-icon-wrap img{display:block;width:100%;height:100%;object-fit:contain;mix-blend-mode:normal}
 .panel.myv-icon-card{display:flex;flex-direction:column;align-items:flex-start;min-height:0}
 .panel.myv-icon-card .step{order:0}
 .panel.myv-icon-card .myv-icon-wrap{order:1}
@@ -54,6 +54,6 @@ body[data-page="business"] .hero + .section.soft .grid.cols-2 > .panel {
   box-shadow: none;
 }
 body[data-page="business"] .hero + .section.soft .grid.cols-2 > .panel .myv-icon-wrap {
-  background: #fff;
-  border: 1px solid #e6ebf2;
+  background: transparent;
+  border: 0;
 }
