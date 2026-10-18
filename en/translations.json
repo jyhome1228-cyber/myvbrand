@@ -394,5 +394,20 @@
   "마이브이 홈페이지": "MYV Website",
   "[MYV 홈페이지] 새로운 문의가 접수되었습니다.": "[MYV English Website] New Inquiry",
   "프로슈머 신청하기": "Become a Prosumer",
-  "검증된 제품만을": "Carefully curated products"
+  "검증된 제품만을": "Carefully curated products",
+  "먼저 월 직접 판매액을 바꿔보세요!": "First, try changing your monthly direct sales.",
+  "내가 판매한 금액을 조정하면 직접 판매 수익이 바로 계산됩니다.": "Start with your own sales to see how direct rewards are calculated.",
+  "판매액": "Direct sales",
+  "팔로워": "Followers",
+  "평균 구매액": "Average spend",
+  "계산기 퀘스트 단계": "Calculator quest steps",
+  "지금 입력한 조건이라면 월 예상 수익은 675,000원입니다!": "With your current inputs, the illustrative monthly total is KRW 675,000.",
+  "입력값으로 계산한 예시이며 확정 수익은 아닙니다.": "Illustrative results, not guaranteed earnings.",
+  "675,000원": "KRW 675,000",
+  "450,000원": "KRW 450,000",
+  "225,000원": "KRW 225,000",
+  "예시 · 판매액 300만원 / 수수료율 15%": "Example · KRW 3M in sales × 15%",
+  "45만원": "KRW 450,000",
+  "예시 · 30명 × 월 5만원 × 15%": "Example · 30 people × KRW 50K × 15%",
+  "+ 22만 5천원": "+ KRW 225,000"
 }
