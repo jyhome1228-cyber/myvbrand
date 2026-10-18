@@ -56,6 +56,25 @@
     compute();
   }
 
+  // Match the Korean site's reveal behavior for the now-shared Prosumer DOM.
+  const revealElements = document.querySelectorAll(".reveal");
+  if (revealElements.length) {
+    if ("IntersectionObserver" in window &&
+        !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: .08, rootMargin: "0px 0px -16px 0px" });
+      revealElements.forEach(el => revealObserver.observe(el));
+    } else {
+      revealElements.forEach(el => el.classList.add("visible"));
+    }
+  }
+
   if (page !== "news") return;
 
   // Titles are editorial English working translations. Body translations
