@@ -1,50 +1,263 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Latest MYV news about partnerships, brands and global initiatives.">
-<meta name="robots" content="noindex,follow">
-<title>MYV News</title>
-<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-<link rel="stylesheet" href="./site.css?v=20261018-home-motion08">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="MYV news, partnerships and global commerce updates." />
+  <title>MYV News</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css" />
+  <link rel="stylesheet" href="../styles.css?v=20261018-home-motion08" />
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg?v=20261006-0010" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png?v=20261006-0010" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png?v=20261006-0010" />
+<link rel="stylesheet" href="../news.css?v=20261018-clean-notice01" />
+<meta name="robots" content="noindex,follow" />
 </head>
-<body data-page="news">
-<a class="skip-link" href="#main">Skip to content</a>
-<header class="site-header"><div class="container header-inner">
-<a class="brand" href="./index.html" aria-label="MYV homepage"><img src="../assets/myv-logo.svg" alt="MYV"></a>
-<div class="header-right"><nav class="desktop-nav" aria-label="Main navigation">
-<a class="" href="./about.html">ABOUT</a>
-<a class="" href="./business.html">BUSINESS</a>
-<div class="nav-dropdown"><button type="button" aria-expanded="false" aria-haspopup="true">WITH US ⌄</button><div class="drop-menu"><a href="./prosumer.html">Prosumer</a><a href="./partner.html">Brand Partnerships</a></div></div>
-<a href="https://myv.co.kr/" target="_blank" rel="noopener noreferrer">SHOP ↗</a>
-<a class="active" href="./news.html">NEWS</a>
-<a class="" href="./contact.html">CONTACT US</a>
-</nav><div class="language-switch" aria-label="Language"><a class="muted" href="../news.html" data-locale="ko" lang="ko">KR</a><b>|</b><a href="./news.html" aria-current="page" data-locale="en">EN</a></div>
-<button type="button" class="menu-button" aria-controls="mobileNav" aria-expanded="false" aria-label="Open navigation">☰</button>
-</div></div>
-<nav id="mobileNav" class="mobile-nav" aria-label="Mobile navigation">
-<a href="./about.html">ABOUT</a><a href="./business.html">BUSINESS</a>
-<a href="./prosumer.html">WITH US / Prosumer</a><a href="./partner.html">WITH US / Brand Partnerships</a>
-<a href="https://myv.co.kr/" target="_blank" rel="noopener noreferrer">SHOP ↗</a>
-<a href="./news.html">NEWS</a><a href="./contact.html">CONTACT US</a></nav></header>
-<main id="main"><section class="hero compact"><div class="container"><p class="eyebrow light">MYV NEWS</p><h1>News and stories<br>from the ecosystem.</h1><p>Updates about MYV, brand partnerships and international activities.</p></div></section><section class="section"><div class="container" id="enNewsArea"><div class="draft-note">English news headlines are draft translations. Full English article translations are in preparation; Korean source copy may be displayed for reference.</div>
-<div id="enNewsList"><div class="news-tools"><div class="filters" id="enNewsFilters" aria-label="News categories"></div><p id="enNewsCount" aria-live="polite"></p></div>
-<div class="news-grid" id="enNewsGrid" aria-live="polite"><p>Loading news…</p></div><div class="page-controls" id="enNewsPages"></div></div>
-<div id="enNewsDetail" hidden><article class="article-shell"><a class="back" href="./news.html" id="enNewsBack">← Back to News</a>
-<p class="eyebrow" id="enArticleCategory"></p><h1 class="article-heading" id="enArticleTitle"></h1>
-<p class="meta" id="enArticleDate"></p><p class="draft-note" id="enArticleNotice">English article translation is in preparation. Original Korean text is shown below for reference.</p>
-<div class="article-body" id="enArticleBody"></div></article></div></div></section></main><footer class="site-footer"><div class="container">
-<div class="footer-top"><div class="footer-intro"><a href="./index.html"><img src="../assets/myv-logo.svg" alt="MYV"></a><p>Adding value beyond consumption.<br>Global Value Chain E-commerce</p></div>
-<div class="footer-links">
-<div><strong>COMPANY</strong><a href="./about.html">About Us</a><a href="./business.html">Our Business</a><a href="./news.html">News</a></div>
-<div><strong>SERVICE</strong><a href="https://myv.co.kr/" target="_blank" rel="noopener noreferrer">Shop ↗</a><a href="./vpoint.html">V.Point</a></div>
-<div><strong>WITH US</strong><a href="./prosumer.html">Prosumer</a><a href="./partner.html">Brand Partnerships</a></div>
-<div><strong>CONTACT</strong><a href="mailto:info@myv.co.kr">info@myv.co.kr</a><a href="tel:15331880">1533-1880</a><a href="./contact.html">Contact Us</a></div>
-</div></div>
-<div class="footer-bottom"><p>V Labs Inc. | CEO: Jangwook Lee | Business Registration No. 806-88-02200</p>
-<p>19F, Suite 12, 8 Seongnam-daero 331beon-gil, Bundang-gu, Seongnam-si, Gyeonggi-do, Republic of Korea</p>
-<p>Mail-Order Business Registration: 2025-SeongnamBundangB-0167</p>
-<p>© 2026 MYV · V Labs Inc. All rights reserved. &nbsp; <a class="inline-link" href="./privacy.html">Privacy Notice</a></p>
-</div></div></footer>
-<script src="./site.js?v=20261018-home-motion08" defer></script>
-</body></html>
+<body class="subpage">
+
+  <header class="site-header subpage-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="./index.html" class="brand" aria-label="MYV homepage">
+        <img class="brand-logo brand-logo-white" src="../assets/myv-logo-white.svg" alt="MYV" />
+        <img class="brand-logo brand-logo-color" src="../assets/myv-logo.svg" alt="" aria-hidden="true" />
+      </a>
+
+      <div class="header-actions">
+        <nav class="desktop-nav" aria-label="Main navigation">
+          <a href="./about.html" class="">ABOUT</a>
+          <a href="./business.html" class="">BUSINESS</a>
+
+          <div class="nav-dropdown">
+            <button class="nav-dropdown-trigger " type="button" aria-haspopup="true">
+              WITH US <span class="chevron">⌄</span>
+            </button>
+            <div class="nav-dropdown-menu" role="menu">
+              <a href="./prosumer.html" role="menuitem">Prosumer</a>
+              <a href="./partner.html" role="menuitem">Brand Partnership</a>
+            </div>
+          </div>
+
+          <a class="nav-link-button shop-link" href="https://myv.co.kr/" target="_blank" rel="noreferrer">SHOP ↗</a>
+          <a href="./news.html" class="is-current">NEWS</a>
+          <a href="./contact.html" class="">CONTACT US</a>
+        </nav>
+
+        <div class="language-switch" aria-label="Language">
+          <button type="button" class="lang-button " title="Korean">KR</button>
+          <span></span>
+          <button type="button" class="lang-button is-active" title="English">EN</button>
+        </div>
+
+        <button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-menu" aria-hidden="true">
+      <div class="container mobile-menu-inner">
+        <a href="./about.html">ABOUT</a>
+        <a href="./business.html">BUSINESS</a>
+        <div class="mobile-submenu">
+          <span>WITH US</span>
+          <a href="./prosumer.html">Prosumer</a>
+          <a href="./partner.html">Brand Partnership</a>
+        </div>
+        <a class="mobile-nav-button shop-link" href="https://myv.co.kr/" target="_blank" rel="noreferrer">SHOP ↗</a>
+        <a href="./news.html">NEWS</a>
+        <a href="./contact.html">CONTACT US</a>
+        <div class="mobile-language">
+          <button type="button" class="lang-button ">KR</button>
+          <span></span>
+          <button type="button" class="lang-button is-active">EN</button>
+        </div>
+      </div>
+    </div>
+  </header>
+<main>
+<section class="page-hero page-hero-navy compact-hero"><div class="container page-hero-inner reveal"><p class="eyebrow light">NEWS</p><h1>MYV NEWS</h1><p>News from MYV, including partnerships and global activities.</p></div></section>
+<section class="section news-archive-section" data-news-archive><div class="container">
+<div class="news-toolbar reveal"><div class="news-filter" aria-label="뉴스 카테고리"><button type="button" data-filter="ALL" aria-pressed="true" class="is-active">ALL</button>
+<button type="button" data-filter="MYV" aria-pressed="false" class="">MYV</button>
+<button type="button" data-filter="PARTNER" aria-pressed="false" class="">PARTNER</button>
+<button type="button" data-filter="GLOBAL" aria-pressed="false" class="">GLOBAL</button></div><p id="newsResults" role="status" aria-live="polite" tabindex="-1">38 articles · newest first</p></div>
+<div class="news-data-grid reveal"><a class="news-data-card" data-post-id="legacy-171831533" data-category="GLOBAL" data-date="2026-06-15" href="./news.html?article=legacy-171831533">
+<div class="news-data-thumb news-brand-thumb"><span>GLOBAL</span><img src="../assets/myv-logo.svg" alt="" /><strong>MYV NEWS</strong></div>
+<div class="news-data-body"><span class="news-data-category">GLOBAL</span><h3>Vietnamese KOL Xenia Joins Getz-Beauty, Signaling Entry into Korea</h3><div class="news-data-meta"><time datetime="2026-06-15">2026-06-15</time><span>Read article →</span></div></div>
+</a><a class="news-data-card" data-post-id="legacy-170448224" data-category="MYV" data-date="2026-03-18" href="./news.html?article=legacy-170448224">
+<div class="news-data-thumb news-brand-thumb"><span>MYV</span><img src="../assets/myv-logo.svg" alt="" /><strong>MYV NEWS</strong></div>
+<div class="news-data-body"><span class="news-data-category">MYV</span><h3>V Labs CEO Jangwook Lee on E-Commerce Where Businesses and Consumers Grow Together</h3><div class="news-data-meta"><time datetime="2026-03-18">2026-03-18</time><span>Read article →</span></div></div>
+</a><a class="news-data-card" data-post-id="legacy-170004786" data-category="GLOBAL" data-date="2026-02-13" href="./news.html?article=legacy-170004786">
+<div class="news-data-thumb news-brand-thumb"><span>GLOBAL</span><img src="../assets/myv-logo.svg" alt="" /><strong>MYV NEWS</strong></div>
+<div class="news-data-body"><span class="news-data-category">GLOBAL</span><h3>Influencer E-Commerce Association and V Labs Join Forces for a Global MYV Prosumer Ecosystem</h3><div class="news-data-meta"><time datetime="2026-02-13">2026-02-13</time><span>Read article →</span></div></div>
+</a><a class="news-data-card" data-post-id="legacy-169080625" data-category="MYV" data-date="2025-12-17" href="./news.html?article=legacy-169080625">
+<div class="news-data-thumb news-brand-thumb"><span>MYV</span><img src="../assets/myv-logo.svg" alt="" /><strong>MYV NEWS</strong></div>
+<div class="news-data-body"><span class="news-data-category">MYV</span><h3>V Labs CEO Receives Award for Consumer Curation at the 2025 Influencer Awards</h3><div class="news-data-meta"><time datetime="2025-12-17">2025-12-17</time><span>Read article →</span></div></div>
+</a><a class="news-data-card" data-post-id="legacy-168408090" data-category="PARTNER" data-date="2025-10-30" href="./news.html?article=legacy-168408090">
+<div class="news-data-thumb news-brand-thumb"><span>PARTNER</span><img src="../assets/myv-logo.svg" alt="" /><strong>MYV NEWS</strong></div>
+<div class="news-data-body"><span class="news-data-category">PARTNER</span><h3>Meet Drunken Rose, a Signature Fragrance from Scentwiki</h3><div class="news-data-meta"><time datetime="2025-10-30">2025-10-30</time><span>Read article →</span></div></div>
+</a><a class="news-data-card" data-post-id="legacy-168310159" data-category="PARTNER" data-date="2025-10-23" href="./news.html?article=legacy-168310159">
+<div class="news-data-thumb news-brand-thumb"><span>PARTNER</span><img src="../assets/myv-logo.svg" alt="" /><strong>MYV NEWS</strong></div>
+<div class="news-data-body"><span class="news-data-category">PARTNER</span><h3>CoffeeTools: Bringing the Aroma of Coffee Into Everyday Life</h3><div class="news-data-meta"><time datetime="2025-10-23">2025-10-23</time><span>Read article →</span></div></div>
+</a><a class="news-data-card" data-post-id="legacy-168029754" data-category="MYV" data-date="2025-09-30" href="./news.html?article=legacy-168029754">
+<div class="news-data-thumb news-brand-thumb"><span>MYV</span><img src="../assets/myv-logo.svg" alt="" /><strong>MYV NEWS</strong></div>
+<div class="news-data-body"><span class="news-data-category">MYV</span><h3>MYV: Building an E-Commerce Model Where Consumption Creates Value</h3><div class="news-data-meta"><time datetime="2025-09-30">2025-09-30</time><span>Read article →</span></div></div>
+</a><a class="news-data-card" data-post-id="legacy-167950862" data-category="PARTNER" data-date="2025-09-25" href="./news.html?article=legacy-167950862">
+<div class="news-data-thumb news-brand-thumb"><span>PARTNER</span><img src="../assets/myv-logo.svg" alt="" /><strong>MYV NEWS</strong></div>
+<div class="news-data-body"><span class="news-data-category">PARTNER</span><h3>Gentle Dermocosmetics Brand Dr. Gentle Joins MYV</h3><div class="news-data-meta"><time datetime="2025-09-25">2025-09-25</time><span>Read article →</span></div></div>
+</a><a class="news-data-card" data-post-id="legacy-167829500" data-category="PARTNER" data-date="2025-09-18" href="./news.html?article=legacy-167829500">
+<div class="news-data-thumb has-image"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261006-011941-30-2f76a076.webp" alt="" loading="lazy" decoding="async" /></div>
+<div class="news-data-body"><span class="news-data-category">PARTNER</span><h3>Pet Brand OnesPapa Expands on MYV with Freeze-Dried Dog Treats</h3><p class="news-data-excerpt">OnesPapa expands its pet-care lineup on MYV with freeze-dried dog treats alongside its existing paw cleanser.</p><div class="news-data-meta"><time datetime="2025-09-18">2025-09-18</time><span>Read article →</span></div></div>
+</a><a class="news-data-card" data-post-id="legacy-167537778" data-category="PARTNER" data-date="2025-09-02" href="./news.html?article=legacy-167537778">
+<div class="news-data-thumb has-image"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261006-011940-29-57570bf8.webp" alt="" loading="lazy" decoding="async" /></div>
+<div class="news-data-body"><span class="news-data-category">PARTNER</span><h3>MYV Welcomes Traditional Korean Black Goat Extract and Premium Red Ginseng Gift Sets</h3><p class="news-data-excerpt">Korean black goat extract and premium red ginseng gift sets are now available through MYV.</p><div class="news-data-meta"><time datetime="2025-09-02">2025-09-02</time><span>Read article →</span></div></div>
+</a><a class="news-data-card" data-post-id="legacy-167321731" data-category="PARTNER" data-date="2025-08-14" href="./news.html?article=legacy-167321731">
+<div class="news-data-thumb has-image"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261006-011939-28-af8f8f2e.webp" alt="" loading="lazy" decoding="async" /></div>
+<div class="news-data-body"><span class="news-data-category">PARTNER</span><h3>Premium Soy Milk Brand Duyubonsaek Joins MYV</h3><p class="news-data-excerpt">Premium soy milk brand Duyubonsaek joins MYV with unsweetened drinks featuring Korean ingredients.</p><div class="news-data-meta"><time datetime="2025-08-14">2025-08-14</time><span>Read article →</span></div></div>
+</a><a class="news-data-card" data-post-id="legacy-167275727" data-category="MYV" data-date="2025-08-11" href="./news.html?article=legacy-167275727">
+<div class="news-data-thumb has-image"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261006-011900-27-45b70d16.webp" alt="" loading="lazy" decoding="async" /></div>
+<div class="news-data-body"><span class="news-data-category">MYV</span><h3>MYV: A Platform Where Consumption Becomes Shared Value</h3><p class="news-data-excerpt">An introduction to MYV's brand selection, V.Point rewards and approach to collaborative, value-driven commerce.</p><div class="news-data-meta"><time datetime="2025-08-11">2025-08-11</time><span>Read article →</span></div></div>
+</a><a class="news-data-card" data-post-id="gibunjoeum-launch" data-category="PARTNER" data-date="2025-08-05" href="./news.html?article=gibunjoeum-launch">
+<div class="news-data-thumb has-image"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261006-011859-26-d369cf4b.webp" alt="" loading="lazy" decoding="async" /></div>
+<div class="news-data-body"><span class="news-data-category">PARTNER</span><h3>Upcycled Hand Wash Brand Gibunjoeum Joins MYV</h3><p class="news-data-excerpt">Upcycled hand wash brand Gibunjoeum joins MYV with a focus on responsible consumption.</p><div class="news-data-meta"><time datetime="2025-08-05">2025-08-05</time><span>Read article →</span></div></div>
+</a><a class="news-data-card" data-post-id="cleanbeauty-startup-seminar" data-category="MYV" data-date="2025-07-22" href="./news.html?article=cleanbeauty-startup-seminar">
+<div class="news-data-thumb has-image"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261006-011859-25-9795da8f.webp" alt="" loading="lazy" decoding="async" /></div>
+<div class="news-data-body"><span class="news-data-category">MYV</span><h3>V Labs Participates in Clean Beauty Startup Seminar</h3><p class="news-data-excerpt">V Labs shares MYV's rewards-driven commerce concept at a clean beauty startup event.</p><div class="news-data-meta"><time datetime="2025-07-22">2025-07-22</time><span>Read article →</span></div></div>
+</a><a class="news-data-card" data-post-id="cuni-launch" data-category="PARTNER" data-date="2025-06-26" href="./news.html?article=cuni-launch">
+<div class="news-data-thumb has-image"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261006-011858-24-c7eb23a7.webp" alt="" loading="lazy" decoding="async" /></div>
+<div class="news-data-body"><span class="news-data-category">PARTNER</span><h3>Natural Lifestyle Brand CUNI Joins the MYV Mall</h3><p class="news-data-excerpt">Natural lifestyle brand CUNI joins MYV with oral-care and hair-care products.</p><div class="news-data-meta"><time datetime="2025-06-26">2025-06-26</time><span>Read article →</span></div></div>
+</a><a class="news-data-card" data-post-id="vastly-launch" data-category="PARTNER" data-date="2025-06-24" href="./news.html?article=vastly-launch">
+<div class="news-data-thumb has-image"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261006-011857-23-2b5b0f0e.webp" alt="" loading="lazy" decoding="async" /></div>
+<div class="news-data-body"><span class="news-data-category">PARTNER</span><h3>Eco-Friendly Lifestyle Brand Vastly Joins MYV</h3><p class="news-data-excerpt">Eco-friendly lifestyle brand Vastly joins MYV with everyday paper products.</p><div class="news-data-meta"><time datetime="2025-06-24">2025-06-24</time><span>Read article →</span></div></div>
+</a><a class="news-data-card" data-post-id="manticket-launch" data-category="PARTNER" data-date="2025-06-09" href="./news.html?article=manticket-launch">
+<div class="news-data-thumb has-image"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261006-011856-22-ea2d367d.webp" alt="" loading="lazy" decoding="async" /></div>
+<div class="news-data-body"><span class="news-data-category">PARTNER</span><h3>Men's Care Brand Manticket Expands MYV's Portfolio</h3><p class="news-data-excerpt">Men's care brand Manticket joins MYV with cleansing and scalp-care products.</p><div class="news-data-meta"><time datetime="2025-06-09">2025-06-09</time><span>Read article →</span></div></div>
+</a><a class="news-data-card" data-post-id="taejeon-vitality-launch" data-category="PARTNER" data-date="2025-04-10" href="./news.html?article=taejeon-vitality-launch">
+<div class="news-data-thumb has-image"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261006-011856-21-0117f278.webp" alt="" loading="lazy" decoding="async" /></div>
+<div class="news-data-body"><span class="news-data-category">PARTNER</span><h3>MYV Adds Three Taijeon Group Wellness Products</h3><p class="news-data-excerpt">Three additional Taijeon Group wellness products join MYV.</p><div class="news-data-meta"><time datetime="2025-04-10">2025-04-10</time><span>Read article →</span></div></div>
+</a><a class="news-data-card" data-post-id="ai-demand-patent" data-category="MYV" data-date="2025-03-21" href="./news.html?article=ai-demand-patent">
+<div class="news-data-thumb has-image"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261006-011855-20-6ee7be14.webp" alt="" loading="lazy" decoding="async" /></div>
+<div class="news-data-body"><span class="news-data-category">MYV</span><h3>V Labs Registers Patent for AI-Based Demand Forecasting</h3><p class="news-data-excerpt">V Labs announces a patent registration covering AI-driven product demand forecasting.</p><div class="news-data-meta"><time datetime="2025-03-21">2025-03-21</time><span>Read article →</span></div></div>
+</a><a class="news-data-card" data-post-id="onespapa-foot-cleanser-launch" data-category="PARTNER" data-date="2025-03-14" href="./news.html?article=onespapa-foot-cleanser-launch">
+<div class="news-data-thumb has-image"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261006-011854-19-074e1d2a.webp" alt="" loading="lazy" decoding="async" /></div>
+<div class="news-data-body"><span class="news-data-category">PARTNER</span><h3>OnesPapa Natural Dog Paw Cleanser Joins MYV</h3><p class="news-data-excerpt">OnesPapa introduces its natural pet paw cleanser to MYV.</p><div class="news-data-meta"><time datetime="2025-03-14">2025-03-14</time><span>Read article →</span></div></div>
+</a><a class="news-data-card" data-post-id="farmerssignature-lovew-launch" data-category="PARTNER" data-date="2025-03-07" href="./news.html?article=farmerssignature-lovew-launch">
+<div class="news-data-thumb has-image"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261006-011854-18-66a10e9f.webp" alt="" loading="lazy" decoding="async" /></div>
+<div class="news-data-body"><span class="news-data-category">PARTNER</span><h3>Farmers Signature and Lovew Skincare Join MYV</h3><p class="news-data-excerpt">Farmers Signature and Lovew skincare brands become MYV partners.</p><div class="news-data-meta"><time datetime="2025-03-07">2025-03-07</time><span>Read article →</span></div></div>
+</a><a class="news-data-card" data-post-id="verymom-launch" data-category="PARTNER" data-date="2025-02-27" href="./news.html?article=verymom-launch">
+<div class="news-data-thumb has-image"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261006-011853-17-0197f911.webp" alt="" loading="lazy" decoding="async" /></div>
+<div class="news-data-body"><span class="news-data-category">PARTNER</span><h3>Premium Skincare Brand Verymom Joins MYV</h3><p class="news-data-excerpt">Premium skincare brand Verymom joins MYV with a range of ceramide-based products.</p><div class="news-data-meta"><time datetime="2025-02-27">2025-02-27</time><span>Read article →</span></div></div>
+</a><a class="news-data-card" data-post-id="ozon-toothbrush-launch" data-category="PARTNER" data-date="2025-02-13" href="./news.html?article=ozon-toothbrush-launch">
+<div class="news-data-thumb has-image"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261006-011852-16-f2f2d44f.webp" alt="" loading="lazy" decoding="async" /></div>
+<div class="news-data-body"><span class="news-data-category">PARTNER</span><h3>Korean Toothbrush Brand Ozon Joins MYV</h3><p class="news-data-excerpt">Korean toothbrush brand Ozon joins MYV with three brush varieties.</p><div class="news-data-meta"><time datetime="2025-02-13">2025-02-13</time><span>Read article →</span></div></div>
+</a><a class="news-data-card" data-post-id="jalpul-house-launch" data-category="PARTNER" data-date="2025-02-07" href="./news.html?article=jalpul-house-launch">
+<div class="news-data-thumb has-image"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261006-011852-15-fc944bd2.webp" alt="" loading="lazy" decoding="async" /></div>
+<div class="news-data-body"><span class="news-data-category">PARTNER</span><h3>Household Essentials Brand Jalpul House Joins MYV</h3><p class="news-data-excerpt">Household essentials brand Jalpul House joins MYV with a range of everyday products.</p><div class="news-data-meta"><time datetime="2025-02-07">2025-02-07</time><span>Read article →</span></div></div>
+</a><a class="news-data-card" data-post-id="onk-healthcare-launch" data-category="PARTNER" data-date="2025-01-22" href="./news.html?article=onk-healthcare-launch">
+<div class="news-data-thumb has-image"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261006-011851-14-63595bfb.webp" alt="" loading="lazy" decoding="async" /></div>
+<div class="news-data-body"><span class="news-data-category">PARTNER</span><h3>Three Taijeon Group ONK Health Products Join the MYV Mall</h3><p class="news-data-excerpt">Three ONK wellness products from Taijeon Group join MYV.</p><div class="news-data-meta"><time datetime="2025-01-22">2025-01-22</time><span>Read article →</span></div></div>
+</a><a class="news-data-card" data-post-id="jungleon-office" data-category="MYV" data-date="2024-12-18" href="./news.html?article=jungleon-office">
+<div class="news-data-thumb has-image"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261006-011850-13-e0007aba.webp" alt="" loading="lazy" decoding="async" /></div>
+<div class="news-data-body"><span class="news-data-category">MYV</span><h3>V Labs Selected to Join Seongnam Startup Center Jungle ON</h3><p class="news-data-excerpt">V Labs is selected to join the Seongnam Startup Center's Jungle ON program.</p><div class="news-data-meta"><time datetime="2024-12-18">2024-12-18</time><span>Read article →</span></div></div>
+</a><a class="news-data-card" data-post-id="black-friday-2024" data-category="MYV" data-date="2024-11-20" href="./news.html?article=black-friday-2024">
+<div class="news-data-thumb has-image"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261006-011850-12-ae992a1d.webp" alt="" loading="lazy" decoding="async" /></div>
+<div class="news-data-body"><span class="news-data-category">MYV</span><h3>MYV Holds a Black Friday Promotion in 2024</h3><p class="news-data-excerpt">Highlights from the MYV Black Friday promotion held in late 2024.</p><div class="news-data-meta"><time datetime="2024-11-20">2024-11-20</time><span>Read article →</span></div></div>
+</a><a class="news-data-card" data-post-id="pearlcare-launch" data-category="PARTNER" data-date="2024-11-07" href="./news.html?article=pearlcare-launch">
+<div class="news-data-thumb has-image"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261006-011849-11-fb23fafc.webp" alt="" loading="lazy" decoding="async" /></div>
+<div class="news-data-body"><span class="news-data-category">PARTNER</span><h3>Beauty and Healthcare Brand Pearlcare Joins MYV</h3><p class="news-data-excerpt">Pearlcare adds three beauty and wellness devices to the MYV catalog.</p><div class="news-data-meta"><time datetime="2024-11-07">2024-11-07</time><span>Read article →</span></div></div>
+</a><a class="news-data-card" data-post-id="anti-hairloss-blind-test" data-category="PARTNER" data-date="2024-10-22" href="./news.html?article=anti-hairloss-blind-test">
+<div class="news-data-thumb has-image"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261006-011737-10-0b404210.webp" alt="" loading="lazy" decoding="async" /></div>
+<div class="news-data-body"><span class="news-data-category">PARTNER</span><h3>Anti-Hairloss Shampoo: Blind Product Test</h3><p class="news-data-excerpt">Highlights from a blind test evaluation of anti-hairloss shampoo.</p><div class="news-data-meta"><time datetime="2024-10-22">2024-10-22</time><span>Read article →</span></div></div>
+</a><a class="news-data-card" data-post-id="luluan-brand-launch" data-category="PARTNER" data-date="2024-10-02" href="./news.html?article=luluan-brand-launch">
+<div class="news-data-thumb has-image"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261006-011736-9-09bf056c.webp" alt="" loading="lazy" decoding="async" /></div>
+<div class="news-data-body"><span class="news-data-category">PARTNER</span><h3>Eco-Friendly Portable Bidet Brand Luluan Joins MYV</h3><p class="news-data-excerpt">Eco-friendly portable bidet brand Luluan joins MYV.</p><div class="news-data-meta"><time datetime="2024-10-02">2024-10-02</time><span>Read article →</span></div></div>
+</a><a class="news-data-card" data-post-id="assistfit-collaboration" data-category="MYV" data-date="2024-09-03" href="./news.html?article=assistfit-collaboration">
+<div class="news-data-thumb has-image"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261006-011735-8-3c16e682.webp" alt="" loading="lazy" decoding="async" /></div>
+<div class="news-data-body"><span class="news-data-category">MYV</span><h3>V Labs Broadens Consumer Engagement with AssistFit Media</h3><p class="news-data-excerpt">V Labs expands consumer outreach through a partnership with AssistFit media.</p><div class="news-data-meta"><time datetime="2024-09-03">2024-09-03</time><span>Read article →</span></div></div>
+</a><a class="news-data-card" data-post-id="myv-patent-registration" data-category="MYV" data-date="2024-02-05" href="./news.html?article=myv-patent-registration">
+<div class="news-data-thumb has-image"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261006-011729-2-72c051af.webp" alt="" loading="lazy" decoding="async" /></div>
+<div class="news-data-body"><span class="news-data-category">MYV</span><h3>V Labs Announces Three Patents Related to MYV</h3><p class="news-data-excerpt">V Labs shares news of patent registrations related to consumer participation and value sharing at MYV.</p><div class="news-data-meta"><time datetime="2024-02-05">2024-02-05</time><span>Read article →</span></div></div>
+</a><a class="news-data-card" data-post-id="value-consumption-platform" data-category="MYV" data-date="2024-02-05" href="./news.html?article=value-consumption-platform">
+<div class="news-data-thumb has-image"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261006-011729-3-93677594.webp" alt="" loading="lazy" decoding="async" /></div>
+<div class="news-data-body"><span class="news-data-category">MYV</span><h3>V Labs Develops MYV, a Value-Driven Commerce Platform for Shared Growth</h3><p class="news-data-excerpt">Explore MYV's vision and service model for a commerce platform built around shared growth.</p><div class="news-data-meta"><time datetime="2024-02-05">2024-02-05</time><span>Read article →</span></div></div>
+</a><a class="news-data-card" data-post-id="dentipromised-blind-test" data-category="PARTNER" data-date="2024-02-05" href="./news.html?article=dentipromised-blind-test">
+<div class="news-data-thumb has-image"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261006-011730-4-74aff5d1.webp" alt="" loading="lazy" decoding="async" /></div>
+<div class="news-data-body"><span class="news-data-category">PARTNER</span><h3>Dentipromised Toothpaste: Blind Product Test</h3><p class="news-data-excerpt">Results of a blind product evaluation of Dentipromised toothpaste.</p><div class="news-data-meta"><time datetime="2024-02-05">2024-02-05</time><span>Read article →</span></div></div>
+</a><a class="news-data-card" data-post-id="myv-renewal-2024" data-category="MYV" data-date="2024-02-05" href="./news.html?article=myv-renewal-2024">
+<div class="news-data-thumb has-image"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261006-011732-5-fc6145a5.webp" alt="" loading="lazy" decoding="async" /></div>
+<div class="news-data-body"><span class="news-data-category">MYV</span><h3>MYV Marks Its 2024 Online Mall Renewal with a Launch Event</h3><p class="news-data-excerpt">MYV's 2024 online mall renewal enhanced registration and V.Point redemption accessibility.</p><div class="news-data-meta"><time datetime="2024-02-05">2024-02-05</time><span>Read article →</span></div></div>
+</a><a class="news-data-card" data-post-id="silkyhair-blind-test" data-category="PARTNER" data-date="2024-02-05" href="./news.html?article=silkyhair-blind-test">
+<div class="news-data-thumb has-image"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261006-011733-6-1bbd42cb.webp" alt="" loading="lazy" decoding="async" /></div>
+<div class="news-data-body"><span class="news-data-category">PARTNER</span><h3>Silkyhair Hair Essence: Blind Product Test</h3><p class="news-data-excerpt">Highlights from a blind test evaluation of Silkyhair Essence.</p><div class="news-data-meta"><time datetime="2024-02-05">2024-02-05</time><span>Read article →</span></div></div>
+</a><a class="news-data-card" data-post-id="vpoint-friend-event" data-category="MYV" data-date="2024-02-05" href="./news.html?article=vpoint-friend-event">
+<div class="news-data-thumb has-image"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261006-011734-7-5c227fb2.webp" alt="" loading="lazy" decoding="async" /></div>
+<div class="news-data-body"><span class="news-data-category">MYV</span><h3>MYV Announces 2024 Invite-a-Friend V.Point Campaign</h3><p class="news-data-excerpt">A look back at MYV's 2024 referral campaign and V.Point incentives.</p><div class="news-data-meta"><time datetime="2024-02-05">2024-02-05</time><span>Read article →</span></div></div>
+</a><a class="news-data-card" data-post-id="weeklypeople-interview" data-category="MYV" data-date="2022-11-14" href="./news.html?article=weeklypeople-interview">
+<div class="news-data-thumb has-image"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261006-011726-1-1-7402d8ff.webp" alt="" loading="lazy" decoding="async" /></div>
+<div class="news-data-body"><span class="news-data-category">MYV</span><h3>V Labs CEO Jangwook Lee Featured in Weekly People Interview</h3><p class="news-data-excerpt">V Labs CEO Jangwook Lee discusses the origins of MYV and the philosophy of shared growth.</p><div class="news-data-meta"><time datetime="2022-11-14">2022-11-14</time><span>Read article →</span></div></div>
+</a></div>
+<nav class="news-pagination" aria-label="뉴스 페이지"></nav>
+</div></section></main>
+
+  <footer class="site-footer">
+    <div class="container footer-main">
+      <div class="footer-brand-column">
+        <a href="./index.html" class="footer-brand" aria-label="MYV homepage">
+          <img class="footer-logo-image" src="../assets/myv-logo.svg" alt="MYV" />
+        </a>
+        <p class="footer-slogan">Shopping that creates value</p>
+        <p class="footer-caption">Global Value Chain E-commerce</p>
+      </div>
+
+      <div class="footer-nav-grid">
+        <div class="footer-nav-group">
+          <span class="footer-nav-title">COMPANY</span>
+          <a href="./about.html">ABOUT</a>
+          <a href="./business.html">BUSINESS</a>
+          <a href="./news.html">NEWS</a>
+        </div>
+        <div class="footer-nav-group">
+          <span class="footer-nav-title">SERVICE</span>
+          <a class="footer-shop-link" href="https://myv.co.kr/" target="_blank" rel="noreferrer">SHOP ↗</a>
+          <a href="./vpoint.html">V.Point Guide</a>
+        </div>
+
+        <div class="footer-nav-group">
+          <span class="footer-nav-title">WITH US</span>
+          <a href="./prosumer.html">Prosumer</a>
+          <a href="./partner.html">Brand Partnership</a>
+        </div>
+        <div class="footer-nav-group footer-contact-group">
+          <span class="footer-nav-title">CONTACT</span>
+          <a href="mailto:info@myv.co.kr">info@myv.co.kr</a>
+          <a href="tel:15331880">1533-1880</a>
+          <a href="./contact.html">CONTACT US</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-company">
+      <div class="footer-company-info">
+        <p><span>V Labs Inc.</span><span>CEO Jangwook Lee</span><span>Business Registration No. 806-88-02200</span></p>
+        <p>19F, Suite 12, 8 Seongnam-daero 331beon-gil, Bundang-gu, Seongnam-si, Gyeonggi-do, South Korea</p>
+        <p>E-commerce Registration No. 2025-SeongnamBundangB-0167</p>
+      </div>
+      <div class="footer-language" aria-label="Language"><span class="">KR</span><span class="divider"></span><span class="is-active">EN</span></div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>Copyright © 2026 MYV · V Labs Inc. All rights reserved.</p>
+      <div class="footer-legal-links">
+        <a href="./privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+  <script src="../script.js?v=20261018-home-motion08"></script>
+<script src="./news-archive.js?v=20261018-parity01"></script>
+<script src="./locale-switch.js?v=20261018-parity01"></script>
+</body>
+</html>
+
+
+
