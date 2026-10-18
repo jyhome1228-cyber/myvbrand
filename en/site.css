@@ -225,3 +225,82 @@ html.myv-intro-ready body{overflow:hidden}
   .en-home-entry-card,.en-home-entry-visual img{transition:none!important}
   .myv-intro-overlay *{animation:none!important}
 }
+
+/* 2026-10-18 English mirror of homepage and Contact refinements. */
+.en-home-business .en-home-entry-card {
+  align-items: flex-start;
+  min-height: 370px;
+  text-align: left;
+}
+.en-home-business .en-home-entry-visual {
+  justify-content: flex-start;
+  align-items: center;
+  flex: 0 0 auto;
+  width: 132px;
+  height: 132px;
+  margin: 0 0 21px;
+}
+.en-home-business .en-home-entry-visual img {
+  width: 132px;
+  height: 132px;
+  max-width: 132px;
+  max-height: 132px;
+  object-fit: contain;
+}
+.en-home-business .en-home-entry-card p {max-width: 480px}
+.en-handshake-cta {
+  background: #edf3fc;
+  border-top: 1px solid #e1e9f5;
+  border-bottom: 1px solid #e1e9f5;
+}
+.en-handshake-cta::before {
+  background-image:
+    linear-gradient(90deg,
+      rgba(247,249,254,.97) 0%,
+      rgba(246,249,254,.95) 36%,
+      rgba(243,247,254,.86) 61%,
+      rgba(224,236,253,.58) 100%
+    ),
+    url("https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261018-031147-frame-117-3986a186.webp");
+  background-position: center, center right;
+  background-size: cover, cover;
+  background-repeat: no-repeat;
+}
+body[data-page="contact"] .hero.en-contact-photo-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #1d69db;
+}
+body[data-page="contact"] .hero.en-contact-photo-hero::before {
+  content:"";
+  position: absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background-image:
+    linear-gradient(100deg,
+      rgba(28,106,231,.97) 0%,
+      rgba(26,102,221,.93) 39%,
+      rgba(25,91,197,.76) 71%,
+      rgba(19,69,156,.56) 100%
+    ),
+    url("https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261018-031147-frame-117-3986a186.webp");
+  background-size: cover, cover;
+  background-position:center,center right;
+  background-repeat:no-repeat;
+}
+body[data-page="contact"] .hero.en-contact-photo-hero > .container {position:relative;z-index:1}
+@media(max-width:760px) {
+  .en-home-business .en-home-entry-card {min-height:0}
+  .en-home-business .en-home-entry-visual {width:115px;height:115px;margin:0 0 16px}
+  .en-home-business .en-home-entry-visual img {width:115px;height:115px;max-width:115px;max-height:115px}
+  .en-handshake-cta::before {
+    background-image:linear-gradient(105deg,rgba(247,249,254,.95),rgba(234,242,255,.79)),url("https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261018-031147-frame-117-3986a186.webp");
+    background-position:center,63% center;
+  }
+  body[data-page="contact"] .hero.en-contact-photo-hero::before {
+    background-image:linear-gradient(95deg,rgba(28,106,231,.96),rgba(25,90,195,.79)),url("https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261018-031147-frame-117-3986a186.webp");
+    background-position:center,67% center;
+  }
+}
