@@ -5,7 +5,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-VERSION = '20261018-clean-notice01'
+VERSION = '20261018-home-motion08'
 BASE_URL = 'https://jyhome1228-cyber.github.io/myvbrand/'
 
 def esc(value):
