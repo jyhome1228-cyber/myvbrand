@@ -2832,3 +2832,120 @@ html.myv-intro-ready body {overflow:hidden}
 .prosumer-page .result-breakdown,body[data-page="prosumer"] .result-breakdown{min-width:0}
 @media(max-width:1050px){.prosumer-page .profit-stack,body[data-page="prosumer"] .profit-stack{grid-template-columns:repeat(2,minmax(0,1fr))}.prosumer-page .income-calculator,body[data-page="prosumer"] .income-calculator{grid-template-columns:1fr}.prosumer-page .calc-summary-panel,body[data-page="prosumer"] .calc-summary-panel{position:static}}
 @media(max-width:700px){.prosumer-page .profit-stack,body[data-page="prosumer"] .profit-stack{grid-template-columns:1fr}.prosumer-page .profit-row,body[data-page="prosumer"] .profit-row{min-height:0;padding:25px}.prosumer-page .calculator-section,body[data-page="prosumer"] .calculator-section{padding:78px 0}.prosumer-page .calc-fields-panel,.prosumer-page .calc-summary-panel,body[data-page="prosumer"] .calc-fields-panel,body[data-page="prosumer"] .calc-summary-panel{padding:23px}.prosumer-page .income-calculator,body[data-page="prosumer"] .income-calculator{padding:0;gap:16px}.prosumer-page .calc-copy h2,body[data-page="prosumer"] .calc-copy h2{font-size:32px}}
+
+
+/* === MYV Quest Calculator · unified Korean / English experience === */
+/* Preserve the underlying calculator and reward logic; refine its presentation. */
+.prosumer-page .calculator-section{padding:94px 0 106px}
+.prosumer-page .calc-shell{max-width:1250px}
+.prosumer-page .calc-copy{max-width:990px;margin:0 auto 22px}
+.prosumer-page .calc-copy h2{font-size:clamp(31px,3.2vw,44px);line-height:1.26;letter-spacing:-.043em}
+.prosumer-page .calc-copy>p:not(.section-kicker){max-width:790px;margin:15px auto 0;font-size:16px;line-height:1.75}
+.prosumer-page .calc-quest-intro{
+  position:relative;display:flex;align-items:flex-start;gap:20px;max-width:1110px;
+  margin:24px auto 0;padding:25px 28px;border:1px solid rgba(255,255,255,.32);
+  border-radius:24px;background:rgba(255,255,255,.11);color:#fff;text-align:left;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.13);
+}
+.prosumer-page .calc-quest-intro::after{
+  content:"";position:absolute;left:62px;bottom:-9px;width:16px;height:16px;
+  background:#3381f3;transform:rotate(45deg);border-right:1px solid rgba(255,255,255,.29);
+  border-bottom:1px solid rgba(255,255,255,.29);
+}
+.prosumer-page .calc-quest-emblem{
+  display:flex;align-items:center;justify-content:center;flex:0 0 48px;width:48px;height:48px;
+  border-radius:16px;background:#fff;color:#2575e9;font-size:26px;line-height:1;
+}
+.prosumer-page .calc-quest-body{min-width:0;flex:1}
+.prosumer-page .calc-quest-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:9px;
+  color:#d9e8ff;font-size:11px;font-weight:800;letter-spacing:.12em}
+.prosumer-page .calc-quest-top span:last-child{color:#fff;font-variant-numeric:tabular-nums}
+.prosumer-page .calc-quest-intro h3{margin:12px 0 7px;color:#fff;font-size:clamp(19px,1.9vw,27px);
+  line-height:1.4;letter-spacing:-.035em;font-weight:750}
+.prosumer-page .calc-quest-intro p{margin:0;color:rgba(255,255,255,.83);font-size:14px;line-height:1.7}
+.prosumer-page .calc-quest-steps{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}
+.prosumer-page .calc-quest-step{
+  min-height:37px;display:inline-flex;align-items:center;border:1px solid rgba(255,255,255,.25);
+  border-radius:999px;padding:7px 14px;background:rgba(255,255,255,.07);
+  color:rgba(255,255,255,.8);font-size:12px;font-weight:650;
+  transition:background .2s ease,color .2s ease,border-color .2s ease;
+}
+.prosumer-page .calc-quest-step:hover,.prosumer-page .calc-quest-step.is-current{
+  color:#fff;background:rgba(255,255,255,.19);border-color:rgba(255,255,255,.7)
+}
+.prosumer-page .calc-quest-step.is-done{color:#1d63c9;background:#fff;border-color:#fff}
+.prosumer-page .calc-quest-step:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.prosumer-page .income-calculator{
+  max-width:1110px;margin:25px auto 0;gap:20px;
+  grid-template-columns:minmax(0,1.13fr) minmax(300px,.87fr);align-items:stretch
+}
+.prosumer-page .calc-fields-panel,.prosumer-page .calc-summary-panel{
+  border-radius:25px;padding:30px 32px;box-shadow:0 18px 40px rgba(4,35,102,.12);
+}
+.prosumer-page .calc-panel-title{margin:0 0 15px;font-size:21px;line-height:1.4;letter-spacing:-.035em}
+.prosumer-page .calc-field{padding:13px 0}
+.prosumer-page .calc-label-row{margin-bottom:9px}
+.prosumer-page .calc-label-row label{font-size:15px}
+.prosumer-page .calc-input-wrap{min-height:58px;border-radius:13px;background:#fafcff}
+.prosumer-page .calc-input-wrap input{font-size:19px;font-weight:700;font-variant-numeric:tabular-nums}
+.prosumer-page .calc-input-wrap span{font-size:13px}
+.prosumer-page .calc-fields-panel input[type=range]{accent-color:#2774ee;cursor:pointer}
+.prosumer-page .calc-summary-panel{background:#f8fbff;position:sticky;top:105px;align-self:start}
+.prosumer-page .calc-panel-kicker{margin:0 0 13px;color:#2774ee;font-size:12px}
+.prosumer-page .calc-result{background:#fff;border-color:#e1eaf7;margin-top:12px;padding:23px 23px 17px;border-radius:20px}
+.prosumer-page .calc-result-label{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.prosumer-page .calc-result-label span{font-size:12px;line-height:1.5}
+.prosumer-page .calc-result-total{
+  margin:14px 0 22px;color:#2268da;display:block;font-size:clamp(28px,2.9vw,39px);
+  font-weight:800;line-height:1.2;white-space:nowrap;overflow-wrap:normal;
+  word-break:normal;letter-spacing:-.045em;font-variant-numeric:tabular-nums;
+}
+.prosumer-page .result-breakdown{display:grid;grid-template-columns:1fr;gap:0}
+.prosumer-page .result-breakdown div{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:13px 0}
+.prosumer-page .result-breakdown span{font-size:13px;line-height:1.55}
+.prosumer-page .result-breakdown strong{font-size:14px;margin:0;text-align:right;white-space:nowrap}
+.prosumer-page .calc-summary-footnote{margin:15px 0 0;color:#8997b1;font-size:12px;line-height:1.7}
+.prosumer-page .calc-quest-bubble{
+  position:relative;max-width:1110px;margin:27px auto 0;padding:22px 26px;
+  display:flex;align-items:center;gap:17px;border:1px solid rgba(255,255,255,.34);
+  border-radius:19px;background:#fff;color:#182a45;
+  box-shadow:0 17px 35px rgba(6,46,125,.09);
+}
+.prosumer-page .calc-quest-bubble::before{
+  content:"";position:absolute;top:-9px;right:23%;width:16px;height:16px;
+  transform:rotate(45deg);background:#fff;
+  border-top:1px solid rgba(255,255,255,.45);border-left:1px solid rgba(255,255,255,.45)
+}
+.prosumer-page .calc-quest-bubble-badge{
+  width:42px;height:42px;flex:0 0 42px;display:flex;align-items:center;justify-content:center;
+  color:#fff;background:#2278f9;border-radius:14px;font-size:23px
+}
+.prosumer-page .calc-quest-bubble span{display:block;margin-bottom:3px;font-size:10px;letter-spacing:.11em;color:#2474e4;font-weight:800}
+.prosumer-page .calc-quest-bubble p{font-size:17px;font-weight:700;color:#182a45;line-height:1.6;margin:0}
+@media(max-width:1050px){
+  .prosumer-page .income-calculator{grid-template-columns:1fr;max-width:780px}
+  .prosumer-page .calc-summary-panel{position:static}
+  .prosumer-page .calc-quest-bubble{max-width:780px}
+}
+@media(max-width:700px){
+  .prosumer-page .calculator-section{padding:75px 0 82px}
+  .prosumer-page .calc-copy h2{font-size:clamp(28px,7vw,34px)}
+  .prosumer-page .calc-copy>p:not(.section-kicker){font-size:14px}
+  .prosumer-page .calc-quest-intro{padding:19px 18px;gap:12px;margin-top:21px}
+  .prosumer-page .calc-quest-emblem{width:35px;height:35px;flex-basis:35px;border-radius:11px;font-size:20px}
+  .prosumer-page .calc-quest-intro h3{font-size:18px}
+  .prosumer-page .calc-quest-intro p{font-size:13px}
+  .prosumer-page .calc-quest-steps{gap:7px;margin-top:15px}
+  .prosumer-page .calc-quest-step{font-size:11px;padding:6px 10px}
+  .prosumer-page .calc-fields-panel,.prosumer-page .calc-summary-panel{padding:24px 21px}
+  .prosumer-page .calc-result{padding:18px}
+  .prosumer-page .calc-result-total{font-size:clamp(26px,7vw,36px)}
+  .prosumer-page .result-breakdown strong{font-size:13px}
+  .prosumer-page .calc-quest-bubble{padding:18px 16px;align-items:flex-start;gap:12px}
+  .prosumer-page .calc-quest-bubble-badge{width:33px;height:33px;flex-basis:33px;border-radius:11px;font-size:18px}
+  .prosumer-page .calc-quest-bubble p{font-size:14px}
+  .prosumer-page .calc-quest-bubble::before{right:20%}
+}
+@media(prefers-reduced-motion:reduce){
+  .prosumer-page .calc-quest-step{transition:none}
+}
