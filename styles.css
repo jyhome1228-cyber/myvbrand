@@ -2355,3 +2355,28 @@ main [id]{scroll-margin-top:110px}
 /* V.Point rewards visual: centered and kept outside the flow chart geometry. */
 .vpoint-panel-title .myv-point-icon{width:84px;height:84px;margin:20px auto 0;border-radius:18px}
 @media(max-width:760px){.vpoint-panel-title .myv-point-icon{width:72px;height:72px}}
+
+/* 2026-10-18 — Business dual-engine cards: white surfaces, borders only. */
+.subpage .engine-grid > article,
+.subpage .engine-grid > article:nth-child(2) {
+  background: #fff;
+  color: var(--ink);
+  border: 1px solid #dfe6ef;
+  box-shadow: none;
+}
+.subpage .engine-grid > article > span,
+.subpage .engine-grid > article:nth-child(2) > span {
+  color: var(--blue);
+}
+.subpage .engine-grid > article h3,
+.subpage .engine-grid > article:nth-child(2) h3 {
+  color: var(--ink);
+}
+.subpage .engine-grid > article p,
+.subpage .engine-grid > article:nth-child(2) p {
+  color: var(--muted);
+}
+.subpage .engine-grid > article .myv-icon-wrap {
+  background: #fff;
+  border: 1px solid #e6ebf2;
+}
