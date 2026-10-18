@@ -7,7 +7,7 @@
   <title>Prosumer Program | MYV</title>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css" />
-  <link rel="stylesheet" href="../styles.css?v=20261018-prosumer-layout10" />  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg?v=20261006-0010" />
+  <link rel="stylesheet" href="../styles.css?v=20261018-quest01" />  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg?v=20261006-0010" />
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png?v=20261006-0010" />
   <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png?v=20261006-0010" />
   <link rel="stylesheet" href="./prosumer-layout.css?v=20261018-prosumer-unified13" />
@@ -151,12 +151,12 @@
         <article class="profit-row">
           <span class="profit-number">01</span>
           <div class="profit-copy"><h3>Direct Sales Income <small>Sales</small></h3><p>Commission earned when eligible products are sold through your dedicated link.</p></div>
-          <div class="profit-example"><small>Example · KRW 10M in sales × 20%</small><strong>KRW 2,000,000</strong></div>
+          <div class="profit-example"><small>Example · KRW 3M in sales × 15%</small><strong>KRW 450,000</strong></div>
         </article>
         <article class="profit-row">
           <span class="profit-number">02</span>
           <div class="profit-copy"><h3>Follower Purchase Income <small>Asset</small></h3><p>Rewards associated with eligible purchases by followers connected to your account.</p></div>
-          <div class="profit-example"><small>Example · 100 people × KRW 100K × 20%</small><strong>+ KRW 2,000,000</strong></div>
+          <div class="profit-example"><small>Example · 30 people × KRW 50K × 15%</small><strong>+ KRW 225,000</strong></div>
         </article>
         <article class="profit-row">
           <span class="profit-number">03</span>
@@ -173,7 +173,19 @@
         <p class="section-kicker">INCOME CALCULATOR</p>
         <h2>Estimate earnings based on your activity</h2>
         <p>Enter direct sales, eligible follower purchases and commission rates to explore a monthly earnings example.</p>
-        <div class="calc-note">A simple simulation using your inputs and illustrative commission rates.</div>
+        <div class="calc-quest-intro" id="calcQuestGuide">
+          <div class="calc-quest-emblem" aria-hidden="true">✦</div>
+          <div class="calc-quest-body">
+            <div class="calc-quest-top"><span>MYV QUEST GUIDE</span><span id="questProgress">STEP 1 / 3</span></div>
+            <h3 id="questHeadline">First, try changing your monthly direct sales.</h3>
+            <p id="questSubline">Start with your own sales to see how direct rewards are calculated.</p>
+            <div class="calc-quest-steps" role="group" aria-label="Calculator quest steps">
+              <button type="button" data-quest-target="monthlySales" class="calc-quest-step is-current">01 · Direct sales</button>
+              <button type="button" data-quest-target="followers" class="calc-quest-step">02 · Followers</button>
+              <button type="button" data-quest-target="avgPurchase" class="calc-quest-step">03 · Average spend</button>
+            </div>
+          </div>
+        </div>
       </div>
 
       <form class="income-calculator reveal" id="prosumerCalculator">
@@ -181,19 +193,19 @@
           <h3 class="calc-panel-title">Enter your activity</h3>
           <div class="calc-field">
           <div class="calc-label-row"><label for="monthlySales">Monthly direct sales</label></div>
-          <div class="calc-input-wrap"><input id="monthlySales" type="text" value="10,000,000" inputmode="numeric" autocomplete="off" data-max="100000000000" /><span>KRW</span></div>
+          <div class="calc-input-wrap"><input id="monthlySales" type="text" value="3,000,000" inputmode="numeric" autocomplete="off" data-max="100000000000" /><span>KRW</span></div>
         </div>
         <div class="calc-field">
           <div class="calc-label-row"><label for="followers">Connected follower purchasers</label></div>
-          <div class="calc-input-wrap"><input id="followers" type="text" value="100" inputmode="numeric" autocomplete="off" data-max="1000000" /><span>people</span></div>
+          <div class="calc-input-wrap"><input id="followers" type="text" value="30" inputmode="numeric" autocomplete="off" data-max="1000000" /><span>people</span></div>
         </div>
         <div class="calc-field">
           <div class="calc-label-row"><label for="avgPurchase">Average monthly spend per person</label></div>
-          <div class="calc-input-wrap"><input id="avgPurchase" type="text" value="100,000" inputmode="numeric" autocomplete="off" data-max="100000000000" /><span>KRW</span></div>
+          <div class="calc-input-wrap"><input id="avgPurchase" type="text" value="50,000" inputmode="numeric" autocomplete="off" data-max="100000000000" /><span>KRW</span></div>
         </div>
         <div class="calc-field">
-          <div class="calc-label-row"><label for="commissionRate">Illustrative commission rate</label><output id="commissionOutput">20%</output></div>
-          <input id="commissionRate" type="range" min="5" max="40" step="1" value="20" />
+          <div class="calc-label-row"><label for="commissionRate">Illustrative commission rate</label><output id="commissionOutput">15%</output></div>
+          <input id="commissionRate" type="range" min="5" max="40" step="1" value="15" />
         </div>
         <label class="ambassador-toggle">
           <input id="ambassadorBonus" type="checkbox" />
@@ -204,16 +216,20 @@
           <p class="calc-panel-kicker">MYV REWARD SIMULATION</p>
           <div class="calc-result" aria-live="polite">
           <div class="calc-result-label"><span>Illustrative monthly total</span><span>SIMULATION</span></div>
-          <strong class="calc-result-total" id="totalIncome">KRW 4,000,000</strong>
+          <strong class="calc-result-total" id="totalIncome">KRW 675,000</strong>
           <div class="result-breakdown">
-            <div><span>Direct sales</span><strong id="salesIncome">KRW 2,000,000</strong></div>
-            <div><span>Follower purchases</span><strong id="assetIncome">KRW 2,000,000</strong></div>
+            <div><span>Direct sales</span><strong id="salesIncome">KRW 450,000</strong></div>
+            <div><span>Follower purchases</span><strong id="assetIncome">KRW 225,000</strong></div>
             <div><span>Activity bonus</span><strong id="bonusIncome">KRW 0</strong></div>
           </div>
         </div>
-          <p class="calc-summary-footnote">Illustrative results calculated from your inputs.</p>
+          <p class="calc-summary-footnote">Illustrative results, not guaranteed earnings.</p>
         </aside>
       </form>
+      <div class="calc-quest-bubble" role="status">
+        <div class="calc-quest-bubble-badge" aria-hidden="true">✦</div>
+        <div><span>MYV GUIDE · YOUR RESULT</span><p id="questBubbleText" aria-live="polite">With your current inputs, the illustrative monthly total is KRW 675,000.</p></div>
+      </div>
     </div>
   </section>
 
@@ -345,85 +361,7 @@
       </div>
     </div>
   </footer>
-<script>
-  (() => {
-    const root = document.getElementById('prosumerCalculator');
-    if (!root) return;
-    const sales = document.getElementById('monthlySales');
-    const followers = document.getElementById('followers');
-    const avg = document.getElementById('avgPurchase');
-    const rate = document.getElementById('commissionRate');
-    const bonus = document.getElementById('ambassadorBonus');
-    const rateOut = document.getElementById('commissionOutput');
-    const totalOut = document.getElementById('totalIncome');
-    const salesOut = document.getElementById('salesIncome');
-    const assetOut = document.getElementById('assetIncome');
-    const bonusOut = document.getElementById('bonusIncome');
-    const won = new Intl.NumberFormat('ko-KR');
-
-    const safeNumber = (el) => {
-      const value = Number(el.value.replace(/,/g, ''));
-      if (!Number.isFinite(value) || value < 0) return 0;
-      return Math.min(value, 100000000000);
-    };
-
-    const update = () => {
-      const saleValue = safeNumber(sales);
-      const followerValue = Math.min(safeNumber(followers), 1000000);
-      const avgValue = safeNumber(avg);
-      const rateValue = Math.min(Math.max(Number(rate.value) || 20, 5), 40);
-      const direct = Math.round(saleValue * rateValue / 100);
-      const asset = Math.round(followerValue * avgValue * rateValue / 100);
-      const activity = bonus.checked ? 1000000 : 0;
-      const total = direct + asset + activity;
-
-      rateOut.textContent = rateValue + '%';
-      salesOut.textContent = 'KRW ' + won.format(direct);
-      assetOut.textContent = 'KRW ' + won.format(asset);
-      bonusOut.textContent = 'KRW ' + won.format(activity);
-      totalOut.textContent = 'KRW ' + won.format(total);
-    };
-
-    const numberInputs = [sales, followers, avg];
-    const formatInput = (input) => {
-      const caret = input.selectionStart ?? input.value.length;
-      const digitsBeforeCaret = input.value.slice(0, caret).normalize('NFKC').replace(/\D/g, '').length;
-      const digits = input.value.normalize('NFKC').replace(/\D/g, '');
-      const value = Math.min(Number(digits), Number(input.dataset.max));
-      const formatted = digits ? won.format(value) : '';
-      input.value = formatted;
-      if (document.activeElement === input) {
-        let position = 0;
-        let count = 0;
-        while (position < formatted.length && count < digitsBeforeCaret) {
-          if (/\d/.test(formatted[position])) count++;
-          position++;
-        }
-        input.setSelectionRange(position, position);
-      }
-    };
-    numberInputs.forEach((input) => {
-      formatInput(input);
-      input.addEventListener('blur', () => {
-        if (!input.value) input.value = '0';
-        formatInput(input);
-        update();
-      });
-    });
-    root.addEventListener('input', (event) => {
-      if (event.isComposing) return;
-      if (numberInputs.includes(event.target)) formatInput(event.target);
-      update();
-    });
-    root.addEventListener('compositionend', (event) => {
-      if (numberInputs.includes(event.target)) formatInput(event.target);
-      update();
-    });
-    root.addEventListener('change', update);
-    root.addEventListener('submit', (event) => event.preventDefault());
-    update();
-  })();
-</script>
+<script src="../assets/prosumer-quest.js?v=20261018-quest01"></script>
   <script src="../script.js?v=20261018-home-motion08"></script>
 <script src="./locale-switch.js?v=20261018-parity01"></script>
 </body>
