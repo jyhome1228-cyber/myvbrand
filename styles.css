@@ -2469,3 +2469,87 @@ main [id]{scroll-margin-top:110px}
   .subpage .page-hero.about-hero-banner::before { background-position:center, 60% center; }
   .home-main .home-final-cta.home-story-cta::before { background-position:center, 56% center; }
 }
+
+/* 2026-10-18 · Compact Business imagery and remove visual number hierarchy. */
+/* Home BUSINESS: keep the supplied transparent artwork unchanged, only scale it down. */
+.home-main.centered-page .home-business-grid.has-visuals article .section-image-slot.has-asset {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 170px;
+  margin: 0 auto 22px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+.home-main.centered-page .home-business-grid.has-visuals article .section-image-slot.has-asset img {
+  width: min(100%, 165px);
+  height: 165px;
+  max-width: 165px;
+  max-height: 165px;
+  display: block;
+  object-fit: contain;
+  mix-blend-mode: normal;
+}
+.home-main.centered-page .home-business-grid.has-visuals article {
+  min-height: 390px;
+}
+.home-main.centered-page .home-business-grid.has-visuals article > span {
+  margin-bottom: 16px;
+}
+/* Business subpage: titles align after removing 01/02/03. */
+.subpage .business-process-grid > article {
+  position: relative;
+  min-height: 210px;
+  padding: 30px 32px;
+}
+.subpage .business-process-grid > article h3 {
+  margin: 0 0 18px;
+}
+.subpage .business-process-grid > article.myv-icon-card h3 {
+  padding-right: 55px;
+}
+.subpage .business-process-grid > article .myv-icon-wrap {
+  position: absolute;
+  top: 24px;
+  right: 25px;
+  width: 52px;
+  height: 52px;
+  margin: 0;
+  background: transparent;
+  border: 0;
+}
+.subpage .business-process-grid > article .myv-icon-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.subpage .business-process-grid > article p {
+  margin: 0;
+}
+@media (max-width: 760px) {
+  .home-main.centered-page .home-business-grid.has-visuals article .section-image-slot.has-asset {
+    height: 145px;
+    margin-bottom: 18px;
+  }
+  .home-main.centered-page .home-business-grid.has-visuals article .section-image-slot.has-asset img {
+    width: min(100%, 140px);
+    height: 140px;
+    max-width: 140px;
+    max-height: 140px;
+  }
+  .home-main.centered-page .home-business-grid.has-visuals article {
+    min-height: 0;
+  }
+  .subpage .business-process-grid > article {
+    min-height: 0;
+    padding: 26px;
+  }
+  .subpage .business-process-grid > article .myv-icon-wrap {
+    top: 22px;
+    right: 22px;
+    width: 45px;
+    height: 45px;
+  }
+}
