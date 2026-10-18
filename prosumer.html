@@ -171,11 +171,13 @@
         <p class="section-kicker">INCOME CALCULATOR</p>
         <h2>내 활동 기준으로 예상 수익을 계산해보세요</h2>
         <p>월 직접 판매액, 연결된 팔로워의 구매 규모, 적용 수수료율을 입력하면 예시 기준의 월 예상 수익을 확인할 수 있습니다.</p>
-        <div class="calc-note">본 계산기는 프로슈머 제안서의 수익 구조를 이해하기 위한 단순 시뮬레이션입니다. 실제 수수료율은 제품 카테고리별로 다를 수 있으며, 실제 수익은 활동량·구매 전환·시장 상황 등에 따라 달라질 수 있습니다.</div>
+        <div class="calc-note">입력한 활동 규모와 예시 수수료율을 바탕으로 예상 수익을 확인하는 시뮬레이션입니다.</div>
       </div>
 
       <form class="income-calculator reveal" id="prosumerCalculator">
-        <div class="calc-field">
+        <div class="calc-fields-panel">
+          <h3 class="calc-panel-title">활동 기준 입력</h3>
+          <div class="calc-field">
           <div class="calc-label-row"><label for="monthlySales">월 직접 판매액</label></div>
           <div class="calc-input-wrap"><input id="monthlySales" type="text" value="10,000,000" inputmode="numeric" autocomplete="off" data-max="100000000000" /><span>원</span></div>
         </div>
@@ -195,8 +197,10 @@
           <input id="ambassadorBonus" type="checkbox" />
           <span><strong>앰버서더 활동 조건 충족</strong><span>승격 및 월 UGC 활동 조건 충족 시 제안서 기준 월 100만원 활동비를 계산에 포함합니다.</span></span>
         </label>
-
-        <div class="calc-result" aria-live="polite">
+        </div>
+        <aside class="calc-summary-panel" aria-label="예상 수익 결과">
+          <p class="calc-panel-kicker">MYV REWARD SIMULATION</p>
+          <div class="calc-result" aria-live="polite">
           <div class="calc-result-label"><span>월 예상 총수익</span><span>SIMULATION</span></div>
           <strong class="calc-result-total" id="totalIncome">4,000,000원</strong>
           <div class="result-breakdown">
@@ -205,6 +209,8 @@
             <div><span>활동비</span><strong id="bonusIncome">0원</strong></div>
           </div>
         </div>
+          <p class="calc-summary-footnote">입력값에 따른 예시 계산 결과입니다.</p>
+        </aside>
       </form>
     </div>
   </section>
