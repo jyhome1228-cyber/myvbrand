@@ -45,3 +45,15 @@
 /* A small rewards visual for the V.Point explainer card. */
 .panel.myv-icon-card .myv-point-icon{width:86px;height:86px;margin:15px 0 19px}
 @media(max-width:760px){.panel.myv-icon-card .myv-point-icon{width:74px;height:74px}}
+
+/* Business engine cards — neutral white surfaces with a fine outline. */
+body[data-page="business"] .hero + .section.soft .grid.cols-2 > .panel {
+  background: #fff;
+  color: var(--ink);
+  border-color: #dfe6ef;
+  box-shadow: none;
+}
+body[data-page="business"] .hero + .section.soft .grid.cols-2 > .panel .myv-icon-wrap {
+  background: #fff;
+  border: 1px solid #e6ebf2;
+}
