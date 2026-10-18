@@ -2949,3 +2949,72 @@ html.myv-intro-ready body {overflow:hidden}
 @media(prefers-reduced-motion:reduce){
   .prosumer-page .calc-quest-step{transition:none}
 }
+
+/* MYV Prosumer — explain three income types without illustrative price figures.
+   Actual figures belong only in the interactive calculator below. */
+.prosumer-page .profit-stack.profit-concept-only {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  align-items: stretch;
+  gap: 18px;
+}
+.prosumer-page .profit-stack.profit-concept-only .profit-row {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  min-width: 0;
+  min-height: 245px;
+  padding: 31px 29px 33px;
+  gap: 0;
+  background: #fff;
+  border: 1px solid #dfe6ef;
+  border-radius: 22px;
+}
+.prosumer-page .profit-stack.profit-concept-only .profit-number {
+  margin: 0 0 26px;
+  line-height: 1.2;
+}
+.prosumer-page .profit-stack.profit-concept-only .profit-copy {
+  flex: none;
+  width: 100%;
+}
+.prosumer-page .profit-stack.profit-concept-only .profit-copy h3 {
+  margin: 0 0 17px;
+  font-size: clamp(23px, 1.9vw, 29px);
+  line-height: 1.3;
+  letter-spacing: -.038em;
+  font-weight: 800;
+}
+.prosumer-page .profit-stack.profit-concept-only .profit-copy h3 small {
+  font-size: 12px;
+  font-weight: 600;
+  color: #8995a9;
+}
+.prosumer-page .profit-stack.profit-concept-only .profit-copy p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.75;
+}
+@media (max-width: 1050px) {
+  .prosumer-page .profit-stack.profit-concept-only {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+}
+@media (max-width: 700px) {
+  .prosumer-page .profit-stack.profit-concept-only {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .prosumer-page .profit-stack.profit-concept-only .profit-row {
+    min-height: 0;
+    padding: 25px 24px;
+  }
+  .prosumer-page .profit-stack.profit-concept-only .profit-number {
+    margin-bottom: 19px;
+  }
+  .prosumer-page .profit-stack.profit-concept-only .profit-copy h3 {
+    font-size: 24px;
+  }
+}
