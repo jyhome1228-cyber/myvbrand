@@ -118,8 +118,10 @@ document.querySelectorAll(".reveal").forEach((group) => {
       closing = true;
       window.clearTimeout(autoClose);
       overlay.classList.add("is-leaving");
-      root.classList.remove("myv-intro-ready");
-      window.setTimeout(() => overlay.remove(), 510);
+      window.setTimeout(() => {
+        root.classList.remove("myv-intro-ready");
+        overlay.remove();
+      }, 510);
       document.removeEventListener("keydown", onEscape);
     };
     function onEscape(event) {
