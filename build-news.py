@@ -80,7 +80,7 @@ def main():
     before = template.split('<main>')[0]
     after = template.split('</main>')[1]
     before = before.replace('</head>', f'<link rel="stylesheet" href="./news.css?v={VERSION}" />\n</head>')
-    after = after.replace('./script.js', f'./script.js?v={VERSION}')
+    after = re.sub(r'\./script\.js(?:\?v=[^"']+)?', f'./script.js?v={VERSION}', after)
     filters = '\n'.join(f'<button type="button" data-filter="{cat}" aria-pressed="{str(cat == "ALL").lower()}" class="{"is-active" if cat == "ALL" else ""}">{cat}</button>' for cat in ['ALL','MYV','PARTNER','GLOBAL'])
     archive = f'''<main>
 <section class="page-hero page-hero-navy compact-hero"><div class="container page-hero-inner reveal"><p class="eyebrow light">NEWS</p><h1>MYV NEWS</h1><p>마이브이의 새로운 소식과 파트너십, 글로벌 활동을 전합니다.</p></div></section>
