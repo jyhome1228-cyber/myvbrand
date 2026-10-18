@@ -1,48 +1,93 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Discover the MYV prosumer program and estimate illustrative rewards.">
-<meta name="robots" content="noindex,follow">
-<title>Become a Prosumer | MYV</title>
-<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-<link rel="stylesheet" href="../styles.css?v=20261018-home-motion08">
-<link rel="stylesheet" href="./site.css?v=20261018-prosumer-layout10">
-<link rel="stylesheet" href="../prosumer-layout.css?v=20261018-prosumer-unified13">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="MYV connects consumers, prosumers and selected brands through value-driven commerce and shared growth." />
+  <title>Prosumer Program | MYV</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css" />
+  <link rel="stylesheet" href="../styles.css?v=20261018-prosumer-layout10" />  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg?v=20261006-0010" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png?v=20261006-0010" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png?v=20261006-0010" />
+  <link rel="stylesheet" href="./prosumer-layout.css?v=20261018-prosumer-unified13" />
+<meta name="robots" content="noindex,follow" />
 </head>
-<body data-page="prosumer">
-<a class="skip-link" href="#main">Skip to content</a>
-<header class="site-header"><div class="container header-inner">
-<a class="brand" href="./index.html" aria-label="MYV homepage"><img src="../assets/myv-logo.svg" alt="MYV"></a>
-<div class="header-right"><nav class="desktop-nav" aria-label="Main navigation">
-<a class="" href="./about.html">ABOUT</a>
-<a class="" href="./business.html">BUSINESS</a>
-<div class="nav-dropdown"><button type="button" aria-expanded="false" aria-haspopup="true">WITH US ⌄</button><div class="drop-menu"><a href="./prosumer.html">Prosumer</a><a href="./partner.html">Brand Partnerships</a></div></div>
-<a href="https://myv.co.kr/" target="_blank" rel="noopener noreferrer">SHOP ↗</a>
-<a class="" href="./news.html">NEWS</a>
-<a class="" href="./contact.html">CONTACT US</a>
-</nav><div class="language-switch" aria-label="Language"><a class="muted" href="../prosumer.html" data-locale="ko" lang="ko">KR</a><b>|</b><a href="./prosumer.html" aria-current="page" data-locale="en">EN</a></div>
-<button type="button" class="menu-button" aria-controls="mobileNav" aria-expanded="false" aria-label="Open navigation">☰</button>
-</div></div>
-<nav id="mobileNav" class="mobile-nav" aria-label="Mobile navigation">
-<a href="./about.html">ABOUT</a><a href="./business.html">BUSINESS</a>
-<a href="./prosumer.html">WITH US / Prosumer</a><a href="./partner.html">WITH US / Brand Partnerships</a>
-<a href="https://myv.co.kr/" target="_blank" rel="noopener noreferrer">SHOP ↗</a>
-<a href="./news.html">NEWS</a><a href="./contact.html">CONTACT US</a></nav></header>
-<main class="prosumer-page centered-page">
+<body class="subpage">
+
+  <header class="site-header subpage-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="./index.html" class="brand" aria-label="MYV homepage">
+        <img class="brand-logo brand-logo-white" src="../assets/myv-logo-white.svg" alt="MYV" />
+        <img class="brand-logo brand-logo-color" src="../assets/myv-logo.svg" alt="" aria-hidden="true" />
+      </a>
+
+      <div class="header-actions">
+        <nav class="desktop-nav" aria-label="Main navigation">
+          <a href="./about.html" class="">ABOUT</a>
+          <a href="./business.html" class="">BUSINESS</a>
+
+          <div class="nav-dropdown">
+            <button class="nav-dropdown-trigger is-current" type="button" aria-haspopup="true">
+              WITH US <span class="chevron">⌄</span>
+            </button>
+            <div class="nav-dropdown-menu" role="menu">
+              <a href="./prosumer.html" role="menuitem">Prosumer</a>
+              <a href="./partner.html" role="menuitem">Brand Partnership</a>
+            </div>
+          </div>
+
+          <a class="nav-link-button shop-link" href="https://myv.co.kr/" target="_blank" rel="noreferrer">SHOP ↗</a>
+          <a href="./news.html" class="">NEWS</a>
+          <a href="./contact.html" class="">CONTACT US</a>
+        </nav>
+
+        <div class="language-switch" aria-label="Language">
+          <button type="button" class="lang-button " title="Korean">KR</button>
+          <span></span>
+          <button type="button" class="lang-button is-active" title="English">EN</button>
+        </div>
+
+        <button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-menu" aria-hidden="true">
+      <div class="container mobile-menu-inner">
+        <a href="./about.html">ABOUT</a>
+        <a href="./business.html">BUSINESS</a>
+        <div class="mobile-submenu">
+          <span>WITH US</span>
+          <a href="./prosumer.html">Prosumer</a>
+          <a href="./partner.html">Brand Partnership</a>
+        </div>
+        <a class="mobile-nav-button shop-link" href="https://myv.co.kr/" target="_blank" rel="noreferrer">SHOP ↗</a>
+        <a href="./news.html">NEWS</a>
+        <a href="./contact.html">CONTACT US</a>
+        <div class="mobile-language">
+          <button type="button" class="lang-button ">KR</button>
+          <span></span>
+          <button type="button" class="lang-button is-active">EN</button>
+        </div>
+      </div>
+    </div>
+  </header>
+<main id="main" class="prosumer-page centered-page">
   <section class="myv-photo-hero prosumer-hero centered-hero" style="--myv-hero-photo:url('https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261018-031145-frame-1-7bcc92a6.webp')">
     <div class="container prosumer-hero-inner centered-hero-inner">
       <div class="prosumer-hero-copy centered-hero-copy reveal">
         <p class="eyebrow light">MYV PROSUMER</p>
-        <h1>Beyond one-off promotions,<br />Build value through lasting relationships</h1>
-        <p>MYV prosumers share meaningful first-hand product experiences, connecting brands and customers through trusted recommendations.</p>
+        <h1>Beyond group-buying campaigns,<br />relationships become an asset.</h1>
+        <p>MYV prosumers are more than sellers. They experience products firsthand and connect brands with consumers through trust.</p>
         <div class="hero-actions">
-          <a class="prosumer-primary" href="#income-calculator">Explore the income calculator</a>
-          <a class="prosumer-secondary" href="./contact.html">Apply as a prosumer →</a>
+          <a class="prosumer-primary" href="#income-calculator">Explore the earnings calculator</a>
+          <a class="prosumer-secondary" href="./contact.html">Apply as a Prosumer →</a>
         </div>
       </div>
       <div class="hero-image-slot has-asset reveal">
-            <img src="../assets/prosumer-sharing.webp" width="1254" height="1254" alt="Prosumer sharing product experiences through content and recommendations" loading="eager" fetchpriority="high" decoding="async" />
+            <img src="../assets/prosumer-sharing.webp" width="1254" height="1254" alt="Prosumers sharing experiences through content" loading="eager" fetchpriority="high" decoding="async" />
           </div>
     </div>
   </section>
@@ -51,14 +96,14 @@
     <div class="container">
       <div class="prosumer-heading reveal">
         <p class="section-kicker">PAIN POINTS</p>
-        <h2>Spend less time on repetitive influencer operations</h2>
-        <p>MYV aims to reduce time spent sourcing, negotiating, selling and handling service inquiries, so you can focus on content and relationships.</p>
+        <h2>More creating. Less repetitive work.</h2>
+        <p>Step away from repeatedly sourcing products, negotiating, selling and managing inquiries to focus on content and relationships.</p>
       </div>
       <div class="pain-grid reveal">
-        <article class="pain-card"><span>01 · SOURCING</span><h3>The endless sourcing cycle</h3><p>Repeated product sourcing, supplier meetings and price negotiations can become an intensive weekly cycle.</p></article>
-        <article class="pain-card"><span>02 · REVENUE</span><h3>Limits of one-time earnings</h3><p>One-off commissions from a single sales campaign do not ensure continued earnings.</p></article>
-        <article class="pain-card"><span>03 · TRUST</span><h3>Losing audience trust</h3><p>Excessive promotions of unverified products can erode long-term audience confidence.</p></article>
-        <article class="pain-card"><span>04 · OPERATION</span><h3>Too much work behind each sale</h3><p>Shipping questions, returns and customer service can take time away from creating valuable content.</p></article>
+        <article class="pain-card"><span>01 · SOURCING</span><h3>Endless product sourcing</h3><p>Constant product searches, supplier meetings and price negotiations take up valuable time.</p></article>
+        <article class="pain-card"><span>02 · REVENUE</span><h3>One-off earnings</h3><p>Single-campaign commissions can end when a promotion does. Last month’s sales do not automatically carry forward.</p></article>
+        <article class="pain-card"><span>03 · TRUST</span><h3>Eroding follower trust</h3><p>Promoting unverified products indiscriminately can undermine long-term audience trust.</p></article>
+        <article class="pain-card"><span>04 · OPERATION</span><h3>Time-consuming operations</h3><p>Shipping inquiries, returns and customer support can take time away from making great content.</p></article>
       </div>
     </div>
   </section>
@@ -67,13 +112,13 @@
     <div class="container">
       <div class="definition-top reveal">
         <p class="section-kicker">PROFESSIONAL CONSUMER</p>
-        <h2>The answer is becoming a prosumer</h2>
-        <p>Go beyond selling to curating value. Share real experiences with products and build opportunities through trust.</p>
+        <h2>The answer: become a Prosumer</h2>
+        <p>Not just a seller, but a curator. Share firsthand experiences and create opportunities through trusted recommendations.</p>
       </div>
       <div class="value-grid-pro reveal">
-        <article class="value-card myv-icon-card"><span>EXPERIENCE</span><div class="myv-icon-wrap"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261018-031142-image-7-4dfe9c45.webp" width="1254" height="1254" loading="lazy" decoding="async" alt="" aria-hidden="true" /></div><h3>Share authentic experiences</h3><p>Discover carefully selected products, try them yourself and share honest experiences with your audience.</p></article>
-        <article class="value-card myv-icon-card"><span>RELATIONSHIP</span><div class="myv-icon-wrap"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261018-031143-image-9-fbe7160d.webp" width="1254" height="1254" loading="lazy" decoding="async" alt="" aria-hidden="true" /></div><h3>Build trust-led relationships</h3><p>Prioritize audience trust over indiscriminate promotion.</p></article>
-        <article class="value-card myv-icon-card"><span>SUSTAINABILITY</span><div class="myv-icon-wrap"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261018-031144-image-11-a73301ca.webp" width="1254" height="1254" loading="lazy" decoding="async" alt="" aria-hidden="true" /></div><h3>Make value sustainable</h3><p>Aim to create relationships that go beyond one-time product promotions.</p></article>
+        <article class="value-card myv-icon-card"><span>EXPERIENCE</span><div class="myv-icon-wrap"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261018-031142-image-7-4dfe9c45.webp" width="1254" height="1254" loading="lazy" decoding="async" alt="" aria-hidden="true" /></div><h3>Authentic experiences</h3><p>Try carefully selected products and share your honest experiences.</p></article>
+        <article class="value-card myv-icon-card"><span>RELATIONSHIP</span><div class="myv-icon-wrap"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261018-031143-image-9-fbe7160d.webp" width="1254" height="1254" loading="lazy" decoding="async" alt="" aria-hidden="true" /></div><h3>Trust-based relationships</h3><p>Put follower trust first instead of relying on indiscriminate promotion.</p></article>
+        <article class="value-card myv-icon-card"><span>SUSTAINABILITY</span><div class="myv-icon-wrap"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261018-031144-image-11-a73301ca.webp" width="1254" height="1254" loading="lazy" decoding="async" alt="" aria-hidden="true" /></div><h3>Sustainable opportunities</h3><p>Build relationships that can continue beyond a single recommendation or sale.</p></article>
       </div>
     </div>
   </section>
@@ -82,14 +127,14 @@
     <div class="container">
       <div class="prosumer-heading reveal">
         <p class="section-kicker">MYV ECOSYSTEM</p>
-        <h2>A connected ecosystem for prosumers</h2>
-        <p>MYV connects curation, operations, settlement and long-term network development.</p>
+        <h2>An ecosystem built for prosumers</h2>
+        <p>MYV connects product selection, operations, settlement and network growth.</p>
       </div>
       <div class="core-grid reveal">
-        <article class="core-card"><span>CORE 01</span><h3>Curated product selection</h3><p>Explore a portfolio of products reviewed by dedicated merchandisers.</p></article>
-        <article class="core-card"><span>CORE 02</span><h3>Three-part income framework</h3><p>Direct sales, follower-linked purchases and ambassador activities are presented as three potential reward components.</p></article>
-        <article class="core-card"><span>CORE 03</span><h3>All-in-one business support</h3><p>Logistics, shipping, customer service and settlement support let you focus on meaningful content.</p></article>
-        <article class="core-card"><span>CORE 04</span><h3>A growing network asset</h3><p>Build stronger follower relationships and understand purchase trends over time.</p></article>
+        <article class="core-card"><span>CORE 01</span><h3>Curated products</h3><p>Access curated product options to reduce the time spent sourcing independently.</p></article>
+        <article class="core-card"><span>CORE 02</span><h3>Three-part rewards model</h3><p>Direct sales, eligible follower purchases and ambassador activity rewards form a three-part model.</p></article>
+        <article class="core-card"><span>CORE 03</span><h3>All-in-one support</h3><p>Operational support for logistics, delivery, customer service and settlement lets you focus on content.</p></article>
+        <article class="core-card"><span>CORE 04</span><h3>A growing network</h3><p>Build ongoing connections and learn from accumulated customer interactions.</p></article>
       </div>
     </div>
   </section>
@@ -98,25 +143,25 @@
     <div class="container">
       <div class="prosumer-heading reveal">
         <p class="section-kicker">PROFIT MODEL</p>
-        <h2>Three-part income structure</h2>
-        <p>The framework connects direct sales, eligible follower purchases and ambassador activity rewards.</p>
+        <h2>Three components of earnings</h2>
+        <p>The model combines eligible direct sales, connected follower purchases and ambassador activities.</p>
       </div>
-      <div class="section-asset-visual reveal"><img src="../assets/prosumer-income.webp" width="1254" height="1254" alt="Prosumer income and rewards illustration" loading="lazy" decoding="async" /></div>
+      <div class="section-asset-visual reveal"><img src="../assets/prosumer-income.webp" width="1254" height="1254" alt="Illustrative prosumer earnings and rewards" loading="lazy" decoding="async" /></div>
       <div class="profit-stack reveal">
         <article class="profit-row">
           <span class="profit-number">01</span>
-          <div class="profit-copy"><h3>Direct sales income <small>Sales</small></h3><p>Commission earned when a product is sold through your dedicated link.</p></div>
-          <div class="profit-example"><small>Example · KRW 10,000,000 in sales / 20% rate</small><strong>KRW 2,000,000</strong></div>
+          <div class="profit-copy"><h3>Direct Sales Income <small>Sales</small></h3><p>Commission earned when eligible products are sold through your dedicated link.</p></div>
+          <div class="profit-example"><small>Example · KRW 10M in sales × 20%</small><strong>KRW 2,000,000</strong></div>
         </article>
         <article class="profit-row">
           <span class="profit-number">02</span>
-          <div class="profit-copy"><h3>Follower purchase income <small>Asset</small></h3><p>Eligible purchases made by followers connected through your referral may generate additional earnings.</p></div>
-          <div class="profit-example"><small>Example · 100 people × KRW 100,000 × 20%</small><strong>+ KRW 2,000,000</strong></div>
+          <div class="profit-copy"><h3>Follower Purchase Income <small>Asset</small></h3><p>Rewards associated with eligible purchases by followers connected to your account.</p></div>
+          <div class="profit-example"><small>Example · 100 people × KRW 100K × 20%</small><strong>+ KRW 2,000,000</strong></div>
         </article>
         <article class="profit-row">
           <span class="profit-number">03</span>
-          <div class="profit-copy"><h3>Ambassador activity bonus <small>Bonus</small></h3><p>An activity bonus may apply to ambassadors who maintain KRW 10 million in monthly sales for three months and complete 20 UGC activities per month.</p></div>
-          <div class="profit-example"><small>Subject to ambassador status and activity requirements</small><strong>+ KRW 1,000,000</strong></div>
+          <div class="profit-copy"><h3>Ambassador Activity Bonus <small>Bonus</small></h3><p>A monthly activity payment for ambassadors meeting the program conditions, including sales and UGC requirements.</p></div>
+          <div class="profit-example"><small>Subject to ambassador status and requirements</small><strong>+ KRW 1,000,000</strong></div>
         </article>
       </div>
     </div>
@@ -126,14 +171,14 @@
     <div class="container calc-shell">
       <div class="calc-copy reveal">
         <p class="section-kicker">INCOME CALCULATOR</p>
-        <h2>Estimate income based on your activity</h2>
-        <p>Enter direct sales, follower purchase volume and the applicable rate to explore an illustrative monthly scenario.</p>
-        <div class="calc-note">This simulation estimates illustrative income using your inputs and the example commission rate.</div>
+        <h2>Estimate earnings based on your activity</h2>
+        <p>Enter direct sales, eligible follower purchases and commission rates to explore a monthly earnings example.</p>
+        <div class="calc-note">A simple simulation using your inputs and illustrative commission rates.</div>
       </div>
 
       <form class="income-calculator reveal" id="prosumerCalculator">
         <div class="calc-fields-panel">
-          <h3 class="calc-panel-title">Enter your activity details</h3>
+          <h3 class="calc-panel-title">Enter your activity</h3>
           <div class="calc-field">
           <div class="calc-label-row"><label for="monthlySales">Monthly direct sales</label></div>
           <div class="calc-input-wrap"><input id="monthlySales" type="text" value="10,000,000" inputmode="numeric" autocomplete="off" data-max="100000000000" /><span>KRW</span></div>
@@ -143,7 +188,7 @@
           <div class="calc-input-wrap"><input id="followers" type="text" value="100" inputmode="numeric" autocomplete="off" data-max="1000000" /><span>people</span></div>
         </div>
         <div class="calc-field">
-          <div class="calc-label-row"><label for="avgPurchase">Average monthly purchase per person</label></div>
+          <div class="calc-label-row"><label for="avgPurchase">Average monthly spend per person</label></div>
           <div class="calc-input-wrap"><input id="avgPurchase" type="text" value="100,000" inputmode="numeric" autocomplete="off" data-max="100000000000" /><span>KRW</span></div>
         </div>
         <div class="calc-field">
@@ -152,21 +197,21 @@
         </div>
         <label class="ambassador-toggle">
           <input id="ambassadorBonus" type="checkbox" />
-          <span><strong>Ambassador activity requirements met</strong><span>Include an illustrative KRW 1,000,000 activity payment only when the ambassador and monthly UGC requirements are met.</span></span>
+          <span><strong>Ambassador activity conditions met</strong><span>Include an illustrative KRW 1,000,000 bonus when ambassador status and monthly UGC conditions are met.</span></span>
         </label>
         </div>
-        <aside class="calc-summary-panel" aria-label="Estimated monthly income summary">
+        <aside class="calc-summary-panel" aria-label="Earnings estimate">
           <p class="calc-panel-kicker">MYV REWARD SIMULATION</p>
           <div class="calc-result" aria-live="polite">
-          <div class="calc-result-label"><span>Estimated monthly income</span><span>SIMULATION</span></div>
+          <div class="calc-result-label"><span>Illustrative monthly total</span><span>SIMULATION</span></div>
           <strong class="calc-result-total" id="totalIncome">KRW 4,000,000</strong>
           <div class="result-breakdown">
             <div><span>Direct sales</span><strong id="salesIncome">KRW 2,000,000</strong></div>
             <div><span>Follower purchases</span><strong id="assetIncome">KRW 2,000,000</strong></div>
-            <div><span>Activity payment</span><strong id="bonusIncome">KRW 0</strong></div>
+            <div><span>Activity bonus</span><strong id="bonusIncome">KRW 0</strong></div>
           </div>
         </div>
-          <p class="calc-summary-footnote">Illustrative result based on the values you enter.</p>
+          <p class="calc-summary-footnote">Illustrative results calculated from your inputs.</p>
         </aside>
       </form>
     </div>
@@ -176,18 +221,18 @@
     <div class="container">
       <div class="prosumer-heading reveal">
         <p class="section-kicker">COMPARISON</p>
-        <h2>How does this compare to traditional affiliate marketing?</h2>
-        <p>Focus on building ongoing relationships instead of creating a single sale.</p>
+        <h2>How is this different from traditional affiliate marketing?</h2>
+        <p>The focus is on lasting customer relationships rather than one-off transactions.</p>
       </div>
-      <div class="comparison-wrap reveal" tabindex="0" role="region" aria-label="Comparison of traditional affiliate marketing and MYV prosumer programs">
+      <div class="comparison-wrap reveal" tabindex="0" role="region" aria-label="Comparison of affiliate marketing and MYV prosumer program">
         <table class="comparison-table">
-          <thead><tr><th scope="col">Category</th><th scope="col">Traditional affiliate marketing</th><th scope="col">MYV prosumer</th></tr></thead>
+          <thead><tr><th scope="col">Category</th><th scope="col">Traditional affiliate marketing</th><th scope="col">MYV Prosumer</th></tr></thead>
           <tbody>
-            <tr><th scope="row">Income structure</th><td>One-off commission based</td><td><span class="comparison-check" aria-hidden="true">✓</span>Continuing rewards based on eligible activities</td></tr>
-            <tr><th scope="row">Product management</th><td>Independent sourcing and negotiation</td><td><span class="comparison-check" aria-hidden="true">✓</span>Curated product selection</td></tr>
-            <tr><th scope="row">Logistics / CS</th><td>Manage delivery, returns and inquiries independently</td><td><span class="comparison-check" aria-hidden="true">✓</span>Platform operations support</td></tr>
-            <tr><th scope="row">Income growth</th><td>Limited to personal sales volume</td><td><span class="comparison-check" aria-hidden="true">✓</span>Potential to expand through connected follower purchases</td></tr>
-            <tr><th scope="row">Building trust</th><td>Independent product verification</td><td><span class="comparison-check" aria-hidden="true">✓</span>Products selected through MYV review</td></tr>
+            <tr><th scope="row">Earnings model</th><td>One-time commissions</td><td><span class="comparison-check" aria-hidden="true">✓</span>Ongoing, multi-part model</td></tr>
+            <tr><th scope="row">Product sourcing</th><td>Independent sourcing and negotiation</td><td><span class="comparison-check" aria-hidden="true">✓</span>Curated product portfolio</td></tr>
+            <tr><th scope="row">Logistics / Support</th><td>Handled independently</td><td><span class="comparison-check" aria-hidden="true">✓</span>Platform operations support</td></tr>
+            <tr><th scope="row">Earning potential</th><td>Often limited to own sales</td><td><span class="comparison-check" aria-hidden="true">✓</span>Connected follower purchases</td></tr>
+            <tr><th scope="row">Trust management</th><td>Independent product verification</td><td><span class="comparison-check" aria-hidden="true">✓</span>Focus on curated products</td></tr>
           </tbody>
         </table>
       </div>
@@ -198,14 +243,14 @@
     <div class="container">
       <div class="prosumer-heading reveal">
         <p class="section-kicker">CURATION PROCESS</p>
-        <h2>Trust is an asset, so we select products carefully</h2>
-        <p>Products such as wellness, functional skincare and sustainable household essentials are reviewed through a step-by-step selection process.</p>
+        <h2>Careful curation builds lasting trust</h2>
+        <p>We review products for everyday needs, from wellness and skincare to sustainable essentials.</p>
       </div>
       <div class="curation-flow reveal">
-        <article class="curation-step myv-icon-card"><span>STEP 01</span><div class="myv-icon-wrap"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261018-031142-image-8-572186e5.webp" width="1254" height="1254" loading="lazy" decoding="async" alt="" aria-hidden="true" /></div><h3>Discover products</h3><p>Find relevant product categories through trend and market research.</p></article>
-        <article class="curation-step myv-icon-card"><span>STEP 02</span><div class="myv-icon-wrap"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261018-031143-image-10-8ad41d3b.webp" width="1254" height="1254" loading="lazy" decoding="async" alt="" aria-hidden="true" /></div><h3>Review quality</h3><p>Assess ingredients, manufacturers, certificates and first-hand product testing.</p></article>
-        <article class="curation-step myv-icon-card"><span>STEP 03</span><div class="myv-icon-wrap"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261018-031144-image-12-6947fd75.webp" width="1254" height="1254" loading="lazy" decoding="async" alt="" aria-hidden="true" /></div><h3>Evaluate pricing</h3><p>Check market prices and distribution structures for a competitive proposal.</p></article>
-        <article class="curation-step myv-icon-card"><span>STEP 04</span><div class="myv-icon-wrap"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261018-031145-image-13-782db7fd.webp" width="1254" height="1254" loading="lazy" decoding="async" alt="" aria-hidden="true" /></div><h3>Select products</h3><p>Review product readiness and identify key consumer benefits.</p></article>
+        <article class="curation-step myv-icon-card"><span>STEP 01</span><div class="myv-icon-wrap"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261018-031142-image-8-572186e5.webp" width="1254" height="1254" loading="lazy" decoding="async" alt="" aria-hidden="true" /></div><h3>Product discovery</h3><p>Study consumer needs and identify products with potential.</p></article>
+        <article class="curation-step myv-icon-card"><span>STEP 02</span><div class="myv-icon-wrap"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261018-031143-image-10-8ad41d3b.webp" width="1254" height="1254" loading="lazy" decoding="async" alt="" aria-hidden="true" /></div><h3>Quality review</h3><p>Review ingredients, manufacturing, certifications and firsthand experience.</p></article>
+        <article class="curation-step myv-icon-card"><span>STEP 03</span><div class="myv-icon-wrap"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261018-031144-image-12-6947fd75.webp" width="1254" height="1254" loading="lazy" decoding="async" alt="" aria-hidden="true" /></div><h3>Price competitiveness</h3><p>Compare market prices and assess pricing and distribution.</p></article>
+        <article class="curation-step myv-icon-card"><span>STEP 04</span><div class="myv-icon-wrap"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261018-031145-image-13-782db7fd.webp" width="1254" height="1254" loading="lazy" decoding="async" alt="" aria-hidden="true" /></div><h3>Final selection</h3><p>Assess product fit and identify key customer messages.</p></article>
       </div>
     </div>
   </section>
@@ -217,12 +262,12 @@
         <h2>Spend less time on operations and more on content</h2>
       </div>
       <div class="support-grid reveal">
-        <article class="support-card"><span>01</span><h3>Marketing materials</h3><p>Access product images, short-form video and product-page creatives.</p></article>
-        <article class="support-card"><span>02</span><h3>Logistics support</h3><p>Orders, packaging, shipping and stock can be managed through the platform.</p></article>
-        <article class="support-card"><span>03</span><h3>Customer service</h3><p>A dedicated support process can handle delivery, returns and refunds.</p></article>
-        <article class="support-card"><span>04</span><h3>Transparent settlement</h3><p>Review activity income through My Office and follow the applicable settlement schedule.</p></article>
-        <article class="support-card"><span>05</span><h3>Growth training</h3><p>Receive onboarding guidance and practical activity resources.</p></article>
-        <article class="support-card"><span>06</span><h3>Data insights</h3><p>Use purchasing insights to inform your product and content strategy.</p></article>
+        <article class="support-card"><span>01</span><h3>Marketing support</h3><p>Access product visuals, short-form video assets and product page materials.</p></article>
+        <article class="support-card"><span>02</span><h3>Logistics support</h3><p>Supported processes for order handling, packing, delivery and inventory.</p></article>
+        <article class="support-card"><span>03</span><h3>Customer service</h3><p>Support for delivery questions, returns and refunds.</p></article>
+        <article class="support-card"><span>04</span><h3>Transparent settlement</h3><p>View activity reports through My Office and follow defined settlement cycles.</p></article>
+        <article class="support-card"><span>05</span><h3>Growth training</h3><p>Training and guidance from onboarding to ongoing activities.</p></article>
+        <article class="support-card"><span>06</span><h3>Data insights</h3><p>Learn from product sales and customer engagement trends.</p></article>
       </div>
     </div>
   </section>
@@ -231,33 +276,75 @@
     <div class="container">
       <div class="prosumer-heading reveal">
         <p class="section-kicker onboarding-kicker">ONBOARDING PROCESS</p>
-        <h2>A simple start with a structured path</h2>
-        <p>The process has three stages, from application and preparation to getting started.</p>
+        <h2>A clear path to getting started</h2>
+        <p>Apply, get ready and begin participating in three stages.</p>
       </div>
       <div class="onboarding-grid reveal">
-        <article class="onboarding-card"><span>STEP 01</span><h3>Apply and review</h3><ul><li>Submit your prosumer application</li><li>Review your channel and audience suitability</li><li>Receive a review decision</li></ul></article>
-        <article class="onboarding-card"><span>STEP 02</span><h3>Onboard and prepare</h3><ul><li>Complete basic onboarding</li><li>Review the product catalog and samples</li><li>Prepare marketing assets and templates</li></ul></article>
-        <article class="onboarding-card"><span>STEP 03</span><h3>Start participating</h3><ul><li>Publish product recommendation content</li><li>Connect with followers through your dedicated link</li><li>Review and settle eligible activity earnings</li></ul></article>
+        <article class="onboarding-card"><span>STEP 01</span><h3>Application and review</h3><ul><li>Submit a prosumer inquiry</li><li>Review audience and channel suitability</li><li>Receive application results</li></ul></article>
+        <article class="onboarding-card"><span>STEP 02</span><h3>Onboarding and preparation</h3><ul><li>Complete orientation</li><li>Review products and samples</li><li>Prepare creative assets</li></ul></article>
+        <article class="onboarding-card"><span>STEP 03</span><h3>Begin participation</h3><ul><li>Publish product recommendations</li><li>Build connections through your link</li><li>Monitor activity and settlement</li></ul></article>
       </div>
       <div class="onboarding-bottom reveal">
-        <div><strong>Ready to begin your prosumer journey?</strong><p>Prosumer applications are accepted through CONTACT US.</p></div>
-        <a class="prosumer-primary" href="./contact.html">Apply as a prosumer →</a>
+        <div><strong>Begin your journey as a prosumer.</strong><p>Prosumer inquiries are accepted through Contact Us.</p></div>
+        <a class="prosumer-primary" href="./contact.html">Apply as a Prosumer →</a>
       </div>
     </div>
   </section>
-</main><footer class="site-footer"><div class="container">
-<div class="footer-top"><div class="footer-intro"><a href="./index.html"><img src="../assets/myv-logo.svg" alt="MYV"></a><p>Adding value beyond consumption.<br>Global Value Chain E-commerce</p></div>
-<div class="footer-links">
-<div><strong>COMPANY</strong><a href="./about.html">About Us</a><a href="./business.html">Our Business</a><a href="./news.html">News</a></div>
-<div><strong>SERVICE</strong><a href="https://myv.co.kr/" target="_blank" rel="noopener noreferrer">Shop ↗</a><a href="./vpoint.html">V.Point</a></div>
-<div><strong>WITH US</strong><a href="./prosumer.html">Prosumer</a><a href="./partner.html">Brand Partnerships</a></div>
-<div><strong>CONTACT</strong><a href="mailto:info@myv.co.kr">info@myv.co.kr</a><a href="tel:15331880">1533-1880</a><a href="./contact.html">Contact Us</a></div>
-</div></div>
-<div class="footer-bottom"><p>V Labs Inc. | CEO: Jangwook Lee | Business Registration No. 806-88-02200</p>
-<p>19F, Suite 12, 8 Seongnam-daero 331beon-gil, Bundang-gu, Seongnam-si, Gyeonggi-do, Republic of Korea</p>
-<p>Mail-Order Business Registration: 2025-SeongnamBundangB-0167</p>
-<p>© 2026 MYV · V Labs Inc. All rights reserved. &nbsp; <a class="inline-link" href="./privacy.html">Privacy Notice</a></p>
-</div></div></footer>
+</main>
+
+  <footer class="site-footer">
+    <div class="container footer-main">
+      <div class="footer-brand-column">
+        <a href="./index.html" class="footer-brand" aria-label="MYV homepage">
+          <img class="footer-logo-image" src="../assets/myv-logo.svg" alt="MYV" />
+        </a>
+        <p class="footer-slogan">Shopping that creates value</p>
+        <p class="footer-caption">Global Value Chain E-commerce</p>
+      </div>
+
+      <div class="footer-nav-grid">
+        <div class="footer-nav-group">
+          <span class="footer-nav-title">COMPANY</span>
+          <a href="./about.html">ABOUT</a>
+          <a href="./business.html">BUSINESS</a>
+          <a href="./news.html">NEWS</a>
+        </div>
+        <div class="footer-nav-group">
+          <span class="footer-nav-title">SERVICE</span>
+          <a class="footer-shop-link" href="https://myv.co.kr/" target="_blank" rel="noreferrer">SHOP ↗</a>
+          <a href="./vpoint.html">V.Point Guide</a>
+        </div>
+
+        <div class="footer-nav-group">
+          <span class="footer-nav-title">WITH US</span>
+          <a href="./prosumer.html">Prosumer</a>
+          <a href="./partner.html">Brand Partnership</a>
+        </div>
+        <div class="footer-nav-group footer-contact-group">
+          <span class="footer-nav-title">CONTACT</span>
+          <a href="mailto:info@myv.co.kr">info@myv.co.kr</a>
+          <a href="tel:15331880">1533-1880</a>
+          <a href="./contact.html">CONTACT US</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-company">
+      <div class="footer-company-info">
+        <p><span>V Labs Inc.</span><span>CEO Jangwook Lee</span><span>Business Registration No. 806-88-02200</span></p>
+        <p>19F, Suite 12, 8 Seongnam-daero 331beon-gil, Bundang-gu, Seongnam-si, Gyeonggi-do, South Korea</p>
+        <p>E-commerce Registration No. 2025-SeongnamBundangB-0167</p>
+      </div>
+      <div class="footer-language" aria-label="Language"><span class="">KR</span><span class="divider"></span><span class="is-active">EN</span></div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>Copyright © 2026 MYV · V Labs Inc. All rights reserved.</p>
+      <div class="footer-legal-links">
+        <a href="./privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
 <script>
   (() => {
     const root = document.getElementById('prosumerCalculator');
@@ -272,7 +359,7 @@
     const salesOut = document.getElementById('salesIncome');
     const assetOut = document.getElementById('assetIncome');
     const bonusOut = document.getElementById('bonusIncome');
-    const won = new Intl.NumberFormat('en-US');
+    const won = new Intl.NumberFormat('ko-KR');
 
     const safeNumber = (el) => {
       const value = Number(el.value.replace(/,/g, ''));
@@ -337,5 +424,7 @@
     update();
   })();
 </script>
-<script src="./site.js?v=20261018-home-motion08" defer></script>
-</body></html>
+  <script src="../script.js?v=20261018-home-motion08"></script>
+<script src="./locale-switch.js?v=20261018-parity01"></script>
+</body>
+</html>
