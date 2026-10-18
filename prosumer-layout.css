@@ -1,0 +1,422 @@
+/* MYV · Unified Prosumer component design · 2026-10-18
+   Shared by Korean and English pages. Translation changes copy only.
+   Keep these selectors scoped to main.prosumer-page. */
+
+body main.prosumer-page .profit-section {
+  background:#fff;
+  padding-top:100px;
+  padding-bottom:112px;
+}
+body main.prosumer-page .profit-section .prosumer-heading {
+  max-width:820px;
+  margin:0 auto 34px;
+  text-align:center;
+}
+body main.prosumer-page .profit-section .prosumer-heading h2 {
+  font-size:clamp(32px,3.4vw,45px);
+  line-height:1.22;
+}
+body main.prosumer-page .profit-section .section-asset-visual {
+  height:150px;
+  width:min(100%,270px);
+  margin:0 auto 32px;
+}
+body main.prosumer-page .profit-section .section-asset-visual img {
+  object-fit:contain;
+  width:100%;
+  height:100%;
+}
+body main.prosumer-page .profit-stack {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:19px;
+  align-items:stretch;
+}
+body main.prosumer-page .profit-row {
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  min-height:330px;
+  min-width:0;
+  gap:0;
+  padding:34px 30px 30px;
+  background:#fff;
+  border:1px solid #dce4ef;
+  border-radius:24px;
+  box-shadow:none;
+  color:#182134;
+}
+body main.prosumer-page .profit-number {
+  display:block;
+  width:auto;
+  height:auto;
+  padding:0;
+  margin:0 0 24px;
+  font-size:12px;
+  line-height:1.4;
+  letter-spacing:.1em;
+  font-weight:800;
+  color:#2278f9;
+  background:transparent;
+}
+body main.prosumer-page .profit-copy {
+  flex:1 1 auto;
+  min-width:0;
+}
+body main.prosumer-page .profit-copy h3 {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  gap:8px;
+  font-size:clamp(26px,2.25vw,33px);
+  font-weight:800;
+  letter-spacing:-.043em;
+  line-height:1.32;
+  color:#111827;
+  margin:0 0 17px;
+}
+body main.prosumer-page .profit-copy h3 small {
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:0;
+  color:#8f9aae;
+}
+body main.prosumer-page .profit-copy p {
+  font-size:15px;
+  line-height:1.78;
+  color:#66758b;
+  margin:0 0 25px;
+}
+body main.prosumer-page .profit-example {
+  flex:none;
+  min-height:99px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:flex-end;
+  padding:20px 0 0;
+  margin:0;
+  border-top:1px solid #e8edf4;
+  border-left:0;
+}
+body main.prosumer-page .profit-example small {
+  display:block;
+  font-size:12px;
+  line-height:1.6;
+  color:#8592a8;
+  margin:0 0 9px;
+}
+body main.prosumer-page .profit-example strong {
+  display:block;
+  font-size:clamp(23px,1.85vw,27px);
+  line-height:1.23;
+  letter-spacing:-.03em;
+  font-weight:750;
+  color:#2e5fb8;
+}
+
+body main.prosumer-page .calculator-section {
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  padding:108px 0 120px;
+  background:linear-gradient(122deg,#195cce 0%,#2478f4 53%,#1961d8 100%);
+  color:#fff;
+}
+body main.prosumer-page .calculator-section::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 94% 0%,rgba(255,255,255,.14),transparent 28%),
+    radial-gradient(circle at 3% 84%,rgba(12,50,135,.18),transparent 35%);
+}
+body main.prosumer-page .calc-shell {
+  display:block;
+  position:relative;
+  z-index:1;
+  max-width:1320px;
+}
+body main.prosumer-page .calc-copy {
+  max-width:910px;
+  margin:0 auto 36px;
+  position:static;
+  text-align:center;
+}
+body main.prosumer-page .calc-copy .section-kicker {
+  color:#d7e7ff;
+  font-weight:800;
+  letter-spacing:.15em;
+}
+body main.prosumer-page .calc-copy h2 {
+  color:#fff;
+  font-size:clamp(32px,3.6vw,47px);
+  line-height:1.22;
+  font-weight:800;
+  letter-spacing:-.043em;
+  margin:12px auto 19px;
+}
+body main.prosumer-page .calc-copy > p:not(.section-kicker) {
+  color:rgba(255,255,255,.91);
+  font-size:17px;
+  line-height:1.7;
+  margin:0 auto;
+}
+body main.prosumer-page .calc-note {
+  max-width:820px;
+  text-align:center;
+  margin:24px auto 0;
+  padding:15px 20px;
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:15px;
+  background:rgba(255,255,255,.1);
+  color:#eef5ff;
+  font-size:13px;
+  line-height:1.65;
+}
+body main.prosumer-page .income-calculator {
+  display:grid;
+  grid-template-columns:minmax(0,1.12fr) minmax(300px,.88fr);
+  align-items:start;
+  gap:24px;
+  max-width:1180px;
+  margin:0 auto;
+  padding:0;
+  background:transparent;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+  color:#151b27;
+}
+body main.prosumer-page .calc-fields-panel,
+body main.prosumer-page .calc-summary-panel {
+  min-width:0;
+  border:1px solid #e5ecf7;
+  border-radius:26px;
+  box-shadow:0 15px 35px rgba(7,44,115,.11);
+}
+body main.prosumer-page .calc-fields-panel {
+  background:#fff;
+  padding:32px 33px 30px;
+}
+body main.prosumer-page .calc-summary-panel {
+  background:#f5f8ff;
+  padding:32px 31px;
+  position:sticky;
+  top:105px;
+}
+body main.prosumer-page .calc-panel-title {
+  margin:0 0 20px;
+  font-size:22px;
+  font-weight:800;
+  letter-spacing:-.035em;
+  color:#1a2740;
+}
+body main.prosumer-page .calc-panel-kicker {
+  margin:0 0 22px;
+  color:#2375ee;
+  font-size:12px;
+  letter-spacing:.11em;
+  font-weight:800;
+}
+body main.prosumer-page .calc-field {
+  display:block;
+  margin:0;
+  padding:0 0 18px;
+  border:0;
+}
+body main.prosumer-page .calc-field + .calc-field {
+  padding-top:18px;
+  border-top:1px solid #edf0f5;
+}
+body main.prosumer-page .calc-label-row {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  margin:0 0 10px;
+}
+body main.prosumer-page .calc-label-row label {
+  font-size:15px;
+  font-weight:720;
+  color:#1f2937;
+}
+body main.prosumer-page .calc-label-row output {
+  color:#1c70e5;
+  font-size:15px;
+  font-weight:750;
+}
+body main.prosumer-page .calc-input-wrap {
+  display:flex;
+  align-items:center;
+  min-height:59px;
+  border:1px solid #dae3f0;
+  border-radius:13px;
+  background:#fbfcff;
+  overflow:hidden;
+}
+body main.prosumer-page .calc-input-wrap:focus-within {
+  border-color:#2478f4;
+  box-shadow:0 0 0 3px rgba(36,120,244,.1);
+}
+body main.prosumer-page .calc-input-wrap input {
+  flex:1;
+  min-width:0;
+  padding:13px 16px;
+  background:transparent;
+  border:0;
+  outline:0;
+  color:#1b2941;
+  font-size:19px;
+  font-weight:700;
+  font-variant-numeric:tabular-nums;
+}
+body main.prosumer-page .calc-input-wrap span {
+  padding-right:17px;
+  color:#71809a;
+  font-size:13px;
+  font-weight:600;
+}
+body main.prosumer-page #commissionRate {
+  display:block;
+  width:100%;
+  margin:18px 0 0;
+  accent-color:#2278f9;
+  cursor:pointer;
+}
+body main.prosumer-page .ambassador-toggle {
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  padding:19px 0 0;
+  margin-top:1px;
+  border-top:1px solid #edf0f5;
+  cursor:pointer;
+}
+body main.prosumer-page .ambassador-toggle input {
+  width:18px;
+  height:18px;
+  flex:0 0 auto;
+  margin:4px 0 0;
+  accent-color:#2478f4;
+}
+body main.prosumer-page .ambassador-toggle > span {
+  display:block;
+  min-width:0;
+  margin:0;
+  color:#66758b;
+  font-size:12px;
+  line-height:1.6;
+}
+body main.prosumer-page .ambassador-toggle strong {
+  display:block;
+  margin:0 0 3px;
+  font-size:14px;
+  font-weight:750;
+  color:#1e2b40;
+}
+body main.prosumer-page .ambassador-toggle > span > span {
+  display:block;
+  margin:0;
+  color:#718099;
+  font-size:12px;
+}
+body main.prosumer-page .calc-result {
+  margin:0;
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  color:#1e293b;
+}
+body main.prosumer-page .calc-result-label {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:8px;
+  font-size:13px;
+  font-weight:700;
+  color:#4d5d76;
+}
+body main.prosumer-page .calc-result-label span:last-child {
+  font-size:10px;
+  letter-spacing:.12em;
+  font-weight:800;
+  color:#2375ee;
+}
+body main.prosumer-page .calc-result-total {
+  display:block;
+  margin:18px 0 28px;
+  font-size:clamp(33px,3.3vw,48px);
+  line-height:1.17;
+  font-weight:800;
+  color:#1764d8;
+  letter-spacing:-.045em;
+  font-variant-numeric:tabular-nums;
+  overflow-wrap:anywhere;
+}
+body main.prosumer-page .result-breakdown {
+  display:grid;
+  grid-template-columns:1fr;
+  gap:0;
+  margin:0;
+}
+body main.prosumer-page .result-breakdown > div {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:16px 0;
+  border-top:1px solid #dfe7f4;
+}
+body main.prosumer-page .result-breakdown span {
+  display:block;
+  font-size:13px;
+  color:#66758b;
+}
+body main.prosumer-page .result-breakdown strong {
+  display:block;
+  font-size:17px;
+  font-weight:780;
+  color:#1a273c;
+  text-align:right;
+  font-variant-numeric:tabular-nums;
+  overflow-wrap:anywhere;
+}
+body main.prosumer-page .calc-summary-footnote {
+  margin:28px 0 0;
+  font-size:12px;
+  color:#7d8ca4;
+  line-height:1.65;
+}
+@media(max-width:1080px){
+  body main.prosumer-page .profit-stack {grid-template-columns:repeat(2,minmax(0,1fr))}
+  body main.prosumer-page .profit-row {min-height:330px}
+}
+@media(max-width:860px) {
+  body main.prosumer-page .income-calculator {grid-template-columns:1fr}
+  body main.prosumer-page .calc-summary-panel {position:static}
+}
+@media(max-width:700px){
+  body main.prosumer-page .profit-section{padding-top:72px;padding-bottom:80px}
+  body main.prosumer-page .profit-stack{grid-template-columns:1fr;gap:14px}
+  body main.prosumer-page .profit-row{padding:26px 24px;min-height:0}
+  body main.prosumer-page .profit-copy h3{font-size:27px}
+  body main.prosumer-page .profit-example{min-height:0}
+  body main.prosumer-page .profit-section .section-asset-visual{height:110px;margin-bottom:24px}
+  body main.prosumer-page .calculator-section{padding:75px 0 88px}
+  body main.prosumer-page .calc-copy h2{font-size:32px}
+  body main.prosumer-page .calc-copy > p:not(.section-kicker){font-size:15px}
+  body main.prosumer-page .calc-fields-panel,body main.prosumer-page .calc-summary-panel{padding:23px 21px;border-radius:20px}
+  body main.prosumer-page .calc-panel-title{font-size:20px}
+  body main.prosumer-page .calc-input-wrap input{font-size:17px}
+  body main.prosumer-page .result-breakdown > div{align-items:flex-start}
+  body main.prosumer-page .result-breakdown strong{font-size:15px}
+  body main.prosumer-page .calc-result-total{font-size:34px}
+}
+@media(prefers-reduced-motion:reduce){
+  body main.prosumer-page .calc-fields-panel,body main.prosumer-page .calc-summary-panel{scroll-behavior:auto}
+}
