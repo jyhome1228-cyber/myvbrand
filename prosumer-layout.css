@@ -400,7 +400,7 @@ body main.prosumer-page .calc-summary-footnote {
   body main.prosumer-page .income-calculator {grid-template-columns:1fr}
   body main.prosumer-page .calc-summary-panel {position:static}
 }
-@media(max-width:700px){
+@media(max-width:760px){
   body main.prosumer-page .profit-section{padding-top:72px;padding-bottom:80px}
   body main.prosumer-page .profit-stack{grid-template-columns:1fr;gap:14px}
   body main.prosumer-page .profit-row{padding:26px 24px;min-height:0}
