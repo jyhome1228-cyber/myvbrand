@@ -59,3 +59,46 @@ document.querySelectorAll(".reveal").forEach((group) => {
     child.style.setProperty("--stagger", index);
   });
 });
+
+
+// MYV bilingual draft: route KR / EN controls to matching English pages.
+// The Korean site remains the default and the English pages live under /en/.
+(() => {
+  const pageName = window.location.pathname.split("/").pop() || "index.html";
+  const supported = new Set([
+    "index.html", "about.html", "business.html", "prosumer.html",
+    "partner.html", "news.html", "vpoint.html", "contact.html", "privacy.html"
+  ]);
+  const requested = supported.has(pageName) ? pageName : "news.html";
+  const script = document.querySelector('script[src*="script.js"]');
+  const root = script ? new URL(".", script.src) : new URL("./", location.href);
+  const enHref = new URL("en/" + requested, root);
+  if (requested === "news.html" && pageName === "news.html") {
+    const original = new URLSearchParams(location.search);
+    if (original.has("article")) enHref.searchParams.set("article", original.get("article"));
+    else if (original.has("category")) enHref.searchParams.set("category", original.get("category"));
+  }
+  document.querySelectorAll(".language-switch .lang-button, .mobile-language .lang-button").forEach(button => {
+    const text = button.textContent.trim().toUpperCase();
+    if (text === "EN") {
+      button.title = "View English draft";
+      button.setAttribute("aria-label", "View English website draft");
+      button.addEventListener("click", () => { location.href = enHref.href; });
+    }
+  });
+  document.querySelectorAll(".footer-language").forEach(group => {
+    const en = Array.from(group.querySelectorAll("span")).find(el => el.textContent.trim() === "EN");
+    if (!en) return;
+    en.style.cursor = "pointer";
+    en.setAttribute("role", "link");
+    en.setAttribute("tabindex", "0");
+    en.setAttribute("aria-label", "View English website draft");
+    en.addEventListener("click", () => { location.href = enHref.href; });
+    en.addEventListener("keydown", event => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        location.href = enHref.href;
+      }
+    });
+  });
+})();
