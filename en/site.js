@@ -247,3 +247,64 @@
     grid.replaceChildren(node("p", "", "News is temporarily unavailable. Please try again later."));
   });
 })();
+
+
+// MYV brand entry + quiet scroll typography: shared by Korean and English pages.
+// Intro is opt-in from homepage <head> and appears only once per browsing session.
+(() => {
+  const root = document.documentElement;
+  const overlay = document.getElementById("myvIntro");
+  if (overlay && root.classList.contains("myv-intro-ready")) {
+    try { sessionStorage.setItem("myv-intro-viewed-v1", "yes"); } catch (_) {}
+    let closing = false;
+    let autoClose;
+    const removeIntro = () => {
+      if (closing) return;
+      closing = true;
+      window.clearTimeout(autoClose);
+      overlay.classList.add("is-leaving");
+      root.classList.remove("myv-intro-ready");
+      window.setTimeout(() => overlay.remove(), 510);
+      document.removeEventListener("keydown", onEscape);
+    };
+    function onEscape(event) {
+      if (event.key === "Escape") removeIntro();
+    }
+    overlay.querySelector(".myv-intro-skip")?.addEventListener("click", removeIntro);
+    document.addEventListener("keydown", onEscape);
+    autoClose = window.setTimeout(removeIntro, 1450);
+  } else if (overlay) {
+    overlay.remove();
+  }
+
+  // Progressive enhancement: never hide content if observer is unsupported
+  // or the visitor prefers reduced motion.
+  if (!("IntersectionObserver" in window) ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const selector = [
+    "main .home-section-head h2", "main .page-section-heading h2",
+    "main .prosumer-heading h2", "main .definition-top h2",
+    "main .section-head h2", "main .section-top h2",
+    "main .home-section-copy h2", "main .page-copy h2",
+    "main .hero-copy h1", "main .centered-hero-copy h1",
+    "main .page-hero-inner h1", "main .hero .container > h1",
+    "main .split h2", "main .panel h3",
+    "main .home-business-link-card h3", "main .en-home-entry-card h3",
+    "main .banner-cta h2", "main .home-final-cta h2"
+  ].join(", ");
+  const textTargets = [...document.querySelectorAll(selector)];
+  const textObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-inview");
+        textObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: "0px 0px -22px 0px" });
+  textTargets.forEach((el, i) => {
+    el.classList.add("myv-scroll-motion");
+    el.style.setProperty("--myv-motion-delay", String((i % 3) * 55) + "ms");
+    textObserver.observe(el);
+  });
+})();
