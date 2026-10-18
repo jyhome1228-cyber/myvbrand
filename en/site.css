@@ -57,3 +57,76 @@ body[data-page="business"] .hero + .section.soft .grid.cols-2 > .panel .myv-icon
   background: transparent;
   border: 0;
 }
+
+
+/* MYV English About visual parity — do not alter page hierarchy. */
+body[data-page="about"] .hero.en-about-hero {
+  position: relative;
+  isolation: isolate;
+  background: #2477ee;
+}
+body[data-page="about"] .hero.en-about-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(105deg,rgba(26,94,217,.93) 0%,rgba(37,113,231,.86) 58%,rgba(31,105,227,.78) 100%),
+    url("https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261018-031146-frame-94-5dd5477d.webp");
+  background-size:cover,cover;
+  background-position:center,center;
+  background-repeat:no-repeat;
+}
+body[data-page="about"] .hero.en-about-hero > .container {
+  position: relative;
+  z-index: 1;
+}
+body[data-page="about"] .en-about-core-grid {
+  align-items: stretch;
+}
+body[data-page="about"] .en-about-core-card {
+  min-height: 275px;
+}
+body[data-page="about"] .en-about-core-card .myv-icon-wrap {
+  width:84px;height:84px;margin:6px 0 18px;
+  border:0;border-radius:0;background:transparent;box-shadow:none;
+}
+body[data-page="about"] .en-about-core-card .myv-icon-wrap img {
+  width:100%;height:100%;display:block;object-fit:contain;mix-blend-mode:normal;
+}
+.en-handshake-cta {
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  background:#f4f7fc;
+  color:var(--ink);
+}
+.en-handshake-cta::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background-image:
+    linear-gradient(110deg,rgba(247,249,253,.94) 0%,rgba(247,249,253,.91) 60%,rgba(247,249,253,.88) 100%),
+    url("https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261018-031147-frame-117-3986a186.webp");
+  background-size:cover,cover;
+  background-position:center,center;
+  background-repeat:no-repeat;
+}
+.en-handshake-cta > .container {position:relative;z-index:1}
+.en-handshake-cta h2 {color:var(--ink)}
+.en-handshake-cta p {color:var(--muted)}
+.en-handshake-cta .pill-link {
+  background:transparent;
+  color:var(--blue);
+  border-color:var(--blue);
+}
+.en-handshake-cta .pill-link:hover {background:var(--blue);color:#fff}
+@media(max-width:760px) {
+  body[data-page="about"] .en-about-core-card {min-height:0}
+  body[data-page="about"] .en-about-core-card .myv-icon-wrap {width:72px;height:72px}
+  body[data-page="about"] .hero.en-about-hero::before {background-position:center,60% center}
+  .en-handshake-cta::before {background-position:center,56% center}
+}
