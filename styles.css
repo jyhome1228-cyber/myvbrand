@@ -2287,3 +2287,67 @@ main [id]{scroll-margin-top:110px}
   .centered-page .definition-top{margin-bottom:32px}
   .prosumer-page.centered-page .onboarding-bottom strong{font-size:20px}
 }
+
+
+/* MYV 2026-10-18 · Curated branded visuals and moderated hero typography */
+.myv-icon-card{min-width:0}
+.myv-icon-wrap{width:98px;height:98px;flex:0 0 auto;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:20px;background:#f3f3f1;margin:12px 0 22px;isolation:isolate}
+.myv-icon-wrap img{display:block;width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain;mix-blend-mode:multiply}
+.page-card.myv-icon-card,.engine-grid article.myv-icon-card{min-height:0}
+.page-card.myv-icon-card>span,.engine-grid article.myv-icon-card>span,
+.process-grid article.myv-icon-card>span{margin-bottom:9px}
+.page-card.myv-icon-card .myv-icon-wrap{width:100px;height:100px}
+.page-card.compact.myv-icon-card .myv-icon-wrap{width:88px;height:88px;margin:13px 0 18px}
+.page-card.myv-icon-card h3{margin-top:2px}
+.engine-grid article.myv-icon-card .myv-icon-wrap{margin:16px 0 18px}
+.process-grid article.myv-icon-card .myv-icon-wrap{width:76px;height:76px;margin:12px 0 16px}
+.prosumer-page .value-card.myv-icon-card span{margin-bottom:12px}
+.prosumer-page .value-card.myv-icon-card .myv-icon-wrap{width:96px;height:96px;margin:10px 0 20px}
+.prosumer-page .value-card.myv-icon-card h3{margin:0 0 12px}
+.prosumer-page .curation-step.myv-icon-card .myv-icon-wrap{width:88px;height:88px;margin:16px 0}
+.prosumer-page .curation-step.myv-icon-card h3{margin:8px 0 10px}
+.prosumer-page .curation-step.myv-icon-card{display:flex;flex-direction:column;align-items:flex-start;min-height:0}
+.prosumer-page .curation-step.myv-icon-card p{margin-top:0}
+.page-card-grid.four .myv-icon-card{padding:28px}
+.page-card-grid.four .myv-icon-card h3{font-size:clamp(19px,1.6vw,24px)}
+/* Use the user's wide photographic artworks as understated atmospheric hero layers. */
+.page-hero.myv-photo-hero,.prosumer-page .prosumer-hero.myv-photo-hero{position:relative;isolation:isolate;background:#173c82;overflow:hidden}
+.page-hero.myv-photo-hero::before,
+.prosumer-page .prosumer-hero.myv-photo-hero::before{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(100deg,rgba(10,35,91,.92) 0%,rgba(15,48,114,.86) 48%,rgba(16,71,155,.68) 100%),var(--myv-hero-photo);
+  background-position:center,center;
+  background-repeat:no-repeat;
+  background-size:cover,cover;
+  filter:none;opacity:1;
+}
+.page-hero.myv-photo-hero>.container,
+.prosumer-page .prosumer-hero.myv-photo-hero>.container{position:relative;z-index:1}
+.page-hero.myv-photo-hero .hero-image-slot,
+.prosumer-page .prosumer-hero.myv-photo-hero .hero-image-slot{position:relative;z-index:1}
+.page-hero h1{font-size:clamp(34px,3.3vw,49px);line-height:1.2;letter-spacing:-.042em}
+.centered-page .centered-hero h1,
+.prosumer-page .prosumer-hero h1{font-size:clamp(34px,3.15vw,47px);line-height:1.22;letter-spacing:-.043em}
+.home-hero .hero-copy h1,
+.centered-page .home-hero .hero-copy h1{font-size:clamp(36px,3.65vw,53px);line-height:1.2}
+@media(max-width:900px){
+  .page-card-grid.four{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .myv-icon-wrap{width:86px;height:86px}
+}
+@media(max-width:760px){
+  .page-hero h1,
+  .centered-page .centered-hero h1,
+  .prosumer-page .prosumer-hero h1{font-size:clamp(29px,6.8vw,36px);line-height:1.26}
+  .home-hero .hero-copy h1,
+  .centered-page .home-hero .hero-copy h1{font-size:clamp(33px,7.3vw,39px)}
+  .page-card-grid.four{grid-template-columns:1fr}
+  .page-card.myv-icon-card,.page-card.compact.myv-icon-card,.engine-grid article.myv-icon-card{min-height:0}
+  .myv-icon-wrap,.page-card.myv-icon-card .myv-icon-wrap,.prosumer-page .value-card.myv-icon-card .myv-icon-wrap{width:78px;height:78px;margin:10px 0 17px}
+  .page-card.compact.myv-icon-card .myv-icon-wrap,
+  .prosumer-page .curation-step.myv-icon-card .myv-icon-wrap{width:75px;height:75px}
+  .page-hero.myv-photo-hero::before,
+  .prosumer-page .prosumer-hero.myv-photo-hero::before{
+    background-image:linear-gradient(105deg,rgba(10,35,91,.92),rgba(16,58,133,.78)),var(--myv-hero-photo);
+    background-position:center,62% center;
+  }
+}
