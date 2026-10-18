@@ -8,3 +8,36 @@
 
 /* Ensure the contact form stacks on narrow screens even with its desktop inline grid. */
 @media(max-width:760px){body[data-page="contact"] .split{grid-template-columns:minmax(0,1fr)!important}}
+
+
+/* MYV English draft visual refresh — same source artwork and visual rhythm as Korean. */
+.myv-icon-card{min-width:0}
+.myv-icon-wrap{width:94px;height:94px;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:19px;background:#f3f3f1;margin:17px 0 20px;isolation:isolate}
+.myv-icon-wrap img{display:block;width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.panel.myv-icon-card{display:flex;flex-direction:column;align-items:flex-start;min-height:0}
+.panel.myv-icon-card .step{order:0}
+.panel.myv-icon-card .myv-icon-wrap{order:1}
+.panel.myv-icon-card h3{order:2;margin:4px 0 10px}
+.panel.myv-icon-card p{order:3}
+.hero{position:relative;isolation:isolate}
+.hero.myv-photo-hero{background:#183e82}
+.hero.myv-photo-hero::before{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(100deg,rgba(10,35,91,.93) 0%,rgba(13,48,109,.85) 48%,rgba(21,74,153,.7) 100%),var(--myv-hero-photo);
+  background-position:center,center;
+  background-size:cover,cover;
+  background-repeat:no-repeat
+}
+.hero.myv-photo-hero>.container{position:relative;z-index:1}
+.hero h1{font-size:clamp(38px,4.45vw,61px);line-height:1.17;max-width:900px}
+.hero.compact h1{font-size:clamp(34px,3.9vw,51px);line-height:1.19;max-width:840px}
+.hero{padding:104px 0 105px}
+.hero.compact{padding:80px 0 84px}
+.section-head h2{font-size:clamp(28px,3vw,43px)}
+.panel.myv-icon-card h3{font-size:clamp(20px,1.85vw,25px)}
+@media(max-width:760px){
+  .hero h1{font-size:clamp(34px,7.8vw,42px)}
+  .hero.compact h1{font-size:clamp(31px,7.2vw,37px)}
+  .hero.myv-photo-hero::before{background-image:linear-gradient(105deg,rgba(10,35,91,.92),rgba(13,48,109,.77)),var(--myv-hero-photo);background-position:center,61% center}
+  .myv-icon-wrap{width:78px;height:78px}
+}
