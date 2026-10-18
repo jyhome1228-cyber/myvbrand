@@ -155,3 +155,73 @@ body[data-page="business"] .business-operations-grid > .panel.myv-icon-card h3 {
     width:45px;height:45px;top:21px;right:21px;
   }
 }
+
+
+/* ===== MYV · EN homepage cards, brand splash and subtle motion · 2026-10-18 ===== */
+.en-home-business .en-home-entry-grid{gap:18px;align-items:stretch}
+.en-home-business .en-home-entry-card {
+  display:flex;flex-direction:column;align-items:flex-start;min-height:398px;
+  background:#fff;color:var(--ink);border:1px solid #dfe6ef;padding:34px 37px 30px;text-decoration:none;
+  transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s ease,border-color .3s ease;
+}
+.en-home-business .en-home-entry-card:hover,.en-home-business .en-home-entry-card:focus-visible {
+  transform:translateY(-5px);border-color:#a8c6fa;box-shadow:0 14px 34px rgba(22,61,121,.07)
+}
+.en-home-entry-visual {display:flex;width:100%;height:148px;align-items:center;justify-content:center;margin-bottom:23px}
+.en-home-entry-visual img{max-width:146px;max-height:146px;width:100%;height:100%;object-fit:contain;mix-blend-mode:normal;transition:transform .45s ease}
+.en-home-entry-card:hover .en-home-entry-visual img{transform:translateY(-3px) scale(1.035)}
+.en-home-entry-card .step{margin:0 0 14px;color:var(--blue)}
+.en-home-entry-card h3{margin:0 0 13px;font-size:27px;color:var(--ink)}
+.en-home-entry-card p{margin:0 0 22px;font-size:15px;color:var(--muted)}
+.en-home-entry-arrow{margin-top:auto;color:var(--blue);font-size:13px;font-weight:750}
+.en-home-entry-arrow b{font-size:19px;margin-left:7px;display:inline-block;transition:transform .2s ease}
+.en-home-entry-card:hover .en-home-entry-arrow b{transform:translate(3px,-2px)}
+.myv-intro-overlay{display:none;position:fixed;inset:0;z-index:9999;color:#fff;overflow:hidden}
+html.myv-intro-ready .myv-intro-overlay{
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(125deg,#1463e8 0%,#277cfb 55%,#125cd7 100%);
+  transition:opacity .48s ease,visibility .48s ease
+}
+.myv-intro-overlay::before{
+  content:"";position:absolute;inset:-20%;pointer-events:none;
+  background:radial-gradient(circle at 65% 33%,rgba(255,255,255,.15),transparent 30%);
+  animation:myvIntroGlow 1.5s ease-out both
+}
+.myv-intro-mark{display:flex;position:relative;z-index:1;flex-direction:column;align-items:center;gap:20px}
+.myv-intro-mark img{display:block;width:min(36vw,184px);height:auto;object-fit:contain;
+  animation:myvLogoEnter .85s cubic-bezier(.16,1,.3,1) both}
+.myv-intro-mark p{margin:0;color:rgba(255,255,255,.88);font-size:11px;font-weight:720;letter-spacing:.25em;
+  animation:myvIntroText .8s .25s ease both}
+.myv-intro-skip{
+  position:absolute;right:clamp(24px,4vw,68px);bottom:clamp(24px,3.4vw,52px);z-index:2;
+  border:1px solid rgba(255,255,255,.55);background:rgba(255,255,255,.06);color:#fff;
+  border-radius:999px;padding:10px 19px;font-size:12px;font-weight:700;transition:background .2s ease
+}
+.myv-intro-skip:hover,.myv-intro-skip:focus-visible{background:rgba(255,255,255,.2)}
+html.myv-intro-ready body{overflow:hidden}
+.myv-intro-overlay.is-leaving{opacity:0;visibility:hidden;pointer-events:none}
+@keyframes myvLogoEnter{from{opacity:0;transform:translateY(18px) scale(.88);filter:blur(6px)}
+ to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
+@keyframes myvIntroText{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+@keyframes myvIntroGlow{from{opacity:.4;transform:scale(.96)}to{opacity:1;transform:scale(1.04)}}
+@media(prefers-reduced-motion:no-preference){
+  .myv-scroll-motion{opacity:0;transform:translateY(14px);filter:blur(2px);
+    transition:opacity .85s cubic-bezier(.22,1,.36,1),transform .85s cubic-bezier(.22,1,.36,1),filter .85s ease;
+    transition-delay:var(--myv-motion-delay,0ms)}
+  .myv-scroll-motion.is-inview{opacity:1;transform:none;filter:blur(0)}
+  .site-header .brand img{transition:transform .35s ease}
+  .site-header .brand:hover img{transform:scale(1.035)}
+}
+@media(max-width:760px){
+  .en-home-business .en-home-entry-card{min-height:0;padding:26px 24px}
+  .en-home-entry-visual{height:130px;margin-bottom:17px}
+  .en-home-entry-visual img{max-width:126px;max-height:126px}
+  .myv-intro-mark img{width:145px}
+}
+@media(prefers-reduced-motion:reduce){
+  .myv-intro-overlay{display:none!important}
+  html.myv-intro-ready body{overflow:auto!important}
+  .myv-scroll-motion{opacity:1!important;transform:none!important;filter:none!important}
+  .en-home-entry-card,.en-home-entry-visual img{transition:none!important}
+  .myv-intro-overlay *{animation:none!important}
+}
