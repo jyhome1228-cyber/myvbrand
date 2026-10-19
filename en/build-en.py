@@ -14,7 +14,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 EN = ROOT / "en"
-VERSION = "20261018-parity01"
+VERSION = "20261019-mobile-nav01"
 PAGES = (
     "index.html", "about.html", "business.html", "prosumer.html",
     "partner.html", "vpoint.html", "news.html", "contact.html",
