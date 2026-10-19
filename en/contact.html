@@ -213,6 +213,20 @@
   </footer>
   <script src="../script.js?v=20261019-mobile-nav01"></script>
 <script src="./locale-switch.js?v=20261018-parity01"></script>
+<script>
+  // Select the correct inquiry type when visitors arrive from Prosumer / Partner.
+  (() => {
+    const mode = new URLSearchParams(window.location.search).get("type");
+    const map = { prosumer: "프로슈머 문의", partner: "입점제안" };
+    if (!Object.prototype.hasOwnProperty.call(map, mode)) return;
+    const choices = document.querySelectorAll('.contact-form input[name="문의유형"]');
+    const selected = Array.from(choices).find(el => el.value === map[mode]);
+    if (selected) {
+      selected.checked = true;
+      selected.dispatchEvent(new Event("change", { bubbles: true }));
+    }
+  })();
+</script>
 </body>
 </html>
 
