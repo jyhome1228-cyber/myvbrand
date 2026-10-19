@@ -47,21 +47,15 @@
           <button type="button" class="lang-button is-active" title="English">EN</button>
         </div>
 
-        <button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false">
-          <span></span><span></span>
-        </button>
+        <button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="myvMobileMenu"><span class="menu-bar" aria-hidden="true"></span><span class="menu-bar" aria-hidden="true"></span><span class="menu-bar" aria-hidden="true"></span></button>
       </div>
     </div>
 
-    <div class="mobile-menu" aria-hidden="true">
+    <nav class="mobile-menu" id="myvMobileMenu" aria-label="Mobile navigation" aria-hidden="true">
       <div class="container mobile-menu-inner">
         <a href="./about.html">ABOUT</a>
         <a href="./business.html">BUSINESS</a>
-        <div class="mobile-submenu">
-          <span>WITH US</span>
-          <a href="./prosumer.html">Prosumer</a>
-          <a href="./partner.html">Brand Partnership</a>
-        </div>
+        <div class="mobile-submenu"><button class="mobile-submenu-toggle" type="button" aria-expanded="false" aria-controls="myvWithUsSubmenu"><span>WITH US</span><span class="mobile-submenu-chevron" aria-hidden="true"></span></button><div class="mobile-submenu-panel" id="myvWithUsSubmenu" hidden><a href="./prosumer.html">Prosumer</a><a href="./partner.html">Brand Partnership</a></div></div>
         <a class="mobile-nav-button shop-link" href="https://myv.co.kr/" target="_blank" rel="noreferrer">SHOP ↗</a>
         <a href="./news.html">NEWS</a>
         <a href="./contact.html">CONTACT US</a>
@@ -71,7 +65,7 @@
           <button type="button" class="lang-button is-active">EN</button>
         </div>
       </div>
-    </div>
+    </nav>
   </header>
 <main class="vpoint-main centered-page">
   <section class="myv-photo-hero page-hero page-hero-blue centered-hero" style="--myv-hero-photo:url('https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261018-031146-frame-15-fd5a26d5.webp')">
