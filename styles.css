@@ -3018,3 +3018,234 @@ html.myv-intro-ready body {overflow:hidden}
     font-size: 24px;
   }
 }
+
+
+/* ===== MYV mobile navigation refresh · shared KR / EN (2026-10-19) ===== */
+/* Three-bar toggle, white full-height navigation and disclosure-only WITH US. */
+@media (max-width:1100px) {
+  .site-header {
+    --myv-mobile-header-height:82px;
+  }
+  .site-header.mobile-nav-open,
+  .subpage .site-header.mobile-nav-open {
+    background:#fff;
+    color:#182133;
+    box-shadow:0 1px 0 #e6ebf2;
+    backdrop-filter:none;
+  }
+  .site-header.mobile-nav-open .brand-logo-white,
+  .subpage .site-header.mobile-nav-open .brand-logo-white {opacity:0}
+  .site-header.mobile-nav-open .brand-logo-color,
+  .subpage .site-header.mobile-nav-open .brand-logo-color {opacity:1}
+
+  .site-header .menu-button {
+    position:relative;
+    display:flex;
+    flex:none;
+    align-items:center;
+    justify-content:center;
+    width:44px;
+    height:44px;
+    padding:0;
+    margin-right:-6px;
+    border:0;
+    border-radius:9px;
+    background:transparent;
+    color:inherit;
+    cursor:pointer;
+    touch-action:manipulation;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .site-header .menu-button:focus-visible,
+  .site-header .mobile-submenu-toggle:focus-visible {
+    outline:2px solid #2877f6;
+    outline-offset:3px;
+  }
+  .site-header .menu-button .menu-bar {
+    position:absolute;
+    left:11px;
+    top:50%;
+    display:block;
+    width:22px;
+    height:2px;
+    padding:0;
+    margin:0;
+    border:0;
+    border-radius:100px;
+    background:currentColor;
+    transform-origin:center;
+    transition:transform .25s cubic-bezier(.22,1,.36,1),opacity .2s ease;
+  }
+  .site-header .menu-button .menu-bar:nth-child(1) {transform:translateY(-7px)}
+  .site-header .menu-button .menu-bar:nth-child(2) {transform:translateY(0)}
+  .site-header .menu-button .menu-bar:nth-child(3) {transform:translateY(7px)}
+  .site-header .menu-button.is-open .menu-bar:nth-child(1) {transform:rotate(45deg)}
+  .site-header .menu-button.is-open .menu-bar:nth-child(2) {opacity:0;transform:scaleX(.45)}
+  .site-header .menu-button.is-open .menu-bar:nth-child(3) {transform:rotate(-45deg)}
+
+  body.myv-mobile-nav-open {overflow:hidden}
+  .site-header .mobile-menu {
+    position:fixed;
+    display:block;
+    top:var(--myv-mobile-header-height);
+    right:0;
+    bottom:0;
+    left:0;
+    z-index:5;
+    box-sizing:border-box;
+    height:auto;
+    max-height:none;
+    overflow-x:hidden;
+    overflow-y:auto;
+    overscroll-behavior:contain;
+    -webkit-overflow-scrolling:touch;
+    visibility:hidden;
+    opacity:0;
+    pointer-events:none;
+    transform:translateY(-7px);
+    border-top:1px solid #e7ebf1;
+    background:#fff;
+    color:#172238;
+    box-shadow:none;
+    transition:opacity .25s ease,transform .25s ease,visibility .25s ease;
+  }
+  .site-header .mobile-menu.open {
+    visibility:visible;
+    opacity:1;
+    pointer-events:auto;
+    transform:none;
+    max-height:none;
+    border-top:1px solid #e7ebf1;
+    box-shadow:none;
+  }
+  .site-header .mobile-menu-inner {
+    display:grid;
+    grid-template-columns:minmax(0,1fr);
+    gap:0;
+    width:min(calc(100% - 46px),620px);
+    max-width:620px;
+    padding:20px 0 max(45px,env(safe-area-inset-bottom));
+    margin:0 auto;
+  }
+  .site-header .mobile-menu-inner > a {
+    display:flex;
+    align-items:center;
+    min-height:57px;
+    padding:14px 0;
+    font-size:16px;
+    font-weight:620;
+    line-height:1.5;
+    letter-spacing:-.02em;
+    color:#20283a;
+    text-align:left;
+    text-decoration:none;
+    border-bottom:1px solid #edf0f5;
+  }
+  .site-header .mobile-menu-inner > a:hover,
+  .site-header .mobile-menu-inner > a:focus-visible,
+  .site-header .mobile-submenu-panel > a:hover,
+  .site-header .mobile-submenu-panel > a:focus-visible {color:#2575ef}
+  .site-header .mobile-submenu {
+    display:block;
+    margin:0;
+    padding:0;
+    border-top:0;
+    border-bottom:1px solid #edf0f5;
+  }
+  .site-header .mobile-submenu-toggle {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    width:100%;
+    min-height:58px;
+    padding:14px 0;
+    margin:0;
+    border:0;
+    border-radius:0;
+    background:transparent;
+    color:#20283a;
+    font-family:inherit;
+    font-size:16px;
+    font-weight:620;
+    line-height:1.5;
+    text-align:left;
+    cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .site-header .mobile-submenu-chevron {
+    display:block;
+    width:9px;
+    height:9px;
+    margin-right:7px;
+    flex:0 0 9px;
+    border-right:1.8px solid currentColor;
+    border-bottom:1.8px solid currentColor;
+    transform:rotate(45deg);
+    transition:transform .23s ease;
+  }
+  .site-header .mobile-submenu.is-open .mobile-submenu-chevron {transform:rotate(-135deg)}
+  .site-header .mobile-submenu-panel[hidden] {display:none!important}
+  .site-header .mobile-submenu-panel:not([hidden]) {
+    display:grid;
+    gap:0;
+    margin:0 0 16px 10px;
+    padding:3px 0 2px 19px;
+    border-left:1px solid #d8e3f4;
+    animation:myvMobileSubmenuIn .23s cubic-bezier(.22,1,.36,1) both;
+  }
+  .site-header .mobile-submenu-panel > a {
+    display:flex;
+    align-items:center;
+    min-height:43px;
+    padding:9px 0;
+    color:#66748c;
+    font-size:14px;
+    font-weight:500;
+    line-height:1.5;
+    text-align:left;
+    text-decoration:none;
+  }
+  .site-header .mobile-submenu-panel > a[aria-current="page"] {
+    color:#2778ef;
+    font-weight:700;
+  }
+  .site-header .mobile-language {
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    gap:13px;
+    min-height:60px;
+    padding:17px 0 0;
+    margin:12px 0 0;
+    border-top:1px solid #edf0f5;
+    color:#15233e;
+  }
+  .site-header .mobile-language .lang-button {
+    padding:7px 1px;
+    font-size:13px;
+    font-weight:700;
+    border:0;
+    background:transparent;
+    color:#20283a;
+    line-height:1.3;
+  }
+  .site-header .mobile-language .lang-button:not(.is-active) {cursor:pointer}
+  .site-header .mobile-language .lang-button.is-active {color:#2278f9;opacity:1}
+  .site-header .mobile-language > span {height:12px;width:1px;background:#c9d2e1;opacity:1}
+}
+@keyframes myvMobileSubmenuIn {
+  from{opacity:0;transform:translateY(-6px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@media (max-width:760px) {
+  .site-header {--myv-mobile-header-height:72px}
+  .site-header .mobile-menu-inner {width:calc(100% - 44px);padding-top:14px}
+  .site-header .mobile-menu-inner > a {min-height:56px}
+}
+@media (prefers-reduced-motion:reduce) {
+  .site-header .menu-button .menu-bar,
+  .site-header .mobile-menu,
+  .site-header .mobile-submenu-chevron {transition:none!important}
+  .site-header .mobile-submenu-panel:not([hidden]) {animation:none!important}
+}
