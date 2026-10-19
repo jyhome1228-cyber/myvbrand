@@ -19,6 +19,13 @@
       document.documentElement.classList.add('myv-intro-ready');
     }
   } catch (_) { /* No intro if session storage is unavailable. */ }
+  // QA fallback: never block the homepage if its main script fails to load.
+  window.setTimeout(() => {
+    if (!document.documentElement.classList.contains('myv-intro-ready')) return;
+    document.documentElement.classList.remove('myv-intro-ready');
+    document.getElementById('myvIntro')?.remove();
+    try { sessionStorage.setItem('myv-intro-viewed-v1', 'yes'); } catch (_) {}
+  }, 3000);
 </script>
 <meta name="robots" content="noindex,follow" />
 </head>
