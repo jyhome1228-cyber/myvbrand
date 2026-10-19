@@ -61,21 +61,28 @@
           <button type="button" class="lang-button" title="영문 페이지 준비중">EN</button>
         </div>
 
-        <button class="menu-button" type="button" aria-label="메뉴 열기" aria-expanded="false">
-          <span></span><span></span>
+        <button class="menu-button" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="myvMobileMenu">
+          <span class="menu-bar" aria-hidden="true"></span>
+          <span class="menu-bar" aria-hidden="true"></span>
+          <span class="menu-bar" aria-hidden="true"></span>
         </button>
       </div>
     </div>
 
-    <div class="mobile-menu" aria-hidden="true">
+    <nav class="mobile-menu" id="myvMobileMenu" aria-label="모바일 메뉴" aria-hidden="true">
       <div class="container mobile-menu-inner">
         <a href="./about.html">ABOUT</a>
         <a href="./business.html">BUSINESS</a>
 
         <div class="mobile-submenu">
-          <span>WITH US</span>
-          <a href="./prosumer.html">프로슈머</a>
-          <a href="./partner.html">입점제안</a>
+          <button class="mobile-submenu-toggle" type="button" aria-expanded="false" aria-controls="myvWithUsSubmenu">
+            <span>WITH US</span>
+            <span class="mobile-submenu-chevron" aria-hidden="true"></span>
+          </button>
+          <div class="mobile-submenu-panel" id="myvWithUsSubmenu" hidden>
+            <a href="./prosumer.html">프로슈머</a>
+            <a href="./partner.html">입점제안</a>
+          </div>
         </div>
 
         <a class="mobile-nav-button shop-link" href="https://myv.co.kr/" target="_blank" rel="noreferrer">SHOP ↗</a>
@@ -88,7 +95,7 @@
           <button type="button" class="lang-button">EN</button>
         </div>
       </div>
-    </div>
+    </nav>
   </header>
 
   <main id="top" class="home-main centered-page">
