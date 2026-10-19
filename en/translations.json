@@ -413,5 +413,6 @@
   "모바일 메뉴": "Mobile navigation",
   "WITH US 하위 메뉴": "With Us submenu",
   "입점제안 문의하기 →": "Submit a Partnership Inquiry →",
-  "현재 웹사이트의 온라인 문의 폼에서는 이름, 연락처, 이메일, 문의 제목 및 내용을 입력받습니다. 문의 내용은 외부 폼 전송 서비스(FormSubmit)를 통해 이메일로 접수되는 구조이며, 위탁·국외 이전 여부와 보유기간 등 세부 처리 기준은 정식 운영 전 확인하여 개인정보처리방침에 반영할 예정입니다.": "The website's inquiry form collects names, contact details, email addresses, inquiry subjects and message content. Submissions are routed to email through the third-party FormSubmit service. Details of external processing, possible cross-border transfers and retention periods require confirmation and inclusion in the finalized privacy policy before launch."
+  "현재 웹사이트의 온라인 문의 폼에서는 이름, 연락처, 이메일, 문의 제목 및 내용을 입력받습니다. 문의 내용은 외부 폼 전송 서비스(FormSubmit)를 통해 이메일로 접수되는 구조이며, 위탁·국외 이전 여부와 보유기간 등 세부 처리 기준은 정식 운영 전 확인하여 개인정보처리방침에 반영할 예정입니다.": "The website's inquiry form collects names, contact details, email addresses, inquiry subjects and message content. Submissions are routed to email through the third-party FormSubmit service. Details of external processing, possible cross-border transfers and retention periods require confirmation and inclusion in the finalized privacy policy before launch.",
+  "영문 사이트 보기": "View English website"
 }
