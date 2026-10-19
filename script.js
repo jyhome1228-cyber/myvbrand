@@ -4,24 +4,63 @@ const mobileMenu = document.querySelector(".mobile-menu");
 const revealItems = document.querySelectorAll(".reveal");
 
 function onScroll(){
-  header.classList.toggle("scrolled", window.scrollY > 24);
+  header?.classList.toggle("scrolled", window.scrollY > 24);
 }
 onScroll();
 window.addEventListener("scroll", onScroll, { passive:true });
 
+// Accessible, shared KR/EN mobile menu. The WITH US children stay hidden
+// until their disclosure button is activated.
+const withUsButton = mobileMenu?.querySelector(".mobile-submenu-toggle");
+const withUsPanel = mobileMenu?.querySelector(".mobile-submenu-panel");
+const isEnglishPage = document.documentElement.lang.toLowerCase().startsWith("en");
+
+function setWithUsOpen(open) {
+  if (!withUsButton || !withUsPanel) return;
+  withUsButton.setAttribute("aria-expanded", String(open));
+  withUsButton.closest(".mobile-submenu")?.classList.toggle("is-open", open);
+  withUsPanel.hidden = !open;
+}
+
+function setMobileMenuOpen(open) {
+  if (!mobileMenu || !menuButton) return;
+  mobileMenu.classList.toggle("open", open);
+  header?.classList.toggle("mobile-nav-open", open);
+  document.body.classList.toggle("myv-mobile-nav-open", open);
+  menuButton.classList.toggle("is-open", open);
+  menuButton.setAttribute("aria-expanded", String(open));
+  mobileMenu.setAttribute("aria-hidden", String(!open));
+  menuButton.setAttribute("aria-label", open
+    ? (isEnglishPage ? "Close menu" : "메뉴 닫기")
+    : (isEnglishPage ? "Open menu" : "메뉴 열기"));
+  if (!open) setWithUsOpen(false);
+}
+
 menuButton?.addEventListener("click", () => {
-  const isOpen = mobileMenu.classList.toggle("open");
-  menuButton.setAttribute("aria-expanded", String(isOpen));
-  mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+  setMobileMenuOpen(!mobileMenu?.classList.contains("open"));
+});
+withUsButton?.addEventListener("click", () => {
+  setWithUsOpen(withUsButton.getAttribute("aria-expanded") !== "true");
+});
+mobileMenu?.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => setMobileMenuOpen(false));
 });
 
-mobileMenu?.querySelectorAll("a").forEach(link => {
-  link.addEventListener("click", () => {
-    mobileMenu.classList.remove("open");
-    menuButton.setAttribute("aria-expanded", "false");
-    mobileMenu.setAttribute("aria-hidden", "true");
-  });
+document.addEventListener("keydown", event => {
+  if (event.key !== "Escape" || !mobileMenu?.classList.contains("open")) return;
+  if (withUsButton?.getAttribute("aria-expanded") === "true") {
+    setWithUsOpen(false);
+    withUsButton.focus();
+  } else {
+    setMobileMenuOpen(false);
+    menuButton?.focus();
+  }
 });
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 1100 && mobileMenu?.classList.contains("open")) {
+    setMobileMenuOpen(false);
+  }
+}, {passive:true});
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
