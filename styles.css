@@ -3261,3 +3261,9 @@ html.myv-intro-ready body {overflow:hidden}
 .subpage.has-static-header .site-header .brand-logo-color {opacity:1}
 .subpage.has-static-header .site-header.mobile-nav-open .brand-logo-color {opacity:1}
 .subpage.has-static-header .site-header .language-switch {border-left-color:#e6ebf2}
+
+/* QA — Both language-switch buttons are interactive, not pending placeholders. */
+.language-switch .lang-button:not(.is-active),
+.mobile-language .lang-button:not(.is-active) { cursor:pointer; }
+.language-switch .lang-button:not(.is-active):hover,
+.mobile-language .lang-button:not(.is-active):hover { opacity:.82; }
