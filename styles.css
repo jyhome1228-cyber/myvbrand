@@ -3249,3 +3249,15 @@ html.myv-intro-ready body {overflow:hidden}
   .site-header .mobile-submenu-chevron {transition:none!important}
   .site-header .mobile-submenu-panel:not([hidden]) {animation:none!important}
 }
+
+/* QA: Thank-you pages have a white hero, so keep their navigation dark and legible. */
+.subpage.has-static-header .site-header {
+  background:#fff;
+  color:var(--ink);
+  border-bottom:1px solid #e6ebf2;
+  backdrop-filter:none;
+}
+.subpage.has-static-header .site-header .brand-logo-white {opacity:0}
+.subpage.has-static-header .site-header .brand-logo-color {opacity:1}
+.subpage.has-static-header .site-header.mobile-nav-open .brand-logo-color {opacity:1}
+.subpage.has-static-header .site-header .language-switch {border-left-color:#e6ebf2}
