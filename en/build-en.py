@@ -61,6 +61,7 @@ def build(name):
         ('="./styles.css', '="../styles.css'),
         ('="./script.js', '="../script.js'),
         ('="./news.css', '="../news.css'),
+        ('="./prosumer-layout.css', '="../prosumer-layout.css'),
     ):
         output = output.replace(before, after)
     output = re.sub(r">([^<>]+)<", translate_node, output)
