@@ -3267,3 +3267,17 @@ html.myv-intro-ready body {overflow:hidden}
 .mobile-language .lang-button:not(.is-active) { cursor:pointer; }
 .language-switch .lang-button:not(.is-active):hover,
 .mobile-language .lang-button:not(.is-active):hover { opacity:.82; }
+
+
+/* MYV client feedback 2026-10-22: value ecosystem and informative navigation */
+.nav-dropdown-menu a small{display:block;font-size:11px;font-weight:400;letter-spacing:-.01em;line-height:1.5;opacity:.66;margin-top:2px;white-space:nowrap}
+.myv-value-section{background:#f6f8fc}
+.myv-value-inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,100px);align-items:center}
+.myv-value-inner h2{font-size:clamp(30px,3.3vw,49px);line-height:1.25;letter-spacing:-.045em}
+.myv-value-inner .lead{max-width:650px;font-size:clamp(15px,1.3vw,18px);margin:25px 0 35px}
+.myv-value-steps{display:grid;gap:12px}
+.myv-value-steps>div{padding:23px 28px;border:1px solid #e5eaf3;border-radius:18px;background:#fff}
+.myv-value-steps span{display:block;color:var(--blue);font-size:12px;letter-spacing:.09em;font-weight:700;margin-bottom:6px}
+.myv-value-steps strong{display:block;font-size:19px;font-weight:700;letter-spacing:-.035em}
+.myv-value-steps p{font-size:15px;color:var(--muted);margin:6px 0 0}
+@media(max-width:800px){.myv-value-inner{grid-template-columns:1fr}.myv-value-steps>div{padding:20px}.myv-value-section{padding-top:80px;padding-bottom:80px}}
