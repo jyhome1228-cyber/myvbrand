@@ -3316,3 +3316,30 @@ html.myv-intro-ready body {overflow:hidden}
   .site-header .mobile-submenu-toggle{touch-action:manipulation}
   .calc-summary-footnote{line-height:1.7;overflow-wrap:anywhere}
 }
+
+
+/* MYV P1 — image cropping, ecosystem and small-screen safeguards */
+.page-hero.myv-photo-hero::before,
+.prosumer-page .prosumer-hero.myv-photo-hero::before{background-position:center,center 45%;background-size:cover,cover}
+.page-hero.myv-photo-hero .hero-image-slot img,
+.prosumer-page .prosumer-hero.myv-photo-hero .hero-image-slot img,
+.home-hero .hero-image-slot img{max-width:100%;height:auto;object-fit:contain}
+.myv-business-ecosystem .page-section-heading p:not(.eyebrow){font-size:17px;line-height:1.75;color:var(--muted);margin-top:22px}
+.myv-ecosystem-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.myv-ecosystem-grid article{background:#fff;border:1px solid #e4eaf3;padding:28px 23px;border-radius:16px;min-width:0}
+.myv-ecosystem-grid article span{font-size:12px;letter-spacing:.06em;color:var(--blue);font-weight:750}
+.myv-ecosystem-grid article h3{margin:16px 0 12px;font-size:21px;line-height:1.3}
+.myv-ecosystem-grid article p{font-size:15px;color:var(--muted);line-height:1.7;margin:0}
+.myv-ecosystem-actions{display:flex;flex-wrap:wrap;gap:24px;margin-top:30px}
+@media(max-width:1100px){.myv-ecosystem-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){
+  .myv-ecosystem-grid{grid-template-columns:1fr;gap:12px}
+  .myv-ecosystem-grid article{padding:23px 21px}
+  .myv-business-ecosystem .page-section-heading p:not(.eyebrow){font-size:15px}
+  .myv-ecosystem-actions{gap:18px;flex-direction:column;align-items:flex-start}
+  .page-hero.myv-photo-hero::before,.prosumer-page .prosumer-hero.myv-photo-hero::before{background-position:center,61% center}
+  .home-hero .hero-image-slot,.page-hero.myv-photo-hero .hero-image-slot{max-width:100%;min-width:0}
+  .home-hero .hero-image-slot img,.page-hero.myv-photo-hero .hero-image-slot img{max-height:360px;object-fit:contain}
+  .about-core-values-grid .about-core-value-card{min-width:0}
+}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1!important;transform:none!important;transition:none!important}}
