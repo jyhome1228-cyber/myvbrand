@@ -123,10 +123,10 @@
 
   function update() {
     const values = fields.map(safeNumber);
-    const rateValue = Math.max(5, Math.min(40, Number(rate.value) || 15));
+    const rateValue = Math.max(5, Math.min(40, Number(rate?.value) || 15));
     const direct = Math.round(values[0] * rateValue / 100);
     const follower = Math.round(values[1] * values[2] * rateValue / 100);
-    const activity = bonus.checked ? 1000000 : 0;
+    const activity = bonus?.checked ? 1000000 : 0;
     const total = direct + follower + activity;
 
     if (rateOutput) rateOutput.textContent = rateValue + "%";
