@@ -3281,3 +3281,23 @@ html.myv-intro-ready body {overflow:hidden}
 .myv-value-steps strong{display:block;font-size:19px;font-weight:700;letter-spacing:-.035em}
 .myv-value-steps p{font-size:15px;color:var(--muted);margin:6px 0 0}
 @media(max-width:800px){.myv-value-inner{grid-template-columns:1fr}.myv-value-steps>div{padding:20px}.myv-value-section{padding-top:80px;padding-bottom:80px}}
+
+
+/* P1 visual fixes: avoid repeating the same hand photograph across pages. */
+.home-main .home-final-cta.home-story-cta::before,
+.subpage .page-hero.contact-photo-hero::before{
+  background-image:linear-gradient(115deg,rgba(238,245,255,.98) 0%,rgba(226,237,253,.92) 56%,rgba(197,219,250,.75) 100%);
+  background-size:cover;
+  background-position:center;
+}
+.subpage .page-hero.contact-photo-hero::before{
+  background-image:linear-gradient(110deg,#2278f9 0%,#1b64d5 60%,#153b89 100%);
+}
+@media(max-width:760px){
+ .home-main .home-final-cta.home-story-cta::before{background-image:linear-gradient(145deg,#f1f6ff,#dceafb)}
+ .subpage .page-hero.contact-photo-hero::before{background-image:linear-gradient(145deg,#2278f9,#173c82)}
+ .myv-value-inner h2{font-size:clamp(28px,7vw,38px);line-height:1.25;overflow-wrap:break-word}
+ .myv-value-inner .lead{font-size:16px;line-height:1.75}
+ .myv-value-steps strong{font-size:18px}
+ .myv-value-steps p{font-size:14px;line-height:1.65}
+}
