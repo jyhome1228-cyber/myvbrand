@@ -63,16 +63,16 @@ window.addEventListener("resize", () => {
   }
 }, {passive:true});
 
-const observer = new IntersectionObserver((entries) => {
+const observer = ("IntersectionObserver" in window) ? new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if(entry.isIntersecting){
       entry.target.classList.add("visible");
       observer.unobserve(entry.target);
     }
   });
-},{ threshold:0.12 });
+},{ threshold:0.12 }) : null;
 
-revealItems.forEach(item => observer.observe(item));
+revealItems.forEach(item => { if (observer) observer.observe(item); else item.classList.add("visible"); });
 
 
 // NEWS FILTER
