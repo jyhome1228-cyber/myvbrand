@@ -3301,3 +3301,18 @@ html.myv-intro-ready body {overflow:hidden}
  .myv-value-steps strong{font-size:18px}
  .myv-value-steps p{font-size:14px;line-height:1.65}
 }
+
+
+/* P1 partner onboarding guide and mobile usability */
+.myv-partner-guide .page-section-heading p:not(.eyebrow){font-size:17px;line-height:1.8;color:var(--muted);max-width:730px;margin-top:20px}
+.myv-partner-guide .page-card{min-width:0}
+.myv-partner-guide .page-card h3{line-height:1.35}
+.myv-guide-note{color:var(--muted);font-size:13px;line-height:1.65;margin:22px 0 0}
+@media(max-width:760px){
+  .myv-partner-guide .page-section-heading p:not(.eyebrow){font-size:15px}
+  .myv-partner-guide .page-card-grid{gap:14px}
+  .myv-partner-guide .page-card{padding:24px 22px}
+  .site-header .mobile-menu{padding-bottom:max(36px,env(safe-area-inset-bottom))}
+  .site-header .mobile-submenu-toggle{touch-action:manipulation}
+  .calc-summary-footnote{line-height:1.7;overflow-wrap:anywhere}
+}
