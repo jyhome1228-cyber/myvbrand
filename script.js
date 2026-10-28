@@ -29,6 +29,7 @@ function setMobileMenuOpen(open) {
   document.body.classList.toggle("myv-mobile-nav-open", open);
   menuButton.classList.toggle("is-open", open);
   menuButton.setAttribute("aria-expanded", String(open));
+  if (!open) menuButton.focus({preventScroll:true});
   mobileMenu.setAttribute("aria-hidden", String(!open));
   menuButton.setAttribute("aria-label", open
     ? (isEnglishPage ? "Close menu" : "메뉴 닫기")
