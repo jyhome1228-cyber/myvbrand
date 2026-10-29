@@ -3343,3 +3343,64 @@ html.myv-intro-ready body {overflow:hidden}
   .about-core-values-grid .about-core-value-card{min-width:0}
 }
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1!important;transform:none!important;transition:none!important}}
+
+
+/* MYV 2026-10-29 — unified editorial CTA links, replacing underline-only text links */
+a.text-link{
+  display:inline-flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  width:max-content;
+  max-width:100%;
+  min-height:48px;
+  padding:9px 12px 9px 22px;
+  border:1px solid #d8e2ef;
+  border-radius:999px;
+  background:#fff;
+  color:#17294a;
+  font-size:14px;
+  font-weight:650;
+  line-height:1.35;
+  letter-spacing:-.02em;
+  text-decoration:none;
+  box-shadow:none;
+  transition:background .22s ease,border-color .22s ease,color .22s ease,transform .22s ease;
+}
+a.text-link span{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:28px;
+  height:28px;
+  flex:0 0 28px;
+  border-radius:50%;
+  background:#eef4ff;
+  color:#206de8;
+  font-size:17px;
+  line-height:1;
+  transition:background .22s ease,color .22s ease,transform .22s ease;
+}
+a.text-link:hover{background:#f5f8ff;border-color:#90b6f5;transform:translateY(-2px)}
+a.text-link:hover span{background:#2278f9;color:#fff;transform:translateX(2px)}
+a.text-link:focus-visible{outline:3px solid #83b4ff;outline-offset:3px}
+a.text-link.light-link{
+  background:rgba(255,255,255,.1);
+  border-color:rgba(255,255,255,.52);
+  color:#fff;
+}
+a.text-link.light-link span{background:#fff;color:#1557c6}
+a.text-link.light-link:hover{background:#fff;color:#173c82;border-color:#fff}
+a.text-link.light-link:hover span{background:#2278f9;color:#fff}
+.home-main .home-more a.text-link{
+  background:#2278f9;
+  border-color:#2278f9;
+  color:#fff;
+}
+.home-main .home-more a.text-link span{background:rgba(255,255,255,.18);color:#fff}
+.home-main .home-more a.text-link:hover{background:#175dcf;border-color:#175dcf}
+@media(max-width:760px){
+ a.text-link{min-height:46px;padding:8px 10px 8px 17px;font-size:13px;gap:14px}
+ a.text-link span{width:27px;height:27px;flex-basis:27px}
+}
+@media(prefers-reduced-motion:reduce){a.text-link,a.text-link span{transition:none}}
