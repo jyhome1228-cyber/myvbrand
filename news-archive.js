@@ -4,7 +4,7 @@
 
   const grid = archive.querySelector('.news-data-grid');
   const hero = document.querySelector('.page-hero');
-  const cards = Array.from(grid.querySelectorAll('.news-data-card'));
+  let cards = Array.from(grid.querySelectorAll('.news-data-card'));
   const buttons = Array.from(archive.querySelectorAll('[data-filter]'));
   const pagination = archive.querySelector('.news-pagination');
   const summary = archive.querySelector('#newsResults');
@@ -99,7 +99,17 @@
   function renderBody(post) {
     content.replaceChildren();
     if (!post.body) {
+      const sourceUrl = post.originalUrl || post.url;
+      if (/^https?:\/\//i.test(sourceUrl || '')) {
+        content.appendChild(element('p', 'article-empty', '이 기사는 원문에서 확인할 수 있습니다.'));
+        const original = element('a', 'article-source-link', '기사 원문 보기 ↗');
+        original.href = sourceUrl;
+        original.target = '_blank';
+        original.rel = 'noopener noreferrer';
+        content.appendChild(original);
+      } else {
       content.appendChild(element('p', 'article-empty', '기사 본문 준비 중입니다.'));
+      }
       return;
     }
     if (post.intro) content.appendChild(element('p', '', post.intro));
@@ -119,6 +129,10 @@
         picture.decoding = 'async';
         figure.appendChild(picture);
         content.appendChild(figure);
+        return;
+      }
+      if (paragraph.startsWith('## ')) {
+        content.appendChild(element('h2', '', paragraph.slice(3)));
         return;
       }
       if (knownHeadings.has(paragraph) || paragraph === '제품 보러 가기') {
@@ -298,6 +312,41 @@
     renderList();
   }));
 
+
+  // The same data file powers admin edits, public cards and article details.
+  function refreshCards(posts) {
+    grid.replaceChildren();
+    cards = [...posts].sort((a, b) => b.date.localeCompare(a.date)).map(post => {
+      const card = element('a', 'news-data-card');
+      card.dataset.postId = post.id;
+      card.dataset.category = post.category;
+      card.dataset.date = post.date;
+      card.href = './news.html?article=' + encodeURIComponent(post.id);
+      const thumbnail = element('div', post.thumbnail ? 'news-data-thumb has-image' : 'news-data-thumb news-brand-thumb');
+      const image = element('img');
+      image.src = /^https?:\/\//i.test(post.thumbnail || '') ? post.thumbnail : './assets/myv-logo.svg';
+      image.alt = '';
+      image.loading = 'lazy';
+      image.decoding = 'async';
+      if (!post.thumbnail) thumbnail.appendChild(element('span', '', post.category));
+      thumbnail.appendChild(image);
+      if (!post.thumbnail) thumbnail.appendChild(element('strong', '', 'MYV NEWS'));
+      const body = element('div', 'news-data-body');
+      body.append(element('span', 'news-data-category', post.category), element('h3', '', post.title));
+      const excerpt = post.summary;
+      if (excerpt) body.appendChild(element('p', 'news-data-excerpt', excerpt));
+      const info = element('div', 'news-data-meta');
+      const time = element('time', '', post.date);
+      time.dateTime = post.date;
+      info.append(time, element('span', '', '자세히 보기 →'));
+      body.appendChild(info);
+      card.append(thumbnail, body);
+      grid.appendChild(card);
+      return card;
+    });
+  }
+
   window.addEventListener('popstate', () => renderRoute(true));
-  renderRoute();
+  loadPosts().then(posts => { refreshCards(posts); renderRoute(); }).catch(() => renderRoute());
 })();
+

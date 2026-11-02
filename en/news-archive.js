@@ -6,7 +6,7 @@
 
   const grid = archive.querySelector('.news-data-grid');
   const hero = document.querySelector('.page-hero');
-  const cards = Array.from(grid.querySelectorAll('.news-data-card'));
+  let cards = Array.from(grid.querySelectorAll('.news-data-card'));
   const buttons = Array.from(archive.querySelectorAll('[data-filter]'));
   const pagination = archive.querySelector('.news-pagination');
   const summary = archive.querySelector('#newsResults');
@@ -100,13 +100,24 @@
 
   function renderBody(post) {
     content.replaceChildren();
-    if (!post.body) {
+    const articleBody = post.bodyEn || post.body;
+    if (!articleBody) {
+      const sourceUrl = post.originalUrl || post.url;
+      if (/^https?:\/\//i.test(sourceUrl || '')) {
+        content.appendChild(element('p', 'article-empty', 'Read the full article on the original website.'));
+        const original = element('a', 'article-source-link', 'Read original article ↗');
+        original.href = sourceUrl;
+        original.target = '_blank';
+        original.rel = 'noopener noreferrer';
+        content.appendChild(original);
+      } else {
       content.appendChild(element('p', 'article-empty', 'Article content is being prepared.'));
+      }
       return;
     }
-    if (post.intro) content.appendChild(element('p', '', post.intro));
+    if (post.intro && !post.bodyEn) content.appendChild(element('p', '', post.intro));
     let imageNumber = 0;
-    const paragraphs = String(post.body).split(/\n\s*\n/);
+    const paragraphs = String(articleBody).split(/\n\s*\n/);
     paragraphs.forEach((item) => {
       const paragraph = item.trim();
       if (!paragraph) return;
@@ -121,6 +132,10 @@
         picture.decoding = 'async';
         figure.appendChild(picture);
         content.appendChild(figure);
+        return;
+      }
+      if (paragraph.startsWith('## ')) {
+        content.appendChild(element('h2', '', paragraph.slice(3)));
         return;
       }
       if (knownHeadings.has(paragraph) || paragraph === '제품 보러 가기') {
@@ -256,13 +271,13 @@
         return;
       }
       categoryEl.textContent = post.category || 'MYV';
-      heading.textContent = newsTitles[post.id] || post.title;
-      document.title = (newsTitles[post.id] || post.title) + ' | MYV NEWS';
+      heading.textContent = post.titleEn || newsTitles[post.id] || post.title;
+      document.title = (post.titleEn || newsTitles[post.id] || post.title) + ' | MYV NEWS';
       const dated = element('span', '', 'Published ' + post.date);
       meta.appendChild(dated);
       if (post.reportedDate) meta.appendChild(element('span', '', 'Original publication ' + post.reportedDate));
-      lead.textContent = summaryTranslations[post.summary] || post.summary || '';
-      lead.hidden = !post.summary;
+      lead.textContent = post.summaryEn || summaryTranslations[post.summary] || post.summary || '';
+      lead.hidden = !lead.textContent;
       renderBody(post);
     } catch (error) {
       if (serial !== routeVersion) return;
@@ -300,6 +315,41 @@
     renderList();
   }));
 
+
+  // The same data file powers admin edits, public cards and article details.
+  function refreshCards(posts) {
+    grid.replaceChildren();
+    cards = [...posts].sort((a, b) => b.date.localeCompare(a.date)).map(post => {
+      const card = element('a', 'news-data-card');
+      card.dataset.postId = post.id;
+      card.dataset.category = post.category;
+      card.dataset.date = post.date;
+      card.href = './news.html?article=' + encodeURIComponent(post.id);
+      const thumbnail = element('div', post.thumbnail ? 'news-data-thumb has-image' : 'news-data-thumb news-brand-thumb');
+      const image = element('img');
+      image.src = /^https?:\/\//i.test(post.thumbnail || '') ? post.thumbnail : '../assets/myv-logo.svg';
+      image.alt = '';
+      image.loading = 'lazy';
+      image.decoding = 'async';
+      if (!post.thumbnail) thumbnail.appendChild(element('span', '', post.category));
+      thumbnail.appendChild(image);
+      if (!post.thumbnail) thumbnail.appendChild(element('strong', '', 'MYV NEWS'));
+      const body = element('div', 'news-data-body');
+      body.append(element('span', 'news-data-category', post.category), element('h3', '', post.titleEn || newsTitles[post.id] || post.title));
+      const excerpt = post.summaryEn || summaryTranslations[post.summary] || post.summary;
+      if (excerpt) body.appendChild(element('p', 'news-data-excerpt', excerpt));
+      const info = element('div', 'news-data-meta');
+      const time = element('time', '', post.date);
+      time.dateTime = post.date;
+      info.append(time, element('span', '', 'Read more →'));
+      body.appendChild(info);
+      card.append(thumbnail, body);
+      grid.appendChild(card);
+      return card;
+    });
+  }
+
   window.addEventListener('popstate', () => renderRoute(true));
-  renderRoute();
+  loadPosts().then(posts => { refreshCards(posts); renderRoute(); }).catch(() => renderRoute());
 })();
+

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' https: data:; connect-src 'self' https://api.github.com; object-src 'none'; base-uri 'none'; form-action 'none'" />
+  <title>MYV 관리자</title>
+  <link rel="icon" href="../assets/favicon.svg" />
+  <link rel="stylesheet" href="./admin.css?v=20261102" />
+  <script src="./admin.js?v=20261102" type="module"></script>
+</head>
+<body>
+  <a class="skip" href="#main">본문으로 이동</a>
+  <aside class="sidebar" id="sidebar">
+    <a class="admin-brand" href="#overview"><img src="../assets/myv-logo.svg" alt="MYV" /><span>브랜드 운영</span></a><button class="icon-button sidebar-close" id="sidebarClose" aria-label="관리 메뉴 닫기">✕</button>
+    <div class="nav-label">WORKSPACE</div>
+    <nav aria-label="관리 메뉴">
+      <a href="#overview" data-view="overview"><span class="nav-icon">▦</span>대시보드</a>
+      <a href="#news" data-view="news"><span class="nav-icon">▤</span>뉴스 관리 <span class="nav-count" id="newsNavCount">—</span></a>
+      <a href="#inquiries" data-view="inquiries"><span class="nav-icon">✉</span>문의 관리</a>
+      <a href="#review" data-view="review"><span class="nav-icon">☑</span>수정 체크리스트</a>
+      <a href="#settings" data-view="settings"><span class="nav-icon">⚙</span>연결 및 백업</a>
+    </nav>
+    <div class="sidebar-bottom"><span class="status-dot"></span><span id="sidebarStatus">브라우저 초안 모드</span><p>사이트 반영은 연결 후 진행합니다.</p><a href="../index.html" target="_blank" rel="noopener noreferrer">홈페이지 보기 ↗</a></div>
+  </aside>
+  <div id="navBackdrop" class="nav-backdrop" hidden></div>
+  <div class="workspace">
+    <header class="topbar"><button class="icon-button mobile-toggle" id="menuToggle" aria-label="관리 메뉴 열기" aria-expanded="false">☰</button><span class="breadcrumb">MYV <span>/</span> <strong id="crumb">대시보드</strong></span><div class="top-actions"><span class="mode-badge" id="modeBadge">사이트 미반영</span><button class="button small" id="connectionButton">저장소 연결</button></div></header>
+    <main id="main" tabindex="-1"><div class="page-heading"><div><p class="eyebrow">MYV WORKSPACE</p><h1 id="pageTitle">브랜드 운영을 한눈에</h1><p id="pageDescription">뉴스와 홈페이지의 남은 작업을 확인하세요.</p></div><div id="pageActions"></div></div><div class="load-state" id="loadState" role="status">현재 뉴스 데이터를 불러오고 있습니다.</div><div id="viewContent"></div></main>
+    <footer class="admin-footer">MYV · Brand Operations <span id="saveStatus">변경한 콘텐츠는 이 브라우저에 임시 저장됩니다.</span></footer>
+  </div>
+  <dialog id="editorDialog" class="editor-dialog" aria-labelledby="editorTitle">
+    <form id="editorForm"><div class="dialog-header"><div><p class="eyebrow">NEWS EDITOR</p><h2 id="editorTitle">뉴스 수정</h2></div><button class="icon-button" type="button" data-close="editorDialog" aria-label="편집창 닫기">✕</button></div>
+      <div class="editor-toolbar"><div class="tabs" role="tablist" aria-label="편집 언어"><button type="button" role="tab" aria-selected="true" data-language="ko">한국어</button><button type="button" role="tab" aria-selected="false" data-language="en">English</button></div><span class="subtle">초안 저장 후 사이트 반영을 진행하세요.</span></div>
+      <div class="editor-columns"><div class="editor-fields"><input type="hidden" id="postId" /><div class="field-row"><label>분류<select id="postCategory"><option>MYV</option><option>PARTNER</option><option>GLOBAL</option></select></label><label>게시일<input id="postDate" type="date" required /></label></div><div id="koFields"><label>제목 <span>*</span><input id="postTitle" maxlength="240" required placeholder="뉴스 제목을 입력하세요" /></label><label>요약<textarea id="postSummary" rows="3" maxlength="600" placeholder="목록에서 보여줄 핵심 내용을 적어주세요"></textarea></label><label>본문<textarea id="postBody" class="body-input" rows="12" placeholder="문단 사이는 한 줄 비워주세요.&#10;&#10;## 소제목&#10;**강조할 문구**&#10;이미지 URL을 한 줄에 넣으면 본문 이미지로 표시됩니다."></textarea></label></div><div id="enFields" hidden><label>English title<input id="postTitleEn" maxlength="240" /></label><label>English summary<textarea id="postSummaryEn" rows="3" maxlength="600"></textarea></label><label>English body<textarea id="postBodyEn" class="body-input" rows="12"></textarea></label></div><label>대표 이미지 URL<input id="postThumbnail" type="url" placeholder="https://…/image.webp" /></label><div class="field-help">기존 이미지 주소를 사용할 수 있습니다. 직접 파일 업로드는 추후 연결합니다.</div><label>원문 링크<input id="postOriginal" type="url" placeholder="https://…" /></label><label class="check-label"><input type="checkbox" id="externalOnly" /> 본문 대신 원문 링크로 안내</label><p id="editorError" class="form-error" role="alert"></p></div><aside class="editor-preview"><div class="preview-label">미리보기 <span>저장 전 확인</span></div><article id="postPreview"></article></aside></div>
+      <div class="dialog-footer"><span id="editorHint">저장해도 홈페이지에 바로 공개되지 않습니다.</span><button class="button" type="button" data-close="editorDialog">취소</button><button class="button primary" type="submit">초안 저장</button></div>
+    </form>
+  </dialog>
+  <dialog id="connectionDialog" aria-labelledby="connectTitle"><form id="connectForm"><div class="dialog-header"><div><p class="eyebrow">REPOSITORY</p><h2 id="connectTitle">사이트 저장소 연결</h2></div><button class="icon-button" type="button" data-close="connectionDialog" aria-label="연결창 닫기">✕</button></div><div class="dialog-body"><p>뉴스를 홈페이지에 반영할 때만 연결하면 됩니다.</p><div class="repository-name">jyhome1228-cyber / myvbrand <span>main</span></div><label>GitHub 액세스 토큰<input id="githubToken" type="password" autocomplete="off" spellcheck="false" required placeholder="저장소 쓰기 권한이 있는 토큰" /></label><p class="field-help">해당 저장소의 Contents 읽기·쓰기 권한만 필요합니다. 토큰은 현재 탭의 메모리에서만 사용하며 브라우저 저장소나 백업 파일에 저장하지 않습니다.</p><p id="connectionError" class="form-error" role="alert"></p></div><div class="dialog-footer"><button class="button" type="button" data-close="connectionDialog">취소</button><button class="button primary" type="submit" id="connectSubmit">연결 확인</button></div></form></dialog>
+  <dialog id="publishDialog" aria-labelledby="publishTitle"><div class="dialog-header"><div><p class="eyebrow">PUBLISH</p><h2 id="publishTitle">변경한 뉴스를 사이트에 반영할까요?</h2></div><button class="icon-button" data-close="publishDialog" aria-label="반영창 닫기">✕</button></div><div class="dialog-body"><p>저장한 초안 중 제목·게시일·본문 또는 원문 링크를 갖춘 항목을 반영합니다. GitHub Pages 배포 후 공개됩니다.</p><div id="publishSummary"></div><p id="publishError" class="form-error" role="alert"></p></div><div class="dialog-footer"><button class="button" data-close="publishDialog">취소</button><button class="button primary" id="confirmPublish">사이트에 반영</button></div></dialog>
+  <dialog id="confirmDialog" aria-labelledby="confirmTitle"><div class="dialog-header"><h2 id="confirmTitle"></h2></div><div class="dialog-body"><p id="confirmMessage"></p></div><div class="dialog-footer"><button class="button" data-close="confirmDialog">취소</button><button class="button primary" id="confirmAction">확인</button></div></dialog>
+  <div id="toast" class="toast" role="status" hidden></div>
+</body>
+</html>

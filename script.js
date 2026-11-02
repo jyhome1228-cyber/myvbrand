@@ -113,6 +113,8 @@ document.querySelectorAll(".reveal").forEach((group) => {
   const script = document.querySelector('script[src*="script.js"]');
   const root = script ? new URL(".", script.src) : new URL("./", location.href);
   const enHref = new URL("en/" + requested, root);
+  const goEnglish = () => { const target = new URL(enHref); target.search = location.search; location.href = target.href; };
+  enHref.search = location.search;
   if (requested === "news.html" && pageName === "news.html") {
     const original = new URLSearchParams(location.search);
     if (original.has("article")) enHref.searchParams.set("article", original.get("article"));
@@ -123,7 +125,7 @@ document.querySelectorAll(".reveal").forEach((group) => {
     if (text === "EN") {
       button.title = "View English draft";
       button.setAttribute("aria-label", "View English website draft");
-      button.addEventListener("click", () => { location.href = enHref.href; });
+      button.addEventListener("click", () => { goEnglish(); });
     }
   });
   document.querySelectorAll(".footer-language").forEach(group => {
@@ -133,11 +135,11 @@ document.querySelectorAll(".reveal").forEach((group) => {
     en.setAttribute("role", "link");
     en.setAttribute("tabindex", "0");
     en.setAttribute("aria-label", "View English website draft");
-    en.addEventListener("click", () => { location.href = enHref.href; });
+    en.addEventListener("click", () => { goEnglish(); });
     en.addEventListener("keydown", event => {
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
-        location.href = enHref.href;
+        goEnglish();
       }
     });
   });
@@ -204,4 +206,29 @@ document.querySelectorAll(".reveal").forEach((group) => {
     el.style.setProperty("--myv-motion-delay", String((i % 3) * 55) + "ms");
     textObserver.observe(el);
   });
+})();
+
+
+
+// Keep homepage news in sync with the same published JSON used by the editor.
+(() => {
+  const list = document.querySelector('.home-news-list');
+  if (!list) return;
+  const english = document.documentElement.lang.startsWith('en');
+  const prefix = english ? '../' : './';
+  Promise.all([
+    fetch(prefix + 'news-posts.json', {cache:'no-store'}).then(r => { if (!r.ok) throw Error('News unavailable'); return r.json(); }),
+    english ? fetch('./news-titles.json').then(r => r.ok ? r.json() : {}).catch(() => ({})) : Promise.resolve({})
+  ]).then(([posts, titles]) => {
+    const fragment = document.createDocumentFragment();
+    posts.sort((a,b) => b.date.localeCompare(a.date)).slice(0,3).forEach(post => {
+      const link = document.createElement('a');
+      link.href = './news.html?article=' + encodeURIComponent(post.id);
+      const date = document.createElement('span'); date.textContent = post.date;
+      const title = document.createElement('strong'); title.textContent = english ? (post.titleEn || titles[post.id] || post.title) : post.title;
+      const arrow = document.createElement('em'); arrow.textContent = '→';
+      link.append(date, title, arrow); fragment.appendChild(link);
+    });
+    list.replaceChildren(fragment);
+  }).catch(() => { /* Retain server-rendered links if the connection fails. */ });
 })();
