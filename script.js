@@ -232,3 +232,13 @@ document.querySelectorAll(".reveal").forEach((group) => {
     list.replaceChildren(fragment);
   }).catch(() => { /* Retain server-rendered links if the connection fails. */ });
 })();
+
+// Load MYV privacy-safe page view collector when enabled by analytics-config.json.
+(() => {
+  const current=document.currentScript;
+  if (!current) return;
+  const script=document.createElement('script');
+  script.src=new URL('visitor-track.js?v=20261104',current.src).href;
+  script.defer=true;
+  document.head.append(script);
+})();
