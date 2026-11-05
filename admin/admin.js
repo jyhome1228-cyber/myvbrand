@@ -100,7 +100,33 @@ function renderNewsTable(section) {
   const footer=node('div',null,'table-footer');footer.append(node('span',filtered.length.toLocaleString('ko-KR')+'건 · 최신순'));const pagination=node('nav',null,'pagination');pagination.setAttribute('aria-label','뉴스 목록 페이지');for(let i=1;i<=pages;i++){const b=button(String(i),()=>{page=i;renderNewsTable(section);},'');b.setAttribute('aria-label',i+'페이지');if(i===page)b.setAttribute('aria-current','page');pagination.append(b);}footer.append(pagination);host.append(footer);
 }
 function renderInquiries() {
-  const body=node('div',null,'panel-body');body.append(tag('이메일 접수 운영 중','success'),node('h2','문의는 info@myv.co.kr에서 확인할 수 있습니다.'),node('p','현재 홈페이지는 FormSubmit을 통해 메일을 보내는 구조입니다. 관리자에서 조회할 수 있는 문의 저장소와 로그인은 아직 연결되지 않았습니다.','note'));const link=node('a','메일 작성하기 ↗','button');link.href='mailto:info@myv.co.kr';body.append(link);$('#viewContent').append(panel('현재 접수 방식','저장된 문의 건수는 확인할 수 없습니다.',body));const services=node('div',null,'service-grid');[['프로슈머 신청','활동 채널·신청 목적·접수 상태를 확인하는 목록이 필요합니다.','prosumer'],['입점제안','브랜드·제품·제안 내용을 확인하고 검토 상태를 관리해야 합니다.','partner'],['일반 문의','문의 내용과 답변 상태·담당자 메모를 관리해야 합니다.','general']].forEach(([title,copy,type])=>{const card=node('article',null,'service-card');card.append(tag('목록 수집 미연결','muted'),node('h3',title),node('p',copy));const a=node('a','접수 폼 확인 ↗');a.href='../contact.html?type='+type;a.target='_blank';a.rel='noopener noreferrer';card.append(a);services.append(card);});$('#viewContent').append(services,node('p','후속 연결: 관리자 인증 → 문의 저장 → 목록·검색 → 처리 상태·내부 메모 → 접수 알림. 실제 고객 정보는 인증된 저장소에서만 관리합니다.','note'));
+  const root=$('#viewContent');
+  const intro=node('div',null,'panel-body');
+  intro.append(tag('접수 서버 연결 필요','warn'),node('h2','프로슈머 · 입점제안 · 일반 문의 통합 관리'),node('p','현재 홈페이지의 문의는 FormSubmit을 통해 info@myv.co.kr 이메일로 전송됩니다. 이 화면은 실제 문의 내역을 조회하지 않으며, 고객 정보는 공개 GitHub 저장소나 브라우저 저장소에 보관하지 않습니다.','note'));
+  const mail=node('a','현재 문의 수신 이메일 ↗','button');mail.href='mailto:info@myv.co.kr';intro.append(mail);
+  root.append(panel('접수 연결 현황','운영 데이터가 연결되면 아래 유형별로 자동 분류됩니다.',intro));
+  const categories=[
+    {id:'prosumer',title:'프로슈머 신청',description:'참여 신청자 · 활동 채널 · 신청 목적',status:['신규','확인','검토 중','승인','반려']},
+    {id:'partner',title:'사업자 · 브랜드 입점',description:'브랜드명 · 담당자 · 제품 제안 · 제휴 문의',status:['신규','확인','제품 검토','협의 중','완료']},
+    {id:'general',title:'일반 문의',description:'서비스 문의 · 제휴 문의 · 기타',status:['신규','확인','답변 준비','답변 완료']}
+  ];
+  const tabs=node('div',null,'toolbar');
+  const content=node('div',null,'panel-body');
+  function showCategory(category){
+    [...tabs.children].forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.category===category.id)));
+    content.replaceChildren();
+    content.append(node('h2',category.title),node('p',category.description,'note'));
+    const states=node('div',null,'service-grid');
+    category.status.forEach(status=>{const item=node('article',null,'service-card');item.append(tag(status,'muted'),node('h3','—'),node('p','실제 데이터 연동 후 표시'));states.append(item);});
+    content.append(states);
+    const empty=node('div','접수 데이터베이스가 연결되지 않아 표시할 신청 내역이 없습니다.','empty');empty.setAttribute('role','status');content.append(empty);
+    const action=node('a','해당 유형 신청 화면 확인 ↗','button');action.href='../contact.html?type='+category.id;action.target='_blank';action.rel='noopener noreferrer';content.append(action);
+  }
+  categories.forEach((category,i)=>{const btn=button(category.title,()=>showCategory(category),'button');btn.dataset.category=category.id;btn.setAttribute('aria-pressed','false');tabs.append(btn);});
+  const wrapper=node('section',null,'panel');wrapper.append(tabs,content);root.append(wrapper);showCategory(categories[0]);
+  const workflow=node('div',null,'panel-body');
+  [['1. 신청 접수','홈페이지 문의 폼에서 서버 API로 저장하고 유형을 자동 분류'],['2. 담당자 확인','인증된 관리자만 연락처·신청 내용 조회'],['3. 처리 단계','신규 → 검토 → 답변·승인·반려 상태 변경'],['4. 운영 기록','담당자 메모·변경 이력·보관 및 삭제 정책 적용']].forEach(([title,desc])=>{const row=node('div',null,'connection-row');row.append(node('strong',title),node('span',desc));workflow.append(row);});
+  root.append(panel('운영 처리 흐름','실제 서버 연결 시 적용할 기준',workflow));
 }
 function renderReview() {
   $('#pageActions').append(button('체크리스트 내보내기',()=>download('myv-review-checklist.json',REVIEWS.map(([id,priority,title,description,status])=>({id,priority,title,description,status:review[id]||status})))));
