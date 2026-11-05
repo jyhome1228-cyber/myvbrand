@@ -12,3 +12,14 @@ dialog{width:min(560px,calc(100vw - 32px));border:1px solid #e0e7ef;border-radiu
 
 .sidebar-close{display:none}.nav-backdrop{position:fixed;inset:0;z-index:4;background:#152a4b55}.metric small{line-height:1.65;word-break:keep-all}.metric .label{word-break:keep-all}
 @media(max-width:760px){.sidebar-close{display:block;position:absolute;top:79px;right:15px;width:28px;height:28px}.admin-brand{padding-bottom:48px}}
+
+/* 2026-11-06 · MYV unified operations dashboard */
+.admin-quick-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;padding:20px}
+.admin-quick-card{appearance:none;border:1px solid var(--border,#e2e8f0);border-radius:14px;background:#f8faff;color:inherit;text-align:left;min-height:130px;padding:20px;display:flex;flex-direction:column;gap:10px;transition:border-color .2s,transform .2s}
+.admin-quick-card:hover{border-color:#2479f5;transform:translateY(-2px)}
+.admin-quick-card strong{font-size:17px;letter-spacing:-.03em}
+.admin-quick-card span{font-size:13px;color:#718099;line-height:1.6}
+.admin-quick-card small{font-size:12px;color:#2479f5;margin-top:auto}
+.toolbar button[aria-pressed="true"]{background:#2479f5;color:white;border-color:#2479f5}
+@media(max-width:950px){.admin-quick-actions{grid-template-columns:1fr}}
+@media(max-width:760px){.admin-quick-actions{padding:14px;gap:9px}.admin-quick-card{min-height:100px;padding:16px}}
