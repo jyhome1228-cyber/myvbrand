@@ -76,14 +76,31 @@ function render() {
 }
 function renderOverview() {
   $('#pageActions').append(button('+ 뉴스 작성', () => openEditor(), 'button primary'));
-  const metrics = node('div', null, 'metrics');
-  [[posts.length,'전체 뉴스','현재 불러온 뉴스',()=>navigate('news','all'),''],[posts.filter(needsBody).length,'본문 미등록','원문 안내 포함 · 본문 보완 대상',()=>navigate('news','missing'),'attention'],[changed.size,'미반영 변경','현재 브라우저에서 저장한 초안',()=>navigate('news','changed'),'active'],[REVIEWS.filter(([id,,,,initial])=>(review[id]||initial)!=='완료').length,'남은 확인 항목','화면·콘텐츠·운영 연결',()=>navigate('review'),'']].forEach(([value,label,hint,action,style])=>{ const m = button('',action,'metric '+style); m.append(node('span',label,'label'),node('strong',Number(value).toLocaleString('ko-KR')),node('small',hint)); metrics.append(m); });
-  const grid = node('div',null,'dashboard-grid'); const list = node('div',null,'compact-list');
-  sorted(posts).slice(0,5).forEach(p=>{const row=node('div',null,'compact-row'); const copy=node('div');copy.append(button(p.title,()=>openEditor(p.id),'title'),node('small',p.date+' · '+p.category));row.append(copy,tag(needsBody(p)?'본문 미등록':changed.has(p.id)?'수정 초안':'본문 등록',needsBody(p)?'warn':''));list.append(row);});
-  grid.append(panel('최근 뉴스','현재 뉴스 데이터 기준 · 최신순',list,button('전체보기 →',()=>navigate('news'),'text-button')));
-  const status = node('div',null,'panel-body'); [['뉴스 데이터','연결됨','success'],['사이트 반영 권한',connected?'연결됨':'연결 필요',connected?'success':'warn'],['문의 저장·조회','미연결','muted'],['실제 방문 통계','수집 서버 연결 필요','muted']].forEach(([label,value,style])=>{const r=node('div',null,'connection-row');r.append(node('span',label),tag(value,style));status.append(r);});status.append(node('p','문의와 방문 통계는 실제 연결 후 표시합니다. 초안 저장만으로 홈페이지가 바뀌지는 않습니다.','summary-note'));status.append(node('p','방문 통계 전용 화면에서 수집 서버 연결 후 오늘·어제·엊그제 기록을 조회할 수 있습니다.','summary-note'));const visitorsLink=node('a','방문 기록 보기 →','button');visitorsLink.href='./visitors.html';status.append(visitorsLink);grid.append(panel('운영 연결 상태','작동 범위를 확인하세요',status,button('설정 →',()=>navigate('settings'),'text-button')));
-  const quick=node('div',null,'compact-list');REVIEWS.filter(([id,,,,initial])=>(review[id]||initial)!=='완료').slice(0,3).forEach(([id,priority,title,,,])=>{const row=node('div',null,'compact-row');row.append(button(title,()=>navigate('review'),'title'),tag(priority,'muted'));quick.append(row);});
-  const lower=panel('먼저 확인할 작업','피드백 대조 결과',quick,button('체크리스트 →',()=>navigate('review'),'text-button'));lower.classList.add('section-gap');$('#viewContent').append(metrics,grid,lower);
+  const metrics=node('div',null,'metrics');
+  [
+    ['—','프로슈머 신청','문의 DB 연결 전',()=>navigate('inquiries'),''],
+    ['—','사업자 · 입점제안','문의 DB 연결 전',()=>navigate('inquiries'),''],
+    ['—','일반 문의','문의 DB 연결 전',()=>navigate('inquiries'),''],
+    [posts.length,'등록된 뉴스','현재 사이트 뉴스 데이터',()=>navigate('news','all'),'active']
+  ].forEach(([value,label,hint,action,style])=>{const m=button('',action,'metric '+style);m.append(node('span',label,'label'),node('strong',typeof value==='number'?value.toLocaleString('ko-KR'):value),node('small',hint));metrics.append(m);});
+  const quick=node('div',null,'admin-quick-actions');
+  [['프로슈머 신청','신청자 접수 및 승인 현황','prosumer'],['사업자 · 입점','브랜드 제안과 검토 현황','partner'],['일반 문의','고객 문의 및 답변 현황','general']].forEach(([title,description,id])=>{
+    const card=button('',()=>{navigate('inquiries');requestAnimationFrame(()=>{const tab=document.querySelector('[data-category="'+id+'"]');if(tab)tab.click();});},'admin-quick-card');
+    card.append(node('strong',title),node('span',description),node('small','관리 화면 보기 →'));quick.append(card);
+  });
+  $('#viewContent').append(metrics,panel('신청 · 문의 운영','유형별로 접수 상태를 관리하는 공간입니다. 실제 수치는 서버 연결 후 표시됩니다.',quick));
+  const grid=node('div',null,'dashboard-grid'),list=node('div',null,'compact-list');
+  sorted(posts).slice(0,5).forEach(p=>{const row=node('div',null,'compact-row'),copy=node('div');copy.append(button(p.title,()=>openEditor(p.id),'title'),node('small',p.date+' · '+p.category));row.append(copy,tag(needsBody(p)?'본문 미등록':changed.has(p.id)?'수정 초안':'본문 등록',needsBody(p)?'warn':''));list.append(row);});
+  if(!posts.length)list.append(node('p','등록된 뉴스가 없습니다.','note'));
+  grid.append(panel('최근 뉴스','기존 홈페이지 뉴스 데이터 기준 · 최신순',list,button('전체보기 →',()=>navigate('news'),'text-button')));
+  const status=node('div',null,'panel-body');
+  [['뉴스 데이터','불러옴','success'],['뉴스 사이트 반영 권한',connected?'연결됨':'연결 필요',connected?'success':'warn'],['문의 데이터베이스','미연결','warn'],['관리자 서버 인증','미연결','warn'],['방문 통계','별도 연결 확인 필요','muted']].forEach(([label,value,style])=>{const r=node('div',null,'connection-row');r.append(node('span',label),tag(value,style));status.append(r);});
+  status.append(node('p','고객 정보는 현재 이메일로 접수되며 이 화면에서 조회되지 않습니다. GitHub Pages만으로 비공개 고객 정보를 저장할 수 없습니다.','summary-note'));
+  const visitorsLink=node('a','방문 기록 확인 →','button');visitorsLink.href='./visitors.html';status.append(visitorsLink);
+  grid.append(panel('운영 연결 상태','실제 작동하는 기능과 추가 연결이 필요한 기능',status,button('연결 설정 →',()=>navigate('settings'),'text-button')));
+  const taskList=node('div',null,'compact-list');
+  [[posts.filter(needsBody).length,'뉴스 본문 보완',()=>navigate('news','missing')],[changed.size,'사이트 미반영 뉴스',()=>navigate('news','changed')],[REVIEWS.filter(([id,,,,initial])=>(review[id]||initial)!=='완료').length,'남은 수정 체크리스트',()=>navigate('review')]].forEach(([count,label,action])=>{const row=node('div',null,'compact-row');row.append(button(label,action,'title'),tag(String(count)+'건',count?'warn':'success'));taskList.append(row);});
+  $('#viewContent').append(grid,panel('콘텐츠 · 운영 작업','현재 사이트 자료와 브라우저 초안 기준',taskList));
 }
 function renderNews() {
   $('#pageActions').append(button('백업 내보내기',downloadBackup),button('사이트 반영'+(changed.size?' · '+changed.size:''),openPublish),button('+ 뉴스 작성',()=>openEditor(),'button primary'));
