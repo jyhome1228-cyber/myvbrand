@@ -3404,3 +3404,23 @@ a.text-link.light-link:hover span{background:#2278f9;color:#fff}
  a.text-link span{width:27px;height:27px;flex-basis:27px}
 }
 @media(prefers-reduced-motion:reduce){a.text-link,a.text-link span{transition:none}}
+
+
+/* 2026-11-05 — Partner hero asset containment
+   Keep the square commerce artwork inside the intended hero stage. */
+.partner-page.centered-page .centered-hero .hero-image-slot.has-asset{
+  height:clamp(280px,32vw,420px);
+  overflow:hidden;
+}
+.partner-page.centered-page .centered-hero .hero-image-slot.has-asset img{
+  width:auto;
+  height:100%;
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+}
+@media(max-width:760px){
+  .partner-page.centered-page .centered-hero .hero-image-slot.has-asset{
+    height:280px;
+  }
+}
