@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /analytics/
+Disallow: /contact-thanks.html
+Disallow: /en/contact-thanks.html
+Disallow: /en/thank-you.html
+
+Sitemap: https://myvbrand.com/sitemap.xml
