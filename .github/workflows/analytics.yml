@@ -1,0 +1,33 @@
+name: Refresh MYV visitor analytics
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 */3 * * *'
+permissions:
+  contents: write
+concurrency:
+  group: myv-analytics
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install analytics client
+        run: pip install google-analytics-data google-auth
+      - name: Fetch GA4 aggregated page views
+        env:
+          GA4_PROPERTY_ID: ${{ secrets.GA4_PROPERTY_ID }}
+          GA4_SERVICE_ACCOUNT_JSON: ${{ secrets.GA4_SERVICE_ACCOUNT_JSON }}
+        run: python scripts/export_ga4.py
+      - name: Commit aggregated public stats
+        run: |
+          if git diff --quiet -- data/visitor-stats.json; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/visitor-stats.json
+          git commit -m "data: refresh anonymous GA4 page view aggregates"
+          git push
