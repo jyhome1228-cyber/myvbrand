@@ -36,3 +36,11 @@ dialog{width:min(560px,calc(100vw - 32px));border:1px solid #e0e7ef;border-radiu
 .inquiry-empty .note{max-width:560px;margin:0 auto 20px;line-height:1.7}
 .inquiry-content>.note{margin-bottom:0;font-size:12px}
 @media(max-width:760px){.inquiry-content{padding:18px}.inquiry-heading{align-items:flex-start;flex-direction:column}.inquiry-empty{padding:30px 16px}.inquiry-tabs{padding:14px}}
+
+/* Compact settings layout */
+.admin-settings-compact{padding:22px}
+.admin-settings-status{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+.admin-settings-status strong{font-size:16px}
+.admin-settings-compact .setting-buttons{margin-top:18px;display:flex;flex-wrap:wrap;gap:9px}
+.admin-settings-compact .note{line-height:1.6;margin:8px 0}
+@media(max-width:760px){.admin-settings-compact{padding:18px}}
