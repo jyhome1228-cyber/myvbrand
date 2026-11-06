@@ -24,7 +24,7 @@ const VIEWS = {
   news: ['뉴스 관리', '소식을 쌓고, 가치를 전하세요', '기존 뉴스 확인부터 초안 작성, 미리보기, 사이트 반영까지 관리합니다.'],
   inquiries: ['문의 관리', '함께할 기회를 놓치지 않도록', '현재 문의는 이메일로 접수됩니다. 관리자 목록 수집은 아직 연결되지 않았습니다.'],
   review: ['수정 체크리스트', '남은 작업을 명확하게', '확인한 수정사항과 회사 측 확인이 필요한 내용을 함께 관리합니다.'],
-  settings: ['연결 및 백업', '운영 환경을 확인하세요', '뉴스 저장소 연결 상태와 브라우저 초안을 관리합니다.']
+  settings: ['운영 설정', '운영 설정', '뉴스 게시, 백업, 방문 통계를 관리합니다.']
 };
 let posts = [], base = [], changed = new Set(), trash = [], review = {}, activity = [], connected = null;
 let view = 'overview', search = '', filter = 'all', category = 'ALL', page = 1, language = 'ko', pendingConfirm;
@@ -153,9 +153,28 @@ function renderReview() {
   const body=node('div',null,'checklist');REVIEWS.forEach(([id,priority,title,description,initial])=>{const row=node('div',null,'check-item');const copy=node('div');copy.append(node('h3',title),node('p',description));const select=node('select');select.setAttribute('aria-label',title+' 상태');['수정 필요','확인 필요','자료 필요','완료'].forEach(v=>{const o=node('option',v);o.value=v;select.append(o);});select.value=review[id]||initial;select.addEventListener('change',()=>{review[id]=select.value;log(title+' · '+select.value);save();toast('체크리스트 상태를 이 브라우저에 저장했습니다.');});row.append(node('span',priority,'priority'),copy,select);body.append(row);});$('#viewContent').append(panel('홈페이지 수정·확인 목록','완료 표시는 담당자가 실제 반영을 확인한 뒤 선택하세요.',body),node('p','체크리스트 상태는 현재 브라우저에 저장됩니다. 상태 변경 자체가 홈페이지를 수정하지는 않습니다.','note'));
 }
 function renderSettings() {
-  const grid=node('div',null,'settings-grid');const repo=node('div',null,'panel-body');const dl=node('dl',null,'setting-detail');[['저장소',REPOSITORY],['반영 브랜치','main'],['연결 상태',connected?'연결됨 · 뉴스 저장 가능':'미연결 · 편집 및 백업 가능'],['실제 반영','초안 저장 → 저장소 연결 → 사이트 반영 → GitHub Pages 배포']].forEach(([k,v])=>dl.append(node('dt',k),node('dd',v)));repo.append(dl);const actions=node('div',null,'setting-buttons');actions.append(button(connected?'다시 연결':'저장소 연결',showConnection,'button primary'));if(connected)actions.append(button('연결 해제',()=>{connected=null;render();toast('저장소 연결을 해제했습니다.');}));repo.append(actions);grid.append(panel('사이트 연결','GitHub를 통해 공개 뉴스 데이터만 반영합니다.',repo));
-  const backup=node('div',null,'panel-body');backup.append(node('p','기존 뉴스와 수정 초안, 보관함, 체크리스트를 한 파일로 저장할 수 있습니다. 복원 전에 현재 작업을 백업해 주세요.','note'));const backupActions=node('div',null,'setting-buttons');backupActions.append(button('백업 내보내기',downloadBackup,'button primary'));const input=node('input');input.type='file';input.accept='.json,application/json';input.hidden=true;input.id='importFile';input.addEventListener('change',importBackup);backupActions.append(button('백업 가져오기',()=>input.click()),input);backup.append(backupActions,node('p','토큰과 고객 문의 정보는 백업에 포함하지 않습니다. 브라우저 데이터를 지우면 저장한 초안이 사라질 수 있습니다.','note'));grid.append(panel('초안 백업·복원','저장 위치: 현재 브라우저',backup));$('#viewContent').append(grid);
-  const recent=node('div',null,'compact-list');if(!activity.length)recent.append(node('p','현재 브라우저의 작업 기록이 없습니다.','note'));activity.slice(0,8).forEach(a=>{const row=node('div',null,'compact-row');row.append(node('span',a.message,'title'),node('small',dateLabel(a.at)));recent.append(row);});const logPanel=panel('최근 작업','현재 브라우저에서 수행한 작업',recent);logPanel.classList.add('section-gap');$('#viewContent').append(logPanel);
+  const grid=node('div',null,'settings-grid');
+  const repo=node('div',null,'panel-body admin-settings-compact');
+  const summary=node('div',null,'admin-settings-status');
+  summary.append(node('strong','GitHub 뉴스 게시'),tag(connected?'저장소 연결됨':'게시 권한 미연결',connected?'success':'warn'));
+  repo.append(summary,node('p','저장소: '+REPOSITORY+' · main','note'));
+  const actions=node('div',null,'setting-buttons');
+  actions.append(button(connected?'연결 변경':'GitHub 연결',showConnection,'button primary'));
+  if(connected)actions.append(button('연결 해제',()=>{connected=null;render();toast('저장소 연결을 해제했습니다.');}));
+  const news=button('뉴스 관리',()=>navigate('news'));actions.append(news);repo.append(actions);
+  grid.append(panel('뉴스 게시 설정','뉴스 편집 후 사이트 반영 시 사용합니다.',repo));
+  const backup=node('div',null,'panel-body admin-settings-compact');
+  const backupActions=node('div',null,'setting-buttons');
+  backupActions.append(button('백업 내보내기',downloadBackup,'button primary'));
+  const input=node('input');input.type='file';input.accept='.json,application/json';input.hidden=true;input.id='importFile';input.addEventListener('change',importBackup);
+  backupActions.append(button('백업 가져오기',()=>input.click()),input);
+  backup.append(backupActions,node('p','뉴스 초안과 체크리스트를 백업합니다. 고객 문의 정보는 포함되지 않습니다.','note'));
+  grid.append(panel('초안 백업','현재 브라우저에 저장된 편집 내용',backup));
+  $('#viewContent').append(grid);
+  const analytics=node('div',null,'panel-body admin-settings-compact');
+  const link=node('a','방문 통계 보기 ↗','button');link.href='./visitors.html';
+  analytics.append(node('p','방문 통계는 분석 서비스 연결 후 실제 집계값을 표시합니다.','note'),link);
+  $('#viewContent').append(panel('방문 통계','통계 연동 및 조회',analytics));
 }
 function openEditor(id) {
   const p=posts.find(p=>p.id===id);if(id&&!p)return;editingOriginal=p?clone(p):null;editorDirty=false;$('#editorForm').reset();$('#postId').value=p?.id||'myv-'+Date.now();$('#editorTitle').textContent=p?'뉴스 수정':'새 뉴스 작성';$('#postCategory').value=p?.category||'MYV';$('#postDate').value=p?.date||new Date().toLocaleDateString('sv-SE',{timeZone:'Asia/Seoul'});
