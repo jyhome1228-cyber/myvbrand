@@ -100,7 +100,11 @@
     content.replaceChildren();
     if (!post.body) {
       const sourceUrl = post.originalUrl || post.url;
-      if (/^https?:\/\//i.test(sourceUrl || '')) {
+      const isRetiredMyvLink = /^https?:\/\/(?:www\.)?myvbrand\.com\/19(?:\/|\?|$)/i.test(sourceUrl || '');
+      if (isRetiredMyvLink) {
+        // The old /19 board was replaced by GitHub Pages. Do not loop back to this detail.
+        content.appendChild(element('p', 'article-empty', '이전 홈페이지에 게시된 기사입니다. 현재 상세 본문은 제공되지 않습니다.'));
+      } else if (/^https?:\/\//i.test(sourceUrl || '')) {
         content.appendChild(element('p', 'article-empty', '이 기사는 원문에서 확인할 수 있습니다.'));
         const original = element('a', 'article-source-link', '기사 원문 보기 ↗');
         original.href = sourceUrl;
