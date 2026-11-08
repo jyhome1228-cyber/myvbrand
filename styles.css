@@ -3424,3 +3424,57 @@ a.text-link.light-link:hover span{background:#2278f9;color:#fff}
     height:280px;
   }
 }
+
+
+/* 2026-11-09 QA: restore legibility of the existing MYV artwork.
+   Previous P1 overrides flattened the home/contact backgrounds to gradients.
+   Scope these rules to the three reported areas only. */
+.home-main .home-final-cta.home-story-cta {
+  background: #eaf2ff;
+}
+.home-main .home-final-cta.home-story-cta::before {
+  background-image:
+    linear-gradient(90deg, rgba(245,249,255,.93) 0%, rgba(245,249,255,.79) 42%, rgba(235,244,255,.37) 100%),
+    url("https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261018-031147-frame-117-3986a186.webp");
+  background-size: cover, min(1200px, 100%) auto;
+  background-position: center, right center;
+  background-repeat: no-repeat;
+}
+.partner-page .page-hero.myv-photo-hero::before {
+  background-image:
+    linear-gradient(90deg, rgba(9,42,109,.75) 0%, rgba(15,62,140,.72) 52%, rgba(15,64,146,.83) 100%),
+    var(--myv-hero-photo);
+  background-size: cover, min(1300px, 100%) auto;
+  background-position: center, left center;
+  background-repeat: no-repeat;
+}
+.page-hero.contact-photo-hero::before,
+.subpage .page-hero.contact-photo-hero::before {
+  background-image:
+    linear-gradient(90deg, rgba(14,82,185,.86) 0%, rgba(17,91,198,.75) 48%, rgba(16,75,166,.58) 100%),
+    url("https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261018-031147-frame-117-3986a186.webp");
+  background-size: cover, min(1250px, 100%) auto;
+  background-position: center, right center;
+  background-repeat: no-repeat;
+}
+@media(max-width:760px) {
+  .home-main .home-final-cta.home-story-cta::before {
+    background-image:
+      linear-gradient(100deg, rgba(245,249,255,.91), rgba(242,248,255,.68)),
+      url("https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261018-031147-frame-117-3986a186.webp");
+    background-size: cover, auto 100%;
+    background-position: center, 66% center;
+  }
+  .partner-page .page-hero.myv-photo-hero::before {
+    background-size: cover, auto 100%;
+    background-position: center, 35% center;
+  }
+  .page-hero.contact-photo-hero::before,
+  .subpage .page-hero.contact-photo-hero::before {
+    background-image:
+      linear-gradient(95deg, rgba(14,82,185,.88), rgba(14,76,174,.68)),
+      url("https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261018-031147-frame-117-3986a186.webp");
+    background-size: cover, auto 100%;
+    background-position: center, 70% center;
+  }
+}
