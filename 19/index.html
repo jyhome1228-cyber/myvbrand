@@ -24,7 +24,7 @@
   const idx = params.get('idx');
   const fallback = new URL('../news.html', location.href);
   // The withdrawn announcement must not be restored through legacy links.
-  if (!idx || !/^\d+$/.test(idx) || idx === '175001347') {
+  if (!idx || !/^\d+$/.test(idx)) {
     location.replace(fallback.href);
     return;
   }
