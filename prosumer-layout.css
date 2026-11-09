@@ -1,4 +1,4 @@
-/* MYV · Unified Prosumer component design · 2026-10-18
+/* MYV · Unified V-sumer component design · 2026-10-18
    Shared by Korean and English pages. Translation changes copy only.
    Keep these selectors scoped to main.prosumer-page. */
 
@@ -422,7 +422,7 @@ body main.prosumer-page .calc-summary-footnote {
 }
 
 
-/* 2026-10-29 — Prosumer hero sizing: keep image in normal flow below copy. */
+/* 2026-10-29 — V-sumer hero sizing: keep image in normal flow below copy. */
 body main.prosumer-page .prosumer-hero.centered-hero{
   padding-top:144px;
   padding-bottom:68px;
