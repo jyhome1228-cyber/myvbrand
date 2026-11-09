@@ -6,7 +6,7 @@ const STORAGE = 'myv-admin-workspace-v1';
 const REVIEWS = [
   ['hero', 'P1', '입점제안 첫 화면 이미지', '이미지 크기·텍스트 겹침·아래 잘림과 남아 있는 손 배경을 정리합니다.', '수정 필요'],
   ['news', 'P1', '뉴스 본문·대표 이미지 보완', '본문 없는 기존 8건을 원문과 대조하고, 추가 소식의 제목·날짜·이미지를 확인합니다.', '수정 필요'],
-  ['vpoint', 'P1', 'V.Point 안내와 운영 기준', '멘토·프로슈머 용어와 적립률 설명을 검토하고 지급·소멸·취소 기준을 회사 측에서 확정합니다.', '자료 필요'],
+  ['vpoint', 'P1', 'V.Point 안내와 운영 기준', '멘토·브이슈머 용어와 적립률 설명을 검토하고 지급·소멸·취소 기준을 회사 측에서 확정합니다.', '자료 필요'],
   ['navigation', 'P1', '메뉴 연결과 V.Point 노출', 'WITH US 직접 이동 방식, V.Point 상단 노출, 모바일 하위 메뉴 설명을 정리합니다.', '수정 필요'],
   ['inquiry', 'P1', '문의 수신·접수 관리 연결', '실제 메일 수신을 확인하고 인증이 적용된 문의 저장·조회 환경을 연결합니다.', '확인 필요'],
   ['privacy', 'P1', '개인정보 문구 확정', '현재 임시 문안을 실제 수집 항목·보관 기간·처리 서비스 기준으로 확정합니다.', '자료 필요'],
@@ -15,7 +15,7 @@ const REVIEWS = [
   ['shop-return', 'P2', '쇼핑몰에서 브랜드 사이트로 돌아오기', '쇼핑몰 운영 화면에 브랜드 홈페이지 복귀 링크가 있는지 확인하고 연결 위치를 결정합니다.', '확인 필요'],
   ['calculator', 'P2', '계산 결과 이후 신청 동선 검토', '계산 결과 바로 아래 신청 버튼과 메인 간단 계산기 추가 여부를 검토합니다. AI 참고안의 추가 제안으로 범위 확정이 필요합니다.', '확인 필요'],
   ['mobile', 'P2', '모바일 전체 검수', '메뉴·이미지·계산기·버튼·줄바꿈을 실제 모바일 화면에서 점검합니다.', '확인 필요'],
-  ['proof', 'P2', '브랜드·상품·성과 자료', '실제 입점 로고·제품·프로슈머 사례·검증된 성과 수치를 수급합니다. 따뜻한 포인트 색상은 방향 확정 후 반영합니다.', '자료 필요'],
+  ['proof', 'P2', '브랜드·상품·성과 자료', '실제 입점 로고·제품·브이슈머 사례·검증된 성과 수치를 수급합니다. 따뜻한 포인트 색상은 방향 확정 후 반영합니다.', '자료 필요'],
   ['seo', 'P2', '검색·공유 미리보기·분석', '페이지별 검색 정보·공유 이미지·canonical·404 화면과 방문 분석 연결 범위를 확정합니다.', '수정 필요'],
   ['admin', 'P1', '관리자 운영 연결', '뉴스 편집 화면을 제공하고 저장소 권한 연결 및 실제 배포를 검증합니다. 문의 DB·로그인·통계는 별도 연결이 필요합니다.', '확인 필요']
 ];
@@ -78,13 +78,13 @@ function renderOverview() {
   $('#pageActions').append(button('+ 뉴스 작성', () => openEditor(), 'button primary'));
   const metrics=node('div',null,'metrics');
   [
-    ['—','프로슈머 신청','문의 DB 연결 전',()=>navigate('inquiries'),''],
+    ['—','브이슈머 신청','문의 DB 연결 전',()=>navigate('inquiries'),''],
     ['—','사업자 · 입점제안','문의 DB 연결 전',()=>navigate('inquiries'),''],
     ['—','일반 문의','문의 DB 연결 전',()=>navigate('inquiries'),''],
     [posts.length,'등록된 뉴스','현재 사이트 뉴스 데이터',()=>navigate('news','all'),'active']
   ].forEach(([value,label,hint,action,style])=>{const m=button('',action,'metric '+style);m.append(node('span',label,'label'),node('strong',typeof value==='number'?value.toLocaleString('ko-KR'):value),node('small',hint));metrics.append(m);});
   const quick=node('div',null,'admin-quick-actions');
-  [['프로슈머 신청','신청자 접수 및 승인 현황','prosumer'],['사업자 · 입점','브랜드 제안과 검토 현황','partner'],['일반 문의','고객 문의 및 답변 현황','general']].forEach(([title,description,id])=>{
+  [['브이슈머 신청','신청자 접수 및 승인 현황','V-sumer'],['사업자 · 입점','브랜드 제안과 검토 현황','partner'],['일반 문의','고객 문의 및 답변 현황','general']].forEach(([title,description,id])=>{
     const card=button('',()=>{navigate('inquiries');requestAnimationFrame(()=>{const tab=document.querySelector('[data-category="'+id+'"]');if(tab)tab.click();});},'admin-quick-card');
     card.append(node('strong',title),node('span',description),node('small','관리 화면 보기 →'));quick.append(card);
   });
@@ -119,7 +119,7 @@ function renderNewsTable(section) {
 function renderInquiries() {
   const root=$('#viewContent');
   const categories=[
-    {id:'prosumer',title:'프로슈머 신청',description:'프로슈머 참여 및 활동 신청',stages:'신규 · 확인 · 검토 · 승인'},
+    {id:'V-sumer',title:'브이슈머 신청',description:'브이슈머 참여 및 활동 신청',stages:'신규 · 확인 · 검토 · 승인'},
     {id:'partner',title:'사업자 · 브랜드 입점',description:'입점 제안 및 사업 협력 문의',stages:'신규 · 제품 검토 · 협의 · 완료'},
     {id:'general',title:'일반 문의',description:'서비스 및 기타 문의',stages:'신규 · 확인 · 답변 완료'}
   ];
