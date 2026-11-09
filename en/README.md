@@ -30,7 +30,7 @@ The legacy `/en/thank-you.html` URL mirrors `/en/contact-thanks.html`.
 1. Edit the Korean HTML for structure / UX / visual assets.
 2. Add missing English phrases to `en/translations.json`.
 3. Run `python en/build-en.py` from the repository root.
-4. Review both languages, the prosumer calculation, the contact form and mobile layout.
+4. Review both languages, the V-sumer calculation, the contact form and mobile layout.
 5. Commit Korean changes together with regenerated `en/*.html` files.
 
 `en/locale-switch.js` handles navigation back to the equivalent Korean page. News uses `en/news-archive.js` for English news titles and summaries, with `en/news-titles.json` as the editorial title map.
