@@ -56,7 +56,7 @@
     compute();
   }
 
-  // Match the Korean site's reveal behavior for the now-shared Prosumer DOM.
+  // Match the Korean site's reveal behavior for the now-shared V-sumer DOM.
   const revealElements = document.querySelectorAll(".reveal");
   if (revealElements.length) {
     if ("IntersectionObserver" in window &&
@@ -82,7 +82,7 @@
   const titleMap = {
     "legacy-171831533": "Vietnamese KOL Xenia Joins Getz-Beauty, Signaling Entry into Korea",
     "legacy-170448224": "V Labs CEO Jangwook Lee on E-Commerce Where Businesses and Consumers Grow Together",
-    "legacy-170004786": "Influencer E-Commerce Association and V Labs Join Forces for a Global MYV Prosumer Ecosystem",
+    "legacy-170004786": "Influencer E-Commerce Association and V Labs Join Forces for a Global MYV V-sumer Ecosystem",
     "legacy-169080625": "V Labs CEO Receives Award for Consumer Curation at the 2025 Influencer Awards",
     "legacy-168408090": "Meet Drunken Rose, a Signature Fragrance from Scentwiki",
     "legacy-168310159": "CoffeeTools: Bringing the Aroma of Coffee Into Everyday Life",
