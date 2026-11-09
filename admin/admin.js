@@ -84,7 +84,7 @@ function renderOverview() {
     [posts.length,'등록된 뉴스','현재 사이트 뉴스 데이터',()=>navigate('news','all'),'active']
   ].forEach(([value,label,hint,action,style])=>{const m=button('',action,'metric '+style);m.append(node('span',label,'label'),node('strong',typeof value==='number'?value.toLocaleString('ko-KR'):value),node('small',hint));metrics.append(m);});
   const quick=node('div',null,'admin-quick-actions');
-  [['브이슈머 신청','신청자 접수 및 승인 현황','V-sumer'],['사업자 · 입점','브랜드 제안과 검토 현황','partner'],['일반 문의','고객 문의 및 답변 현황','general']].forEach(([title,description,id])=>{
+  [['브이슈머 신청','신청자 접수 및 승인 현황','prosumer'],['사업자 · 입점','브랜드 제안과 검토 현황','partner'],['일반 문의','고객 문의 및 답변 현황','general']].forEach(([title,description,id])=>{
     const card=button('',()=>{navigate('inquiries');requestAnimationFrame(()=>{const tab=document.querySelector('[data-category="'+id+'"]');if(tab)tab.click();});},'admin-quick-card');
     card.append(node('strong',title),node('span',description),node('small','관리 화면 보기 →'));quick.append(card);
   });
@@ -119,7 +119,7 @@ function renderNewsTable(section) {
 function renderInquiries() {
   const root=$('#viewContent');
   const categories=[
-    {id:'V-sumer',title:'브이슈머 신청',description:'브이슈머 참여 및 활동 신청',stages:'신규 · 확인 · 검토 · 승인'},
+    {id:'prosumer',title:'브이슈머 신청',description:'브이슈머 참여 및 활동 신청',stages:'신규 · 확인 · 검토 · 승인'},
     {id:'partner',title:'사업자 · 브랜드 입점',description:'입점 제안 및 사업 협력 문의',stages:'신규 · 제품 검토 · 협의 · 완료'},
     {id:'general',title:'일반 문의',description:'서비스 및 기타 문의',stages:'신규 · 확인 · 답변 완료'}
   ];
