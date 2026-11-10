@@ -329,6 +329,13 @@
       const thumbnail = element('div', post.thumbnail ? 'news-data-thumb has-image' : 'news-data-thumb news-brand-thumb');
       const image = element('img');
       image.src = /^https?:\/\//i.test(post.thumbnail || '') ? post.thumbnail : './assets/myv-logo.svg';
+      image.addEventListener('error', () => {
+        // Maintain a usable branded thumbnail when an external CDN image expires.
+        image.onerror = null;
+        if (!image.src.endsWith('/assets/myv-logo.svg')) image.src = './assets/myv-logo.svg';
+        thumbnail.classList.remove('has-image');
+        thumbnail.classList.add('news-brand-thumb');
+      }, {once: true});
       image.alt = '';
       image.loading = 'lazy';
       image.decoding = 'async';
