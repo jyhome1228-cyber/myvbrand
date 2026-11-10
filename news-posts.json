@@ -1,67 +1,125 @@
 [
   {
+    "id": "kiecommerce-brand-day-20261109",
+    "type": "article",
+    "title": "마이브이 브랜드 Day 행사 소식",
+    "titleEn": "MYV Brand Day Event News",
+    "date": "2026-11-09",
+    "category": "MYV",
+    "sourceUrl": "https://kiecommerce.org/news-167/2026/11/09/",
+    "summary": "한국인플루언서이커머스협회에 소개된 브랜드 Day 행사 관련 소식입니다.",
+    "summaryEn": "A Brand Day event update published on the Korea Influencer E-Commerce Association website.",
+    "body": "## 브랜드 Day 행사\n\n한국인플루언서이커머스협회 홈페이지에 소개된 브랜드 Day 행사 관련 소식입니다. 상세 행사 내용과 현장 사진은 협회 원문 기사에서 확인하실 수 있습니다.\n\n[협회 원문 기사 보기](https://kiecommerce.org/news-167/2026/11/09/)",
+    "bodyEn": "## Brand Day event\n\nThis Brand Day update was shared through the Korea Influencer E-Commerce Association. For original coverage and event photographs, please visit the source article.\n\n[Read the original association article](https://kiecommerce.org/news-167/2026/11/09/)"
+  },
+  {
+    "id": "kiecommerce-influencer-event-20261107",
+    "type": "article",
+    "title": "마이브이 인플루언서 행사 소식",
+    "titleEn": "MYV Influencer Event News",
+    "date": "2026-11-07",
+    "category": "MYV",
+    "sourceUrl": "https://kiecommerce.org/news-165/2026/11/07/",
+    "summary": "한국인플루언서이커머스협회에 소개된 인플루언서 행사 관련 소식입니다.",
+    "summaryEn": "An influencer-event update published on the Korea Influencer E-Commerce Association website.",
+    "body": "## 인플루언서 행사\n\n한국인플루언서이커머스협회 홈페이지에 소개된 인플루언서 행사 관련 소식입니다. 상세 행사 내용과 현장 사진은 협회 원문 기사에서 확인하실 수 있습니다.\n\n[협회 원문 기사 보기](https://kiecommerce.org/news-165/2026/11/07/)",
+    "bodyEn": "## Influencer event\n\nThis update was shared through the Korea Influencer E-Commerce Association. For the original coverage and event photographs, please visit the source article.\n\n[Read the original association article](https://kiecommerce.org/news-165/2026/11/07/)"
+  },
+  {
     "id": "legacy-171831533",
-    "type": "external",
+    "type": "article",
     "title": "프리랜서의 저력, Vietnam KOL ‘Xenia’ Getz-Beauty 합류하며 한국 시장 진출 신호탄",
     "date": "2026-06-15",
     "category": "GLOBAL",
-    "url": "./news.html?article=legacy-171831533"
+    "url": "./news.html?article=legacy-171831533",
+    "summary": "베트남 KOL Xenia의 Getz-Beauty 합류와 한국 시장 진출 관련 소식입니다.",
+    "summaryEn": "This item was published on the previous MYV brand website. The original article is pending transfer.",
+    "body": "## 기사 안내\n\n베트남 KOL Xenia의 Getz-Beauty 합류와 한국 시장 진출 관련 소식입니다.\n\n이 기사는 기존 브랜드 홈페이지에서 이전된 자료입니다. 현재 원문 본문과 행사 사진은 확보되지 않아, 확인된 기사 정보만 우선 제공하고 있습니다. 공식 원문 자료 확보 후 이미지와 상세 내용을 보강할 예정입니다.",
+    "bodyEn": "## Article notice\n\nThis item was published on the previous MYV brand website. The original article is pending transfer.\n\nThe original article text and photography have not yet been transferred to the new site. This page currently provides the available headline and article information."
   },
   {
     "id": "legacy-170448224",
-    "type": "external",
+    "type": "article",
     "title": "브이랩스 이장욱 대표, 중소기업과 소비자가 함께 성장하는 이커머스 구조를 만들다",
     "date": "2026-03-18",
     "category": "MYV",
-    "url": "./news.html?article=legacy-170448224"
+    "url": "./news.html?article=legacy-170448224",
+    "summary": "브이랩스 이장욱 대표가 기업과 소비자가 함께 성장하는 이커머스 모델을 소개한 기사입니다.",
+    "summaryEn": "This item was published on the previous MYV brand website. The original article is pending transfer.",
+    "body": "## 기사 안내\n\n브이랩스 이장욱 대표가 기업과 소비자가 함께 성장하는 이커머스 모델을 소개한 기사입니다.\n\n이 기사는 기존 브랜드 홈페이지에서 이전된 자료입니다. 현재 원문 본문과 행사 사진은 확보되지 않아, 확인된 기사 정보만 우선 제공하고 있습니다. 공식 원문 자료 확보 후 이미지와 상세 내용을 보강할 예정입니다.",
+    "bodyEn": "## Article notice\n\nThis item was published on the previous MYV brand website. The original article is pending transfer.\n\nThe original article text and photography have not yet been transferred to the new site. This page currently provides the available headline and article information."
   },
   {
     "id": "legacy-170004786",
-    "type": "external",
+    "type": "article",
     "title": "한국인플루언서이커머스협회-브이랩스, 함께 ‘MyV 브이슈머 인플루언서’ 시대 연다… 글로벌 상생 생태계 구축",
     "date": "2026-02-13",
     "category": "GLOBAL",
-    "url": "./news.html?article=legacy-170004786"
+    "url": "./news.html?article=legacy-170004786",
+    "summary": "한국인플루언서이커머스협회와 브이랩스의 글로벌 브이슈머 생태계 관련 소식입니다.",
+    "summaryEn": "This item was published on the previous MYV brand website. The original article is pending transfer.",
+    "body": "## 기사 안내\n\n한국인플루언서이커머스협회와 브이랩스의 글로벌 브이슈머 생태계 관련 소식입니다.\n\n이 기사는 기존 브랜드 홈페이지에서 이전된 자료입니다. 현재 원문 본문과 행사 사진은 확보되지 않아, 확인된 기사 정보만 우선 제공하고 있습니다. 공식 원문 자료 확보 후 이미지와 상세 내용을 보강할 예정입니다.",
+    "bodyEn": "## Article notice\n\nThis item was published on the previous MYV brand website. The original article is pending transfer.\n\nThe original article text and photography have not yet been transferred to the new site. This page currently provides the available headline and article information."
   },
   {
     "id": "legacy-169080625",
-    "type": "external",
+    "type": "article",
     "title": "“소비가 곧 가치” 브이랩스 이장욱 대표, 2025 한국을 빛낸 인플루언서 어워즈 ‘기업 소비자 큐레이션 기업 부문’ 대상 수상",
     "date": "2025-12-17",
     "category": "MYV",
-    "url": "./news.html?article=legacy-169080625"
+    "url": "./news.html?article=legacy-169080625",
+    "summary": "브이랩스 이장욱 대표의 기업 소비자 큐레이션 부문 수상 관련 소식입니다.",
+    "summaryEn": "This item was published on the previous MYV brand website. The original article is pending transfer.",
+    "body": "## 기사 안내\n\n브이랩스 이장욱 대표의 기업 소비자 큐레이션 부문 수상 관련 소식입니다.\n\n이 기사는 기존 브랜드 홈페이지에서 이전된 자료입니다. 현재 원문 본문과 행사 사진은 확보되지 않아, 확인된 기사 정보만 우선 제공하고 있습니다. 공식 원문 자료 확보 후 이미지와 상세 내용을 보강할 예정입니다.",
+    "bodyEn": "## Article notice\n\nThis item was published on the previous MYV brand website. The original article is pending transfer.\n\nThe original article text and photography have not yet been transferred to the new site. This page currently provides the available headline and article information."
   },
   {
     "id": "legacy-168408090",
-    "type": "external",
+    "type": "article",
     "title": "나의 이야기가 되는 단 하나의 향수, 센트위키 ‘드렁큰 로즈’를 만나다",
     "date": "2025-10-30",
     "category": "PARTNER",
-    "url": "./news.html?article=legacy-168408090"
+    "url": "./news.html?article=legacy-168408090",
+    "summary": "향수 브랜드 센트위키의 드렁큰 로즈 관련 소식입니다.",
+    "summaryEn": "This item was published on the previous MYV brand website. The original article is pending transfer.",
+    "body": "## 기사 안내\n\n향수 브랜드 센트위키의 드렁큰 로즈 관련 소식입니다.\n\n이 기사는 기존 브랜드 홈페이지에서 이전된 자료입니다. 현재 원문 본문과 행사 사진은 확보되지 않아, 확인된 기사 정보만 우선 제공하고 있습니다. 공식 원문 자료 확보 후 이미지와 상세 내용을 보강할 예정입니다.",
+    "bodyEn": "## Article notice\n\nThis item was published on the previous MYV brand website. The original article is pending transfer.\n\nThe original article text and photography have not yet been transferred to the new site. This page currently provides the available headline and article information."
   },
   {
     "id": "legacy-168310159",
-    "type": "external",
+    "type": "article",
     "title": "당신의 일상을 커피의 향으로 채울, 완벽한 솔루션 ‘커피툴스’",
     "date": "2025-10-23",
     "category": "PARTNER",
-    "url": "./news.html?article=legacy-168310159"
+    "url": "./news.html?article=legacy-168310159",
+    "summary": "커피 브랜드 커피툴스 관련 소식입니다.",
+    "summaryEn": "This item was published on the previous MYV brand website. The original article is pending transfer.",
+    "body": "## 기사 안내\n\n커피 브랜드 커피툴스 관련 소식입니다.\n\n이 기사는 기존 브랜드 홈페이지에서 이전된 자료입니다. 현재 원문 본문과 행사 사진은 확보되지 않아, 확인된 기사 정보만 우선 제공하고 있습니다. 공식 원문 자료 확보 후 이미지와 상세 내용을 보강할 예정입니다.",
+    "bodyEn": "## Article notice\n\nThis item was published on the previous MYV brand website. The original article is pending transfer.\n\nThe original article text and photography have not yet been transferred to the new site. This page currently provides the available headline and article information."
   },
   {
     "id": "legacy-168029754",
-    "type": "external",
+    "type": "article",
     "title": "“소비가 곧 가치가 되는 플랫폼” 이장욱 대표, 마이브이(MyV)로 열어가는 상생의 이커머스",
     "date": "2025-09-30",
     "category": "MYV",
-    "url": "./news.html?article=legacy-168029754"
+    "url": "./news.html?article=legacy-168029754",
+    "summary": "마이브이의 가치소비와 상생 이커머스 관련 기사입니다.",
+    "summaryEn": "This item was published on the previous MYV brand website. The original article is pending transfer.",
+    "body": "## 기사 안내\n\n마이브이의 가치소비와 상생 이커머스 관련 기사입니다.\n\n이 기사는 기존 브랜드 홈페이지에서 이전된 자료입니다. 현재 원문 본문과 행사 사진은 확보되지 않아, 확인된 기사 정보만 우선 제공하고 있습니다. 공식 원문 자료 확보 후 이미지와 상세 내용을 보강할 예정입니다.",
+    "bodyEn": "## Article notice\n\nThis item was published on the previous MYV brand website. The original article is pending transfer.\n\nThe original article text and photography have not yet been transferred to the new site. This page currently provides the available headline and article information."
   },
   {
     "id": "legacy-167950862",
-    "type": "external",
+    "type": "article",
     "title": "마이브이, 저자극 더마 코스메틱 ‘닥터젠틀’ 공식 입점",
     "date": "2025-09-25",
     "category": "PARTNER",
-    "url": "./news.html?article=legacy-167950862"
+    "url": "./news.html?article=legacy-167950862",
+    "summary": "더마 코스메틱 브랜드 닥터젠틀의 마이브이 입점 관련 소식입니다.",
+    "summaryEn": "This item was published on the previous MYV brand website. The original article is pending transfer.",
+    "body": "## 기사 안내\n\n더마 코스메틱 브랜드 닥터젠틀의 마이브이 입점 관련 소식입니다.\n\n이 기사는 기존 브랜드 홈페이지에서 이전된 자료입니다. 현재 원문 본문과 행사 사진은 확보되지 않아, 확인된 기사 정보만 우선 제공하고 있습니다. 공식 원문 자료 확보 후 이미지와 상세 내용을 보강할 예정입니다.",
+    "bodyEn": "## Article notice\n\nThis item was published on the previous MYV brand website. The original article is pending transfer.\n\nThe original article text and photography have not yet been transferred to the new site. This page currently provides the available headline and article information."
   },
   {
     "id": "legacy-167829500",
