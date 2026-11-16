@@ -82,7 +82,7 @@ async function renderVisitorSummary(host) {
     const response=await fetch('../data/visitor-stats.json',{cache:'no-store'});
     if(!response.ok)throw Error('집계 파일을 읽을 수 없습니다.');
     const data=await response.json();
-    if(!data.asOf || !data.today || data.metric!=='page_views_not_unique_visitors' || !data.connected) {
+    if(!data.asOf || !data.today || data.metric!=='page_views_not_unique_visitors' || data.connected === false) {
       host.replaceChildren(node('p','방문 통계 수집 서버 또는 집계 연결 전입니다.','note'),node('p','실제 데이터가 연결되면 오늘·어제·최근 30일 조회 수가 표시됩니다.','note'));
       return;
     }
