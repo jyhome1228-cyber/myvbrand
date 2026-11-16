@@ -1,0 +1,80 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // 관리자 UID는 Firestore 콘솔에서 admins/{uid} 문서에 active: true 로 등록합니다.
+    // 일반 웹 사용자는 관리자 권한을 자체 부여할 수 없습니다.
+    function isAdmin() {
+      return request.auth != null
+        && exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+        && get(/databases/$(database)/documents/admins/$(request.auth.uid)).data.active == true;
+    }
+
+    match /admins/{userId} {
+      allow get: if request.auth != null && request.auth.uid == userId;
+      allow list, create, update, delete: if false;
+    }
+
+    // 고객 문의: 공개 사이트에서 새 문의 등록만 허용, 읽기/처리/삭제는 관리자만.
+    // App Check 적용 전에는 악성 대량 요청에 취약하므로 운영 시 App Check와 서버 측
+    // 속도 제한을 적용해야 합니다.
+    match /inquiries/{inquiryId} {
+      allow create: if
+        request.resource.data.keys().hasAll([
+          'type', 'name', 'email', 'phone', 'subject', 'message',
+          'privacyConsent', 'createdAt', 'status'
+        ])
+        && request.resource.data.keys().hasOnly([
+          'type', 'name', 'email', 'phone', 'company', 'subject', 'message',
+          'privacyConsent', 'createdAt', 'status'
+        ])
+        && request.resource.data.type in ['브이슈머 문의', '입점제안', '일반 문의']
+        && request.resource.data.name is string
+        && request.resource.data.name.size() >= 1
+        && request.resource.data.name.size() <= 80
+        && request.resource.data.email is string
+        && request.resource.data.email.size() <= 254
+        && request.resource.data.email.matches('^[^ @]+@[^ @]+\\.[^ @]+$')
+        && request.resource.data.phone is string
+        && request.resource.data.phone.size() >= 7
+        && request.resource.data.phone.size() <= 40
+        && request.resource.data.get('company', '') is string
+        && request.resource.data.get('company', '').size() <= 120
+        && request.resource.data.subject is string
+        && request.resource.data.subject.size() >= 1
+        && request.resource.data.subject.size() <= 200
+        && request.resource.data.message is string
+        && request.resource.data.message.size() >= 1
+        && request.resource.data.message.size() <= 5000
+        && request.resource.data.privacyConsent == true
+        && request.resource.data.status == 'new'
+        && request.resource.data.createdAt == request.time;
+      allow get, list, update, delete: if isAdmin();
+    }
+
+    // 통계는 신뢰할 수 있는 서버(Admin SDK/Cloud Functions)에서만 집계·기록합니다.
+    // 웹 브라우저에서 직접 카운터를 올리지 않아 조작을 방지합니다.
+    match /visitDaily/{day} {
+      allow get, list: if isAdmin();
+      allow create, update, delete: if false;
+    }
+    match /visitSources/{sourceId} {
+      allow get, list: if isAdmin();
+      allow create, update, delete: if false;
+    }
+    match /visitPages/{pageId} {
+      allow get, list: if isAdmin();
+      allow create, update, delete: if false;
+    }
+    match /visitEvents/{eventId} {
+      allow get, list: if isAdmin();
+      allow create, update, delete: if false;
+    }
+
+    // 그 밖의 미정의 데이터는 전부 차단합니다.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
