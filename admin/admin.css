@@ -56,3 +56,17 @@ dialog{width:min(560px,calc(100vw - 32px));border:1px solid #e0e7ef;border-radiu
 
 /* Operational sections without verified data must never appear as empty cards. */
 .panel[hidden], .visitor-summary[hidden] {display:none!important}
+
+/* Firebase-backed operational inquiries */
+.fb-auth-panel{margin:0 0 18px}
+.fb-auth-panel .panel-body{padding:23px 26px}
+.fb-auth-panel h2{font-size:17px;margin:0 0 14px}
+.fb-login-form{display:flex;gap:9px;flex-wrap:wrap;align-items:center}
+.fb-login-form input{height:42px;flex:1;min-width:160px;max-width:300px;padding:0 13px;border:1px solid #dce4ef;border-radius:9px;background:#fff;color:#192a44;font:inherit}
+.fb-connected{display:flex;gap:16px;align-items:center;justify-content:space-between}
+.fb-inquiry-row{padding:22px 0;border-top:1px solid #e5eaf2;overflow-wrap:anywhere}
+.fb-inquiry-head{display:flex;align-items:flex-start;justify-content:space-between;gap:15px}
+.fb-inquiry-head strong{font-size:16px;color:#172b49}
+.fb-inquiry-head span,.fb-inquiry-row small{font-size:12px;color:#73839b}
+.fb-inquiry-row>p:not(.note){margin:14px 0;font-size:14px;white-space:pre-wrap;line-height:1.8}
+@media(max-width:700px){.fb-login-form{flex-direction:column;align-items:stretch}.fb-login-form input{max-width:none;width:100%}.fb-inquiry-head{display:block}}
