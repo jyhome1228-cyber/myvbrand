@@ -53,3 +53,6 @@ dialog{width:min(560px,calc(100vw - 32px));border:1px solid #e0e7ef;border-radiu
 .visitor-mini-stat strong{font-size:26px;color:#2175f6;font-weight:750;line-height:1.25}
 .visitor-mini-stat span{font-size:12px;color:#61718a}
 @media(max-width:650px){.visitor-mini-grid{grid-template-columns:1fr 1fr}.visitor-mini-stat{padding:15px}.visitor-mini-stat strong{font-size:22px}}
+
+/* Operational sections without verified data must never appear as empty cards. */
+.panel[hidden], .visitor-summary[hidden] {display:none!important}
