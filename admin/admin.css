@@ -44,3 +44,12 @@ dialog{width:min(560px,calc(100vw - 32px));border:1px solid #e0e7ef;border-radiu
 .admin-settings-compact .setting-buttons{margin-top:18px;display:flex;flex-wrap:wrap;gap:9px}
 .admin-settings-compact .note{line-height:1.6;margin:8px 0}
 @media(max-width:760px){.admin-settings-compact{padding:18px}}
+
+/* Verified page-view totals shown directly on the operations dashboard */
+.visitor-summary{padding:20px 22px}
+.visitor-summary>.note{font-size:13px;line-height:1.7;margin:0 0 8px}
+.visitor-mini-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:12px}
+.visitor-mini-stat{border:1px solid #e2e9f3;border-radius:12px;background:#f8faff;padding:18px 16px;display:flex;flex-direction:column;gap:7px}
+.visitor-mini-stat strong{font-size:26px;color:#2175f6;font-weight:750;line-height:1.25}
+.visitor-mini-stat span{font-size:12px;color:#61718a}
+@media(max-width:650px){.visitor-mini-grid{grid-template-columns:1fr 1fr}.visitor-mini-stat{padding:15px}.visitor-mini-stat strong{font-size:22px}}
