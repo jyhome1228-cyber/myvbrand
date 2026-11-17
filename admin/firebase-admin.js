@@ -117,7 +117,10 @@ function applyOverview() {
   ];
   values.forEach((value,i)=>{
     const number=cards[i]?.querySelector('strong');
-    if(number)number.textContent=value==null?'—':value.toLocaleString('ko-KR');
+    if(!number) return;
+    // Unauthenticated Firestore must not erase independently loaded GitHub totals.
+    if(i === 0 && value == null) return;
+    number.textContent=value==null?'—':value.toLocaleString('ko-KR');
   });
   q('#fb-admin-auth')?.remove();
   const panel=q('#adminRecentInquiries')?.closest('.panel');
