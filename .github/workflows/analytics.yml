@@ -2,7 +2,7 @@ name: Refresh MYV visitor analytics
 on:
   workflow_dispatch:
   schedule:
-    - cron: '17 */3 * * *'
+    - cron: '17 * * * *'
 permissions:
   contents: write
 concurrency:
@@ -16,13 +16,22 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Install analytics client
-        run: pip install google-analytics-data google-auth
-      - name: Fetch GA4 aggregated page views
+      - name: Install analytics clients
+        run: pip install google-cloud-firestore google-analytics-data google-auth
+      - name: Export anonymous visitor aggregates
         env:
+          FIREBASE_SERVICE_ACCOUNT_JSON: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_JSON }}
           GA4_PROPERTY_ID: ${{ secrets.GA4_PROPERTY_ID }}
           GA4_SERVICE_ACCOUNT_JSON: ${{ secrets.GA4_SERVICE_ACCOUNT_JSON }}
-        run: python scripts/export_ga4.py
+        shell: bash
+        run: |
+          if [[ -n "${FIREBASE_SERVICE_ACCOUNT_JSON}" ]]; then
+            python scripts/export_firebase_visits.py
+          elif [[ -n "${GA4_PROPERTY_ID}" && -n "${GA4_SERVICE_ACCOUNT_JSON}" ]]; then
+            python scripts/export_ga4.py
+          else
+            echo "Analytics source not configured; leaving current data untouched."
+          fi
       - name: Commit aggregated public stats
         run: |
           if git diff --quiet -- data/visitor-stats.json; then exit 0; fi
