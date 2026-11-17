@@ -19,6 +19,8 @@ let permission = 'checking';
 let records = [];
 let currentView = 'overview';
 let unsubscribe = null;
+let unsubscribeVisits = null;
+let visits = [];
 let lastError = '';
 let loginBusy = false;
 const TYPES = {'브이슈머 문의':0,'입점제안':1,'일반 문의':2};
@@ -69,6 +71,21 @@ function applyOverview() {
     if(value)value.textContent=permission==='ready'?safeCount(type).toLocaleString('ko-KR'):'—';
   }
   q('#fb-admin-auth')?.remove();
+  const panel=q('.visitor-summary')?.closest('.panel');
+  const host=q('.visitor-summary');
+  if(panel && host && permission==='ready'){
+    const kst=ts=>new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date(ts));
+    const today=kst(Date.now()), month=today.slice(0,7)+'-01';
+    const [year,mon,day]=today.split('-').map(Number);
+    const weekday=new Date(Date.UTC(year,mon-1,day)).getUTCDay();
+    const monday=kst(Date.UTC(year,mon-1,day-((weekday+6)%7),12)-9*3600000);
+    const valid=visits.filter(v=>v.date>=kst(Date.now()-29*86400000)&&v.date<=today);
+    const counts=[[valid.filter(v=>v.date===today).length,'오늘 방문'],[valid.filter(v=>v.date>=monday).length,'이번 주 방문'],[valid.filter(v=>v.date>=month).length,'이번 달 방문']];
+    const grid=make('div',null,'visitor-mini-grid');
+    for(const [value,label] of counts){const card=make('div',null,'visitor-mini-stat');card.append(make('strong',value.toLocaleString('ko-KR')),make('span',label));grid.append(card);}
+    host.replaceChildren(grid);
+    panel.hidden=false;
+  }
 }
 function applyInquiries() {
   const root=q('#viewContent');if(!root)return;
@@ -109,14 +126,18 @@ window.MYVFirebaseAdmin={mount(view){currentView=view;refresh();}};
 document.addEventListener('click',event=>{
   if(event.target.closest('.inquiry-tabs button'))queueMicrotask(refresh);
 });
-function stopListener(){if(unsubscribe){unsubscribe();unsubscribe=null;}}
+function stopListener(){if(unsubscribe){unsubscribe();unsubscribe=null;}if(unsubscribeVisits){unsubscribeVisits();unsubscribeVisits=null;}}
 onAuthStateChanged(auth,async user=>{
-  stopListener();permission='checking';records=[];lastError='';loginBusy=false;refresh();
+  stopListener();permission='checking';records=[];visits=[];lastError='';loginBusy=false;refresh();
   if(!user){permission='signed-out';refresh();return;}
   try{
     const admin=await getDoc(doc(db,'admins',user.uid));
     if(!admin.exists() || admin.data().active!==true){permission='restricted';lastError='이 계정에는 운영 권한이 없습니다.';refresh();return;}
     permission='ready';refresh();
+    unsubscribeVisits=onSnapshot(query(collection(db,'visits'),orderBy('date','desc'),limit(5000)),snapshot=>{
+      visits=snapshot.docs.map(item=>item.data());
+      refresh();
+    },()=>{visits=[];refresh();});
     unsubscribe=onSnapshot(query(collection(db,'inquiries'),orderBy('createdAt','desc'),limit(200)),snapshot=>{
       records=snapshot.docs.map(item=>({id:item.id,...item.data()}));
       refresh();
