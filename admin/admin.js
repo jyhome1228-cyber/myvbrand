@@ -104,19 +104,17 @@ function renderOverview() {
   $('#pageActions').append(button('+ 뉴스 작성', () => openEditor(), 'button primary'));
   const metrics=node('div',null,'metrics');
   [
-    ['—','브이슈머 신청','접수 현황',()=>navigate('inquiries'),''],
-    ['—','사업자 · 입점제안','접수 현황',()=>navigate('inquiries'),''],
-    ['—','일반 문의','접수 현황',()=>navigate('inquiries'),''],
-    [posts.length,'등록된 뉴스','현재 사이트 뉴스 데이터',()=>navigate('news','all'),'active']
+    ['—','오늘 방문자','브라우저별 당일 중복 제외',()=>window.location.href='./visitors.html',''],
+    ['—','브이슈머 신청','누적 접수',()=>navigate('inquiries'),''],
+    ['—','입점제안','누적 접수',()=>navigate('inquiries'),''],
+    ['—','일반 문의','누적 접수',()=>navigate('inquiries'),'']
   ].forEach(([value,label,hint,action,style])=>{const m=button('',action,'metric '+style);m.append(node('span',label,'label'),node('strong',typeof value==='number'?value.toLocaleString('ko-KR'):value),node('small',hint));metrics.append(m);});
   // Show a visitor card only when verified metrics are available.
-  const visitorSummary=node('div',null,'visitor-summary');
-  const visitorDetail=node('a','방문 기록 자세히 보기 →','button');
-  visitorDetail.href='./visitors.html';
-  const visitorPanel=panel('홈페이지 방문 현황','일별 페이지 조회 현황',visitorSummary,visitorDetail);
-  visitorPanel.hidden=true;
-  $('#viewContent').append(visitorPanel);
-  renderVisitorSummary(visitorPanel,visitorSummary);
+  const recentInquiries=node('div',null,'admin-recent-inquiries');
+  recentInquiries.id='adminRecentInquiries';
+  const inquiriesPanel=panel('최근 접수 문의','최신 문의와 신청 내역',recentInquiries,button('문의 전체보기 →',()=>navigate('inquiries'),'text-button'));
+  inquiriesPanel.hidden=true;
+  $('#viewContent').append(inquiriesPanel);
   const quick=node('div',null,'admin-quick-actions');
   [['브이슈머 신청','신청자 접수 및 승인 현황','prosumer'],['사업자 · 입점','브랜드 제안과 검토 현황','partner'],['일반 문의','고객 문의 및 답변 현황','general']].forEach(([title,description,id])=>{
     const card=button('',()=>{navigate('inquiries');requestAnimationFrame(()=>{const tab=document.querySelector('[data-category="'+id+'"]');if(tab)tab.click();});},'admin-quick-card');
