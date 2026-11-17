@@ -37,11 +37,23 @@ if (!/\/admin(?:\/|$)/.test(location.pathname) &&
   const storedKey='myv_visit_written_'+date;
   let alreadySent=false;
   try { alreadySent=localStorage.getItem(storedKey)==='yes'; } catch(_) {}
+  if(alreadySent){try{sessionStorage.setItem('myv_visit_last_result',JSON.stringify({date,state:'already-saved'}));}catch(_) {}}
   if(!alreadySent) {
     setDoc(doc(db,'visits',date+'_'+visitorId),{
       visitorId,date,path:path.slice(0,160),source,device,createdAt:serverTimestamp()
     }).then(()=>{
-      try {localStorage.setItem(storedKey,'yes');} catch(_) {}
-    }).catch(()=>{ /* Analytics must never block public pages. */ });
+      try {
+        localStorage.setItem(storedKey,'yes');
+        sessionStorage.setItem('myv_visit_last_result',JSON.stringify({date,state:'saved'}));
+      } catch(_) {}
+    }).catch(error=>{
+      // A non-sensitive diagnostic code helps verify Firebase setup without
+      // exposing visitor identifiers or private information.
+      try {
+        sessionStorage.setItem('myv_visit_last_result',JSON.stringify({
+          date,state:'failed',code:String(error?.code||'unknown').slice(0,80)
+        }));
+      }catch(_) {}
+    });
   }
 }
