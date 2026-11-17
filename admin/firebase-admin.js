@@ -106,15 +106,15 @@ function safeCount(type){return records.filter(x=>x.type===type).length;}
 function applyOverview() {
   const metrics=q('.metrics'); if(!metrics)return;
   const cards=metrics.querySelectorAll('.metric');
+  // Aggregate visitor counts are read from GitHub JSON, never from private
+  // Firestore event records in an unauthenticated admin page.
   const values=[
-    permission==='ready' && visitsState==='loaded'
-      ? visits.filter(x=>x.date===todayKst()).length : null,
     permission==='ready' && inquiriesState==='loaded' ? safeCount('브이슈머 문의') : null,
     permission==='ready' && inquiriesState==='loaded' ? safeCount('입점제안') : null,
     permission==='ready' && inquiriesState==='loaded' ? safeCount('일반 문의') : null
   ];
   values.forEach((value,i)=>{
-    const number=cards[i]?.querySelector('strong');
+    const number=cards[i+1]?.querySelector('strong');
     if(number)number.textContent=value==null?'—':value.toLocaleString('ko-KR');
   });
   q('#fb-admin-auth')?.remove();
