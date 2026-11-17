@@ -83,3 +83,19 @@ body.admin-preview-locked>.sidebar,body.admin-preview-locked>.workspace,body.adm
 .admin-preview-form input{width:100%;height:46px;padding:0 13px;border:1px solid #d5dfed;border-radius:10px;color:#142341}
 .admin-preview-form button{height:46px;background:#2278f9;border:0;border-radius:10px;color:#fff;font-weight:700;cursor:pointer}
 .admin-preview-form small{font-size:12px;line-height:1.5;color:#8190a4}
+
+/* MYV 2026-11-17 operational metrics and private inquiry workflow */
+.admin-recent-inquiries{padding:4px 22px 12px}
+.admin-recent-inquiries .compact-row{display:flex;align-items:center;justify-content:space-between;gap:18px}
+.admin-recent-inquiries .compact-row>div{display:flex;flex-direction:column;align-items:flex-start;gap:6px;min-width:0}
+.admin-recent-inquiries .compact-row strong{font-size:14px;line-height:1.5}
+.fb-recent-type{color:#2278f9;font-size:11px;font-weight:750}
+.fb-inquiry-actions{display:flex;gap:12px;margin-top:16px;align-items:center}
+.fb-inquiry-actions label{display:flex;gap:10px;align-items:center;font-size:12px;font-weight:650;color:#596d88}
+.fb-inquiry-actions select{min-width:125px;height:37px;padding:0 10px;border:1px solid #d6e1ef;border-radius:8px;background:white;color:#172b49}
+.fb-save-error{font-size:12px;color:#ae3737}
+.fb-account-dialog{width:min(520px,calc(100vw - 32px));max-height:90vh;overflow:auto;border:1px solid #dce4f1;border-radius:16px;padding:12px;background:#fff;box-shadow:0 20px 70px rgba(14,39,75,.15)}
+.fb-account-dialog::backdrop{background:rgba(13,32,63,.42)}
+.fb-account-dialog>.button{margin:12px}
+.fb-account-dialog .fb-account-content{border:none;box-shadow:none}
+@media(max-width:760px){.admin-recent-inquiries{padding:10px 16px}.admin-recent-inquiries .compact-row{align-items:flex-start;flex-direction:column}}
