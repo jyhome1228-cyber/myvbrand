@@ -2,7 +2,7 @@
 // Config contains Firebase web identifiers (not service account credentials).
 import { initializeApp, getApps, getApp } from 'https://www.gstatic.com/firebasejs/13.3.0/firebase-app.js';
 import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'https://www.gstatic.com/firebasejs/13.3.0/firebase-auth.js';
-import { getFirestore, doc, getDoc, collection, onSnapshot, query, orderBy, limit } from 'https://www.gstatic.com/firebasejs/13.3.0/firebase-firestore.js';
+import { getFirestore, doc, getDoc, updateDoc, collection, onSnapshot, query, orderBy, limit } from 'https://www.gstatic.com/firebasejs/13.3.0/firebase-firestore.js';
 
 const config = {
   apiKey: "AIzaSyCu-ek497FAXQKwJly2ZS8SMYdy2MarA8",
@@ -184,7 +184,26 @@ function applyInquiries() {
     heading.append(make('strong',item.subject||'(제목 없음)'),make('span',asDate(item.createdAt)));
     const details=make('p',[item.name,item.company||'',item.email,item.phone].filter(Boolean).join(' · '),'note');
     const message=make('p',item.message||'');
-    row.append(heading,details,message,make('small','상태: '+(item.status==='new'?'신규':item.status||'—')));
+    const statusRow=make('div',null,'fb-inquiry-actions');
+    const statusLabel=make('label','진행 상태');
+    const select=make('select');
+    select.setAttribute('aria-label',(item.subject||'문의')+' 진행 상태');
+    for(const [value,label] of [['new','신규'],['reviewing','확인 중'],['done','완료']]){
+      const option=make('option',label);option.value=value;select.append(option);
+    }
+    select.value=['new','reviewing','done'].includes(item.status)?item.status:'new';
+    select.addEventListener('change',async()=>{
+      const previous=item.status||'new';select.disabled=true;
+      try {
+        await updateDoc(doc(db,'inquiries',item.id),{status:select.value});
+      }catch(err){
+        select.value=previous;
+        const warning=make('span','변경을 저장하지 못했습니다.','fb-save-error');
+        statusRow.append(warning);
+      }finally{select.disabled=false;}
+    });
+    statusLabel.append(select);statusRow.append(statusLabel);
+    row.append(heading,details,message,statusRow);
     list.append(row);
   }
 }
