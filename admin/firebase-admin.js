@@ -23,6 +23,8 @@ let unsubscribeVisits = null;
 let visits = [];
 let lastError = '';
 let loginBusy = false;
+let inquiriesState = 'idle';
+let inquiriesError = '';
 const TYPES = {'브이슈머 문의':0,'입점제안':1,'일반 문의':2};
 const q = (selector, root=document) => root.querySelector(selector);
 const make = (tag, value, cls) => { const el=document.createElement(tag); if(value != null) el.textContent=value; if(cls) el.className=cls; return el; };
@@ -90,22 +92,31 @@ function applyOverview() {
 }
 function applyInquiries() {
   const root=q('#viewContent');if(!root)return;
-  const old=q('#fb-admin-auth');
-  if(old)old.remove();
-  if(permission!=='ready') {
-    const b=statusBox();b.id='fb-admin-auth';root.prepend(b);
-    const empty=q('.inquiry-empty');if(empty)empty.hidden=true;
-    return;
-  }
+  q('#fb-admin-auth')?.remove();
+  const slot=q('.inquiry-content');
+  if(!slot)return;
   const empty=q('.inquiry-empty');
   if(empty)empty.hidden=true;
-  const slot=q('.inquiry-content');if(!slot)return;
-  let list=q('#fb-inquiries-list');
-  if(!list){list=make('div');list.id='fb-inquiries-list';slot.append(list);}
+  q('#fb-inquiries-list')?.remove();
+  if(permission!=='ready'){
+    const b=statusBox();b.id='fb-admin-auth';root.prepend(b);
+    return;
+  }
+  const list=make('div',null,'fb-inquiries-list');
+  list.id='fb-inquiries-list';
+  slot.append(list);
+  if(inquiriesState==='loading'){
+    list.append(make('p','문의 내역을 불러오는 중입니다.','note'));return;
+  }
+  if(inquiriesState==='error'){
+    list.append(make('p','문의 내역을 조회하지 못했습니다. 운영 계정 권한 또는 데이터 연결을 확인해 주세요.','note'));
+    const retry=make('button','새로고침','button');retry.type='button';
+    retry.addEventListener('click',()=>location.reload());list.append(retry);
+    return;
+  }
   const active=q('.inquiry-tabs button[aria-pressed="true"]')?.dataset.category;
   const type=active==='prosumer'?'브이슈머 문의':active==='partner'?'입점제안':'일반 문의';
   const matching=records.filter(r=>r.type===type);
-  list.replaceChildren();
   if(!matching.length){list.append(make('p','접수된 문의가 없습니다.','note'));return;}
   for(const item of matching){
     const row=make('article',null,'fb-inquiry-row');
@@ -129,20 +140,27 @@ document.addEventListener('click',event=>{
 });
 function stopListener(){if(unsubscribe){unsubscribe();unsubscribe=null;}if(unsubscribeVisits){unsubscribeVisits();unsubscribeVisits=null;}}
 onAuthStateChanged(auth,async user=>{
-  stopListener();permission='checking';records=[];visits=[];lastError='';loginBusy=false;refresh();
+  stopListener();permission='checking';records=[];visits=[];inquiriesState='idle';inquiriesError='';lastError='';loginBusy=false;refresh();
   if(!user){permission='signed-out';refresh();return;}
   try{
     const admin=await getDoc(doc(db,'admins',user.uid));
     if(!admin.exists() || admin.data().active!==true){permission='restricted';lastError='이 계정에는 운영 권한이 없습니다.';refresh();return;}
-    permission='ready';refresh();
+    permission='ready';inquiriesState='loading';refresh();
     unsubscribeVisits=onSnapshot(query(collection(db,'visits'),orderBy('date','desc'),limit(5000)),snapshot=>{
       visits=snapshot.docs.map(item=>item.data());
       refresh();
     },()=>{visits=[];refresh();});
-    unsubscribe=onSnapshot(query(collection(db,'inquiries'),orderBy('createdAt','desc'),limit(200)),snapshot=>{
-      records=snapshot.docs.map(item=>({id:item.id,...item.data()}));
+    // Query the full collection so legacy documents without createdAt are not silently excluded.
+    unsubscribe=onSnapshot(collection(db,'inquiries'),snapshot=>{
+      records=snapshot.docs.map(item=>({id:item.id,...item.data()}))
+        .sort((a,b)=>(b.createdAt?.toMillis?.()||0)-(a.createdAt?.toMillis?.()||0));
+      inquiriesState='loaded';inquiriesError='';refresh();
+    },error=>{
+      inquiriesError=error?.code||'unknown';
+      inquiriesState='error';records=[];
+      console.error('MYV inquiries query failed:',inquiriesError);
       refresh();
-    },()=>{lastError='문의 데이터를 불러오지 못했습니다.';records=[];refresh();});
+    });
   }catch(_){permission='restricted';lastError='계정 권한을 확인해 주세요.';refresh();}
 });
 refresh();
