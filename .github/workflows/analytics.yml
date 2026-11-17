@@ -30,7 +30,8 @@ jobs:
           elif [[ -n "${GA4_PROPERTY_ID}" && -n "${GA4_SERVICE_ACCOUNT_JSON}" ]]; then
             python scripts/export_ga4.py
           else
-            echo "Analytics source not configured; leaving current data untouched."
+            echo "::error::No analytics source configured. Set FIREBASE_SERVICE_ACCOUNT_JSON or GA4_PROPERTY_ID + GA4_SERVICE_ACCOUNT_JSON in repository Actions secrets."
+            exit 1
           fi
       - name: Commit aggregated public stats
         run: |
@@ -38,5 +39,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/visitor-stats.json
-          git commit -m "data: refresh anonymous GA4 page view aggregates"
+          git commit -m "data: refresh aggregated MYV website traffic"
           git push
