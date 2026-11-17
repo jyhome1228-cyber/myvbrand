@@ -59,6 +59,45 @@ function statusBox() {
   shell.append(container);
   return shell;
 }
+// One compact sign-in action gives access to private operational metrics.
+// The shared 'myv' preview gate never grants Firestore permissions.
+let accountDialog=null;
+function ensureAccountDialog(){
+  if(accountDialog)return accountDialog;
+  accountDialog=document.createElement('dialog');
+  accountDialog.className='fb-account-dialog';
+  accountDialog.setAttribute('aria-label','운영 계정 로그인');
+  document.body.append(accountDialog);
+  accountDialog.addEventListener('click',e=>{
+    if(e.target===accountDialog)accountDialog.close();
+  });
+  return accountDialog;
+}
+function drawAccountDialog(){
+  if(!accountDialog?.open)return;
+  accountDialog.replaceChildren();
+  const content=statusBox();
+  content.classList.add('fb-account-content');
+  accountDialog.append(content);
+  const close=make('button','닫기','button');
+  close.type='button';
+  close.addEventListener('click',()=>accountDialog.close());
+  accountDialog.append(close);
+}
+function updateAccountButton(){
+  const button=q('#firebaseAccountButton');
+  if(!button)return;
+  button.textContent=permission==='ready'?'운영 계정 연결됨':'운영 로그인';
+  button.setAttribute('aria-label',permission==='ready'?'운영 계정 설정':'운영 계정 로그인');
+  if(accountDialog?.open)drawAccountDialog();
+}
+const accountButton=q('#firebaseAccountButton');
+accountButton?.addEventListener('click',()=>{
+  ensureAccountDialog();
+  accountDialog.showModal();
+  drawAccountDialog();
+});
+
 function asDate(value) {
   const d = value && typeof value.toDate==='function'?value.toDate():null;
   return d && !Number.isNaN(d.getTime())?d.toLocaleString('ko-KR',{timeZone:'Asia/Seoul'}):'—';
@@ -152,6 +191,7 @@ function applyInquiries() {
 function refresh() {
   const view=window.location.hash.slice(1)||currentView;
   currentView=view;
+  updateAccountButton();
   if(view==='overview')applyOverview();
   else if(view==='inquiries')applyInquiries();
 }
@@ -166,7 +206,7 @@ onAuthStateChanged(auth,async user=>{
   try{
     const admin=await getDoc(doc(db,'admins',user.uid));
     if(!admin.exists() || admin.data().active!==true){permission='restricted';lastError='이 계정에는 운영 권한이 없습니다.';refresh();return;}
-    permission='ready';inquiriesState='loading';refresh();
+    permission='ready';inquiriesState='loading';if(accountDialog?.open)accountDialog.close();refresh();
     visitsState='loading';
     unsubscribeVisits=onSnapshot(query(collection(db,'visits'),orderBy('date','desc'),limit(5000)),snapshot=>{
       visits=snapshot.docs.map(item=>item.data());visitsState='loaded';
