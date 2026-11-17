@@ -5,7 +5,7 @@
   const response=await fetch('../data/visitor-stats.json',{cache:'no-store'});
   if(!response.ok)throw Error('통계 파일 없음');
   const d=await response.json();
-  if(!d.asOf||!d.today||d.metric!=='page_views_not_unique_visitors')return;
+  if(!d.asOf||!d.today||d.metric!=='page_views_not_unique_visitors'||d.connected===false){status.textContent='표시할 방문 통계가 없습니다.';return;}
   const count=n=>Number(n||0).toLocaleString('ko-KR');
   for(const [id,item] of [['today',d.today],['yesterday',d.yesterday],['twoDays',d.twoDaysAgo]]){
     document.getElementById(id).textContent=count(item.views);
@@ -24,7 +24,7 @@
   table('devices',['기기','조회'],d.devices.map(x=>[x.device,count(x.views)]));
   document.getElementById('recent').textContent='GitHub 기반 통계는 개인별 방문 기록을 저장하거나 공개하지 않습니다.';
   data.hidden=false;
-  status.textContent='GitHub Actions · GA4 집계 연결됨 · 마지막 갱신 '+new Date(d.asOf).toLocaleString('ko-KR',{timeZone:'Asia/Seoul'});
+  status.textContent='페이지 조회 집계 · 기준 '+new Date(d.asOf).toLocaleString('ko-KR',{timeZone:'Asia/Seoul'});
   document.getElementById('githubAnalyticsNote')?.remove();
- }catch(error){console.warn('Aggregate analytics not yet available:',error.message)}
+ }catch(error){status.textContent='방문 통계를 불러오지 못했습니다.';console.warn('Aggregate analytics unavailable:',error.message)}
 })();
