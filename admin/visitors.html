@@ -11,7 +11,7 @@
 .visit-empty{padding:30px 0;font-size:13px;color:#718095}.visit-notice{padding:18px 22px;border:1px solid #e5eaf2;background:#fff;border-radius:10px;font-size:13px;line-height:1.8;color:#586b84}
 @media(max-width:900px){.visit-layout{grid-template-columns:1fr}.visit-metrics{grid-template-columns:1fr}.workspace{margin-left:0}.sidebar{display:none}main{padding:25px 18px}.topbar{padding:0 18px}}
 </style>
-</head><body class="admin-preview-locked"><div id="adminPreviewGate" class="admin-preview-gate"><form class="admin-preview-form"><img src="../assets/myv-logo.svg" alt="MYV" width="90" /><h1>방문 현황</h1><p>운영 화면 확인을 위해 비밀번호를 입력해 주세요.</p><label for="previewPassword">비밀번호</label><input id="previewPassword" type="password" autocomplete="off" required /><button type="submit">확인</button><p role="status" aria-live="polite"></p><small>방문 통계는 개인별 이용 기록이 아닌 집계값입니다.</small></form></div>
+</head><body >
 <aside class="sidebar"><a class="admin-brand" href="./index.html#overview"><img src="../assets/myv-logo.svg" alt="MYV"><span>브랜드 운영</span></a>
 <div class="nav-label">WORKSPACE</div><nav aria-label="관리 메뉴">
 <a href="./index.html#overview"><span class="nav-icon">▦</span>대시보드</a>
@@ -28,8 +28,8 @@
 <div class="visit-metrics"><div class="visit-stat"><span>오늘 조회</span><strong id="today">—</strong><small id="todayDate"></small></div><div class="visit-stat"><span>어제 조회</span><strong id="yesterday">—</strong><small id="yesterdayDate"></small></div><div class="visit-stat"><span>엊그제 조회</span><strong id="twoDays">—</strong><small id="twoDaysDate"></small></div></div>
 <div class="visit-layout"><section class="panel"><div class="panel-header"><h2>일자별 방문</h2></div><div class="table-wrap" id="days"></div></section><section class="panel"><div class="panel-header"><h2>유입경로</h2></div><div class="table-wrap" id="sources"></div></section></div>
 <div class="visit-layout section-gap"><section class="panel"><div class="panel-header"><h2>방문 페이지</h2></div><div class="table-wrap" id="pages"></div></section><section class="panel"><div class="panel-header"><h2>접속 기기</h2></div><div class="table-wrap" id="devices"></div></section></div>
-<section class="panel section-gap"><div class="panel-header"><h2>최근 방문 현황</h2><p>최근 100건 · 익명 브라우저 기준</p></div><div class="table-wrap" id="recent"></div></section>
+<section class="panel section-gap"><div class="panel-header"><h2>집계 기준</h2><p>개별 방문자 기록은 공개하지 않습니다</p></div><div class="panel-body" id="recent">익명 방문 집계만 표시합니다.</div></section>
 <p class="note">브라우저별 한국 날짜 기준 하루 1회 집계한 수치입니다. 동일인이 다른 기기나 브라우저로 접속하면 별도로 집계될 수 있습니다.</p>
 </div></main><footer class="admin-footer">MYV · Site Analytics <span>조회 기록은 서버에 저장된 실제 데이터만 표시됩니다.</span></footer></div>
 
-<script type="module" src="./firebase-visitors.js?v=20261117-analyticsdiag02"></script><script src="./preview-gate.js?v=20261117-preview01" defer></script></body></html>
+<script defer src="./public-visitor-stats.js?v=20261117-gh01"></script></body></html>
