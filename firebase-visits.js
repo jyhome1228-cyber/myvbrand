@@ -34,7 +34,14 @@ if (!/\/admin(?:\/|$)/.test(location.pathname) &&
   const device=/tablet|ipad/i.test(navigator.userAgent)?'tablet':/mobi|android|iphone/i.test(navigator.userAgent)?'mobile':'desktop';
   // Deterministic ID provides at most one visit per browser and KST day.
   // Firestore create-only security rules prevent overwrites.
-  setDoc(doc(db,'visits',date+'_'+visitorId),{
-    visitorId,date,path:path.slice(0,160),source,device,createdAt:serverTimestamp()
-  }).catch(()=>{ /* Analytics must never block public pages. */ });
+  const storedKey='myv_visit_written_'+date;
+  let alreadySent=false;
+  try { alreadySent=localStorage.getItem(storedKey)==='yes'; } catch(_) {}
+  if(!alreadySent) {
+    setDoc(doc(db,'visits',date+'_'+visitorId),{
+      visitorId,date,path:path.slice(0,160),source,device,createdAt:serverTimestamp()
+    }).then(()=>{
+      try {localStorage.setItem(storedKey,'yes');} catch(_) {}
+    }).catch(()=>{ /* Analytics must never block public pages. */ });
+  }
 }
