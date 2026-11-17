@@ -70,7 +70,7 @@ function applyOverview() {
   const cards=metrics.querySelectorAll('.metric');
   for(const [i,type] of ['브이슈머 문의','입점제안','일반 문의'].entries()){
     const value=cards[i]?.querySelector('strong');
-    if(value)value.textContent=permission==='ready'?safeCount(type).toLocaleString('ko-KR'):'—';
+    if(value)value.textContent=permission==='ready'&&inquiriesState==='loaded'?safeCount(type).toLocaleString('ko-KR'):'—';
   }
   q('#fb-admin-auth')?.remove();
   const panel=q('.visitor-summary')?.closest('.panel');
