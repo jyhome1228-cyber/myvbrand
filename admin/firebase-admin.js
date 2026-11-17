@@ -21,6 +21,7 @@ let currentView = 'overview';
 let unsubscribe = null;
 let unsubscribeVisits = null;
 let visits = [];
+let visitsState = 'idle';
 let lastError = '';
 let loginBusy = false;
 let inquiriesState = 'idle';
@@ -64,31 +65,51 @@ function asDate(value) {
 }
 function safeCount(type){return records.filter(x=>x.type===type).length;}
 function applyOverview() {
-  // Keep the dashboard free of account sign-in panels.
-  // Private inquiry totals are shown only after authenticated admin access.
   const metrics=q('.metrics'); if(!metrics)return;
   const cards=metrics.querySelectorAll('.metric');
-  for(const [i,type] of ['브이슈머 문의','입점제안','일반 문의'].entries()){
-    const value=cards[i]?.querySelector('strong');
-    if(value)value.textContent=permission==='ready'&&inquiriesState==='loaded'?safeCount(type).toLocaleString('ko-KR'):'—';
-  }
+  const values=[
+    permission==='ready' && visitsState==='loaded'
+      ? visits.filter(x=>x.date===todayKst()).length : null,
+    permission==='ready' && inquiriesState==='loaded' ? safeCount('브이슈머 문의') : null,
+    permission==='ready' && inquiriesState==='loaded' ? safeCount('입점제안') : null,
+    permission==='ready' && inquiriesState==='loaded' ? safeCount('일반 문의') : null
+  ];
+  values.forEach((value,i)=>{
+    const number=cards[i]?.querySelector('strong');
+    if(number)number.textContent=value==null?'—':value.toLocaleString('ko-KR');
+  });
   q('#fb-admin-auth')?.remove();
-  const panel=q('.visitor-summary')?.closest('.panel');
-  const host=q('.visitor-summary');
-  if(panel && permission!=='ready') { panel.hidden=true; host?.replaceChildren(); }
-  if(panel && host && permission==='ready'){
-    const kst=ts=>new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date(ts));
-    const today=kst(Date.now()), month=today.slice(0,7)+'-01';
-    const [year,mon,day]=today.split('-').map(Number);
-    const weekday=new Date(Date.UTC(year,mon-1,day)).getUTCDay();
-    const monday=kst(Date.UTC(year,mon-1,day-((weekday+6)%7),12)-9*3600000);
-    const valid=visits.filter(v=>v.date>=kst(Date.now()-29*86400000)&&v.date<=today);
-    const counts=[[valid.filter(v=>v.date===today).length,'오늘 방문'],[valid.filter(v=>v.date>=monday).length,'이번 주 방문'],[valid.filter(v=>v.date>=month).length,'이번 달 방문']];
-    const grid=make('div',null,'visitor-mini-grid');
-    for(const [value,label] of counts){const card=make('div',null,'visitor-mini-stat');card.append(make('strong',value.toLocaleString('ko-KR')),make('span',label));grid.append(card);}
-    host.replaceChildren(grid);
-    panel.hidden=false;
+  const panel=q('#adminRecentInquiries')?.closest('.panel');
+  const host=q('#adminRecentInquiries');
+  if(!panel || !host)return;
+  panel.hidden=permission!=='ready' || inquiriesState!=='loaded';
+  host.replaceChildren();
+  if(panel.hidden)return;
+  const latest=records.slice(0,5);
+  if(!latest.length){host.append(make('p','접수된 문의가 없습니다.','note'));return;}
+  for(const item of latest){
+    const row=make('div',null,'compact-row');
+    const copy=make('div');
+    const typeLabel=make('span',item.type||'일반 문의','fb-recent-type');
+    const title=make('strong',item.subject||'(제목 없음)');
+    const meta=make('small',[item.name||'',asDate(item.createdAt)].filter(Boolean).join(' · '));
+    copy.append(typeLabel,title,meta);
+    const link=make('button','문의 보기 →','text-button');
+    link.type='button';
+    link.addEventListener('click',()=>{
+      location.hash='inquiries';
+      setTimeout(()=>{
+        const category=item.type==='브이슈머 문의'?'prosumer':item.type==='입점제안'?'partner':'general';
+        q('.inquiry-tabs button[data-category="'+category+'"]')?.click();
+      },0);
+    });
+    row.append(copy,link);host.append(row);
   }
+}
+function todayKst(){
+  const parts=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
+  const map=Object.fromEntries(parts.map(p=>[p.type,p.value]));
+  return map.year+'-'+map.month+'-'+map.day;
 }
 function applyInquiries() {
   const root=q('#viewContent');if(!root)return;
@@ -140,16 +161,17 @@ document.addEventListener('click',event=>{
 });
 function stopListener(){if(unsubscribe){unsubscribe();unsubscribe=null;}if(unsubscribeVisits){unsubscribeVisits();unsubscribeVisits=null;}}
 onAuthStateChanged(auth,async user=>{
-  stopListener();permission='checking';records=[];visits=[];inquiriesState='idle';inquiriesError='';lastError='';loginBusy=false;refresh();
+  stopListener();permission='checking';records=[];visits=[];visitsState='idle';inquiriesState='idle';inquiriesError='';lastError='';loginBusy=false;refresh();
   if(!user){permission='signed-out';refresh();return;}
   try{
     const admin=await getDoc(doc(db,'admins',user.uid));
     if(!admin.exists() || admin.data().active!==true){permission='restricted';lastError='이 계정에는 운영 권한이 없습니다.';refresh();return;}
     permission='ready';inquiriesState='loading';refresh();
+    visitsState='loading';
     unsubscribeVisits=onSnapshot(query(collection(db,'visits'),orderBy('date','desc'),limit(5000)),snapshot=>{
-      visits=snapshot.docs.map(item=>item.data());
+      visits=snapshot.docs.map(item=>item.data());visitsState='loaded';
       refresh();
-    },()=>{visits=[];refresh();});
+    },error=>{visits=[];visitsState='error';console.error('MYV visits query:',error?.code);refresh();});
     // Query the full collection so legacy documents without createdAt are not silently excluded.
     unsubscribe=onSnapshot(collection(db,'inquiries'),snapshot=>{
       records=snapshot.docs.map(item=>({id:item.id,...item.data()}))
