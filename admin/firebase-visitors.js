@@ -13,6 +13,21 @@ const auth=getAuth(app), db=getFirestore(app);
 const $=s=>document.querySelector(s);
 const el=(tag,value)=>{const n=document.createElement(tag);if(value!==undefined)n.textContent=String(value);return n;};
 const status=$('#status'), data=$('#data');
+const debugging=new URLSearchParams(location.search).has('debug');
+function diagnostics(message){
+  if(!debugging)return;
+  let box=$('#visitorDiagnostics');
+  if(!box){
+    box=el('section');box.id='visitorDiagnostics';box.className='visit-notice';
+    data?.parentNode?.insertBefore(box,data);
+  }
+  let local='기록 없음';
+  try{
+    const entry=JSON.parse(sessionStorage.getItem('myv_visit_last_result')||'null');
+    if(entry)local=(entry.date||'')+' / '+(entry.state||'')+(entry.code?' / '+entry.code:'');
+  }catch(_) {}
+  box.textContent='연결 진단: '+message+' · 현재 탭 수집 결과: '+local;
+}
 const key=n=>{
   const parts=new Intl.DateTimeFormat('en-CA',{
     timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'
@@ -46,6 +61,7 @@ function aggregate(list,keyName){
 function authForm(message='방문 기록을 확인하려면 운영 계정으로 로그인해 주세요.'){
   data.hidden=true;
   status.replaceChildren(el('p',message));
+  diagnostics('로그인 또는 관리자 권한 필요');
   const form=el('form');form.className='visit-controls';
   const email=el('input');email.type='email';email.placeholder='관리자 이메일';email.autocomplete='username';email.required=true;
   const password=el('input');password.type='password';password.placeholder='비밀번호';password.autocomplete='current-password';password.required=true;
@@ -83,14 +99,17 @@ async function refresh(){
     table('#devices',['기기','방문'],aggregate(rows,'device').map(([k,v])=>[k,count(v)]));
     const recent=rows.slice(0,100).map(x=>[
       x.createdAt?.toDate?.().toLocaleString('ko-KR',{timeZone:'Asia/Seoul'})||x.date,
+      x.visitorId?String(x.visitorId).slice(0,8)+'…':'—',
       x.path||'/',x.source||'direct',x.device||'desktop'
     ]);
-    table('#recent',['기록 시각','첫 페이지','유입경로','기기'],recent);
+    table('#recent',['기록 시각','익명 브라우저 코드','첫 페이지','유입경로','기기'],recent);
     status.textContent='최근 30일 기록 · 브라우저별 하루 1회 기준';
     data.hidden=false;
+    diagnostics('Firestore 방문 기록 '+rows.length+'건 조회 성공');
   }catch(error){
     status.textContent='방문 현황을 확인할 수 없습니다.';
     data.hidden=true;
+    diagnostics('Firestore 조회 실패 '+String(error?.code||error?.message||'unknown').slice(0,120));
   }
 }
 onAuthStateChanged(auth,async user=>{
@@ -98,7 +117,7 @@ onAuthStateChanged(auth,async user=>{
   if(!user){authForm();return}
   try{
     const admin=await getDoc(doc(db,'admins',user.uid));
-    if(!admin.exists()||admin.data().active!==true){authForm('이 계정에는 방문 통계 조회 권한이 없습니다.');return}
+    if(!admin.exists()||admin.data().active!==true){authForm('이 계정에는 방문 통계 조회 권한이 없습니다.');diagnostics('admins/{uid}.active 권한 미확인');return}
     currentUser=user;refresh();
   }catch(_){authForm('운영 계정 권한을 확인해 주세요.')}
 });
