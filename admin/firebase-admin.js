@@ -22,6 +22,7 @@ let unsubscribe = null;
 let unsubscribeVisits = null;
 let visits = [];
 let visitsState = 'idle';
+let visitsError = '';
 let lastError = '';
 let loginBusy = false;
 let inquiriesState = 'idle';
@@ -109,12 +110,13 @@ function applyOverview() {
   // Aggregate visitor counts are read from GitHub JSON, never from private
   // Firestore event records in an unauthenticated admin page.
   const values=[
+    permission==='ready' && visitsState==='loaded' ? visits.filter(v=>v.date===todayKst()).length : null,
     permission==='ready' && inquiriesState==='loaded' ? safeCount('브이슈머 문의') : null,
     permission==='ready' && inquiriesState==='loaded' ? safeCount('입점제안') : null,
     permission==='ready' && inquiriesState==='loaded' ? safeCount('일반 문의') : null
   ];
   values.forEach((value,i)=>{
-    const number=cards[i+1]?.querySelector('strong');
+    const number=cards[i]?.querySelector('strong');
     if(number)number.textContent=value==null?'—':value.toLocaleString('ko-KR');
   });
   q('#fb-admin-auth')?.remove();
@@ -207,12 +209,34 @@ function applyInquiries() {
     list.append(row);
   }
 }
+function applySettingsDiagnostics(){
+  const host=q('#viewContent');if(!host)return;
+  q('#firebaseDiagnostics')?.remove();
+  const box=make('section',null,'panel fb-auth-panel');
+  box.id='firebaseDiagnostics';
+  const inner=make('div',null,'panel-body');
+  const title=make('h2','운영 데이터 확인');
+  inner.append(title);
+  const output=make('div',null,'fb-diagnostic-list');
+  function row(label,value){
+    const item=make('div',null,'connection-row');
+    item.append(make('span',label),make('strong',value));
+    output.append(item);
+  }
+  row('운영 계정',permission==='ready'?'연결됨':permission==='checking'?'확인 중':'로그인 필요');
+  row('방문 데이터',permission!=='ready'?'—':visitsState==='loaded'?visits.length.toLocaleString('ko-KR')+'건 조회':visitsState==='error'?'조회 오류 ('+visitsError+')':'확인 중');
+  row('문의 데이터',permission!=='ready'?'—':inquiriesState==='loaded'?records.length.toLocaleString('ko-KR')+'건 조회':inquiriesState==='error'?'조회 오류 ('+inquiriesError+')':'확인 중');
+  inner.append(output);
+  const note=make('p','해당 화면은 데이터 조회 상태만 표시합니다. 과거에 저장되지 않은 방문·문의는 집계할 수 없습니다.','note');
+  inner.append(note);box.append(inner);host.prepend(box);
+}
 function refresh() {
   const view=window.location.hash.slice(1)||currentView;
   currentView=view;
   updateAccountButton();
   if(view==='overview')applyOverview();
   else if(view==='inquiries')applyInquiries();
+  else if(view==='settings')applySettingsDiagnostics();
 }
 window.MYVFirebaseAdmin={mount(view){currentView=view;refresh();}};
 document.addEventListener('click',event=>{
@@ -220,7 +244,7 @@ document.addEventListener('click',event=>{
 });
 function stopListener(){if(unsubscribe){unsubscribe();unsubscribe=null;}if(unsubscribeVisits){unsubscribeVisits();unsubscribeVisits=null;}}
 onAuthStateChanged(auth,async user=>{
-  stopListener();permission='checking';records=[];visits=[];visitsState='idle';inquiriesState='idle';inquiriesError='';lastError='';loginBusy=false;refresh();
+  stopListener();permission='checking';records=[];visits=[];visitsState='idle';visitsError='';inquiriesState='idle';inquiriesError='';lastError='';loginBusy=false;refresh();
   if(!user){permission='signed-out';refresh();return;}
   try{
     const admin=await getDoc(doc(db,'admins',user.uid));
@@ -228,9 +252,9 @@ onAuthStateChanged(auth,async user=>{
     permission='ready';inquiriesState='loading';if(accountDialog?.open)accountDialog.close();refresh();
     visitsState='loading';
     unsubscribeVisits=onSnapshot(query(collection(db,'visits'),orderBy('date','desc'),limit(5000)),snapshot=>{
-      visits=snapshot.docs.map(item=>item.data());visitsState='loaded';
+      visits=snapshot.docs.map(item=>item.data());visitsState='loaded';visitsError='';
       refresh();
-    },error=>{visits=[];visitsState='error';console.error('MYV visits query:',error?.code);refresh();});
+    },error=>{visits=[];visitsState='error';visitsError=String(error?.code||'unknown');console.error('MYV visits query:',visitsError);refresh();});
     // Query the full collection so legacy documents without createdAt are not silently excluded.
     unsubscribe=onSnapshot(collection(db,'inquiries'),snapshot=>{
       records=snapshot.docs.map(item=>({id:item.id,...item.data()}))
