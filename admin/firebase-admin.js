@@ -60,21 +60,15 @@ function asDate(value) {
 }
 function safeCount(type){return records.filter(x=>x.type===type).length;}
 function applyOverview() {
-  const metrics=q('.metrics');if(!metrics)return;
+  // Keep the dashboard free of account sign-in panels.
+  // Private inquiry totals are shown only after authenticated admin access.
+  const metrics=q('.metrics'); if(!metrics)return;
   const cards=metrics.querySelectorAll('.metric');
-  const keys=['브이슈머 문의','입점제안','일반 문의'];
-  keys.forEach((type,i)=>{
-    const n=cards[i]?.querySelector('strong');if(!n)return;
-    n.textContent=permission==='ready'?safeCount(type).toLocaleString('ko-KR'):'—';
-  });
-  const authBox=q('#fb-admin-auth');
-  if(permission==='ready'){authBox?.remove();return;}
-  if(authBox)authBox.replaceWith(statusBox());
-  else {
-    const box=statusBox();box.id='fb-admin-auth';
-    metrics.insertAdjacentElement('beforebegin',box);
+  for(const [i,type] of ['브이슈머 문의','입점제안','일반 문의'].entries()){
+    const value=cards[i]?.querySelector('strong');
+    if(value)value.textContent=permission==='ready'?safeCount(type).toLocaleString('ko-KR'):'—';
   }
-  const replacement=q('.fb-auth-panel');if(replacement)replacement.id='fb-admin-auth';
+  q('#fb-admin-auth')?.remove();
 }
 function applyInquiries() {
   const root=q('#viewContent');if(!root)return;
