@@ -239,7 +239,7 @@ document.querySelectorAll(".reveal").forEach((group) => {
   if (!current) return;
   const script=document.createElement('script');
   script.type='module';
-  script.src=new URL('firebase-visits.js?v=20261117-fbvisits01',current.src).href;
+  script.src=new URL('firebase-visits.js?v=20261117-analyticsdiag02',current.src).href;
   script.defer=true;
   document.head.append(script);
 })();
