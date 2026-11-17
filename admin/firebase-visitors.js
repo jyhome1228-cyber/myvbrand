@@ -13,9 +13,13 @@ const auth=getAuth(app), db=getFirestore(app);
 const $=s=>document.querySelector(s);
 const el=(tag,value)=>{const n=document.createElement(tag);if(value!==undefined)n.textContent=String(value);return n;};
 const status=$('#status'), data=$('#data');
-const key=n=>new Intl.DateTimeFormat('en-CA',{
-  timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'
-}).format(new Date(n));
+const key=n=>{
+  const parts=new Intl.DateTimeFormat('en-CA',{
+    timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'
+  }).formatToParts(new Date(n));
+  const m=Object.fromEntries(parts.map(p=>[p.type,p.value]));
+  return m.year+'-'+m.month+'-'+m.day;
+};
 const today=key(Date.now()),yesterday=key(Date.now()-86400000);
 const twoDays=key(Date.now()-2*86400000);
 const parts=today.split('-').map(Number);
@@ -85,7 +89,7 @@ async function refresh(){
     status.textContent='최근 30일 기록 · 브라우저별 하루 1회 기준';
     data.hidden=false;
   }catch(error){
-    status.textContent='방문 기록을 불러올 수 없습니다. Firebase 방문 기록 규칙과 관리자 권한을 확인해 주세요.';
+    status.textContent='방문 현황을 확인할 수 없습니다.';
     data.hidden=true;
   }
 }
