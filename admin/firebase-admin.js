@@ -73,6 +73,7 @@ function applyOverview() {
   q('#fb-admin-auth')?.remove();
   const panel=q('.visitor-summary')?.closest('.panel');
   const host=q('.visitor-summary');
+  if(panel && permission!=='ready') { panel.hidden=true; host?.replaceChildren(); }
   if(panel && host && permission==='ready'){
     const kst=ts=>new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date(ts));
     const today=kst(Date.now()), month=today.slice(0,7)+'-01';
