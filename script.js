@@ -238,7 +238,8 @@ document.querySelectorAll(".reveal").forEach((group) => {
   const current=document.currentScript;
   if (!current) return;
   const script=document.createElement('script');
-  script.src=new URL('visitor-track.js?v=20261104',current.src).href;
+  script.type='module';
+  script.src=new URL('firebase-visits.js?v=20261117-fbvisits01',current.src).href;
   script.defer=true;
   document.head.append(script);
 })();
