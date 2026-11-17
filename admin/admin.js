@@ -100,6 +100,25 @@ async function renderVisitorSummary(panelElement, host) {
     // Keep unavailable operational infrastructure out of the presentation.
   }
 }
+async function populatePublicVisitorMetric(target) {
+  try {
+    const response = await fetch('../data/visitor-stats.json?v='+Date.now(),{cache:'no-store'});
+    if(!response.ok) return;
+    const d=await response.json();
+    if(!d.asOf || !d.today || d.connected===false)return;
+    const parts=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
+    const m=Object.fromEntries(parts.map(x=>[x.type,x.value]));
+    const today=m.year+'-'+m.month+'-'+m.day;
+    const actual=(d.days||[]).find(x=>x.date===today);
+    if(d.today.date!==today && !actual)return;
+    if(!target.isConnected) return;
+    const count=actual?Number(actual.views):Number(d.today.views);
+    if(!Number.isFinite(count))return;
+    target.textContent=count.toLocaleString('ko-KR');
+    const hint=target.parentNode?.querySelector('small');
+    if(hint)hint.textContent=d.metric==='daily_browser_visits'?'브라우저별 당일 중복 제외':'오늘 페이지 조회 수';
+  } catch(_) {}
+}
 function renderOverview() {
   $('#pageActions').append(button('+ 뉴스 작성', () => openEditor(), 'button primary'));
   const metrics=node('div',null,'metrics');
@@ -120,6 +139,7 @@ function renderOverview() {
     const card=button('',()=>{navigate('inquiries');requestAnimationFrame(()=>{const tab=document.querySelector('[data-category="'+id+'"]');if(tab)tab.click();});},'admin-quick-card');
     card.append(node('strong',title),node('span',description),node('small','관리 화면 보기 →'));quick.append(card);
   });
+  populatePublicVisitorMetric(metrics.querySelector('.metric strong'));
   $('#viewContent').append(metrics,panel('신청 · 문의 운영','문의 유형별 운영 현황을 확인합니다.',quick));
   const grid=node('div',null,'dashboard-grid'),list=node('div',null,'compact-list');
   sorted(posts).slice(0,5).forEach(p=>{const row=node('div',null,'compact-row'),copy=node('div');copy.append(button(p.title,()=>openEditor(p.id),'title'),node('small',p.date+' · '+p.category));row.append(copy,tag(needsBody(p)?'본문 미등록':changed.has(p.id)?'수정 초안':'본문 등록',needsBody(p)?'warn':''));list.append(row);});
