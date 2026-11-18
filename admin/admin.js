@@ -165,35 +165,19 @@ function renderNewsTable(section) {
 }
 function renderInquiries() {
   const root=$('#viewContent');
-  const categories=[
-    {id:'prosumer',title:'브이슈머 신청',description:'브이슈머 참여 및 활동 신청',stages:'신규 · 확인 · 검토 · 승인'},
-    {id:'partner',title:'사업자 · 브랜드 입점',description:'입점 제안 및 사업 협력 문의',stages:'신규 · 제품 검토 · 협의 · 완료'},
-    {id:'general',title:'일반 문의',description:'서비스 및 기타 문의',stages:'신규 · 확인 · 답변 완료'}
-  ];
-  const tabs=node('div',null,'toolbar inquiry-tabs');
-  const content=node('div',null,'inquiry-content');
-  function showCategory(category){
-    [...tabs.children].forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.category===category.id)));
-    content.replaceChildren();
-    const header=node('div',null,'inquiry-heading');
-    const copy=node('div');
-    copy.append(node('h2',category.title),node('p',category.description,'note'));
-    const action=node('a','신청 페이지 확인 ↗','button');
-    action.href='../contact.html'+(category.id==='general'?'':'?type='+category.id);
-    action.target='_blank';action.rel='noopener noreferrer';
-    header.append(copy,action);content.append(header);
-    const empty=node('div',null,'inquiry-empty');
-    empty.append(node('h3','접수된 문의가 없습니다.'),node('p','문의 내역은 운영 계정에서 확인할 수 있습니다.','note'));
-    const mail=node('a','문의 수신 메일 열기 ↗','button primary');mail.href='mailto:info@myv.co.kr';empty.append(mail);
-    content.append(empty);
-    const foot=node('p','처리 단계: '+category.stages,'note');content.append(foot);
-  }
-  categories.forEach(category=>{
-    const btn=button(category.title,()=>showCategory(category),'button');
-    btn.dataset.category=category.id;btn.setAttribute('aria-pressed','false');tabs.append(btn);
-  });
   const wrapper=node('section',null,'panel inquiry-panel');
-  wrapper.append(tabs,content);root.append(wrapper);showCategory(categories[0]);
+  const summary=node('div',null,'inquiry-overview');
+  for(const [id,title] of [['prosumer','브이슈머 신청'],['partner','사업자 · 입점제안'],['general','일반 문의']]){
+    const card=node('div',null,'inquiry-overview-card');
+    card.append(node('span',title),node('strong','—'));
+    card.dataset.inquiryType=id;
+    summary.append(card);
+  }
+  wrapper.append(summary);
+  const content=node('div',null,'inquiry-content');
+  content.id='allInquiryContent';
+  wrapper.append(content);
+  root.append(wrapper);
 }
 function renderReview() {
   $('#pageActions').append(button('체크리스트 내보내기',()=>download('myv-review-checklist.json',REVIEWS.map(([id,priority,title,description,status])=>({id,priority,title,description,status:review[id]||status})))));
