@@ -1,0 +1,73 @@
+/* Homepage footer CTA layout correction — 2026-11-18 */
+.home-main .home-final-cta.home-story-cta {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 340px;
+  padding: 72px 24px;
+  overflow: hidden;
+  background: #edf4ff;
+  color: #141b28;
+  text-align: center;
+}
+.home-main .home-final-cta.home-story-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(90deg, rgba(241,247,255,.94) 0%, rgba(241,247,255,.88) 40%, rgba(226,238,255,.70) 100%),
+    url("https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261018-031147-frame-117-3986a186.webp");
+  background-size: cover, cover;
+  background-position: center, center;
+  background-repeat: no-repeat;
+}
+.home-main .home-final-cta.home-story-cta > .container {
+  width: min(100%, 1120px);
+  margin-inline: auto;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+.home-main .home-final-cta.home-story-cta .eyebrow { color: #2278f9; }
+.home-main .home-final-cta.home-story-cta h2 {
+  margin: 14px auto 28px;
+  max-width: 760px;
+  color: #141b28;
+  font-size: clamp(28px, 3vw, 42px);
+  line-height: 1.32;
+  letter-spacing: -.045em;
+}
+.home-main .home-final-cta.home-story-cta .outline-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #2278f9;
+  border: 1px solid #2278f9;
+  background: rgba(255,255,255,.72);
+}
+.home-main .home-final-cta.home-story-cta .outline-button:hover {
+  background: #2278f9;
+  color: #fff;
+}
+.home-main .home-news { padding-bottom: 64px; }
+.home-main .home-news .home-news-list { margin-bottom: 0; }
+@media (max-width: 760px) {
+  .home-main .home-news { padding-bottom: 42px; }
+  .home-main .home-final-cta.home-story-cta {
+    min-height: 310px;
+    padding: 62px 20px;
+  }
+  .home-main .home-final-cta.home-story-cta::before {
+    background-image:
+      linear-gradient(100deg, rgba(241,247,255,.94), rgba(241,247,255,.79)),
+      url("https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261018-031147-frame-117-3986a186.webp");
+    background-position: center, 60% center;
+  }
+  .home-main .home-final-cta.home-story-cta h2 {
+    font-size: clamp(26px, 6.5vw, 34px);
+    margin-bottom: 24px;
+  }
+}
