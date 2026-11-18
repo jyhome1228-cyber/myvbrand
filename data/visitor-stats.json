@@ -1,1 +1,62 @@
-{"metric":"page_views_not_unique_visitors","source":"Google Analytics 4","asOf":null,"connected":false,"today":null,"yesterday":null,"twoDaysAgo":null,"days":[],"sources":[],"pages":[],"devices":[]}
+{
+  "metric": "daily_browser_visits",
+  "source": "Firebase Firestore / visits",
+  "connected": true,
+  "asOf": "2026-11-18T10:46:14.834565+09:00",
+  "today": {
+    "date": "2026-11-18",
+    "views": 5
+  },
+  "yesterday": {
+    "date": "2026-11-17",
+    "views": 3
+  },
+  "twoDaysAgo": {
+    "date": "2026-11-16",
+    "views": 0
+  },
+  "weekStart": "2026-11-16",
+  "week": 8,
+  "month": 8,
+  "days": [
+    {
+      "date": "2026-11-18",
+      "views": 5
+    },
+    {
+      "date": "2026-11-17",
+      "views": 3
+    }
+  ],
+  "sources": [
+    {
+      "source": "direct",
+      "views": 6
+    },
+    {
+      "source": "기타",
+      "views": 2
+    }
+  ],
+  "pages": [
+    {
+      "path": "/",
+      "views": 5
+    },
+    {
+      "path": "기타",
+      "views": 3
+    }
+  ],
+  "devices": [
+    {
+      "device": "desktop",
+      "views": 6
+    },
+    {
+      "device": "기타",
+      "views": 2
+    }
+  ],
+  "observedRecords30d": 8
+}
