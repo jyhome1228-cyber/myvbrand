@@ -9,7 +9,7 @@
   <link rel="icon" href="../assets/favicon.svg" />
   <link rel="stylesheet" href="./admin.css?v=20261118-metric-static01" />
   <script src="./admin.js?v=20261118-metric-static01" type="module"></script>
-  <script src="./firebase-admin.js?v=20261118-delivery02" type="module"></script>
+  <script src="./firebase-admin.js?v=20261118-no-login03" type="module"></script>
   
 </head>
 <body >
@@ -30,7 +30,7 @@
   </aside>
   <div id="navBackdrop" class="nav-backdrop" hidden></div>
   <div class="workspace">
-    <header class="topbar"><button class="icon-button mobile-toggle" id="menuToggle" aria-label="관리 메뉴 열기" aria-expanded="false">☰</button><span class="breadcrumb">MYV <span>/</span> <strong id="crumb">대시보드</strong></span><div class="top-actions"><button class="button small" id="firebaseAccountButton" type="button">운영 로그인</button><span class="mode-badge" id="modeBadge" hidden></span><button class="button small" id="connectionButton">게시 연결</button></div></header>
+    <header class="topbar"><button class="icon-button mobile-toggle" id="menuToggle" aria-label="관리 메뉴 열기" aria-expanded="false">☰</button><span class="breadcrumb">MYV <span>/</span> <strong id="crumb">대시보드</strong></span><div class="top-actions"><span class="mode-badge" id="modeBadge" hidden></span><button class="button small" id="connectionButton">게시 연결</button></div></header>
     <main id="main" tabindex="-1"><div class="page-heading"><div><h1 id="pageTitle">운영 대시보드</h1><p id="pageDescription" hidden></p></div><div id="pageActions"></div></div><div class="load-state" id="loadState" role="status">현재 뉴스 데이터를 불러오고 있습니다.</div><div id="viewContent"></div></main>
     <footer class="admin-footer">MYV · Brand Operations <span id="saveStatus"></span></footer>
   </div>
