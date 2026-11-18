@@ -71,3 +71,43 @@
     margin-bottom: 24px;
   }
 }
+
+/* Correct the source artwork's visible 50% split: crop to its photographic half,
+   then apply an independent, continuous soft overlay. */
+.home-main .home-final-cta.home-story-cta {
+  isolation: isolate;
+  background: #eaf2ff;
+}
+.home-main .home-final-cta.home-story-cta::before {
+  inset: 0;
+  z-index: 0;
+  background-image: url("https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261018-031147-frame-117-3986a186.webp");
+  background-size: 200% auto;
+  background-position: right center;
+  background-repeat: no-repeat;
+}
+.home-main .home-final-cta.home-story-cta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg,
+    rgba(241,247,255,.97) 0%,
+    rgba(241,247,255,.93) 30%,
+    rgba(241,247,255,.80) 58%,
+    rgba(225,237,255,.62) 100%);
+}
+.home-main .home-final-cta.home-story-cta > .container {
+  z-index: 2;
+}
+@media (max-width: 760px) {
+  .home-main .home-final-cta.home-story-cta::before {
+    background-image: url("https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261018-031147-frame-117-3986a186.webp");
+    background-size: auto 110%;
+    background-position: right center;
+  }
+  .home-main .home-final-cta.home-story-cta::after {
+    background: linear-gradient(90deg, rgba(241,247,255,.95), rgba(241,247,255,.82));
+  }
+}
