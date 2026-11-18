@@ -156,60 +156,84 @@ function todayKst(){
   return map.year+'-'+map.month+'-'+map.day;
 }
 function applyInquiries() {
-  const root=q('#viewContent');if(!root)return;
+  const root=q('#viewContent');
+  const slot=q('#allInquiryContent');
+  if(!root || !slot)return;
   q('#fb-admin-auth')?.remove();
-  const slot=q('.inquiry-content');
-  if(!slot)return;
-  const empty=q('.inquiry-empty');
-  if(empty)empty.hidden=true;
-  q('#fb-inquiries-list')?.remove();
+  slot.replaceChildren();
+  const groups=[
+    {id:'prosumer',type:'브이슈머 문의',label:'브이슈머 신청'},
+    {id:'partner',type:'입점제안',label:'사업자 · 입점제안'},
+    {id:'general',type:'일반 문의',label:'일반 문의'}
+  ];
+  for(const group of groups) {
+    const value=q('[data-inquiry-type="'+group.id+'"] strong');
+    if(value)value.textContent=permission==='ready' && inquiriesState==='loaded'
+      ?records.filter(record=>record.type===group.type).length.toLocaleString('ko-KR')
+      :'—';
+  }
   if(permission!=='ready'){
-    const b=statusBox();b.id='fb-admin-auth';root.prepend(b);
+    const authBox=statusBox();
+    authBox.id='fb-admin-auth';
+    root.prepend(authBox);
     return;
   }
-  const list=make('div',null,'fb-inquiries-list');
-  list.id='fb-inquiries-list';
-  slot.append(list);
   if(inquiriesState==='loading'){
-    list.append(make('p','문의 내역을 불러오는 중입니다.','note'));return;
+    slot.append(make('p','문의 내역을 불러오는 중입니다.','note'));
+    return;
   }
   if(inquiriesState==='error'){
-    list.append(make('p','문의 내역을 조회하지 못했습니다. 운영 계정 권한 또는 데이터 연결을 확인해 주세요.','note'));
-    const retry=make('button','새로고침','button');retry.type='button';
-    retry.addEventListener('click',()=>location.reload());list.append(retry);
+    slot.append(make('p','문의 내역을 조회하지 못했습니다. 운영 계정 권한 또는 데이터 연결을 확인해 주세요.','note'));
+    const retry=make('button','새로고침','button');
+    retry.type='button';
+    retry.addEventListener('click',()=>location.reload());
+    slot.append(retry);
     return;
   }
-  const active=q('.inquiry-tabs button[aria-pressed="true"]')?.dataset.category;
-  const type=active==='prosumer'?'브이슈머 문의':active==='partner'?'입점제안':'일반 문의';
-  const matching=records.filter(r=>r.type===type);
-  if(!matching.length){list.append(make('p','접수된 문의가 없습니다.','note'));return;}
-  for(const item of matching){
-    const row=make('article',null,'fb-inquiry-row');
-    const heading=make('div',null,'fb-inquiry-head');
-    heading.append(make('strong',item.subject||'(제목 없음)'),make('span',asDate(item.createdAt)));
-    const details=make('p',[item.name,item.company||'',item.email,item.phone].filter(Boolean).join(' · '),'note');
-    const message=make('p',item.message||'');
-    const statusRow=make('div',null,'fb-inquiry-actions');
-    const statusLabel=make('label','진행 상태');
-    const select=make('select');
-    select.setAttribute('aria-label',(item.subject||'문의')+' 진행 상태');
-    for(const [value,label] of [['new','신규'],['reviewing','확인 중'],['done','완료']]){
-      const option=make('option',label);option.value=value;select.append(option);
+  for(const group of groups){
+    const section=make('section',null,'fb-inquiry-section');
+    section.id='inquiry-'+group.id;
+    const matching=records.filter(record=>record.type===group.type);
+    const heading=make('div',null,'fb-inquiry-section-header');
+    heading.append(make('h2',group.label),make('span',matching.length.toLocaleString('ko-KR')+'건'));
+    section.append(heading);
+    if(!matching.length){
+      section.append(make('p','접수된 문의가 없습니다.','fb-inquiry-empty'));
     }
-    select.value=['new','reviewing','done'].includes(item.status)?item.status:'new';
-    select.addEventListener('change',async()=>{
-      const previous=item.status||'new';select.disabled=true;
-      try {
-        await updateDoc(doc(db,'inquiries',item.id),{status:select.value});
-      }catch(err){
-        select.value=previous;
-        const warning=make('span','변경을 저장하지 못했습니다.','fb-save-error');
-        statusRow.append(warning);
-      }finally{select.disabled=false;}
-    });
-    statusLabel.append(select);statusRow.append(statusLabel);
-    row.append(heading,details,message,statusRow);
-    list.append(row);
+    for(const item of matching){
+      const row=make('article',null,'fb-inquiry-row');
+      const top=make('div',null,'fb-inquiry-head');
+      top.append(make('strong',item.subject||'(제목 없음)'),make('span',asDate(item.createdAt)));
+      const details=make('p',[item.name,item.company||'',item.email,item.phone].filter(Boolean).join(' · '),'note');
+      const message=make('p',item.message||'');
+      const actions=make('div',null,'fb-inquiry-actions');
+      const label=make('label','진행 상태');
+      const select=make('select');
+      select.setAttribute('aria-label',(item.subject||'문의')+' 진행 상태');
+      for(const [value,title] of [['new','신규'],['reviewing','확인 중'],['done','완료']]){
+        const option=make('option',title);
+        option.value=value;
+        select.append(option);
+      }
+      select.value=['new','reviewing','done'].includes(item.status)?item.status:'new';
+      select.addEventListener('change',async()=>{
+        const previous=item.status||'new';
+        const next=select.value;
+        select.disabled=true;
+        try{
+          await updateDoc(doc(db,'inquiries',item.id),{status:next});
+        }catch(_){
+          select.value=previous;
+          const warning=make('span','변경을 저장하지 못했습니다.','fb-save-error');
+          actions.append(warning);
+        }finally{select.disabled=false;}
+      });
+      label.append(select);
+      actions.append(label);
+      row.append(top,details,message,actions);
+      section.append(row);
+    }
+    slot.append(section);
   }
 }
 function applySettingsDiagnostics(){
