@@ -123,11 +123,15 @@ function renderOverview() {
   $('#pageActions').append(button('+ 뉴스 작성', () => openEditor(), 'button primary'));
   const metrics=node('div',null,'metrics');
   [
-    ['—','오늘 방문자','브라우저별 당일 중복 제외',()=>window.location.href='./visitors.html',''],
-    ['—','브이슈머 신청','누적 접수',()=>navigate('inquiries'),''],
-    ['—','입점제안','누적 접수',()=>navigate('inquiries'),''],
-    ['—','일반 문의','누적 접수',()=>navigate('inquiries'),'']
-  ].forEach(([value,label,hint,action,style])=>{const m=button('',action,'metric '+style);m.append(node('span',label,'label'),node('strong',typeof value==='number'?value.toLocaleString('ko-KR'):value));metrics.append(m);});
+    ['—','오늘 방문자'],
+    ['—','브이슈머 신청'],
+    ['—','입점제안'],
+    ['—','일반 문의']
+  ].forEach(([value,label])=>{
+    const m=node('div',null,'metric metric-static');
+    m.append(node('span',label,'label'),node('strong',value));
+    metrics.append(m);
+  });
   // Show a visitor card only when verified metrics are available.
   const recentInquiries=node('div',null,'admin-recent-inquiries');
   recentInquiries.id='adminRecentInquiries';
