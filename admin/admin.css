@@ -156,3 +156,7 @@ body.admin-preview-locked>.sidebar,body.admin-preview-locked>.workspace,body.adm
 .page-heading{margin-bottom:24px!important}
 .page-heading h1{font-size:clamp(22px,2.2vw,30px);margin:0;letter-spacing:-.035em}
 @media(max-width:920px){#viewContent .inquiry-panel .inquiry-overview{grid-template-columns:1fr!important;padding:15px!important;gap:10px!important}#viewContent .inquiry-panel .inquiry-overview-card{padding:14px 16px!important}#viewContent .inquiry-panel .inquiry-content{padding:16px!important}}
+
+/* KPI cards are read-only indicators, not navigation buttons. */
+#viewContent .metrics .metric-static{cursor:default!important;transform:none!important;box-shadow:none;transition:none}
+#viewContent .metrics .metric-static:hover,#viewContent .metrics .metric-static:focus{border-color:var(--border)!important;transform:none!important;box-shadow:none!important}
