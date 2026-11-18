@@ -136,7 +136,7 @@ function renderOverview() {
   $('#viewContent').append(inquiriesPanel);
   const quick=node('div',null,'admin-quick-actions');
   [['브이슈머 신청','신청자 접수 및 승인 현황','prosumer'],['사업자 · 입점','브랜드 제안과 검토 현황','partner'],['일반 문의','고객 문의 및 답변 현황','general']].forEach(([title,description,id])=>{
-    const card=button('',()=>{navigate('inquiries');requestAnimationFrame(()=>{const tab=document.querySelector('[data-category="'+id+'"]');if(tab)tab.click();});},'admin-quick-card');
+    const card=button('',()=>{navigate('inquiries');requestAnimationFrame(()=>document.getElementById('inquiry-'+id)?.scrollIntoView({behavior:'smooth',block:'start'}));},'admin-quick-card');
     card.append(node('strong',title),node('span',description),node('small','관리 화면 보기 →'));quick.append(card);
   });
   populatePublicVisitorMetric(metrics.querySelector('.metric strong'));
