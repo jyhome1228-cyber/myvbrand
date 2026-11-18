@@ -17,7 +17,7 @@ const REVIEWS = [
   ['mobile', 'P2', '모바일 전체 검수', '메뉴·이미지·계산기·버튼·줄바꿈을 실제 모바일 화면에서 점검합니다.', '확인 필요'],
   ['proof', 'P2', '브랜드·상품·성과 자료', '실제 입점 로고·제품·브이슈머 사례·검증된 성과 수치를 수급합니다. 따뜻한 포인트 색상은 방향 확정 후 반영합니다.', '자료 필요'],
   ['seo', 'P2', '검색·공유 미리보기·분석', '페이지별 검색 정보·공유 이미지·canonical·404 화면과 방문 분석 연결 범위를 확정합니다.', '수정 필요'],
-  ['admin', 'P1', '관리자 운영 연결', '뉴스 편집 화면을 제공하고 저장소 권한 연결 및 실제 배포를 검증합니다. 문의 DB·로그인·통계는 별도 연결이 필요합니다.', '확인 필요']
+  ['admin', 'P1', '관리자 운영 연결', '뉴스 게시, 문의 접수, 방문자 집계 기능의 정상 작동을 확인합니다.', '확인 필요']
 ];
 const VIEWS = {
   overview: ['대시보드','운영 대시보드',''],
@@ -41,7 +41,7 @@ function dateLabel(value) { return new Date(value).toLocaleString('ko-KR', {time
 function toast(message) { $('#toast').textContent = message; $('#toast').hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => $('#toast').hidden = true, 5000); }
 function save() {
   try { localStorage.setItem(STORAGE, JSON.stringify({version:1, base, posts, changed:[...changed], trash, review, activity})); $('#saveStatus').textContent = '저장 · ' + dateLabel(Date.now()); return true; }
-  catch { toast('브라우저 저장 공간이 부족합니다. 연결 및 백업에서 파일로 저장해 주세요.'); return false; }
+  catch { toast('저장 공간이 부족합니다. 백업 파일을 내려받아 주세요.'); return false; }
 }
 function log(message) { activity.unshift({message, at:Date.now()}); activity = activity.slice(0, 30); }
 function webUrl(value) { if (!value) return ''; try { const u = new URL(value); return ['http:', 'https:'].includes(u.protocol) && !u.username && !u.password ? u.href : ''; } catch { return ''; } }
@@ -116,7 +116,7 @@ async function populatePublicVisitorMetric(target) {
     if(!Number.isFinite(count))return;
     target.textContent=count.toLocaleString('ko-KR');
     const hint=target.parentNode?.querySelector('small');
-    if(hint)hint.textContent=d.metric==='daily_browser_visits'?'브라우저별 당일 중복 제외':'오늘 페이지 조회 수';
+    if(hint)hint.textContent=d.metric==='daily_browser_visits'?'오늘 방문':'오늘 페이지 조회 수';
   } catch(_) {}
 }
 function renderOverview() {
