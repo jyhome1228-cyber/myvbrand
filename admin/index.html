@@ -7,9 +7,9 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.gstatic.com; style-src 'self'; img-src 'self' https: data:; connect-src 'self' https://api.github.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://firestore.googleapis.com https://firebaseinstallations.googleapis.com https://www.googleapis.com; frame-src 'self' https://myvbrand.firebaseapp.com; object-src 'none'; base-uri 'none'; form-action 'none'" />
   <title>MYV 관리자</title>
   <link rel="icon" href="../assets/favicon.svg" />
-  <link rel="stylesheet" href="./admin.css?v=20261117-diagnostics07" />
-  <script src="./admin.js?v=20261117-aggregate06" type="module"></script>
-  <script src="./firebase-admin.js?v=20261118-public08" type="module"></script>
+  <link rel="stylesheet" href="./admin.css?v=20261118-minimal01" />
+  <script src="./admin.js?v=20261118-minimal01" type="module"></script>
+  <script src="./firebase-admin.js?v=20261118-unified01" type="module"></script>
   
 </head>
 <body >
@@ -22,7 +22,7 @@
       <a href="#overview" data-view="overview"><span class="nav-icon">▦</span>대시보드</a>
       <a href="#news" data-view="news"><span class="nav-icon">▤</span>뉴스 관리 <span class="nav-count" id="newsNavCount">—</span></a>
       <a href="#inquiries" data-view="inquiries"><span class="nav-icon">✉</span>문의 관리</a>
-      <a href="./visitors.html"><span class="nav-icon">◷</span>방문 기록</a>
+      <a href="./visitors.html"><span class="nav-icon">◷</span>방문자 통계</a>
       <a href="#review" data-view="review"><span class="nav-icon">☑</span>수정 체크리스트</a>
       <a href="#settings" data-view="settings"><span class="nav-icon">⚙</span>연결 및 백업</a>
     </nav>
@@ -31,7 +31,7 @@
   <div id="navBackdrop" class="nav-backdrop" hidden></div>
   <div class="workspace">
     <header class="topbar"><button class="icon-button mobile-toggle" id="menuToggle" aria-label="관리 메뉴 열기" aria-expanded="false">☰</button><span class="breadcrumb">MYV <span>/</span> <strong id="crumb">대시보드</strong></span><div class="top-actions"><button class="button small" id="firebaseAccountButton" type="button">운영 로그인</button><span class="mode-badge" id="modeBadge">사이트 미반영</span><button class="button small" id="connectionButton">저장소 연결</button></div></header>
-    <main id="main" tabindex="-1"><div class="page-heading"><div><p class="eyebrow">MYV ADMIN</p><h1 id="pageTitle">운영 대시보드</h1><p id="pageDescription">방문자 · 신청 · 문의 현황</p></div><div id="pageActions"></div></div><div class="load-state" id="loadState" role="status">현재 뉴스 데이터를 불러오고 있습니다.</div><div id="viewContent"></div></main>
+    <main id="main" tabindex="-1"><div class="page-heading"><div><h1 id="pageTitle">운영 대시보드</h1><p id="pageDescription" hidden></p></div><div id="pageActions"></div></div><div class="load-state" id="loadState" role="status">현재 뉴스 데이터를 불러오고 있습니다.</div><div id="viewContent"></div></main>
     <footer class="admin-footer">MYV · Brand Operations <span id="saveStatus">변경한 콘텐츠는 이 브라우저에 임시 저장됩니다.</span></footer>
   </div>
   <dialog id="editorDialog" class="editor-dialog" aria-labelledby="editorTitle">
