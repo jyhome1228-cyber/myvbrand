@@ -60,7 +60,7 @@ h3{font-size:24px;letter-spacing:-.03em}
 .site-header.scrolled .brand-logo-white{opacity:0}
 .site-header.scrolled .brand-logo-color{opacity:1}
 .header-actions{display:flex;align-items:center;gap:28px}
-.desktop-nav{display:flex;align-items:center;gap:30px;font-size:15px;font-weight:550}
+.desktop-nav{display:flex;align-items:center;gap:30px;font-size:16px;font-weight:550}
 .desktop-nav>a,.desktop-nav>button,.nav-dropdown-trigger{opacity:.88}
 .desktop-nav>a:hover,.desktop-nav>button:hover,.nav-dropdown-trigger:hover{opacity:1}
 .nav-link-button,.nav-dropdown-trigger{
@@ -87,7 +87,7 @@ h3{font-size:24px;letter-spacing:-.03em}
 .language-switch>span,.mobile-language>span{width:1px;height:11px;background:currentColor;opacity:.22}
 .lang-button{
   border:0;background:transparent;color:inherit;padding:2px 0;
-  font-size:13px;font-weight:650;opacity:.48;cursor:default;
+  font-size:14px;font-weight:650;opacity:.48;cursor:default;
 }
 .lang-button.is-active{opacity:1}
 .menu-button{display:none;width:42px;height:42px;border:0;background:none;padding:9px;cursor:pointer;color:inherit}
