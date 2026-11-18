@@ -140,6 +140,7 @@ function renderOverview() {
   sorted(posts).slice(0,5).forEach(p=>{const row=node('div',null,'compact-row'),copy=node('div');copy.append(button(p.title,()=>openEditor(p.id),'title'),node('small',p.date));row.append(copy,tag(needsBody(p)?'본문 미등록':changed.has(p.id)?'수정 초안':'본문 등록',needsBody(p)?'warn':''));list.append(row);});
   if(!posts.length)list.append(node('p','등록된 뉴스가 없습니다.','note'));
   grid.append(panel('최근 뉴스','',list,button('전체보기 →',()=>navigate('news'),'text-button')));
+  $('#viewContent').append(grid);
 }
 
 function renderNews() {
