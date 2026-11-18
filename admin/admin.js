@@ -20,11 +20,11 @@ const REVIEWS = [
   ['admin', 'P1', '관리자 운영 연결', '뉴스 편집 화면을 제공하고 저장소 권한 연결 및 실제 배포를 검증합니다. 문의 DB·로그인·통계는 별도 연결이 필요합니다.', '확인 필요']
 ];
 const VIEWS = {
-  overview: ['대시보드', '운영 대시보드', '방문자 · 신청 · 문의 현황'],
-  news: ['뉴스 관리', '소식을 쌓고, 가치를 전하세요', '기존 뉴스 확인부터 초안 작성, 미리보기, 사이트 반영까지 관리합니다.'],
-  inquiries: ['문의 관리', '함께할 기회를 놓치지 않도록', '브이슈머·입점제안·일반 문의를 확인합니다.'],
-  review: ['수정 체크리스트', '남은 작업을 명확하게', '확인한 수정사항과 회사 측 확인이 필요한 내용을 함께 관리합니다.'],
-  settings: ['운영 설정', '운영 설정', '뉴스 게시, 백업, 방문 통계를 관리합니다.']
+  overview: ['대시보드','운영 대시보드',''],
+  news: ['뉴스 관리','뉴스 관리',''],
+  inquiries: ['문의 관리','문의 관리',''],
+  review: ['수정 체크리스트','수정 체크리스트',''],
+  settings: ['연결 및 백업','연결 및 백업','']
 };
 let posts = [], base = [], changed = new Set(), trash = [], review = {}, activity = [], connected = null;
 let view = 'overview', search = '', filter = 'all', category = 'ALL', page = 1, language = 'ko', pendingConfirm;
@@ -63,7 +63,7 @@ function navigate(target, nextFilter) { if (nextFilter) { filter = nextFilter; s
 function confirmAction(title, message, action) { $('#confirmTitle').textContent = title; $('#confirmMessage').textContent = message; pendingConfirm = action; $('#confirmDialog').showModal(); }
 function showConnection() { $('#connectionError').textContent = ''; $('#githubToken').value = ''; $('#connectionDialog').showModal(); }
 function render() {
-  const params = VIEWS[view]; $('#crumb').textContent = params[0]; $('#pageTitle').textContent = params[1]; $('#pageDescription').textContent = params[2];
+  const params = VIEWS[view]; $('#crumb').textContent = params[0]; $('#pageTitle').textContent = params[1]; $('#pageDescription').textContent = params[2]; $('#pageDescription').hidden = !params[2];
   $$('.sidebar [data-view]').forEach(a => { a.classList.toggle('active', a.dataset.view === view); if (a.dataset.view === view) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current'); });
   $('#newsNavCount').textContent = posts.length; $('#sidebarStatus').textContent = connected ? '저장소 연결됨' : '브라우저 초안 모드'; $('#modeBadge').textContent = changed.size ? '미반영 변경 ' + changed.size + '건' : '사이트 미반영 변경 없음'; $('#connectionButton').textContent = connected ? '연결 상태' : '저장소 연결';
   $('#pageActions').replaceChildren(); $('#viewContent').replaceChildren();
@@ -127,28 +127,21 @@ function renderOverview() {
     ['—','브이슈머 신청','누적 접수',()=>navigate('inquiries'),''],
     ['—','입점제안','누적 접수',()=>navigate('inquiries'),''],
     ['—','일반 문의','누적 접수',()=>navigate('inquiries'),'']
-  ].forEach(([value,label,hint,action,style])=>{const m=button('',action,'metric '+style);m.append(node('span',label,'label'),node('strong',typeof value==='number'?value.toLocaleString('ko-KR'):value),node('small',hint));metrics.append(m);});
+  ].forEach(([value,label,hint,action,style])=>{const m=button('',action,'metric '+style);m.append(node('span',label,'label'),node('strong',typeof value==='number'?value.toLocaleString('ko-KR'):value));metrics.append(m);});
   // Show a visitor card only when verified metrics are available.
   const recentInquiries=node('div',null,'admin-recent-inquiries');
   recentInquiries.id='adminRecentInquiries';
-  const inquiriesPanel=panel('최근 접수 문의','최신 문의와 신청 내역',recentInquiries,button('문의 전체보기 →',()=>navigate('inquiries'),'text-button'));
+  const inquiriesPanel=panel('최근 문의','',recentInquiries,button('문의 전체보기 →',()=>navigate('inquiries'),'text-button'));
   inquiriesPanel.hidden=true;
   $('#viewContent').append(inquiriesPanel);
-  const quick=node('div',null,'admin-quick-actions');
-  [['브이슈머 신청','신청자 접수 및 승인 현황','prosumer'],['사업자 · 입점','브랜드 제안과 검토 현황','partner'],['일반 문의','고객 문의 및 답변 현황','general']].forEach(([title,description,id])=>{
-    const card=button('',()=>{navigate('inquiries');requestAnimationFrame(()=>document.getElementById('inquiry-'+id)?.scrollIntoView({behavior:'smooth',block:'start'}));},'admin-quick-card');
-    card.append(node('strong',title),node('span',description),node('small','관리 화면 보기 →'));quick.append(card);
-  });
+  $('#viewContent').append(metrics);
   populatePublicVisitorMetric(metrics.querySelector('.metric strong'));
-  $('#viewContent').append(metrics,panel('신청 · 문의 운영','문의 유형별 운영 현황을 확인합니다.',quick));
   const grid=node('div',null,'dashboard-grid'),list=node('div',null,'compact-list');
-  sorted(posts).slice(0,5).forEach(p=>{const row=node('div',null,'compact-row'),copy=node('div');copy.append(button(p.title,()=>openEditor(p.id),'title'),node('small',p.date+' · '+p.category));row.append(copy,tag(needsBody(p)?'본문 미등록':changed.has(p.id)?'수정 초안':'본문 등록',needsBody(p)?'warn':''));list.append(row);});
+  sorted(posts).slice(0,5).forEach(p=>{const row=node('div',null,'compact-row'),copy=node('div');copy.append(button(p.title,()=>openEditor(p.id),'title'),node('small',p.date));row.append(copy,tag(needsBody(p)?'본문 미등록':changed.has(p.id)?'수정 초안':'본문 등록',needsBody(p)?'warn':''));list.append(row);});
   if(!posts.length)list.append(node('p','등록된 뉴스가 없습니다.','note'));
-  grid.append(panel('최근 뉴스','기존 홈페이지 뉴스 데이터 기준 · 최신순',list,button('전체보기 →',()=>navigate('news'),'text-button')));
-  const taskList=node('div',null,'compact-list');
-  [[posts.filter(needsBody).length,'뉴스 본문 보완',()=>navigate('news','missing')],[changed.size,'사이트 미반영 뉴스',()=>navigate('news','changed')],[REVIEWS.filter(([id,,,,initial])=>(review[id]||initial)!=='완료').length,'남은 수정 체크리스트',()=>navigate('review')]].forEach(([count,label,action])=>{const row=node('div',null,'compact-row');row.append(button(label,action,'title'),tag(String(count)+'건',count?'warn':'success'));taskList.append(row);});
-  $('#viewContent').append(grid,panel('콘텐츠 · 운영 작업','현재 사이트 자료와 브라우저 초안 기준',taskList));
+  grid.append(panel('최근 뉴스','',list,button('전체보기 →',()=>navigate('news'),'text-button')));
 }
+
 function renderNews() {
   $('#pageActions').append(button('백업 내보내기',downloadBackup),button('사이트 반영'+(changed.size?' · '+changed.size:''),openPublish),button('+ 뉴스 작성',()=>openEditor(),'button primary'));
   const section=node('section',null,'panel');const toolbar=node('div',null,'toolbar');const searchWrap=node('label',null,'search');const input=node('input');input.type='search';input.placeholder='제목, 요약으로 뉴스 검색';input.value=search;input.setAttribute('aria-label','뉴스 검색');input.addEventListener('input',()=>{search=input.value;page=1;renderNewsTable(section);});searchWrap.append(input);
@@ -193,19 +186,19 @@ function renderSettings() {
   actions.append(button(connected?'연결 변경':'GitHub 연결',showConnection,'button primary'));
   if(connected)actions.append(button('연결 해제',()=>{connected=null;render();toast('저장소 연결을 해제했습니다.');}));
   const news=button('뉴스 관리',()=>navigate('news'));actions.append(news);repo.append(actions);
-  grid.append(panel('뉴스 게시 설정','뉴스 편집 후 사이트 반영 시 사용합니다.',repo));
+  grid.append(panel('뉴스 게시','',repo));
   const backup=node('div',null,'panel-body admin-settings-compact');
   const backupActions=node('div',null,'setting-buttons');
   backupActions.append(button('백업 내보내기',downloadBackup,'button primary'));
   const input=node('input');input.type='file';input.accept='.json,application/json';input.hidden=true;input.id='importFile';input.addEventListener('change',importBackup);
   backupActions.append(button('백업 가져오기',()=>input.click()),input);
   backup.append(backupActions,node('p','뉴스 초안과 체크리스트를 백업합니다. 고객 문의 정보는 포함되지 않습니다.','note'));
-  grid.append(panel('초안 백업','현재 브라우저에 저장된 편집 내용',backup));
+  grid.append(panel('백업','',backup));
   $('#viewContent').append(grid);
   const analytics=node('div',null,'panel-body admin-settings-compact');
   const link=node('a','방문 통계 보기 ↗','button');link.href='./visitors.html';
-  analytics.append(node('p','방문 통계는 분석 서비스 연결 후 실제 집계값을 표시합니다.','note'),link);
-  $('#viewContent').append(panel('방문 통계','통계 연동 및 조회',analytics));
+  analytics.append(link);
+  $('#viewContent').append(panel('방문 통계','',analytics));
 }
 function openEditor(id) {
   const p=posts.find(p=>p.id===id);if(id&&!p)return;editingOriginal=p?clone(p):null;editorDirty=false;$('#editorForm').reset();$('#postId').value=p?.id||'myv-'+Date.now();$('#editorTitle').textContent=p?'뉴스 수정':'새 뉴스 작성';$('#postCategory').value=p?.category||'MYV';$('#postDate').value=p?.date||new Date().toLocaleDateString('sv-SE',{timeZone:'Asia/Seoul'});
