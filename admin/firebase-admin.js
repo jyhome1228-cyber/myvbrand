@@ -30,74 +30,9 @@ let inquiriesError = '';
 const TYPES = {'브이슈머 문의':0,'입점제안':1,'일반 문의':2};
 const q = (selector, root=document) => root.querySelector(selector);
 const make = (tag, value, cls) => { const el=document.createElement(tag); if(value != null) el.textContent=value; if(cls) el.className=cls; return el; };
-function statusBox() {
-  const shell=make('section',null,'panel fb-auth-panel');
-  const container=make('div',null,'panel-body');
-  if(permission==='checking') {
-    container.append(make('p','운영 계정을 확인하고 있습니다.','note'));
-  } else if(permission!=='ready') {
-    const title=make('h2','운영 계정 로그인');
-    container.append(title);
-    const form=make('form',null,'fb-login-form');
-    const email=make('input'); email.type='email';email.autocomplete='username';email.placeholder='관리자 이메일';email.required=true;email.setAttribute('aria-label','관리자 이메일');
-    const password=make('input');password.type='password';password.autocomplete='current-password';password.placeholder='비밀번호';password.required=true;password.setAttribute('aria-label','비밀번호');
-    const submit=make('button','로그인','button primary');submit.type='submit';submit.disabled=loginBusy;
-    form.append(email,password,submit);
-    form.addEventListener('submit',async e=>{
-      e.preventDefault(); if(loginBusy) return;
-      loginBusy=true; submit.disabled=true;lastError='';
-      try { await signInWithEmailAndPassword(auth,email.value.trim(),password.value); }
-      catch (_) { lastError='로그인 정보를 확인해 주세요.';loginBusy=false;refresh(); }
-    });
-    container.append(form);
-    if(lastError)container.append(make('p',lastError,'note'));
-  } else {
-    const bar=make('div',null,'fb-connected');
-    bar.append(make('span','문의 현황'));
-    const logout=make('button','로그아웃','button');logout.type='button';logout.addEventListener('click',()=>signOut(auth));bar.append(logout);
-    container.append(bar);
-  }
-  shell.append(container);
-  return shell;
-}
-// One compact sign-in action gives access to private operational metrics.
-// The shared 'myv' preview gate never grants Firestore permissions.
-let accountDialog=null;
-function ensureAccountDialog(){
-  if(accountDialog)return accountDialog;
-  accountDialog=document.createElement('dialog');
-  accountDialog.className='fb-account-dialog';
-  accountDialog.setAttribute('aria-label','운영 계정 로그인');
-  document.body.append(accountDialog);
-  accountDialog.addEventListener('click',e=>{
-    if(e.target===accountDialog)accountDialog.close();
-  });
-  return accountDialog;
-}
-function drawAccountDialog(){
-  if(!accountDialog?.open)return;
-  accountDialog.replaceChildren();
-  const content=statusBox();
-  content.classList.add('fb-account-content');
-  accountDialog.append(content);
-  const close=make('button','닫기','button');
-  close.type='button';
-  close.addEventListener('click',()=>accountDialog.close());
-  accountDialog.append(close);
-}
-function updateAccountButton(){
-  const button=q('#firebaseAccountButton');
-  if(!button)return;
-  button.textContent=permission==='ready'?'운영 계정 연결됨':'운영 로그인';
-  button.setAttribute('aria-label',permission==='ready'?'운영 계정 설정':'운영 계정 로그인');
-  if(accountDialog?.open)drawAccountDialog();
-}
-const accountButton=q('#firebaseAccountButton');
-accountButton?.addEventListener('click',()=>{
-  ensureAccountDialog();
-  accountDialog.showModal();
-  drawAccountDialog();
-});
+// Customer-facing admin screens do not render sign-in forms.
+// Existing authenticated sessions remain usable; protected data is never public.
+function updateAccountButton() {}
 
 function asDate(value) {
   const d = value && typeof value.toDate==='function'?value.toDate():null;
@@ -173,9 +108,8 @@ function applyInquiries() {
       :'—';
   }
   if(permission!=='ready'){
-    const authBox=statusBox();
-    authBox.id='fb-admin-auth';
-    root.prepend(authBox);
+    const note=make('p','접수 내역을 표시할 수 없습니다.','fb-inquiry-empty');
+    slot.append(note);
     return;
   }
   if(inquiriesState==='loading'){
@@ -276,7 +210,7 @@ onAuthStateChanged(auth,async user=>{
   try{
     const admin=await getDoc(doc(db,'admins',user.uid));
     if(!admin.exists() || admin.data().active!==true){permission='restricted';lastError='이 계정에는 운영 권한이 없습니다.';refresh();return;}
-    permission='ready';inquiriesState='loading';if(accountDialog?.open)accountDialog.close();refresh();
+    permission='ready';inquiriesState='loading';refresh();
     visitsState='loading';
     unsubscribeVisits=onSnapshot(query(collection(db,'visits'),orderBy('date','desc'),limit(5000)),snapshot=>{
       visits=snapshot.docs.map(item=>item.data());visitsState='loaded';visitsError='';
