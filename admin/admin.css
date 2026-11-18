@@ -104,3 +104,34 @@ body.admin-preview-locked>.sidebar,body.admin-preview-locked>.workspace,body.adm
 .fb-diagnostic-list{display:grid;gap:4px;margin:12px 0 14px}
 .fb-diagnostic-list .connection-row{display:flex;justify-content:space-between;align-items:center;gap:16px;border-bottom:1px solid #edf0f6;padding:11px 0}
 .fb-diagnostic-list .connection-row strong{font-size:13px;color:#1b365b;font-weight:650;overflow-wrap:anywhere;text-align:right}
+
+/* 2026-11-18 · operations-only hierarchy: no abstract slogans or filler copy */
+.page-heading .eyebrow,
+#pageDescription,
+.sidebar .nav-label,
+.sidebar-bottom > p,
+.sidebar-bottom > .status-dot,
+.admin-footer,
+.panel-header p,
+.metric small,
+.admin-quick-card span,
+.admin-quick-card small,
+.admin-settings-compact > .note,
+.inquiry-content > .note {display:none!important}
+.page-heading{margin-bottom:24px}
+.page-heading h1{font-size:clamp(23px,2.1vw,30px);letter-spacing:-.04em;line-height:1.25}
+.metric{min-height:126px}
+.metric .label{font-size:13px;font-weight:600;letter-spacing:-.01em}
+.panel-header{min-height:58px}
+.panel-header h2{font-size:16px}
+.inquiry-overview{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:18px;border-bottom:1px solid #e7edf5}
+.inquiry-overview-card{border:1px solid #e2e9f3;border-radius:10px;background:#f8faff;padding:17px 18px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.inquiry-overview-card span{font-size:13px;color:#425777;font-weight:600}
+.inquiry-overview-card strong{font-size:23px;color:#2278f9;line-height:1}
+.fb-inquiry-section{scroll-margin-top:85px;padding:8px 0 22px}
+.fb-inquiry-section+.fb-inquiry-section{border-top:1px solid #e7edf5;padding-top:22px}
+.fb-inquiry-section-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0 15px}
+.fb-inquiry-section-header h2{margin:0;font-size:16px;font-weight:700}
+.fb-inquiry-section-header span{font-size:14px;color:#2278f9;font-weight:700}
+.fb-inquiry-empty{padding:12px 0 18px;margin:0;color:#718197;font-size:13px}
+@media(max-width:700px){.inquiry-overview{grid-template-columns:1fr;padding:14px}.inquiry-overview-card{padding:14px}}
