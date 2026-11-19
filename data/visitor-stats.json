@@ -2,18 +2,18 @@
   "metric": "daily_browser_visits",
   "source": "Firebase Firestore / visits",
   "connected": true,
-  "asOf": "2026-11-19T17:50:47.749278+09:00",
+  "asOf": "2026-11-20T03:19:46.767875+09:00",
   "today": {
+    "date": "2026-11-20",
+    "views": 0
+  },
+  "yesterday": {
     "date": "2026-11-19",
     "views": 2
   },
-  "yesterday": {
+  "twoDaysAgo": {
     "date": "2026-11-18",
     "views": 12
-  },
-  "twoDaysAgo": {
-    "date": "2026-11-17",
-    "views": 3
   },
   "weekStart": "2026-11-16",
   "week": 17,
