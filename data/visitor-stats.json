@@ -2,7 +2,7 @@
   "metric": "daily_browser_visits",
   "source": "Firebase Firestore / visits",
   "connected": true,
-  "asOf": "2026-11-22T07:12:15.538611+09:00",
+  "asOf": "2026-11-22T11:16:41.981947+09:00",
   "today": {
     "date": "2026-11-22",
     "views": 3
