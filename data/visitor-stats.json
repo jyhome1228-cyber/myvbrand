@@ -2,10 +2,10 @@
   "metric": "daily_browser_visits",
   "source": "Firebase Firestore / visits",
   "connected": true,
-  "asOf": "2026-11-23T02:51:23.471457+09:00",
+  "asOf": "2026-11-23T08:38:40.847988+09:00",
   "today": {
     "date": "2026-11-23",
-    "views": 0
+    "views": 1
   },
   "yesterday": {
     "date": "2026-11-22",
@@ -16,9 +16,13 @@
     "views": 6
   },
   "weekStart": "2026-11-23",
-  "week": 0,
-  "month": 37,
+  "week": 1,
+  "month": 38,
   "days": [
+    {
+      "date": "2026-11-23",
+      "views": 1
+    },
     {
       "date": "2026-11-22",
       "views": 7
@@ -47,7 +51,7 @@
   "sources": [
     {
       "source": "direct",
-      "views": 33
+      "views": 34
     },
     {
       "source": "기타",
@@ -57,7 +61,7 @@
   "pages": [
     {
       "path": "/",
-      "views": 21
+      "views": 22
     },
     {
       "path": "/contact.html",
@@ -75,12 +79,12 @@
   "devices": [
     {
       "device": "desktop",
-      "views": 35
+      "views": 36
     },
     {
       "device": "기타",
       "views": 2
     }
   ],
-  "observedRecords30d": 37
+  "observedRecords30d": 38
 }
