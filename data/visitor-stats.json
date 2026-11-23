@@ -2,26 +2,30 @@
   "metric": "daily_browser_visits",
   "source": "Firebase Firestore / visits",
   "connected": true,
-  "asOf": "2026-11-23T16:44:03.184475+09:00",
+  "asOf": "2026-11-24T05:17:21.762159+09:00",
   "today": {
-    "date": "2026-11-23",
-    "views": 2
+    "date": "2026-11-24",
+    "views": 1
   },
   "yesterday": {
+    "date": "2026-11-23",
+    "views": 4
+  },
+  "twoDaysAgo": {
     "date": "2026-11-22",
     "views": 7
   },
-  "twoDaysAgo": {
-    "date": "2026-11-21",
-    "views": 6
-  },
   "weekStart": "2026-11-23",
-  "week": 2,
-  "month": 39,
+  "week": 5,
+  "month": 42,
   "days": [
     {
+      "date": "2026-11-24",
+      "views": 1
+    },
+    {
       "date": "2026-11-23",
-      "views": 2
+      "views": 4
     },
     {
       "date": "2026-11-22",
@@ -51,7 +55,7 @@
   "sources": [
     {
       "source": "direct",
-      "views": 35
+      "views": 38
     },
     {
       "source": "기타",
@@ -64,27 +68,27 @@
       "views": 23
     },
     {
+      "path": "/news.html",
+      "views": 6
+    },
+    {
       "path": "/contact.html",
       "views": 4
     },
     {
-      "path": "/news.html",
-      "views": 4
-    },
-    {
       "path": "기타",
-      "views": 8
+      "views": 9
     }
   ],
   "devices": [
     {
       "device": "desktop",
-      "views": 37
+      "views": 40
     },
     {
       "device": "기타",
       "views": 2
     }
   ],
-  "observedRecords30d": 39
+  "observedRecords30d": 42
 }
