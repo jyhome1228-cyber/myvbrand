@@ -2,26 +2,30 @@
   "metric": "daily_browser_visits",
   "source": "Firebase Firestore / visits",
   "connected": true,
-  "asOf": "2026-11-25T18:53:25.470683+09:00",
+  "asOf": "2026-11-26T04:57:59.577531+09:00",
   "today": {
-    "date": "2026-11-25",
-    "views": 6
+    "date": "2026-11-26",
+    "views": 1
   },
   "yesterday": {
+    "date": "2026-11-25",
+    "views": 7
+  },
+  "twoDaysAgo": {
     "date": "2026-11-24",
     "views": 9
   },
-  "twoDaysAgo": {
-    "date": "2026-11-23",
-    "views": 4
-  },
   "weekStart": "2026-11-23",
-  "week": 19,
-  "month": 56,
+  "week": 21,
+  "month": 58,
   "days": [
     {
+      "date": "2026-11-26",
+      "views": 1
+    },
+    {
       "date": "2026-11-25",
-      "views": 6
+      "views": 7
     },
     {
       "date": "2026-11-24",
@@ -59,7 +63,7 @@
   "sources": [
     {
       "source": "direct",
-      "views": 49
+      "views": 51
     },
     {
       "source": "www.myv.co.kr",
@@ -73,11 +77,11 @@
   "pages": [
     {
       "path": "/",
-      "views": 34
+      "views": 35
     },
     {
       "path": "/news.html",
-      "views": 9
+      "views": 10
     },
     {
       "path": "/contact.html",
@@ -91,12 +95,12 @@
   "devices": [
     {
       "device": "desktop",
-      "views": 52
+      "views": 54
     },
     {
       "device": "mobile",
       "views": 4
     }
   ],
-  "observedRecords30d": 56
+  "observedRecords30d": 58
 }
