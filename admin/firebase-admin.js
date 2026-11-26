@@ -33,6 +33,32 @@ const make = (tag, value, cls) => { const el=document.createElement(tag); if(val
 // Customer-facing admin screens do not render sign-in forms.
 // Existing authenticated sessions remain usable; protected data is never public.
 function updateAccountButton() {}
+function inquiryStateText(){
+  if(permission==='checking')return '조회 권한 확인 중';
+  if(permission==='signed-out')return '문의 확인은 운영 계정 인증이 필요합니다.';
+  if(permission==='restricted')return lastError||'운영 권한을 확인해 주세요.';
+  if(inquiriesState==='error')return '문의 조회 실패. 연결 상태를 확인해 주세요.';
+  return '문의 내역을 불러오는 중입니다.';
+}
+function appendInquiryAccess(host){
+  host.append(make('p',inquiryStateText(),'note'));
+  if(permission==='signed-out'){
+    const details=make('details');details.append(make('summary','운영 계정 연결'));
+    const form=make('form',null,'fb-inline-auth');
+    const email=make('input');email.type='email';email.placeholder='운영 계정 이메일';email.autocomplete='username';email.required=true;email.setAttribute('aria-label','운영 계정 이메일');
+    const password=make('input');password.type='password';password.placeholder='비밀번호';password.autocomplete='current-password';password.required=true;password.setAttribute('aria-label','비밀번호');
+    const submit=make('button','연결','button primary');submit.type='submit';
+    const error=make('p',null,'form-error');error.setAttribute('role','alert');
+    form.append(email,password,submit,error);
+    form.addEventListener('submit',async e=>{e.preventDefault();submit.disabled=true;try{await signInWithEmailAndPassword(auth,email.value.trim(),password.value);}catch(_){error.textContent='계정 정보를 확인해 주세요.';}finally{submit.disabled=false;}});
+    details.append(form);host.append(details);
+  }else if(permission==='restricted'){
+    const b=make('button','계정 변경','button');b.type='button';b.onclick=()=>signOut(auth);host.append(b);
+  }else if(inquiriesState==='error'){
+    const b=make('button','다시 불러오기','button');b.type='button';b.onclick=()=>location.reload();host.append(b);
+  }
+}
+
 
 function asDate(value) {
   const d = value && typeof value.toDate==='function'?value.toDate():null;
@@ -54,16 +80,16 @@ function applyOverview() {
     const number=cards[i]?.querySelector('strong');
     if(!number) return;
     // Unauthenticated Firestore must not erase independently loaded GitHub totals.
-    if(i === 0 && value == null) return;
+    if(i === 0) return;
     number.textContent=value==null?'—':value.toLocaleString('ko-KR');
   });
   q('#fb-admin-auth')?.remove();
   const panel=q('#adminRecentInquiries')?.closest('.panel');
   const host=q('#adminRecentInquiries');
   if(!panel || !host)return;
-  panel.hidden=permission!=='ready' || inquiriesState!=='loaded';
+  panel.hidden=false;
   host.replaceChildren();
-  if(panel.hidden)return;
+  if(permission!=='ready' || inquiriesState!=='loaded'){appendInquiryAccess(host);return;}
   const latest=records.slice(0,5);
   if(!latest.length){host.append(make('p','접수된 문의가 없습니다.','note'));return;}
   for(const item of latest){
@@ -79,7 +105,7 @@ function applyOverview() {
       location.hash='inquiries';
       setTimeout(()=>{
         const category=item.type==='브이슈머 문의'?'prosumer':item.type==='입점제안'?'partner':'general';
-        q('.inquiry-tabs button[data-category="'+category+'"]')?.click();
+        q('#inquiry-'+category)?.scrollIntoView({block:'start'});
       },0);
     });
     row.append(copy,link);host.append(row);
@@ -108,8 +134,7 @@ function applyInquiries() {
       :'—';
   }
   if(permission!=='ready'){
-    const note=make('p','접수 내역을 표시할 수 없습니다.','fb-inquiry-empty');
-    slot.append(note);
+    appendInquiryAccess(slot);
     return;
   }
   if(inquiriesState==='loading'){
