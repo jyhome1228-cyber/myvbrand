@@ -160,3 +160,6 @@ body.admin-preview-locked>.sidebar,body.admin-preview-locked>.workspace,body.adm
 /* KPI cards are read-only indicators, not navigation buttons. */
 #viewContent .metrics .metric-static{cursor:default!important;transform:none!important;box-shadow:none;transition:none}
 #viewContent .metrics .metric-static:hover,#viewContent .metrics .metric-static:focus{border-color:var(--border)!important;transform:none!important;box-shadow:none!important}
+
+/* Dashboard data visibility */
+#adminRecentInquiries{padding:12px 25px 20px}#adminRecentInquiries .note{font-size:14px} .fb-inline-auth{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px}.fb-inline-auth input{min-width:0;flex:1 1 180px;padding:11px;border:1px solid var(--border);border-radius:8px;font:inherit}.fb-inline-auth .form-error{flex-basis:100%;margin:0}#viewContent details summary{cursor:pointer;color:var(--blue);font-weight:600;font-size:14px}#viewContent .visitor-mini-stat span{font-size:13px}#viewContent .panel-body>.compact-list{padding:0}#viewContent .dashboard-grid{grid-template-columns:1fr}
